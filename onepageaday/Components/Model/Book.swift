@@ -11,4 +11,6 @@ import UIKit
 struct Book: Codable {
     var title: String
     var questionTokens: [String]
+    
+    var token: String
 }

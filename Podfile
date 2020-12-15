@@ -10,6 +10,7 @@ target 'onepageaday' do
   pod 'Kingfisher', '~> 5.0'
   pod 'Alamofire'
   pod 'SwiftyJSON', '~> 4.0'
+pod 'PanModal'
 
 
   target 'onepageadayTests' do

@@ -20,7 +20,9 @@ class BookSelectingViewController: UIViewController, UICollectionViewDelegate, U
         // self.clearsSelectionOnViewWillAppear = false
 
         // Register cell classes
-        //self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        let nibName = UINib(nibName: "BookCell", bundle: nil)
+        self.collectionView.register(nibName, forCellWithReuseIdentifier: "cell")
+        
         let layout = BookFlowLayout()
         self.collectionView!.collectionViewLayout = layout
         self.collectionView!.decelerationRate = UIScrollView.DecelerationRate.fast
@@ -62,11 +64,19 @@ class BookSelectingViewController: UIViewController, UICollectionViewDelegate, U
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let vc = storyboard?.instantiateViewController(identifier: "MainPageViewController") {
-            vc.modalTransitionStyle = .coverVertical
-            vc.modalPresentationStyle = .fullScreen
-            self.present(vc, animated: true, completion: nil)
+        if let vc = storyboard!.instantiateViewController(identifier: "MainPageViewController") as? MainPageViewController {
+            
+            self.presentPanModal(vc)
         }
     }
 
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+//        UIView.animate(withDuration: 0.3) {
+//            let color = UIColor(hue: CGFloat(arc4random_uniform(360))/360, saturation: 0.5, brightness: 0.8, alpha: 1)
+//            self.view.backgroundColor = color
+//            self.collectionView.backgroundColor = color
+//        }
+        
+        }
+    
 }

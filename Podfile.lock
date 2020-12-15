@@ -68,12 +68,14 @@ PODS:
     - nanopb/encode (= 0.3.9011)
   - nanopb/decode (0.3.9011)
   - nanopb/encode (0.3.9011)
+  - PanModal (1.2.4)
   - SwiftyJSON (4.3.0)
 
 DEPENDENCIES:
   - Alamofire
   - Firebase/Analytics
   - Kingfisher (~> 5.0)
+  - PanModal
   - SwiftyJSON (~> 4.0)
 
 SPEC REPOS:
@@ -91,6 +93,7 @@ SPEC REPOS:
     - GoogleUtilities
     - Kingfisher
     - nanopb
+    - PanModal
     - SwiftyJSON
 
 SPEC CHECKSUMS:
@@ -107,8 +110,9 @@ SPEC CHECKSUMS:
   GoogleUtilities: f895fde57977df4e0233edda0dbeac490e3703b6
   Kingfisher: ff98240aebb7302bdc4f1ecd701761030ce18b16
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
+  PanModal: 275f6d4d07565ddf4ed16d7be5d9cd275682d80d
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
 
-PODFILE CHECKSUM: 9d68d60b5d0abbde44632f51231c6f45ce7da624
+PODFILE CHECKSUM: 7ac207de0d47d2dd19e1775798c0f5584fbf7b36
 
 COCOAPODS: 1.5.3

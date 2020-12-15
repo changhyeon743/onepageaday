@@ -98,6 +98,9 @@ extension EditableTextView: UIGestureRecognizerDelegate {
     
     //드래그앤드롭
     @objc func handlePan(_ gestureRecognizer: UIPanGestureRecognizer) {
+        if gestureRecognizer.state == .began {
+            self.parentDelegate?.dragBegin()
+        }
         if gestureRecognizer.state == .began || gestureRecognizer.state == .changed && !isEditingSomething(){
 
             let translation = gestureRecognizer.translation(in: weakParentView)
@@ -110,6 +113,7 @@ extension EditableTextView: UIGestureRecognizerDelegate {
         }
         
         if gestureRecognizer.state == .ended {
+            self.parentDelegate?.dragEnd(textView: self, touchPos: gestureRecognizer.location(in: weakParentView))
             updateTextViewTransform()
             self.parentDelegate?.textViewUpdated(textViewData: self.textViewData)
         }
@@ -122,27 +126,6 @@ extension EditableTextView: UIGestureRecognizerDelegate {
     @objc func pinchRecognized(pinch: UIPinchGestureRecognizer) {
 
         if let view = pinch.view {
-            
-//            if view is UITextView {
-//                let textView = view as! UITextView
-//                if textView.font!.pointSize * pinch.scale < 90 {
-//                    let font = UIFont(name: textView.font!.fontName, size: textView.font!.pointSize * pinch.scale)
-//                    textView.font = font
-//                    let sizeToFit = textView.sizeThatFits(CGSize(width: UIScreen.main.bounds.size.width,
-//                                                                 height:CGFloat.greatestFiniteMagnitude))
-//                    textView.bounds.size = CGSize(width: textView.intrinsicContentSize.width,
-//                                                  height: sizeToFit.height)
-//                } else {
-//                    let sizeToFit = textView.sizeThatFits(CGSize(width: UIScreen.main.bounds.size.width,
-//                                                                 height:CGFloat.greatestFiniteMagnitude))
-//                    textView.bounds.size = CGSize(width: textView.intrinsicContentSize.width,
-//                                                  height: sizeToFit.height)
-//                }
-//                textView.setNeedsDisplay()
-//            } else {
-//                view.transform = view.transform.scaledBy(x: pinch.scale, y: pinch.scale)
-//            }
-//            pinch.scale = 1
             
             if pinch.state == .changed {
                 let pinchCenter = CGPoint(x: pinch.location(in: view).x - view.bounds.midX,

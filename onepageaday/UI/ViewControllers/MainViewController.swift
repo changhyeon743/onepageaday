@@ -24,7 +24,8 @@ protocol MainViewControllerDelegate {
     func drawingEnd()
     
     func dragBegin()
-    func dragEnd()
+    func dragEnd(textView: EditableTextView, touchPos: CGPoint)
+    func dragEnd(imageView: EditableImageView, touchPos: CGPoint)
 }
 
 class MainViewController: UIViewController {
@@ -195,7 +196,7 @@ class MainViewController: UIViewController {
     
 }
 
-//이미지 관련 함수들
+//MARK: EditableImageView 관련 함수들
 extension MainViewController {
     @IBAction func imageButtonPressed(_ sender: Any) {
         API.giphyApi.getTrendContents { (json) in
@@ -223,7 +224,7 @@ extension MainViewController {
 }
 
 
-//그리기 관련 함수들
+//MARK: Drawing 관련 함수들
 extension MainViewController {
     func createDrawView() -> SwiftyDrawView {
         
@@ -258,7 +259,7 @@ extension MainViewController {
 }
 
 
-//텍스트 관련 함수들
+//MARK: EditableTextView 관련 함수들
 extension MainViewController {
     func createDarkView() -> UIView {
         darkView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
@@ -300,15 +301,52 @@ extension MainViewController {
 }
 
 
-//DELEGATE
+//MARK: DELEGATE ( 뷰와의 상호작용 )
 extension MainViewController: MainViewControllerDelegate {
-    func dragBegin() {
-        trashView.isHidden = false
+    func dragEnd(textView: EditableTextView, touchPos: CGPoint) {
+        let size:CGFloat = 40.0
+        let touchArea = CGRect(x: touchPos.x-size/2, y: touchPos.y-size/2, width: size, height: size)
+        
+        if (touchArea.intersects(self.trashView.frame)) {
+            if let index = currentQuestion?.textViewDatas.firstIndex(where: { $0.token == textView.textViewData.token }){
+                currentQuestion?.textViewDatas.remove(at: index )
+                textView.removeFromSuperview()
+            }
+            
+        }
+        self.trashView.isHidden = true
     }
     
-    func dragEnd() {
-        trashView.isHidden = true
+    func dragEnd(imageView: EditableImageView, touchPos: CGPoint) {
+        let size:CGFloat = 40.0
+        let touchArea = CGRect(x: touchPos.x-size/2, y: touchPos.y-size/2, width: size, height: size)
+        
+        if (touchArea.intersects(self.trashView.frame)) {
+            if let index = currentQuestion?.imageViewDatas.firstIndex(where: { $0.token == imageView.imageViewData.token }){
+                currentQuestion?.imageViewDatas.remove(at: index )
+                imageView.removeFromSuperview()
+            }
+        }
+        
+        self.trashView.isHidden = true
     }
+    
+    func dragBegin() {
+        self.view.bringSubviewToFront(trashView)
+        trashView.isHidden = false
+        self.trashView.transform = CGAffineTransform(scaleX: 0, y: 0)
+
+        UIView.animate(withDuration: 0.2,
+            animations: {
+                self.trashView.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
+            },
+            completion: { _ in
+                UIView.animate(withDuration: 0.2) {
+                    self.trashView.transform = CGAffineTransform.identity
+                }
+            })
+    }
+    
     
     
     func imageViewUpdated(imageViewData: ImageViewData) {
@@ -376,7 +414,7 @@ extension MainViewController: MainViewControllerDelegate {
         self.drawingView.isEnabled = false
     }
 }
-//Fixing UI Problems
+//MARK: Fixing UI Problems
 extension MainViewController {
     func bringButtonsToFront() {
         self.view.bringSubviewToFront(imageButton)
