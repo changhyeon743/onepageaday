@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="439" id="pvw-7f-kSd" customClass="ShopCell" customModule="onepageaday" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="692" height="439"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pvw-7f-kSd" id="Kel-Ry-HrR">
+                <rect key="frame" x="0.0" y="0.0" width="692" height="439"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Oav-Uz-0cj">
+                        <rect key="frame" x="12" y="381" width="668" height="46"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="K7E-VQ-Dlo">
+                                <rect key="frame" x="0.0" y="0.0" width="334" height="46"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O1S-3e-zA8">
+                                        <rect key="frame" x="0.0" y="0.0" width="334" height="20.5"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="luw-Ob-y1P">
+                                        <rect key="frame" x="0.0" y="25.5" width="334" height="20.5"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y0L-Sj-Jbq">
+                                <rect key="frame" x="334" y="0.0" width="334" height="46"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <state key="normal" title="구매"/>
+                            </button>
+                        </subviews>
+                    </stackView>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Anf-75-I5y">
+                        <rect key="frame" x="12" y="12" width="668" height="357"/>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="Oav-Uz-0cj" secondAttribute="trailing" constant="12" id="7p2-nH-4ix"/>
+                    <constraint firstAttribute="trailing" secondItem="Anf-75-I5y" secondAttribute="trailing" constant="12" id="LrB-1U-UYG"/>
+                    <constraint firstAttribute="bottom" secondItem="Oav-Uz-0cj" secondAttribute="bottom" constant="12" id="Ui9-L8-SFf"/>
+                    <constraint firstItem="Anf-75-I5y" firstAttribute="top" secondItem="Kel-Ry-HrR" secondAttribute="top" constant="12" id="WHc-Sq-1K2"/>
+                    <constraint firstItem="Oav-Uz-0cj" firstAttribute="leading" secondItem="Kel-Ry-HrR" secondAttribute="leading" constant="12" id="Zxi-tS-ASZ"/>
+                    <constraint firstItem="Anf-75-I5y" firstAttribute="leading" secondItem="Kel-Ry-HrR" secondAttribute="leading" constant="12" id="acy-sD-GAS"/>
+                    <constraint firstItem="Oav-Uz-0cj" firstAttribute="top" secondItem="Anf-75-I5y" secondAttribute="bottom" constant="12" id="rhC-T1-A2E"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="detailLabel" destination="luw-Ob-y1P" id="0RN-Li-zDj"/>
+                <outlet property="itemImageView" destination="Anf-75-I5y" id="Kqt-6k-aTZ"/>
+                <outlet property="titleLabel" destination="O1S-3e-zA8" id="x5I-qO-d6v"/>
+            </connections>
+            <point key="canvasLocation" x="371.01449275362324" y="-159.70982142857142"/>
+        </tableViewCell>
+    </objects>
+</document>
