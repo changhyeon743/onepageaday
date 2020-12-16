@@ -14,10 +14,6 @@ protocol MainPageViewControllerDelegate{
 }
 
 class MainPageViewController: UIPageViewController,UIPageViewControllerDelegate, UIPageViewControllerDataSource,MainPageViewControllerDelegate {
-   
-    
-    
-    
     override func viewDidLoad() {
         self.dataSource = self
         self.delegate = self
@@ -64,7 +60,7 @@ class MainPageViewController: UIPageViewController,UIPageViewControllerDelegate,
         print("stop!")
         self.delegate = nil;
         self.dataSource = nil;
-//        panModalTransition(to: .longForm)
+        panModalTransition(to: .longForm)
 //        panModalSetNeedsLayoutUpdate()
     }
     
@@ -72,7 +68,7 @@ class MainPageViewController: UIPageViewController,UIPageViewControllerDelegate,
         print("start!")
         self.delegate = self;
         self.dataSource = self;
-//        panModalTransition(to: .shortForm)
+        panModalTransition(to: .shortForm)
 //        panModalSetNeedsLayoutUpdate()
     }
     
@@ -94,17 +90,17 @@ extension MainPageViewController: PanModalPresentable {
         return false
     }
     var shouldRoundTopCorners: Bool {
-        return false
+        return true
     }
     var topOffset: CGFloat {
         return 0
     }
-//    var shortFormHeight: PanModalHeight {
-//        return .maxHeightWithTopInset(48)
-//    }
-//    var longFormHeight: PanModalHeight {
-//        return .maxHeight
-//    }
+    var shortFormHeight: PanModalHeight {
+        return .maxHeightWithTopInset(36)
+    }
+    var longFormHeight: PanModalHeight {
+        return .maxHeight
+    }
     func willTransition(to state: PanModalPresentationController.PresentationState) {
         
     }

@@ -7,6 +7,7 @@
 
 import Foundation
 
+//ios, android 구분 필요 있음.
 struct Question:Codable {
     var index: Int
     var text: String
