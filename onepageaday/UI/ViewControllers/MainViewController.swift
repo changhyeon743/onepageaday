@@ -65,16 +65,20 @@ class MainViewController: UIViewController {
         }
     }
     
-    @IBOutlet weak var undoButton: UIButton!
     @IBOutlet weak var modeToggleButton:UIButton!
     
     @IBOutlet weak var addTextViewButton: UIButton!
     @IBOutlet weak var doneButton: UIButton!
     @IBOutlet weak var startDrawButton: UIButton!
     
-    @IBOutlet weak var brushColorWell: UIColorWell!
     
-    private var drawingView: SwiftyDrawView!
+    /// DRAWING 변수
+    private var drawingView: PKCanvasView!
+    private var drawing: PKDrawing!
+    private var toolPicker: PKToolPicker!
+
+    
+    /// END
     private var darkView: UIView!
     
     @IBOutlet weak var indexLabel: UILabel!
@@ -86,7 +90,7 @@ class MainViewController: UIViewController {
     
     @IBOutlet weak var trashView: UIImageView!
     
-    //로컬 변수 업데이트시 static에 적용
+    //로컬 변수 업데이트시 static에 적용 (구조 수정 필요)
     private var currentQuestion:Question? {
         didSet {
             if let index = API.questions.firstIndex(where: { $0.token == currentQuestion?.token }), let question = currentQuestion {
@@ -116,35 +120,55 @@ class MainViewController: UIViewController {
         
     }
     
+    //MARK: setUI
     func setUI() {
-        
+        //텍스트 관련 UI
         self.darkView = createDarkView()
         self.view.addSubview(darkView)
         
-        self.drawingView = createDrawView()
+        
+        //그림 관련 UI
+        self.drawingView = PKCanvasView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height))
+        self.drawingView.delegate = self
+        self.drawingView.alwaysBounceVertical = true
+        self.drawingView.drawingPolicy = .anyInput
+        self.drawingView.backgroundColor = .clear
+        self.drawingView.isUserInteractionEnabled = false
+        
+        //그림 데이터 불러오기
+        self.drawing = self.currentQuestion?.drawings ?? PKDrawing()
+        self.drawingView.drawing = self.drawing
+        
+        //그림 ToolPicker
+        if #available(iOS 14.0, *) {
+            toolPicker = PKToolPicker()
+        } else {
+            let window = parent?.view.window
+            toolPicker = PKToolPicker.shared(for: window!)
+        }
+        toolPicker.setVisible(false, forFirstResponder: drawingView)
+        toolPicker.addObserver(drawingView)
+        
+        updateLayout(for: toolPicker)
+        drawingView.becomeFirstResponder()
+        
         
         //need to place onn createViewWithData but here.. ( need to fix )
-        self.drawingView.display(drawItems: self.currentQuestion?.drawItems ?? [])
         self.view.addSubview(drawingView)
         
-        brushColorWell.addTarget(self, action: #selector(colorChanged(_:)), for: .valueChanged)
-        brushColorWell.selectedColor = .black
-        brushColorWell.supportsAlpha = true
-        
-        updateUndoButton()
-        
+        //버튼 앞으로
         bringButtonsToFront()
     }
     
     //currentQuestion 활용하여 데이터 생성
     func createViewsWithData() {
-        //만들어서
+        //텍스트
         currentQuestion?.textViewDatas.forEach{
-            print($0)
             self.view.addSubview(makeEditableTextView(textViewData: $0))
             
         }
         
+        //이미지
         currentQuestion?.imageViewDatas.forEach{
             self.view.addSubview(makeImageView(imageViewData: $0))
             
@@ -157,23 +181,14 @@ class MainViewController: UIViewController {
         self.pageControllerDelegate = delegate
     }
     
-    //그리기 or 텍스트 종료
-    @IBAction func doneButtonPressed(_ sender: Any) {
-        if isEditingTextView {
-            textViewEditingEnd()
-            self.view.endEditing(true)
-        }
-        if isDrawing {
-            drawingEnd()
-        }
-    }
+    
     
     //편집 모드 토글
     @IBAction func modeToggleButtonPressed() {
-        isEditingMode = !isEditingMode
+        isEditingMode.toggle()
     }
     
-    //편집모드진입
+    //터치로 편집모드진입
     @objc func touchRecognized(_ recognizer: UITapGestureRecognizer) {
         if (!self.isEditingMode) {
             self.isEditingMode = true
@@ -189,16 +204,25 @@ class MainViewController: UIViewController {
         }
     }
     
-    
-    @IBAction func backToSelectingButtonPressed(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+    //그리기 or 텍스트 종료
+    @IBAction func doneButtonPressed(_ sender: Any) {
+        if isEditingTextView {
+            textViewEditingEnd()
+            self.view.endEditing(true)
+        }
+        if isDrawing {
+            drawingEnd()
+        }
     }
-    
+}
+
+//MARK: PKCanvas Delegate
+extension MainViewController: PKCanvasViewDelegate {
     
 }
 
-//MARK: EditableImageView 관련 함수들
-extension MainViewController {
+//MARK: 스티커 관련 함수들
+extension MainViewController: MainViewControllerDelegate {
     @IBAction func imageButtonPressed(_ sender: Any) {
         API.giphyApi.getTrendContents { (json) in
             
@@ -225,42 +249,20 @@ extension MainViewController {
 }
 
 
-//MARK: Drawing 관련 함수들
+//MARK: 그림 관련 함수들
 extension MainViewController {
-    func createDrawView() -> SwiftyDrawView {
-        
-        let drawingView = SwiftyDrawView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height))
-        drawingView.isEnabled = false
-        drawingView.brush = .medium
-        
-        return drawingView
-    }
     
     @IBAction func drawingButtonPressed(_ sender: Any) {
         self.drawingBegin()
     }
     
-    @IBAction func undoButtonPressed(_ sender: Any) {
-        self.drawingView.undo()
-        updateUndoButton()
-    }
-    
-    @objc func colorChanged(_ sender: UIColorWell) {
-        self.drawingView.brush.color = .init(sender.selectedColor ?? .black)
-    }
-    
-    func updateUndoButton() {
-        if (self.drawingView.canUndo) {
-            undoButton.setImage(UIImage(systemName: "arrowshape.turn.up.left.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 24)), for: .normal)
-        } else {
-            undoButton.setImage(UIImage(systemName: "arrowshape.turn.up.left", withConfiguration: UIImage.SymbolConfiguration(pointSize: 24)), for: .normal)
-            
-        }
+    func updateLayout(for toolPicker: PKToolPicker) {
+        
     }
 }
 
 
-//MARK: EditableTextView 관련 함수들
+//MARK: 편집용텍스트 관련 함수들
 extension MainViewController {
     func createDarkView() -> UIView {
         darkView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
@@ -303,7 +305,8 @@ extension MainViewController {
 
 
 //MARK: DELEGATE ( 뷰와의 상호작용 )
-extension MainViewController: MainViewControllerDelegate {
+extension MainViewController {
+    /// 드래그 종료, 삭제 필요시 삭제
     func dragEnd(textView: EditableTextView, touchPos: CGPoint) {
         let size:CGFloat = 40.0
         let touchArea = CGRect(x: touchPos.x-size/2, y: touchPos.y-size/2, width: size, height: size)
@@ -318,6 +321,7 @@ extension MainViewController: MainViewControllerDelegate {
         self.trashView.isHidden = true
     }
     
+    /// 드래그 종료, 삭제 필요시 삭제
     func dragEnd(imageView: EditableImageView, touchPos: CGPoint) {
         let size:CGFloat = 40.0
         let touchArea = CGRect(x: touchPos.x-size/2, y: touchPos.y-size/2, width: size, height: size)
@@ -332,6 +336,7 @@ extension MainViewController: MainViewControllerDelegate {
         self.trashView.isHidden = true
     }
     
+    ///드래그 시작,  삭제뷰 생성
     func dragBegin() {
         self.view.bringSubviewToFront(trashView)
         trashView.isHidden = false
@@ -349,7 +354,7 @@ extension MainViewController: MainViewControllerDelegate {
     }
     
     
-    
+    //이미지데이터 업데이트
     func imageViewUpdated(imageViewData: ImageViewData) {
         bringButtonsToFront()
         
@@ -357,21 +362,22 @@ extension MainViewController: MainViewControllerDelegate {
             currentQuestion?.imageViewDatas[index] = imageViewData
         }
     }
-    
+        
+    //텍스트데이터 업데이트
     func textViewUpdated(textViewData: TextViewData) {
         bringButtonsToFront()
         
         if let index = currentQuestion?.textViewDatas.firstIndex(where: { $0.token == textViewData.token }){
             currentQuestion?.textViewDatas[index] = textViewData
         }
-        
-        
     }
     
     
+    //현재 상태 반환
     func getIsEditingTextView() -> Bool {return self.isEditingTextView }
     func getIsDrawing() -> Bool { return self.isDrawing }
     func getIsEditingMode() -> Bool { return self.isEditingMode }
+    
     
     func textViewEditingBegin(textView: EditableTextView) {
         isEditingTextView = true
@@ -382,8 +388,6 @@ extension MainViewController: MainViewControllerDelegate {
         self.view.bringSubviewToFront(self.darkView)
         self.view.bringSubviewToFront(self.doneButton)
         self.view.bringSubviewToFront(textView)
-        
-        
     }
     
     func textViewEditingEnd() {
@@ -398,34 +402,38 @@ extension MainViewController: MainViewControllerDelegate {
         showToast(text: "그리기 시작")
         
         hideViews([addTextViewButton,modeToggleButton,imageButton,startDrawButton])
-        showViews([brushColorWell,doneButton,undoButton])
+        showViews([doneButton])
         
-        self.drawingView.isEnabled = true
+        self.drawingView.isUserInteractionEnabled = true
+        toolPicker.setVisible(true, forFirstResponder: drawingView)
+        toolPicker.addObserver(drawingView)
+        
+        updateLayout(for: toolPicker)
+        drawingView.becomeFirstResponder()
     }
     
     func drawingEnd() {
         isDrawing = false
         showToast(text: "그리기 완료")
         
-        self.currentQuestion?.drawItems = self.drawingView.drawItems
+        self.currentQuestion?.drawings = self.drawingView.drawing
         
-        hideViews([undoButton,brushColorWell,doneButton])
+        hideViews([doneButton])
         showViews([imageButton,modeToggleButton,addTextViewButton,startDrawButton])
         
-        self.drawingView.isEnabled = false
+        self.drawingView.isUserInteractionEnabled = false
+        toolPicker.setVisible(false, forFirstResponder: drawingView)
     }
 }
 //MARK: Fixing UI Problems
 extension MainViewController {
     func bringButtonsToFront() {
         self.view.bringSubviewToFront(imageButton)
-        self.view.bringSubviewToFront(brushColorWell)
         self.view.bringSubviewToFront(backToSelectingButton)
         self.view.bringSubviewToFront(modeToggleButton)
         self.view.bringSubviewToFront(doneButton)
         self.view.bringSubviewToFront(startDrawButton)
         self.view.bringSubviewToFront(addTextViewButton)
-        self.view.bringSubviewToFront(undoButton)
     }
     
     func hideViews(_ views: [UIView]) {

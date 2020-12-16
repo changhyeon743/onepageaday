@@ -6,11 +6,10 @@ target 'onepageaday' do
   use_frameworks!
   
   # Pods for onepageaday
-  pod 'Firebase/Analytics'
+  # pod 'Firebase/Analytics'
   pod 'Kingfisher', '~> 5.0'
   pod 'Alamofire'
   pod 'SwiftyJSON', '~> 4.0'
-pod 'PanModal'
 
 
   target 'onepageadayTests' do

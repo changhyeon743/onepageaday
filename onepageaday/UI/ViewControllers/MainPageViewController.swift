@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import PanModal
 
 protocol MainPageViewControllerDelegate{
     func stopScroll()
@@ -56,52 +55,18 @@ class MainPageViewController: UIPageViewController,UIPageViewControllerDelegate,
         return UIViewController()
     }
     
+    /// 편집 모드
     func stopScroll() {
         print("stop!")
         self.delegate = nil;
         self.dataSource = nil;
-        panModalTransition(to: .longForm)
-//        panModalSetNeedsLayoutUpdate()
     }
     
+    /// 뷰 모드
     func startScroll() {
         print("start!")
         self.delegate = self;
         self.dataSource = self;
-        panModalTransition(to: .shortForm)
-//        panModalSetNeedsLayoutUpdate()
     }
     
-    func isEditingSomething() -> Bool {
-        return (self.delegate == nil)
-    }
-}
-
-extension MainPageViewController: PanModalPresentable {
-    var panScrollable: UIScrollView? {
-        return nil
-    }
-    
-    
-    func shouldRespond(to panModalGestureRecognizer: UIPanGestureRecognizer) -> Bool {
-        return !isEditingSomething()
-    }
-    var showDragIndicator: Bool {
-        return false
-    }
-    var shouldRoundTopCorners: Bool {
-        return true
-    }
-    var topOffset: CGFloat {
-        return 0
-    }
-    var shortFormHeight: PanModalHeight {
-        return .maxHeightWithTopInset(36)
-    }
-    var longFormHeight: PanModalHeight {
-        return .maxHeight
-    }
-    func willTransition(to state: PanModalPresentationController.PresentationState) {
-        
-    }
 }

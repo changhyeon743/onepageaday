@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -21,9 +21,6 @@
 		7840E32A257FAAA8009B216B /* onepageadayUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7840E329257FAAA8009B216B /* onepageadayUITests.swift */; };
 		7853DC772587AAD900600F6A /* ShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7853DC762587AAD900600F6A /* ShopViewController.swift */; };
 		78576E8E257FDEF7006F0B3F /* EditableTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78576E8D257FDEF7006F0B3F /* EditableTextView.swift */; };
-		785CF6BB2581E50F00682DDA /* SwiftyDraw.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785CF6BA2581E50F00682DDA /* SwiftyDraw.swift */; };
-		785CF6C62581E53200682DDA /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785CF6C52581E53200682DDA /* Color.swift */; };
-		785CF6CB2581E54600682DDA /* Brush.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785CF6CA2581E54600682DDA /* Brush.swift */; };
 		7863C9BF2588589500B5773D /* BookCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7863C9BE2588589500B5773D /* BookCell.xib */; };
 		7863C9C42588596600B5773D /* BookCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7863C9C32588596600B5773D /* BookCell.swift */; };
 		789CBC3025889E76001D11B1 /* ShopDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789CBC2F25889E76001D11B1 /* ShopDetailViewController.swift */; };
@@ -80,9 +77,6 @@
 		7840E32B257FAAA8009B216B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7853DC762587AAD900600F6A /* ShopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopViewController.swift; sourceTree = "<group>"; };
 		78576E8D257FDEF7006F0B3F /* EditableTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableTextView.swift; sourceTree = "<group>"; };
-		785CF6BA2581E50F00682DDA /* SwiftyDraw.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyDraw.swift; sourceTree = "<group>"; };
-		785CF6C52581E53200682DDA /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
-		785CF6CA2581E54600682DDA /* Brush.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brush.swift; sourceTree = "<group>"; };
 		7863C9BE2588589500B5773D /* BookCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookCell.xib; sourceTree = "<group>"; };
 		7863C9C32588596600B5773D /* BookCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCell.swift; sourceTree = "<group>"; };
 		789CBC2F25889E76001D11B1 /* ShopDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopDetailViewController.swift; sourceTree = "<group>"; };
@@ -197,16 +191,6 @@
 			path = onepageadayUITests;
 			sourceTree = "<group>";
 		};
-		785CF6B92581E4FC00682DDA /* Swiftydraw */ = {
-			isa = PBXGroup;
-			children = (
-				785CF6BA2581E50F00682DDA /* SwiftyDraw.swift */,
-				785CF6C52581E53200682DDA /* Color.swift */,
-				785CF6CA2581E54600682DDA /* Brush.swift */,
-			);
-			path = Swiftydraw;
-			sourceTree = "<group>";
-		};
 		78E908A62582717A00944B60 /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -227,7 +211,6 @@
 		78E908A82582718E00944B60 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				785CF6B92581E4FC00682DDA /* Swiftydraw */,
 				78E061362586F27800EEE1C7 /* String.swift */,
 			);
 			path = "Supporting Files";
@@ -472,30 +455,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-onepageaday/Pods-onepageaday-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
-				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
-				"${BUILT_PRODUCTS_DIR}/PanModal/PanModal.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
-				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-onepageaday/Pods-onepageaday-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PanModal.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-onepageaday/Pods-onepageaday-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-onepageaday/Pods-onepageaday-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-onepageaday/Pods-onepageaday-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		76F29CC989A9CB9D86FD8C70 /* [CP] Check Pods Manifest.lock */ = {
@@ -551,15 +519,12 @@
 			files = (
 				7840E30C257FAA9E009B216B /* MainViewController.swift in Sources */,
 				78576E8E257FDEF7006F0B3F /* EditableTextView.swift in Sources */,
-				785CF6BB2581E50F00682DDA /* SwiftyDraw.swift in Sources */,
-				785CF6CB2581E54600682DDA /* Brush.swift in Sources */,
 				7863C9C42588596600B5773D /* BookCell.swift in Sources */,
 				782685472587106E00F0A295 /* GiphyAPI.swift in Sources */,
 				78E9088925820F4400944B60 /* Book.swift in Sources */,
 				78E908B52582726D00944B60 /* EditableImageView.swift in Sources */,
 				7840E308257FAA9E009B216B /* AppDelegate.swift in Sources */,
 				78FE241325879E6700E4BE31 /* BookFlowLayout.swift in Sources */,
-				785CF6C62581E53200682DDA /* Color.swift in Sources */,
 				789CBC3025889E76001D11B1 /* ShopDetailViewController.swift in Sources */,
 				78E9088E25822B4200944B60 /* MainPageViewController.swift in Sources */,
 				7853DC772587AAD900600F6A /* ShopViewController.swift in Sources */,
