@@ -7,7 +7,7 @@
 
 import UIKit
 import PencilKit
-
+import Firebase
 
 protocol MainViewControllerDelegate {
     func imageViewUpdated(imageViewData: ImageViewData)
@@ -81,7 +81,7 @@ class MainViewController: UIViewController {
     //로컬 변수 업데이트시 static에 적용 (구조 수정 필요)
     private var currentQuestion:Question? {
         didSet {
-            if let index = API.currentQuestions.firstIndex(where: { $0.token == currentQuestion?.token }), let question = currentQuestion {
+            if let index = API.currentQuestions.firstIndex(where: { $0.id == currentQuestion?.id }), let question = currentQuestion {
                 API.currentQuestions[index] = question
             }
         }
@@ -198,6 +198,11 @@ class MainViewController: UIViewController {
     
     //그리기 or 텍스트 종료
     @IBAction func doneButtonPressed(_ sender: Any) {
+        do {
+            try Firestore.firestore().collection("questions").document("LA").setData(from: currentQuestion)
+        } catch let error {
+            print("Error writing city to Firestore: \(error)")
+        }
         if isEditingTextView {
             textViewEditingEnd()
             self.view.endEditing(true)
@@ -442,9 +447,8 @@ extension MainViewController {
 
 
 //Toast Message
-extension MainViewController {
+extension UIViewController {
     func showToast(text: String) {
-        print(API.currentQuestions.map{$0.token})
         
         let label = UILabel(frame: CGRect(x: self.view.bounds.width/2-65, y: self.view.bounds.height - 25-150, width: 130, height: 30))
         

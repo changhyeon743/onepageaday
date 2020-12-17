@@ -26,6 +26,8 @@
 		789CBC3025889E76001D11B1 /* ShopDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789CBC2F25889E76001D11B1 /* ShopDetailViewController.swift */; };
 		78A758882581D34B006FAFB1 /* DesignElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A758872581D34B006FAFB1 /* DesignElements.swift */; };
 		78C0E19D258317F300FC3842 /* BookSelectingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C0E19C258317F300FC3842 /* BookSelectingViewController.swift */; };
+		78DC8179258B0A2600C6C2D3 /* Template.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DC8178258B0A2600C6C2D3 /* Template.swift */; };
+		78DC817E258B12C700C6C2D3 /* FirebaseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DC817D258B12C700C6C2D3 /* FirebaseAPI.swift */; };
 		78E061172586E64E00EEE1C7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 78E061162586E64E00EEE1C7 /* GoogleService-Info.plist */; };
 		78E061372586F27800EEE1C7 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E061362586F27800EEE1C7 /* String.swift */; };
 		78E9088925820F4400944B60 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E9088825820F4400944B60 /* Book.swift */; };
@@ -82,6 +84,8 @@
 		789CBC2F25889E76001D11B1 /* ShopDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopDetailViewController.swift; sourceTree = "<group>"; };
 		78A758872581D34B006FAFB1 /* DesignElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignElements.swift; sourceTree = "<group>"; };
 		78C0E19C258317F300FC3842 /* BookSelectingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSelectingViewController.swift; sourceTree = "<group>"; };
+		78DC8178258B0A2600C6C2D3 /* Template.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Template.swift; sourceTree = "<group>"; };
+		78DC817D258B12C700C6C2D3 /* FirebaseAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAPI.swift; sourceTree = "<group>"; };
 		78E061162586E64E00EEE1C7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		78E061362586F27800EEE1C7 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		78E9088825820F4400944B60 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
@@ -131,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				782685462587106E00F0A295 /* GiphyAPI.swift */,
+				78DC817D258B12C700C6C2D3 /* FirebaseAPI.swift */,
 				7826855B2587114E00F0A295 /* API.swift */,
 			);
 			path = Network;
@@ -255,6 +260,7 @@
 				78E9088825820F4400944B60 /* Book.swift */,
 				78E9089E25822F9900944B60 /* Question.swift */,
 				78A758872581D34B006FAFB1 /* DesignElements.swift */,
+				78DC8178258B0A2600C6C2D3 /* Template.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -520,6 +526,7 @@
 				7840E30C257FAA9E009B216B /* MainViewController.swift in Sources */,
 				78576E8E257FDEF7006F0B3F /* EditableTextView.swift in Sources */,
 				7863C9C42588596600B5773D /* BookCell.swift in Sources */,
+				78DC817E258B12C700C6C2D3 /* FirebaseAPI.swift in Sources */,
 				782685472587106E00F0A295 /* GiphyAPI.swift in Sources */,
 				78E9088925820F4400944B60 /* Book.swift in Sources */,
 				78E908B52582726D00944B60 /* EditableImageView.swift in Sources */,
@@ -533,6 +540,7 @@
 				78E061372586F27800EEE1C7 /* String.swift in Sources */,
 				78A758882581D34B006FAFB1 /* DesignElements.swift in Sources */,
 				7826855C2587114E00F0A295 /* API.swift in Sources */,
+				78DC8179258B0A2600C6C2D3 /* Template.swift in Sources */,
 				7840E30A257FAA9E009B216B /* SceneDelegate.swift in Sources */,
 				78FE24252587A89700E4BE31 /* ShopCell.swift in Sources */,
 			);

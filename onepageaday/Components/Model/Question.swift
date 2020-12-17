@@ -25,7 +25,7 @@ struct Question:Codable {
     
     var os: OS
     
-    var token: String
+    var id: String
     
     
     init(index:Int, text:String, textViewDatas: [TextViewData]=[], imageViewDatas: [ImageViewData]=[], drawings: PKDrawing=PKDrawing(),os: Question.OS = .iOS) {
@@ -36,7 +36,7 @@ struct Question:Codable {
         self.textViewDatas = textViewDatas
         self.drawings = drawings
         
-        self.token = UUID().uuidString
+        self.id = UUID().uuidString
         self.os = os
     }
 }

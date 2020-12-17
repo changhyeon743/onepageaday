@@ -131,7 +131,7 @@
             <objects>
                 <tableViewController id="5ke-0K-mKU" customClass="ShopViewController" customModule="onepageaday" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Z7p-oA-4BX">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <connections>
@@ -142,7 +142,7 @@
                     <navigationItem key="navigationItem" title="매일력 상점" id="9PU-2s-qBC">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="XRs-CG-FJ1">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="IzA-az-7NQ">
-                                <rect key="frame" x="302" y="13" width="92" height="30"/>
+                                <rect key="frame" x="302" y="7" width="92" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="닫기"/>
                             </button>
@@ -161,7 +161,7 @@
             <objects>
                 <viewController id="fgG-Jf-s3z" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Kyu-1Q-Ttt">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="Dxc-m0-eLH"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -177,7 +177,7 @@
             <objects>
                 <navigationController id="aqJ-fH-0Af" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="qqF-jZ-p1U">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -212,9 +212,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="상점"/>
                                 <connections>
-                                    <segue destination="aqJ-fH-0Af" kind="popoverPresentation" popoverAnchorView="rPK-gd-BkI" id="kEh-wh-3tj">
-                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                    </segue>
+                                    <action selector="enterShop:" destination="hOi-xl-CzU" eventType="touchUpInside" id="h00-gf-RSu"/>
                                 </connections>
                             </button>
                         </subviews>

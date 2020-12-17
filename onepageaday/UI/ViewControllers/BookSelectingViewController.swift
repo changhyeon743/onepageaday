@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Firebase
+import SwiftyJSON
 
 private let reuseIdentifier = "cell"
 
@@ -13,8 +15,17 @@ private let reuseIdentifier = "cell"
 
 class BookSelectingViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     @IBOutlet weak var collectionView:UICollectionView!
+    
+    var books:[Book] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        API.firebase.fetchBooks { (books) in
+            self.books = books
+            print(self.books)
+            self.collectionView.reloadData()
+        }
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -32,16 +43,21 @@ class BookSelectingViewController: UIViewController, UICollectionViewDelegate, U
         // Do any additional setup after loading the view.
     }
 
-    /*
-    // MARK: - Navigation
+    @IBAction func enterShop(_ sender: Any) {
+//        let db = Firestore.firestore()
+//        db.collection("Information").document("shop").getDocument() { (snapshot, err) in
+//            if let err = err {
+//                print("Error getting documents: \(err)")
+//            } else {
+//                let vc = ShopViewController()
+//                let jsons = JSON(JSON(snapshot?.data()))["json"].arrayValue
+//            }
+//        }
+        
+        self.collectionView.reloadData()
+//        
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
     }
-    */
-
     // MARK: UICollectionViewDataSource
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -52,11 +68,13 @@ class BookSelectingViewController: UIViewController, UICollectionViewDelegate, U
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 10
+        return books.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! BookCell
+        cell.titleLabel.text = books[indexPath.row].title
+        
         cell.backgroundColor = UIColor(hue: CGFloat(arc4random_uniform(360))/360, saturation: 0.5, brightness: 0.8, alpha: 1)
         // Configure the cell
     

@@ -8,7 +8,9 @@
 import Foundation
 
 class API {
+    
     static var giphyApi = GiphyAPI()
+    static var firebase = FirebaseAPI()
     
     let emoji = "https://emojicdn.elk.sh/%F0%9F%A4%A9?style=apple"
     
@@ -25,10 +27,5 @@ class API {
                                         Question(index: 8, text: "숲에 무엇이 있나요?"),
                                        ]
     
-    static var books: [Book] = [
-        Book(title: "기본적인 매일력", questionTokens: ["A6FCAD7D-9885-4D06-9E5F-472304435006", "E247B34A-08F0-4EBB-9943-F01AE41913B3", "0123E91A-99F9-48F8-9D63-B20A56630FF3", "5A723301-D4D3-462F-A835-19452159955F", "684020F7-E4CF-4519-B4E8-CA86C92EB2D6", "73329CEE-40FA-47EE-B7B1-3D2E37CA8238", "30821A5D-ADDC-476E-BC22-13B639096989", "7E290F3E-E5FC-46D0-A079-E6CB5E2DBCED"]),
-        Book(title: "기본적인 매일력2", questionTokens: ["A6FCAD7D-9885-4D06-9E5F-472304435006", "E247B34A-08F0-4EBB-9943-F01AE41913B3",]),
-        Book(title: "기본적인 매일력3", questionTokens: ["A6FCAD7D-9885-4D06-9E5F-472304435006"])
-             
-    ]
+    static var books: [Book] = []
 }

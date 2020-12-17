@@ -10,16 +10,14 @@ import UIKit
 
 struct Book: Codable {
     var title: String
-    var questionTokens: [String]
-    
-    var token: String
-    
+    var id: String
+    var detail: String
     var currentIndex: Int
     
-    init(title:String, questionTokens:[String], currentIndex:Int=0) {
+    init(id:String=UUID().uuidString, title:String,detail:String, currentIndex:Int=0) {
         self.title = title
-        self.questionTokens = questionTokens
+        self.detail = detail
         self.currentIndex = currentIndex
-        self.token = UUID().uuidString
+        self.id = id
     }
 }
