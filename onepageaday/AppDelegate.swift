@@ -6,13 +6,13 @@
 //
 
 import UIKit
-//import Firebase
+import Firebase
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         let encoder = JSONEncoder()
-        if let encoded = try? encoder.encode(API.questions) {
+        if let encoded = try? encoder.encode(API.currentQuestions) {
             let defaults = UserDefaults.standard
             defaults.set(encoded, forKey: "Questions")
         }
@@ -20,12 +20,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        //FirebaseApp.configure()
+        FirebaseApp.configure()
         let defaults = UserDefaults.standard
         if let questions = defaults.object(forKey: "Questions") as? Data {
             let decoder = JSONDecoder()
             if let questions = try? decoder.decode([Question].self, from: questions) {
-                API.questions = questions
+                API.currentQuestions = questions
                 print(questions)
             }
         }

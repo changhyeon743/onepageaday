@@ -65,7 +65,8 @@ class BookSelectingViewController: UIViewController, UICollectionViewDelegate, U
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let vc = storyboard!.instantiateViewController(identifier: "MainPageViewController") as? MainPageViewController {
-            vc.modalPresentationStyle = .fullScreen
+            vc.modalPresentationStyle = .overCurrentContext
+            
             self.present(vc, animated:true, completion: nil)
         }
     }

@@ -48,7 +48,6 @@ class MainViewController: UIViewController {
                 //편집모드진입
                 showToast(text: "편집 모드")
                 pageControllerDelegate?.stopScroll()
-                backToSelectingButton.isHidden = true
                 modeToggleButton.setImage(UIImage(systemName: "checkmark.square", withConfiguration: UIImage.SymbolConfiguration(pointSize: 24)), for: .normal)
                 modeToggleButton.setTitle("완료", for: .normal)
                 
@@ -60,41 +59,30 @@ class MainViewController: UIViewController {
 
                 
                 pageControllerDelegate?.startScroll()
-                backToSelectingButton.isHidden = false
             }
         }
     }
     
     @IBOutlet weak var modeToggleButton:UIButton!
-    
     @IBOutlet weak var addTextViewButton: UIButton!
     @IBOutlet weak var doneButton: UIButton!
     @IBOutlet weak var startDrawButton: UIButton!
-    
-    
     /// DRAWING 변수
     private var drawingView: PKCanvasView!
     private var drawing: PKDrawing!
     private var toolPicker: PKToolPicker!
-
-    
     /// END
     private var darkView: UIView!
-    
     @IBOutlet weak var indexLabel: UILabel!
     @IBOutlet weak var questionLabel: UILabel!
-    
-    @IBOutlet weak var backToSelectingButton: UIButton!
-    
     @IBOutlet weak var imageButton: UIButton!
-    
     @IBOutlet weak var trashView: UIImageView!
     
     //로컬 변수 업데이트시 static에 적용 (구조 수정 필요)
     private var currentQuestion:Question? {
         didSet {
-            if let index = API.questions.firstIndex(where: { $0.token == currentQuestion?.token }), let question = currentQuestion {
-                API.questions[index] = question
+            if let index = API.currentQuestions.firstIndex(where: { $0.token == currentQuestion?.token }), let question = currentQuestion {
+                API.currentQuestions[index] = question
             }
         }
     }
@@ -197,9 +185,13 @@ class MainViewController: UIViewController {
 //                self.isEditingMode = false
 //            }
             //텍스트 한 개도 없을 경우?
-//            if let view = recognizer.view {
-//                makeEditableTextView(frame: CGRect(x: view.center.x, y: view.center.y, width: self.view.bounds.width, height: 100))
-//            }
+            if currentQuestion?.textViewDatas.count == 0 {
+                let editableTextView = makeEditableTextView(textViewData: TextViewData(center: CGPoint(x: self.view.bounds.width/2, y: self.view.bounds.height/2), angle: 0, scale: 1, text: "") )
+                self.view.addSubview(editableTextView)
+                editableTextView.becomeFirstResponder()
+                
+                currentQuestion?.textViewDatas.append(editableTextView.textViewData)
+            }
             
         }
     }
@@ -429,7 +421,6 @@ extension MainViewController {
 extension MainViewController {
     func bringButtonsToFront() {
         self.view.bringSubviewToFront(imageButton)
-        self.view.bringSubviewToFront(backToSelectingButton)
         self.view.bringSubviewToFront(modeToggleButton)
         self.view.bringSubviewToFront(doneButton)
         self.view.bringSubviewToFront(startDrawButton)
@@ -453,6 +444,8 @@ extension MainViewController {
 //Toast Message
 extension MainViewController {
     func showToast(text: String) {
+        print(API.currentQuestions.map{$0.token})
+        
         let label = UILabel(frame: CGRect(x: self.view.bounds.width/2-65, y: self.view.bounds.height - 25-150, width: 130, height: 30))
         
         label.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
@@ -471,9 +464,6 @@ extension MainViewController {
         } completion: { (complete) in
             label.removeFromSuperview()
         }
-
-
-        
         
     }
 }

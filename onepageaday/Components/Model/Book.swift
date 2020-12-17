@@ -13,4 +13,13 @@ struct Book: Codable {
     var questionTokens: [String]
     
     var token: String
+    
+    var currentIndex: Int
+    
+    init(title:String, questionTokens:[String], currentIndex:Int=0) {
+        self.title = title
+        self.questionTokens = questionTokens
+        self.currentIndex = currentIndex
+        self.token = UUID().uuidString
+    }
 }
