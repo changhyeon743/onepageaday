@@ -13,6 +13,10 @@ class ShopCell: UITableViewCell {
     
     @IBOutlet weak var detailLabel: UILabel!
     
+    
+    @IBOutlet weak var downloadButton: UIButton!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

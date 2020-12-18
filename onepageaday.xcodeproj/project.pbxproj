@@ -24,9 +24,9 @@
 		78576E8E257FDEF7006F0B3F /* EditableTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78576E8D257FDEF7006F0B3F /* EditableTextView.swift */; };
 		7863C9BF2588589500B5773D /* BookCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7863C9BE2588589500B5773D /* BookCell.xib */; };
 		7863C9C42588596600B5773D /* BookCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7863C9C32588596600B5773D /* BookCell.swift */; };
-		787086B0258C43BD00D454A8 /* AppleAuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787086AF258C43BD00D454A8 /* AppleAuthAPI.swift */; };
 		787086B8258C448D00D454A8 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787086B7258C448D00D454A8 /* LoginViewController.swift */; };
 		787086C7258C475100D454A8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 787086C6258C475100D454A8 /* GoogleService-Info.plist */; };
+		787086DD258C915100D454A8 /* ShopItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787086DC258C915100D454A8 /* ShopItem.swift */; };
 		787A0464258BD8050018A232 /* BookManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787A0463258BD8050018A232 /* BookManager.swift */; };
 		789CBC3025889E76001D11B1 /* ShopDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789CBC2F25889E76001D11B1 /* ShopDetailViewController.swift */; };
 		78A758882581D34B006FAFB1 /* DesignElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A758872581D34B006FAFB1 /* DesignElements.swift */; };
@@ -86,10 +86,10 @@
 		78576E8D257FDEF7006F0B3F /* EditableTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableTextView.swift; sourceTree = "<group>"; };
 		7863C9BE2588589500B5773D /* BookCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookCell.xib; sourceTree = "<group>"; };
 		7863C9C32588596600B5773D /* BookCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCell.swift; sourceTree = "<group>"; };
-		787086AF258C43BD00D454A8 /* AppleAuthAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthAPI.swift; sourceTree = "<group>"; };
 		787086B7258C448D00D454A8 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		787086BC258C452400D454A8 /* onepageaday.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = onepageaday.entitlements; sourceTree = "<group>"; };
 		787086C6258C475100D454A8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		787086DC258C915100D454A8 /* ShopItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopItem.swift; sourceTree = "<group>"; };
 		787A0463258BD8050018A232 /* BookManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookManager.swift; sourceTree = "<group>"; };
 		789CBC2F25889E76001D11B1 /* ShopDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopDetailViewController.swift; sourceTree = "<group>"; };
 		78A758872581D34B006FAFB1 /* DesignElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignElements.swift; sourceTree = "<group>"; };
@@ -147,6 +147,7 @@
 				78E9088825820F4400944B60 /* Book.swift */,
 				78E9089E25822F9900944B60 /* Question.swift */,
 				78DC8178258B0A2600C6C2D3 /* Template.swift */,
+				787086DC258C915100D454A8 /* ShopItem.swift */,
 			);
 			path = Struct;
 			sourceTree = "<group>";
@@ -156,7 +157,6 @@
 			children = (
 				782685462587106E00F0A295 /* GiphyAPI.swift */,
 				78DC817D258B12C700C6C2D3 /* FirebaseAPI.swift */,
-				787086AF258C43BD00D454A8 /* AppleAuthAPI.swift */,
 				7826855B2587114E00F0A295 /* API.swift */,
 			);
 			path = Network;
@@ -289,12 +289,12 @@
 		78E908B32582724400944B60 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				7853DC762587AAD900600F6A /* ShopViewController.swift */,
+				787086B7258C448D00D454A8 /* LoginViewController.swift */,
 				78C0E19C258317F300FC3842 /* BookSelectingViewController.swift */,
+				7853DC762587AAD900600F6A /* ShopViewController.swift */,
 				78E9088D25822B4200944B60 /* MainPageViewController.swift */,
 				7840E30B257FAA9E009B216B /* MainViewController.swift */,
 				789CBC2F25889E76001D11B1 /* ShopDetailViewController.swift */,
-				787086B7258C448D00D454A8 /* LoginViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -547,6 +547,7 @@
 			files = (
 				78001F6A258B889600102D27 /* PKDrawing.swift in Sources */,
 				7840E30C257FAA9E009B216B /* MainViewController.swift in Sources */,
+				787086DD258C915100D454A8 /* ShopItem.swift in Sources */,
 				787A0464258BD8050018A232 /* BookManager.swift in Sources */,
 				78576E8E257FDEF7006F0B3F /* EditableTextView.swift in Sources */,
 				7863C9C42588596600B5773D /* BookCell.swift in Sources */,
@@ -559,7 +560,6 @@
 				789CBC3025889E76001D11B1 /* ShopDetailViewController.swift in Sources */,
 				787086B8258C448D00D454A8 /* LoginViewController.swift in Sources */,
 				78E9088E25822B4200944B60 /* MainPageViewController.swift in Sources */,
-				787086B0258C43BD00D454A8 /* AppleAuthAPI.swift in Sources */,
 				7853DC772587AAD900600F6A /* ShopViewController.swift in Sources */,
 				78C0E19D258317F300FC3842 /* BookSelectingViewController.swift in Sources */,
 				78E9089F25822F9900944B60 /* Question.swift in Sources */,

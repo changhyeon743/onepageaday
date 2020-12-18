@@ -10,6 +10,11 @@ import Firebase
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    
+    func setRootVC(to vc:UIViewController) {
+        
+    }
+    
     func applicationWillTerminate(_ application: UIApplication) {
 //        let encoder = JSONEncoder()
 //        if let encoded = try? encoder.encode(API.currentQuestions) {

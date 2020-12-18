@@ -12,17 +12,32 @@ import FirebaseAuth
 
 class LoginViewController: UIViewController {
     
+    @IBOutlet weak var imageView: UIImageView!
+    
+    @IBOutlet weak var signInWithApple: UIButton!
     
     fileprivate var currentNonce: String?
     override func viewDidLoad() {
         super.viewDidLoad()
+        imageView.kf.indicatorType = .activity
+        imageView.kf.setImage(with: URL(string: "https://media.giphy.com/media/GZd8nPH3TcNSU/giphy.gif"))
         
+        signInWithApple.contentEdgeInsets = UIEdgeInsets(top: 10, left: 16, bottom: 10, right: 16)
+
+        signInWithApple.clipsToBounds = true
+        signInWithApple.layer.cornerRadius = 5.0
+        signInWithApple.backgroundColor = .white
         // Do any additional setup after loading the view.
     }
     
 
     @IBAction func signInWithApple(_ sender: UIButton) {
         startSignInWithAppleFlow()
+    }
+    
+    
+    deinit {
+        print("LoginViewController deinit")
     }
 }
 
@@ -57,8 +72,11 @@ extension LoginViewController: ASAuthorizationControllerDelegate  {
             }
             // User is signed in to Firebase with Apple.
             // ...
-            if let user = authResult?.user {
-                self.fetchBooksWithUserIDAndPresent(userID: user.uid)
+            if let vc = self.storyboard!.instantiateViewController(identifier: "BookSelectingViewController") as? BookSelectingViewController {
+                vc.modalPresentationStyle = .fullScreen
+                self.present(vc, animated: true) {
+                    self.view.window?.rootViewController = vc
+                }
             }
         }
         }
@@ -69,15 +87,7 @@ extension LoginViewController: ASAuthorizationControllerDelegate  {
         print("Sign in with Apple errored: \(error)")
     }
     
-    func fetchBooksWithUserIDAndPresent(userID: String) {
-        API.firebase.fetchBooks(with: userID, completion: { (books) in
-            if let vc = self.storyboard!.instantiateViewController(identifier: "BookSelectingViewController") as? BookSelectingViewController {
-                vc.modalPresentationStyle = .fullScreen
-                vc.books = books
-                self.present(vc, animated: true, completion: nil)
-            }
-        })
-    }
+    
 }
 
 

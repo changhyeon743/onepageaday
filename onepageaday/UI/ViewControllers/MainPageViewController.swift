@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol MainPageViewControllerDelegate{
+protocol MainPageViewControllerDelegate: class{
     func stopScroll()
     func startScroll()
 }
@@ -16,31 +16,40 @@ class MainPageViewController: UIPageViewController,UIPageViewControllerDelegate,
     
     var panGesture:UIPanGestureRecognizer!
     
+    var book:Book?
+    var currentIndex:Int = 0
+    
     override func viewDidLoad() {
         self.dataSource = self
         self.delegate = self
         
-        self.setViewControllers([createViewController(0)], direction: .forward, animated: false, completion: nil)
+        self.setViewControllers([createViewController(currentIndex)], direction: .forward, animated: false, completion: nil)
         
-        panGesture = UIPanGestureRecognizer(target: self, action: #selector(handleDismiss(_:)))
+        panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(_:)))
         self.view.addGestureRecognizer(panGesture)
 
     }
     
     var viewTranslation = CGPoint(x: 0, y: 0)
-    @objc func handleDismiss(_ sender: UIPanGestureRecognizer) {
+    @objc func handlePanGesture(_ sender: UIPanGestureRecognizer) {
         switch sender.state {
         case .changed:
             viewTranslation = sender.translation(in: view)
-            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-                self.view.transform = CGAffineTransform(translationX: 0, y: self.viewTranslation.y)
-            })
+            if (self.viewTranslation.y > 0) {
+                UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+                    self.view.transform = CGAffineTransform(translationX: 0, y: self.viewTranslation.y)
+                })
+            }
+            
         case .ended:
             if viewTranslation.y < 200 {
                 UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
                     self.view.transform = .identity
                 })
             } else {
+//                if let index = API.books.firstIndex(where: {$0.id == self.book?.id}) {
+//                    API.books[index].currentIndex = 0
+//                }
                 dismiss(animated: true, completion: nil)
             }
         default:
@@ -54,9 +63,14 @@ class MainPageViewController: UIPageViewController,UIPageViewControllerDelegate,
             let controller = createViewController(currentIndex-1)
             return controller
         }
+        
         return nil
     }
-
+    
+    override func viewSafeAreaInsetsDidChange() {
+//        print("viewSafeAreaInsetsDidChange")
+    }
+    
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         let currentIndex = (viewController as! MainViewController).currentIndex
 
@@ -98,6 +112,15 @@ class MainPageViewController: UIPageViewController,UIPageViewControllerDelegate,
         self.delegate = self;
         self.dataSource = self;
         panGesture.isEnabled = true
+    }
+    
+    
+    
+    deinit {
+        //메모리 누수 방지
+        
+        API.currentQuestions = []
+//        print("MainPageViewController deinited")
     }
     
 }

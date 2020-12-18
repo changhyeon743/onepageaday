@@ -11,7 +11,7 @@ import Kingfisher
 class EditableImageView: AnimatedImageView {
     
     private weak var weakParentView: UIView?
-    private var parentDelegate: MainViewControllerDelegate?
+    private weak var parentDelegate: MainViewControllerDelegate?
     
     public var imageViewData: ImageViewData = ImageViewData(center: CGPoint.zero, angle: 0, scale: 1, imageURL: "")
     

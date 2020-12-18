@@ -10,7 +10,7 @@ import PencilKit
 import Firebase
 import FirebaseFirestoreSwift
 //TODO: Model 만들어 사용하기
-protocol MainViewControllerDelegate {
+protocol MainViewControllerDelegate: class {
     func imageViewUpdated(imageViewData: ImageViewData)
     
     func textViewUpdated(textViewData: TextViewData)
@@ -82,8 +82,11 @@ class MainViewController: UIViewController {
     //로컬 변수 업데이트시 static에 적용 (구조 수정 필요)
     private var currentQuestion:Question?
     
-    private var pageControllerDelegate:MainPageViewControllerDelegate?
+    private weak var pageControllerDelegate:MainPageViewControllerDelegate?
     
+    deinit {
+//        print("MainViewController deinit")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -112,7 +115,9 @@ class MainViewController: UIViewController {
         
         //그림 관련 UI
         self.drawingView = PKCanvasView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height))
-        self.drawingView.backgroundColor = .blue
+        
+        
+        
         self.drawingView.delegate = self
         self.drawingView.alwaysBounceVertical = true
         self.drawingView.drawingPolicy = .anyInput
@@ -139,6 +144,11 @@ class MainViewController: UIViewController {
         
         //need to place onn createViewWithData but here.. ( need to fix )
         self.view.addSubview(drawingView)
+        self.drawingView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
+        self.drawingView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
+        self.drawingView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
+        self.drawingView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
+        self.drawingView.translatesAutoresizingMaskIntoConstraints = false
         
         //버튼 앞으로
         bringButtonsToFront()
@@ -184,6 +194,8 @@ class MainViewController: UIViewController {
 //                self.isEditingMode = false
 //            }
             //텍스트 한 개도 없을 경우?
+            
+            print(currentQuestion?.textViewDatas)
             if currentQuestion?.textViewDatas.count == 0 {
                 let editableTextView = makeEditableTextView(textViewData: TextViewData(center: CGPoint(x: self.view.bounds.width/2, y: self.view.bounds.height/2), angle: 0, scale: 1, text: "") )
                 self.view.addSubview(editableTextView)
@@ -384,6 +396,7 @@ extension MainViewController {
     
     func textViewEditingEnd() {
         isEditingTextView = false
+        //빈 텍스트 버리기
         
         hideViews([doneButton,darkView])
         showViews([imageButton,modeToggleButton,addTextViewButton,startDrawButton,imageButton])

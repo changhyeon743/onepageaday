@@ -67,14 +67,25 @@ class FirebaseAPI {
         }
     }
     
-    func addBook(book: Book, question: [String]) {
+    func updateBook(book: Book?) {
+        do {
+            guard let id = book?.id else { return }
+            try db.collection("books").document(id).setData(from: book)
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    
+    func addBook(book: Book, question: [String],completion: @escaping()->Void) {
         //Book adding
         do {
             let bookId = try db.collection("books").addDocument(from: book).documentID
             var indexCount = -1
             try question.forEach({ (str) in
                 indexCount+=1
-                let _ = try db.collection("questions").addDocument(from: Question(index: indexCount, text: str, book: bookId ))
+                let _ = try db.collection("questions").addDocument(from: Question(index: indexCount,text: str, book: bookId ), completion: { (_) in
+                    completion()
+                })
             })
             
             
@@ -82,5 +93,31 @@ class FirebaseAPI {
             print(error.localizedDescription)
         }
         
+    }
+    
+    func deleteBook(with bookID: String) {
+        //cascade questions
+        db.collection("questions")
+            .whereField("book", isEqualTo: bookID)
+            .getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                guard let query = querySnapshot else {return}
+                query.documents.forEach { (document) in
+                    self.db.collection("questions").document(document.documentID).delete()
+                }
+            }
+        }
+        
+        //
+        db.collection("books").document(bookID).delete() { err in
+            if let err = err {
+                print("Error removing document: \(err)")
+            }
+            else {
+                print("Document successfully removed!")
+            }
+        }
     }
 }

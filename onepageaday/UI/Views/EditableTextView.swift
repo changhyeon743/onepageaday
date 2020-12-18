@@ -10,7 +10,7 @@ import UIKit
 class EditableTextView: UITextView {
     
     private weak var weakParentView: UIView?
-    private var parentDelegate: MainViewControllerDelegate?
+    private weak var parentDelegate: MainViewControllerDelegate?
     
     public var textViewData: TextViewData = TextViewData(center: CGPoint.zero, angle: 0, scale: 1, text: "")
     
@@ -216,7 +216,6 @@ extension EditableTextView: UITextViewDelegate {
     
     
     func textViewDidEndEditing(_ textView: UITextView) {
-        parentDelegate?.textViewEditingEnd()
         
         UIView.animate(withDuration: 0.3) {
             self.center = self.cacheTextViewData.center
@@ -228,10 +227,12 @@ extension EditableTextView: UITextViewDelegate {
 
         }
 
-        
+        parentDelegate?.textViewEditingEnd()
+
         if (self.textViewData.text.isEmpty) {
             self.removeFromSuperview()
         }
+        
         
 
 
