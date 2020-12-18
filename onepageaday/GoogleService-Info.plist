@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>807022636218-miabffp79eqdokhijdj6946tph76kctl.apps.googleusercontent.com</string>
+	<string>807022636218-dn5uftr0os9moj087oq6rg98ijibm0sq.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.807022636218-miabffp79eqdokhijdj6946tph76kctl</string>
+	<string>com.googleusercontent.apps.807022636218-dn5uftr0os9moj087oq6rg98ijibm0sq</string>
 	<key>API_KEY</key>
 	<string>AIzaSyCpt9xKOuJydwtAUQjPZLcXKRQ_o1OxkKs</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +13,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.remarkpress.onepageaday</string>
+	<string>remarkpress.onepageaday</string>
 	<key>PROJECT_ID</key>
 	<string>onepageaday-3a198</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:807022636218:ios:ff2211f1e8275664b16683</string>
+	<string>1:807022636218:ios:dbfb416f9d2ed367b16683</string>
 </dict>
 </plist>

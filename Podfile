@@ -8,11 +8,10 @@ target 'onepageaday' do
   # Pods for onepageaday
   pod 'Firebase/Auth'
   pod 'Firebase/Firestore'
-  pod 'FirebaseFirestoreSwift'
   pod 'Kingfisher', '~> 5.0'
   pod 'Alamofire'
   pod 'SwiftyJSON', '~> 4.0'
-
+  pod 'FirebaseFirestoreSwift', '~> 7.0-beta'
 
   target 'onepageadayTests' do
     inherit! :search_paths

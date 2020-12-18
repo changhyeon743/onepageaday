@@ -11,24 +11,24 @@ import Firebase
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
-        let encoder = JSONEncoder()
-        if let encoded = try? encoder.encode(API.currentQuestions) {
-            let defaults = UserDefaults.standard
-            defaults.set(encoded, forKey: "Questions")
-        }
+//        let encoder = JSONEncoder()
+//        if let encoded = try? encoder.encode(API.currentQuestions) {
+//            let defaults = UserDefaults.standard
+//            defaults.set(encoded, forKey: "Questions")
+//        }
     }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
-        let defaults = UserDefaults.standard
-        if let questions = defaults.object(forKey: "Questions") as? Data {
-            let decoder = JSONDecoder()
-            if let questions = try? decoder.decode([Question].self, from: questions) {
-                API.currentQuestions = questions
-                print(questions)
-            }
-        }
+//        let defaults = UserDefaults.standard
+//        if let questions = defaults.object(forKey: "Questions") as? Data {
+//            let decoder = JSONDecoder()
+//            if let questions = try? decoder.decode([Question].self, from: questions) {
+//                API.currentQuestions = questions
+//                print(questions)
+//            }
+//        }
         return true
     }
 

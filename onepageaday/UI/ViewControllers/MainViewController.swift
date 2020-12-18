@@ -8,7 +8,8 @@
 import UIKit
 import PencilKit
 import Firebase
-
+import FirebaseFirestoreSwift
+//TODO: Model 만들어 사용하기
 protocol MainViewControllerDelegate {
     func imageViewUpdated(imageViewData: ImageViewData)
     
@@ -79,13 +80,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak var trashView: UIImageView!
     
     //로컬 변수 업데이트시 static에 적용 (구조 수정 필요)
-    private var currentQuestion:Question? {
-        didSet {
-            if let index = API.currentQuestions.firstIndex(where: { $0.id == currentQuestion?.id }), let question = currentQuestion {
-                API.currentQuestions[index] = question
-            }
-        }
-    }
+    private var currentQuestion:Question?
     
     private var pageControllerDelegate:MainPageViewControllerDelegate?
     
@@ -117,6 +112,7 @@ class MainViewController: UIViewController {
         
         //그림 관련 UI
         self.drawingView = PKCanvasView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height))
+        self.drawingView.backgroundColor = .blue
         self.drawingView.delegate = self
         self.drawingView.alwaysBounceVertical = true
         self.drawingView.drawingPolicy = .anyInput
@@ -124,8 +120,8 @@ class MainViewController: UIViewController {
         self.drawingView.isUserInteractionEnabled = false
         
         //그림 데이터 불러오기
-        self.drawing = self.currentQuestion?.drawings ?? PKDrawing()
-        self.drawingView.drawing = self.drawing
+        self.drawing = try? PKDrawing.init(base64Encoded: self.currentQuestion?.drawings ?? "")
+        self.drawingView.drawing = self.drawing ?? PKDrawing()
         
         //그림 ToolPicker
         if #available(iOS 14.0, *) {
@@ -173,7 +169,10 @@ class MainViewController: UIViewController {
     
     //편집 모드 토글
     @IBAction func modeToggleButtonPressed() {
-        isEditingMode.toggle()
+        isEditingMode = !isEditingMode
+        if (!isEditingMode) { //완료버튼 pressed
+            API.firebase.updateQuestion(question: currentQuestion)
+        }
     }
     
     //터치로 편집모드진입
@@ -198,11 +197,7 @@ class MainViewController: UIViewController {
     
     //그리기 or 텍스트 종료
     @IBAction func doneButtonPressed(_ sender: Any) {
-        do {
-            try Firestore.firestore().collection("questions").document("LA").setData(from: currentQuestion)
-        } catch let error {
-            print("Error writing city to Firestore: \(error)")
-        }
+        
         if isEditingTextView {
             textViewEditingEnd()
             self.view.endEditing(true)
@@ -413,7 +408,8 @@ extension MainViewController {
         isDrawing = false
         showToast(text: "그리기 완료")
         
-        self.currentQuestion?.drawings = self.drawingView.drawing
+        self.currentQuestion?.drawings = self.drawingView.drawing.base64EncodedString()
+        
         
         hideViews([doneButton])
         showViews([imageButton,modeToggleButton,addTextViewButton,startDrawButton])

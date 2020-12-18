@@ -6,9 +6,9 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class ShopViewController: UITableViewController {
-    public var books:[BookTemplate] = []
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -27,7 +27,7 @@ class ShopViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return books.count
+        return 10
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -45,7 +45,9 @@ class ShopViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "detail", sender: self)
+        //performSegue(withIdentifier: "detail", sender: self)
+        
+        API.firebase.addBook(book: Book(title: "where am i", detail: "here", author: Auth.auth().currentUser?.uid ?? "", currentIndex: 0), question: ["나는 누구","여긴 어디"])
     }
 
 }

@@ -20,12 +20,6 @@ class BookSelectingViewController: UIViewController, UICollectionViewDelegate, U
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        API.firebase.fetchBooks { (books) in
-            self.books = books
-            print(self.books)
-            self.collectionView.reloadData()
-        }
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -53,8 +47,8 @@ class BookSelectingViewController: UIViewController, UICollectionViewDelegate, U
 //                let jsons = JSON(JSON(snapshot?.data()))["json"].arrayValue
 //            }
 //        }
-        
-        self.collectionView.reloadData()
+        performSegue(withIdentifier: "shop", sender: sender)
+       // self.collectionView.reloadData()t
 //        
 
     }
@@ -82,10 +76,15 @@ class BookSelectingViewController: UIViewController, UICollectionViewDelegate, U
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let vc = storyboard!.instantiateViewController(identifier: "MainPageViewController") as? MainPageViewController {
-            vc.modalPresentationStyle = .overCurrentContext
-            
-            self.present(vc, animated:true, completion: nil)
+        guard let id = books[indexPath.row].id else {return}
+        
+        API.firebase.fetchQuestion(with: id) { (questions) in
+            print(questions)
+            API.currentQuestions = questions
+            if let vc = self.storyboard!.instantiateViewController(identifier: "MainPageViewController") as? MainPageViewController {
+                vc.modalPresentationStyle = .overCurrentContext
+                self.present(vc, animated:true, completion: nil)
+            }
         }
     }
 

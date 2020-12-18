@@ -16,16 +16,7 @@ class API {
     
     //question 전부를 메모리에 할당하는 것도 미친짓이라는 걸 알아야함.
     //임시방편. Book 이라는 최상위 클래스 존재해야함.
-    static var currentQuestions: [Question] = [Question(index: 0, text: "눈을 감으면 무슨 생각이 나나요?"),
-                                        Question(index: 1, text: "혼자 있으면 무얼 하나요?"),
-                                        Question(index: 2, text: "아무것도 하지 않고 5분만 멈추어볼까요?"),
-                                        Question(index: 3, text: "오늘은 __________날"),
-                                        Question(index: 4, text: "오늘은 __________않는 날"),
-                                        Question(index: 5, text: "오늘 점심으로 무엇을 먹었나요?"),
-                                        Question(index: 6, text: "오늘은 손을 몇 번 씻었을까요?"),
-                                        Question(index: 7, text: "오늘 날씨는 어떤가요?"),
-                                        Question(index: 8, text: "숲에 무엇이 있나요?"),
-                                       ]
+    static var currentQuestions: [Question] = []
     
     static var books: [Book] = []
 }

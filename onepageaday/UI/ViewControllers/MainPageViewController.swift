@@ -73,10 +73,12 @@ class MainPageViewController: UIPageViewController,UIPageViewControllerDelegate,
         }
         if let storyboard = self.storyboard {
             let controller = storyboard.instantiateViewController(withIdentifier: "MainViewController") as! MainViewController
-            controller.currentIndex = index
-            controller.setValues(question: API.currentQuestions[index], delegate: self)
-            controller.createViewsWithData()
-            controller.view.backgroundColor = randomColor
+            if API.currentQuestions.count >= 1 {
+                controller.currentIndex = index
+                controller.setValues(question: API.currentQuestions[index], delegate: self)
+                controller.createViewsWithData()
+                controller.view.backgroundColor = randomColor
+            }
             return controller
         }
         return UIViewController()
