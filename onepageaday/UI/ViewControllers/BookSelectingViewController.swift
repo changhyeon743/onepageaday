@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import SkeletonView
 
 private let reuseIdentifier = "cell"
 
@@ -15,11 +16,26 @@ protocol BookSelectingViewControllerDelegate: class {
 }
 
 
-class BookSelectingViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource,BookSelectingViewControllerDelegate,UIAdaptivePresentationControllerDelegate {
+class BookSelectingViewController: UIViewController, SkeletonCollectionViewDelegate, SkeletonCollectionViewDataSource,BookSelectingViewControllerDelegate,UIAdaptivePresentationControllerDelegate {
     
+    lazy var activityIndicator: UIActivityIndicatorView = {
+            // Create an indicator.
+        let activityIndicator = UIActivityIndicatorView()
+        activityIndicator.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+        activityIndicator.center = self.view.center
+        activityIndicator.backgroundColor = .init(white: 0, alpha: 0.5)
+        activityIndicator.layer.cornerRadius = 14
+        activityIndicator.clipsToBounds = true
+        activityIndicator.color = .white
+        
+        // Also show the indicator even when the animation is stopped.
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.style = .large
+        // Start animation.
+        activityIndicator.stopAnimating()
+        return activityIndicator }()
     
     @IBOutlet weak var collectionView:UICollectionView!
-    
     @IBOutlet weak var settingButton: UIButton!
     
     var currentPage:Int = 0
@@ -36,8 +52,10 @@ class BookSelectingViewController: UIViewController, UICollectionViewDelegate, U
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.addSubview(activityIndicator)
         self.presentationController?.delegate = self
-        
+    
+        self.collectionView.showAnimatedGradientSkeleton()
 
         settingButton.showsMenuAsPrimaryAction = true
         settingButton.menu = UIMenu(title: "설정",
@@ -74,18 +92,19 @@ class BookSelectingViewController: UIViewController, UICollectionViewDelegate, U
         API.firebase.fetchBooks(with: Auth.auth().currentUser?.uid ?? "", completion: { (books) in
             API.books = books
             //self.books.sort { $0. < $1.deadline }
-
+            self.collectionView.hideSkeleton()
             self.collectionView.reloadData()
         })
     }
 
     @IBAction func trashButtonPressed(_ sender: Any) {
-        if currentPage < API.books.count {
-            let alert = UIAlertController(title: "삭제", message: "\(API.books[currentPage].title) 을(를) 삭제하시겠습니까?", preferredStyle: .alert)
+        //or?
+        if currentPage < API.books?.count ?? 0 {
+            let alert = UIAlertController(title: "삭제", message: "\(API.books?[currentPage].title) 을(를) 삭제하시겠습니까?", preferredStyle: .alert)
 
             alert.addAction(UIAlertAction(title: "삭제", style: .destructive, handler: { _ in
-                API.firebase.deleteBook(with: API.books[self.currentPage].id ?? "")
-                API.books.remove(at: self.currentPage)
+                API.firebase.deleteBook(with: API.books?[self.currentPage].id ?? "")
+                API.books?.remove(at: self.currentPage)
                 
                 self.collectionView.reloadData()
                 
@@ -119,38 +138,50 @@ class BookSelectingViewController: UIViewController, UICollectionViewDelegate, U
     }
     // MARK: UICollectionViewDataSource
 
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
-
-
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        return API.books.count
+        return API.books?.count ?? 10
     }
+    
+    func collectionSkeletonView(_ skeletonView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return API.books?.count ?? 10
+    }
+    func collectionSkeletonView(_ skeletonView: UICollectionView, cellIdentifierForItemAt indexPath: IndexPath) -> ReusableCellIdentifier {
+        return reuseIdentifier
+    }
+
+
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! BookCell
-        cell.titleLabel.text = API.books[indexPath.row].title
+        if (API.books != nil) {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! BookCell
+            cell.hideSkeleton()
+            
+            cell.titleLabel.text = API.books?[indexPath.row].title
+            
+            cell.backgroundColor = UIColor(hue: CGFloat(arc4random_uniform(360))/360, saturation: 0.5, brightness: 0.8, alpha: 1)
+            return cell
+        } else {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! BookCell
+            cell.showAnimatedGradientSkeleton()
+            return cell
+        }
         
-        cell.backgroundColor = UIColor(hue: CGFloat(arc4random_uniform(360))/360, saturation: 0.5, brightness: 0.8, alpha: 1)
         // Configure the cell
     
-        return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let id = API.books[indexPath.row].id else {return}
-        
+        guard let id = API.books?[indexPath.row].id else {return}
+        activityIndicator.startAnimating()
         //부드럽게 만드는거 필요함
         API.firebase.fetchQuestion(with: id) { (questions) in
+            self.activityIndicator.stopAnimating()
             API.currentQuestions = questions
             API.currentQuestions.sort{$0.index < $1.index}
             if let vc = self.storyboard!.instantiateViewController(identifier: "MainPageViewController") as? MainPageViewController {
                 //vc.modalPresentationStyle = .overCurrentContext
                 vc.modalPresentationStyle = .fullScreen
-                vc.book = API.books[indexPath.row]
+                vc.book = API.books?[indexPath.row]
                 self.present(vc, animated:true, completion: nil)
             }
         }

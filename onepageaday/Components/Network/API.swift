@@ -18,5 +18,5 @@ class API {
     //임시방편. Book 이라는 최상위 클래스 존재해야함.
     static var currentQuestions: [Question] = []
     
-    static var books: [Book] = []
+    static var books: [Book]?
 }

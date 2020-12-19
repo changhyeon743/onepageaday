@@ -131,40 +131,10 @@
             </objects>
             <point key="canvasLocation" x="-200.00000000000003" y="-176.11607142857142"/>
         </scene>
-        <!--매일력 상점-->
-        <scene sceneID="Vmw-fU-RTt">
-            <objects>
-                <tableViewController storyboardIdentifier="ShopViewController" id="5ke-0K-mKU" customClass="ShopViewController" customModule="onepageaday" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Z7p-oA-4BX">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <connections>
-                            <outlet property="dataSource" destination="5ke-0K-mKU" id="OW3-4f-tza"/>
-                            <outlet property="delegate" destination="5ke-0K-mKU" id="VKr-2s-7Ed"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="매일력 상점" id="9PU-2s-qBC">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="XRs-CG-FJ1">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="IzA-az-7NQ">
-                                <rect key="frame" x="302" y="13" width="92" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="닫기"/>
-                            </button>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <segue destination="fgG-Jf-s3z" kind="show" identifier="detail" id="kuz-Mj-wgN"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ygn-BV-pBa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1049" y="-856"/>
-        </scene>
-        <!--View Controller-->
+        <!--Shop Detail View Controller-->
         <scene sceneID="3vK-le-vYW">
             <objects>
-                <viewController id="fgG-Jf-s3z" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ShopDetailViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="fgG-Jf-s3z" customClass="ShopDetailViewController" customModule="onepageaday" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Kyu-1Q-Ttt">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -187,7 +157,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="5ke-0K-mKU" kind="relationship" relationship="rootViewController" id="hJ3-PW-sIU"/>
+                        <segue destination="vD4-cA-p6J" kind="relationship" relationship="rootViewController" id="pMR-d6-n3D"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AiH-Xu-vVh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -212,6 +182,9 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rPK-gd-BkI">
                                 <rect key="frame" x="360.5" y="59" width="38.5" height="31"/>
@@ -224,6 +197,13 @@
                                     <segue destination="aqJ-fH-0Af" kind="show" identifier="shop" id="gIE-EL-adp"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="znH-0e-Wf4">
+                                <rect key="frame" x="15" y="59" width="36" height="34.5"/>
+                                <state key="normal" image="gear" catalog="system">
+                                    <color key="titleColor" name="AccentColor"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="28"/>
+                                </state>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VbY-mT-z1M">
                                 <rect key="frame" x="187.5" y="805.5" width="39.5" height="44.5"/>
                                 <color key="tintColor" systemColor="labelColor"/>
@@ -233,13 +213,6 @@
                                 <connections>
                                     <action selector="trashButtonPressed:" destination="hOi-xl-CzU" eventType="touchUpInside" id="cNX-pF-X4j"/>
                                 </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="znH-0e-Wf4">
-                                <rect key="frame" x="15" y="59" width="36" height="34.5"/>
-                                <state key="normal" image="gear" catalog="system">
-                                    <color key="titleColor" name="AccentColor"/>
-                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="28"/>
-                                </state>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="8MW-48-tL4"/>
@@ -291,9 +264,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0qW-RN-ieP">
                                 <rect key="frame" x="96.5" y="766" width="221" height="32"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="26"/>
-                                <color key="tintColor" systemColor="labelColor"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title=" Login with Apple" image="applelogo" catalog="system">
-                                    <color key="titleColor" systemColor="labelColor"/>
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="26"/>
                                 </state>
                                 <connections>
@@ -337,6 +310,49 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u5L-YY-f6z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-4191" y="-165"/>
+        </scene>
+        <!--매일력 상점-->
+        <scene sceneID="CkG-Ex-oZ9">
+            <objects>
+                <viewController id="vD4-cA-p6J" customClass="ShopViewController" customModule="onepageaday" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="KiI-1Q-KlN">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="OIh-06-guc">
+                                <rect key="frame" x="0.0" y="56" width="414" height="752"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="26h-0t-Wdg"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="OIh-06-guc" firstAttribute="leading" secondItem="26h-0t-Wdg" secondAttribute="leading" id="DYC-KE-jhQ"/>
+                            <constraint firstItem="26h-0t-Wdg" firstAttribute="trailing" secondItem="OIh-06-guc" secondAttribute="trailing" id="l8U-fP-9qx"/>
+                            <constraint firstItem="OIh-06-guc" firstAttribute="top" secondItem="26h-0t-Wdg" secondAttribute="top" id="oVb-Gd-kdf"/>
+                            <constraint firstItem="26h-0t-Wdg" firstAttribute="bottom" secondItem="OIh-06-guc" secondAttribute="bottom" id="xmc-aj-EeW"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="매일력 상점" id="hoi-sx-j4h">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="Gox-qX-rUz">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="Gta-hj-PnV">
+                                <rect key="frame" x="302" y="13" width="92" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="닫기"/>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="OIh-06-guc" id="jNx-Rs-EbB"/>
+                        <segue destination="fgG-Jf-s3z" kind="show" id="oQM-JO-fOS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZQj-kd-lpc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1155" y="-856"/>
         </scene>
     </scenes>
     <resources>

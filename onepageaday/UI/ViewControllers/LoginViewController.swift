@@ -9,6 +9,7 @@ import UIKit
 import CryptoKit
 import AuthenticationServices
 import FirebaseAuth
+import Kingfisher
 
 class LoginViewController: UIViewController {
     
@@ -38,6 +39,8 @@ class LoginViewController: UIViewController {
     
     deinit {
         print("LoginViewController deinit")
+        //메모리 누수 방지
+        ImageCache.default.clearMemoryCache()
     }
 }
 
@@ -73,10 +76,7 @@ extension LoginViewController: ASAuthorizationControllerDelegate  {
             // User is signed in to Firebase with Apple.
             // ...
             if let vc = self.storyboard!.instantiateViewController(identifier: "BookSelectingViewController") as? BookSelectingViewController {
-                vc.modalPresentationStyle = .fullScreen
-                self.present(vc, animated: true) {
-                    self.view.window?.rootViewController = vc
-                }
+                self.view.window?.rootViewController = vc
             }
         }
         }

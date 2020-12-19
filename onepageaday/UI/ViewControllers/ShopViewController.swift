@@ -7,12 +7,16 @@
 
 import UIKit
 import FirebaseAuth
+import SkeletonView
 
-class ShopViewController: UITableViewController {
+class ShopViewController: UIViewController, SkeletonTableViewDelegate, SkeletonTableViewDataSource {
+    
     
     weak var parentDelegate: BookSelectingViewControllerDelegate?
     
-    var shopItems:[ShopItem] = [ShopItem(title: "남자에게 물어볼 50 가지 질문",
+    @IBOutlet var tableView: UITableView!
+    var shopItems:[ShopItem]?
+        /*= [ShopItem(title: "남자에게 물어볼 50 가지 질문",
                                          detail: "https://psycatgames.com/ko/magazine/conversation-starters/250-questions-to-ask-a-guy/#5",
                                          questions: ["기술이 발전하면 가능하다면 태어나려고합니까?",
                                             "할아버지의 헤어 스타일이나 이름을 원하십니까?",
@@ -119,7 +123,7 @@ class ShopViewController: UITableViewController {
                                                          "집에 책이없는 사람과 데이트를 하시겠습니까?",
                                                          "열린 관계에 대한 당신의 감정은 무엇입니까?",
                                              ],
-                                             imageLink: "https://lh3.googleusercontent.com/proxy/ki4Ax_AQ3MlimVMDrpkiuczPiBkn1lXrIEOPvm0OOerZsDrhL5KUeOF4E8PMeN_40bYfoPMpvY6G4v3z-fUBRHoLRu0IcTeFqDRbjQ-XookqrFCkHjy4Lzaw97lcUfVVrKd55ad5iUAoog5LiNrbasgzDwKnnwQdJoDlah-aSSnlck15ZpB7KxCOfloAkBhQla48dtIm-jHu28EtWutuqORsBkPTBUPtl1GJ4aDj2iYFKsESel42jUWf3YTGkqCBIh02ae2lq1aub7Z0B9OJiQZ_9_W0HUAvG6mICtiYODzEn2w")]
+                                             imageLink: "https://lh3.googleusercontent.com/proxy/ki4Ax_AQ3MlimVMDrpkiuczPiBkn1lXrIEOPvm0OOerZsDrhL5KUeOF4E8PMeN_40bYfoPMpvY6G4v3z-fUBRHoLRu0IcTeFqDRbjQ-XookqrFCkHjy4Lzaw97lcUfVVrKd55ad5iUAoog5LiNrbasgzDwKnnwQdJoDlah-aSSnlck15ZpB7KxCOfloAkBhQla48dtIm-jHu28EtWutuqORsBkPTBUPtl1GJ4aDj2iYFKsESel42jUWf3YTGkqCBIh02ae2lq1aub7Z0B9OJiQZ_9_W0HUAvG6mICtiYODzEn2w")]*/
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -128,44 +132,63 @@ class ShopViewController: UITableViewController {
 
         let nibName = UINib(nibName: "ShopCell", bundle: nil)
         tableView.register(nibName, forCellReuseIdentifier: "cell")
+        tableView.delegate = self
+        tableView.dataSource = self
+        
     }
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return shopItems.count
+    func collectionSkeletonView(_ skeletonView: UITableView, cellIdentifierForRowAt indexPath: IndexPath) -> ReusableCellIdentifier {
+        return "ShopCell"
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return shopItems?.count ?? 10
+        
+    }
+    func collectionSkeletonView(_ skeletonView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return shopItems?.count ?? 10
     }
 
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //https://psycatgames.com/ko/magazine/conversation-starters/250-questions-to-ask-a-guy/#5
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ShopCell
-        cell.titleLabel.text = shopItems[indexPath.row].title
-        cell.detailLabel.text = shopItems[indexPath.row].detail
-        
-        cell.downloadButton.tag = indexPath.row
-        cell.downloadButton.addTarget(self, action: #selector(downloadButtonPressed(_:)), for: .touchUpInside)
-        cell.itemImageView?.kf.setImage(with: URL(string:shopItems[indexPath.row].imageLink))
-
-        // Configure the cell...
-
-        return cell
+        if shopItems != nil {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ShopCell
+            cell.hideSkeleton()
+            
+            cell.titleLabel.text = shopItems![indexPath.row].title
+            cell.detailLabel.text = shopItems![indexPath.row].detail
+            
+            cell.downloadButton.tag = indexPath.row
+            cell.downloadButton.addTarget(self, action: #selector(downloadButtonPressed(_:)), for: .touchUpInside)
+            cell.itemImageView?.kf.setImage(with: URL(string:shopItems![indexPath.row].imageLink))
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ShopCell
+            cell.showAnimatedGradientSkeleton()
+            cell.titleLabel.showAnimatedGradientSkeleton()
+            cell.detailLabel.showAnimatedGradientSkeleton()
+            cell.itemImageView.showAnimatedGradientSkeleton()
+            cell.downloadButton.showAnimatedGradientSkeleton()
+            return cell
+        }
     }
     
     @objc func downloadButtonPressed(_ sender:UIButton) {
         let row = sender.tag
-        let book = Book(title: shopItems[row].title,
-                        detail: shopItems[row].detail,
+        if (shopItems == nil) {return}
+        
+        let book = Book(title: shopItems![row].title,
+                        detail: shopItems![row].detail,
                         author: Auth.auth().currentUser?.uid ?? "",
                         currentIndex: 0)
         
-        API.firebase.addBook(book: book, question: shopItems[row].questions) {
+        API.firebase.addBook(book: book, question: shopItems![row].questions) {
             let alert = UIAlertController(title: "다운로드 완료", message: "\(book.title)이(가) 서랍에 추가됨", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
             self.present(alert, animated: true, completion: nil)
@@ -174,12 +197,17 @@ class ShopViewController: UITableViewController {
         
     }
     
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 120
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let vc = self.storyboard?.instantiateViewController(identifier: "ShopDetailViewController") as? ShopDetailViewController {
+            vc.title = shopItems?[indexPath.row].title
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
         
     }
+    
+    
 }

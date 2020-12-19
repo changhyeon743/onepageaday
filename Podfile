@@ -12,6 +12,8 @@ target 'onepageaday' do
   pod 'Alamofire'
   pod 'SwiftyJSON', '~> 4.0'
   pod 'FirebaseFirestoreSwift', '~> 7.0-beta'
+  pod 'SkeletonView'
+
 
   target 'onepageadayTests' do
     inherit! :search_paths

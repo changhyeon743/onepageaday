@@ -6,12 +6,14 @@
 //
 
 import UIKit
+import SkeletonView
 
-class BookCell: UICollectionViewCell {
+class BookCell: UICollectionViewCell{
     
     @IBOutlet weak var titleLabel: UILabel!
     
     override class func awakeFromNib() {
         super.awakeFromNib()
+        //self.titleLabel.showAnimatedGradientSkeleton()
     }
 }

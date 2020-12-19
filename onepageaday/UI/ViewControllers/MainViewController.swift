@@ -112,7 +112,8 @@ class MainViewController: UIViewController {
         self.darkView = createDarkView()
         self.view.addSubview(darkView)
         
-        
+        self.view.frame = CGRect(x: Device.base.adjusted/2-Device.base/2, y: Device.baseHeight.adjustedHeight/2-Device.baseHeight/2, width: Device.base, height: Device.baseHeight)
+        self.view.transform = CGAffineTransform(scaleX: Device.ratio, y: Device.ratioHeight)
         //그림 관련 UI
         self.drawingView = PKCanvasView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height))
         
@@ -164,7 +165,8 @@ class MainViewController: UIViewController {
         
         //이미지
         currentQuestion?.imageViewDatas.forEach{
-            self.view.addSubview(makeImageView(imageViewData: $0))
+            let adjusted = ImageViewData(center: CGPoint(x: $0.center.x.adjusted, y: $0.center.y.adjusted), angle: $0.angle, scale: $0.scale, imageURL: $0.imageURL)
+            self.view.addSubview(makeImageView(imageViewData: adjusted))
             
         }
         
@@ -181,6 +183,12 @@ class MainViewController: UIViewController {
     @IBAction func modeToggleButtonPressed() {
         isEditingMode = !isEditingMode
         if (!isEditingMode) { //완료버튼 pressed
+            //local
+            if let index = API.currentQuestions.firstIndex(where: {$0.id == self.currentQuestion?.id}),let question = currentQuestion {
+                API.currentQuestions[index] = question
+            }
+            
+            //network
             API.firebase.updateQuestion(question: currentQuestion)
         }
     }
@@ -196,13 +204,13 @@ class MainViewController: UIViewController {
             //텍스트 한 개도 없을 경우?
             
             print(currentQuestion?.textViewDatas)
-            if currentQuestion?.textViewDatas.count == 0 {
-                let editableTextView = makeEditableTextView(textViewData: TextViewData(center: CGPoint(x: self.view.bounds.width/2, y: self.view.bounds.height/2), angle: 0, scale: 1, text: "") )
-                self.view.addSubview(editableTextView)
-                editableTextView.becomeFirstResponder()
-                
-                currentQuestion?.textViewDatas.append(editableTextView.textViewData)
-            }
+//            if currentQuestion?.textViewDatas.count == 0 {
+//                let editableTextView = makeEditableTextView(textViewData: TextViewData(center: CGPoint(x: self.view.bounds.width/2, y: self.view.bounds.height/2), angle: 0, scale: 1, text: "") )
+//                self.view.addSubview(editableTextView)
+//                editableTextView.becomeFirstResponder()
+//
+//                currentQuestion?.textViewDatas.append(editableTextView.textViewData)
+//            }
             
         }
     }

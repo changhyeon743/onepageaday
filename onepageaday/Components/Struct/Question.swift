@@ -28,6 +28,8 @@ struct Question:Codable,Identifiable {
     var imageViewDatas: [ImageViewData] = []
     var drawings: String = ""
     
+    var backGroundColor: String? = "000000"
+    
     var book: String = ""
     
     var os: OS = .iOS
