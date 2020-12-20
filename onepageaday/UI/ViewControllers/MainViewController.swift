@@ -32,9 +32,6 @@ protocol MainViewControllerDelegate: class {
 }
 
 class MainViewController: UIViewController {
-    
-    
-    
     //public because of pageviewcontroller
     public var currentIndex:Int = 0
     
@@ -47,14 +44,13 @@ class MainViewController: UIViewController {
     //Edit Mode
     private var isEditingMode:Bool = false {
         didSet {
-            [startDrawButton,addTextViewButton,imageButton].forEach {
+            [startDrawButton,addTextViewButton,imageButton].forEach({ [weak self] (btn) in
                 if (isEditingMode) {
-                    $0?.fadeIn()
+                    btn?.fadeIn()
                 } else {
-                    $0?.fadeOut()
+                    btn?.fadeOut()
                 }
-            }
-
+            })
             if (isEditingMode) {
                 //편집모드진입
                 showToast(text: "편집 모드")
@@ -96,12 +92,14 @@ class MainViewController: UIViewController {
     private weak var pageControllerDelegate:MainPageViewControllerDelegate?
     
     deinit {
-//        print("MainViewController deinit")
+        print("MainViewController deinit")
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        self.edgesForExtendedLayout = []
+        self.view.clipsToBounds = true
         
         if let question = currentQuestion {
             indexLabel.text =
@@ -137,11 +135,11 @@ class MainViewController: UIViewController {
                                        identifier: nil,
                                        options: .displayInline,
                                        children: [
-                                        UIAction(title: "행복", image: UIImage(systemName: "face.smiling"), handler: { _ in
+                                        UIAction(title: "행복", image: UIImage(systemName: "face.smiling"), handler: { [weak self] _ in
                                           //로그아웃
-                                        self.createGiphyContent(tag: "행복")
+                                            self?.createGiphyContent(tag: "행복")
                                        }),
-                                        UIAction(title: "사진", image: UIImage(systemName: "photo.on.rectangle.angled"), handler: { _ in
+                                        UIAction(title: "사진", image: UIImage(systemName: "photo.on.rectangle.angled"), handler: { [weak self] _ in
                                             print("사진")
                                        }),
                                        
@@ -175,12 +173,13 @@ class MainViewController: UIViewController {
         
         //need to place onn createViewWithData but here.. ( need to fix )
         self.view.addSubview(drawingView)
-        self.drawingView.backgroundColor = .clear
         self.drawingView.transform = CGAffineTransform(scaleX: Device.ratio, y: Device.ratioHeight)
         self.drawingView.widthAnchor.constraint(equalToConstant: Device.base).isActive = true
         self.drawingView.heightAnchor.constraint(equalToConstant: Device.baseHeight).isActive = true
         self.drawingView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         self.drawingView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
+        
+        
         
 //        self.drawingView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
 //        self.drawingView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
@@ -214,14 +213,11 @@ class MainViewController: UIViewController {
         self.pageControllerDelegate = delegate
     }
     
-    
-    
-    
-    
     //편집 모드 토글
     @IBAction func modeToggleButtonPressed() {
         isEditingMode = !isEditingMode
-        if (!isEditingMode) { //완료버튼 pressed
+        
+        if (!isEditingMode) { //완료버튼 pressed일 경우 저장 시작
             
             //local 변경
             if let index = API.currentQuestions.firstIndex(where: {$0.id == self.currentQuestion?.id}),let question = currentQuestion {
@@ -280,7 +276,7 @@ extension MainViewController: MainViewControllerDelegate {
         API.giphyApi.getRandomContentby(tag: tag) { (json) in
             
             let url = json["data"]["images"]["fixed_width"]["url"].stringValue
-            let imageView = self.makeImageView(imageViewData: ImageViewData(center: CGPoint(x: self.view.center.x, y: self.view.center.y), angle: 0, scale: 1, imageURL: url))
+            let imageView = self.makeImageView(imageViewData: ImageViewData(center: CGPoint(x: self.view.center.x.reverseAdjusted, y: self.view.center.y.reverseAdjustedHeight), angle: 0, scale: 1, imageURL: url))
             
             self.currentQuestion?.imageViewDatas.append(imageView.imageViewData)
             self.view.addSubview(imageView)
@@ -345,7 +341,7 @@ extension MainViewController {
         self.view.bringSubviewToFront(doneButton)
         
         
-        let editableTextView = makeEditableTextView(textViewData: TextViewData(center: CGPoint(x: self.view.bounds.width/2, y: self.view.bounds.height/2), angle: 0, scale: 1, text: "") )
+        let editableTextView = makeEditableTextView(textViewData: TextViewData(center: CGPoint(x: (self.view.bounds.width/2).reverseAdjusted, y: (self.view.bounds.height/2).reverseAdjustedHeight), angle: 0, scale: 1, text: "") )
         self.view.addSubview(editableTextView)
         editableTextView.becomeFirstResponder()
         
@@ -354,11 +350,6 @@ extension MainViewController {
     
     func makeEditableTextView(textViewData: TextViewData) -> EditableTextView {
         let textView = EditableTextView(frame: CGRect(x: self.view.center.x-self.view.bounds.width/2, y: self.view.center.y-50, width: self.view.bounds.width, height: 100), textContainer: nil, parentView: self.view, parentDelegate: self, textViewData: textViewData)
-        textView.textColor = UIColor.label
-        textView.backgroundColor = .none
-        textView.font = UIFont.systemFont(ofSize: 40)
-        textView.textAlignment = .center
-        
         
         return textView
         

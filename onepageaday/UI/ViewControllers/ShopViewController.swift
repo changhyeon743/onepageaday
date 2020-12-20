@@ -175,6 +175,7 @@ class ShopViewController: UIViewController, SkeletonTableViewDelegate, SkeletonT
             
             cell.downloadButton.tag = indexPath.row
             cell.downloadButton.addTarget(self, action: #selector(downloadButtonPressed(_:)), for: .touchUpInside)
+            cell.itemImageView?.kf.indicatorType = .activity
             cell.itemImageView?.kf.setImage(with: URL(string:shopItems![indexPath.row].imageLink))
             return cell
         } else {

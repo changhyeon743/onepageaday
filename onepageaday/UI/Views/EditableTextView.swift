@@ -29,10 +29,16 @@ class EditableTextView: UITextView {
         updateTextViewTransform()
         
         addGestures()
+        //UI..
+        self.textColor = UIColor.label
+        self.backgroundColor = .none
+        self.font = UIFont.systemFont(ofSize: 40)
+        self.textAlignment = .center
+        //End..
         
         self.textViewData = textViewData
         self.text = textViewData.text
-        self.center = textViewData.center
+        self.center = CGPoint(x: textViewData.center.x.adjusted, y: textViewData.center.y.adjustedHeight)
         self.transform = self.transform.scaledBy(x: textViewData.scale, y: textViewData.scale).rotated(by: textViewData.angle)
     }
     
@@ -64,7 +70,7 @@ class EditableTextView: UITextView {
     }
     
     func updateTextViewTransform() {
-        self.textViewData.center = self.center
+        self.textViewData.center = CGPoint(x: self.center.x.reverseAdjusted, y: self.center.y.reverseAdjustedHeight)
         self.textViewData.angle = atan2(self.transform.b, self.transform.a)
         self.textViewData.scale = scale(from: self.transform)
     }

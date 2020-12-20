@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 protocol MainPageViewControllerDelegate: class{
     func stopScroll()
@@ -54,6 +55,7 @@ class MainPageViewController: UIPageViewController,UIPageViewControllerDelegate,
 //                    API.books[index].currentIndex = 0
 //                }
                 book?.modifiedDate = Date()
+                ImageCache.default.clearMemoryCache()
                 API.firebase.updateBook(book: book)
                 dismiss(animated: true, completion: nil)
             }

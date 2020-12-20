@@ -30,6 +30,9 @@
 		78708700258D90A400D454A8 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787086FF258D90A400D454A8 /* Device.swift */; };
 		78708705258DDB3A00D454A8 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78708704258DDB3A00D454A8 /* Date.swift */; };
 		7870870B258F139300D454A8 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7870870A258F139300D454A8 /* UIView.swift */; };
+		7870871D258F1D2600D454A8 /* OFV_MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7870871C258F1D2600D454A8 /* OFV_MainViewController.swift */; };
+		78708722258F1FD300D454A8 /* OFV_TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78708721258F1FD300D454A8 /* OFV_TextView.swift */; };
+		7870872A258F20A500D454A8 /* OFV_ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78708729258F20A500D454A8 /* OFV_ImageView.swift */; };
 		787A0464258BD8050018A232 /* BookManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787A0463258BD8050018A232 /* BookManager.swift */; };
 		789CBC3025889E76001D11B1 /* ShopDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789CBC2F25889E76001D11B1 /* ShopDetailViewController.swift */; };
 		78A758882581D34B006FAFB1 /* DesignElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A758872581D34B006FAFB1 /* DesignElements.swift */; };
@@ -96,6 +99,9 @@
 		787086FF258D90A400D454A8 /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		78708704258DDB3A00D454A8 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		7870870A258F139300D454A8 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		7870871C258F1D2600D454A8 /* OFV_MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OFV_MainViewController.swift; sourceTree = "<group>"; };
+		78708721258F1FD300D454A8 /* OFV_TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OFV_TextView.swift; sourceTree = "<group>"; };
+		78708729258F20A500D454A8 /* OFV_ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OFV_ImageView.swift; sourceTree = "<group>"; };
 		787A0463258BD8050018A232 /* BookManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookManager.swift; sourceTree = "<group>"; };
 		789CBC2F25889E76001D11B1 /* ShopDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopDetailViewController.swift; sourceTree = "<group>"; };
 		78A758872581D34B006FAFB1 /* DesignElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignElements.swift; sourceTree = "<group>"; };
@@ -224,6 +230,16 @@
 			path = onepageadayUITests;
 			sourceTree = "<group>";
 		};
+		7870871B258F1D0C00D454A8 /* OnlyForView */ = {
+			isa = PBXGroup;
+			children = (
+				7870871C258F1D2600D454A8 /* OFV_MainViewController.swift */,
+				78708721258F1FD300D454A8 /* OFV_TextView.swift */,
+				78708729258F20A500D454A8 /* OFV_ImageView.swift */,
+			);
+			path = OnlyForView;
+			sourceTree = "<group>";
+		};
 		78E908A62582717A00944B60 /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -257,6 +273,7 @@
 		78E908A92582719800944B60 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				7870871B258F1D0C00D454A8 /* OnlyForView */,
 				78E908B32582724400944B60 /* ViewControllers */,
 				78E908B1258271C200944B60 /* Storyboards */,
 				78E908B0258271BA00944B60 /* Views */,
@@ -559,6 +576,7 @@
 				787086DD258C915100D454A8 /* ShopItem.swift in Sources */,
 				787A0464258BD8050018A232 /* BookManager.swift in Sources */,
 				78576E8E257FDEF7006F0B3F /* EditableTextView.swift in Sources */,
+				7870871D258F1D2600D454A8 /* OFV_MainViewController.swift in Sources */,
 				7863C9C42588596600B5773D /* BookCell.swift in Sources */,
 				78DC817E258B12C700C6C2D3 /* FirebaseAPI.swift in Sources */,
 				7870870B258F139300D454A8 /* UIView.swift in Sources */,
@@ -577,8 +595,10 @@
 				78E061372586F27800EEE1C7 /* String.swift in Sources */,
 				78A758882581D34B006FAFB1 /* DesignElements.swift in Sources */,
 				7826855C2587114E00F0A295 /* API.swift in Sources */,
+				7870872A258F20A500D454A8 /* OFV_ImageView.swift in Sources */,
 				78DC8179258B0A2600C6C2D3 /* Template.swift in Sources */,
 				7840E30A257FAA9E009B216B /* SceneDelegate.swift in Sources */,
+				78708722258F1FD300D454A8 /* OFV_TextView.swift in Sources */,
 				78FE24252587A89700E4BE31 /* ShopCell.swift in Sources */,
 				78708700258D90A400D454A8 /* Device.swift in Sources */,
 			);

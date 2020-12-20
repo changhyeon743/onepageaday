@@ -27,27 +27,13 @@ extension CGFloat {
   var adjusted: CGFloat {
     return self * Device.ratio
   }
+    var reverseAdjusted: CGFloat {
+        return self / Device.ratio
+    }
     var adjustedHeight: CGFloat {
         return self * Device.ratioHeight
     }
-}
-
-extension Double {
-
-  var adjusted: CGFloat {
-    return CGFloat(self) * Device.ratio
-  }
-    var adjustedHeight: CGFloat {
-        return CGFloat(self) * Device.ratioHeight
-    }
-}
-
-extension Int {
-
-  var adjusted: CGFloat {
-    return CGFloat(self) * Device.ratio
-  }
-    var adjustedHeight: CGFloat {
-        return CGFloat(self) * Device.ratioHeight
+    var reverseAdjustedHeight: CGFloat {
+        return self / Device.ratioHeight
     }
 }
