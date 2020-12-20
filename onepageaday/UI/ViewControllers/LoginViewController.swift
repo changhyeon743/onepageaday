@@ -9,7 +9,6 @@ import UIKit
 import CryptoKit
 import AuthenticationServices
 import FirebaseAuth
-import GoogleSignIn
 import Kingfisher
 
 class LoginViewController: UIViewController {

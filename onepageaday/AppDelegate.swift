@@ -7,10 +7,9 @@
 
 import UIKit
 import Firebase
-import GoogleSignIn
 
 @main
-class AppDelegate: UIResponder, UIApplicationDelegate,GIDSignInDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     func applicationWillTerminate(_ application: UIApplication) {
@@ -25,8 +24,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,GIDSignInDelegate {
         // Override point for customization after application launch.
         FirebaseApp.configure()
         
-        GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
-        GIDSignIn.sharedInstance().delegate = self
 //        let defaults = UserDefaults.standard
 //        if let questions = defaults.object(forKey: "Questions") as? Data {
 //            let decoder = JSONDecoder()
@@ -38,11 +35,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,GIDSignInDelegate {
         return true
     }
 
-    @available(iOS 9.0, *)
-    func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any])
-      -> Bool {
-      return GIDSignIn.sharedInstance().handle(url)
-    }
     
     // MARK: UISceneSession Lifecycle
 

@@ -13,8 +13,6 @@ target 'onepageaday' do
   pod 'SwiftyJSON', '~> 4.0'
   pod 'FirebaseFirestoreSwift', '~> 7.0-beta'
   pod 'SkeletonView'
-  pod 'GoogleSignIn'
-
 
   target 'onepageadayTests' do
     inherit! :search_paths
