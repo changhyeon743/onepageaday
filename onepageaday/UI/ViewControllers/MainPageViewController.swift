@@ -105,7 +105,7 @@ class MainPageViewController: UIPageViewController,UIPageViewControllerDelegate,
                 controller.createViewsWithData()
                 
                 if let bg = API.currentQuestions[index].backGroundColor {
-                    controller.view.backgroundColor = UIColor(hex: bg )
+                    controller.view.backgroundColor = UIColor(bg)
                     print(bg)
                 } else {
                     controller.view.backgroundColor = randomColor

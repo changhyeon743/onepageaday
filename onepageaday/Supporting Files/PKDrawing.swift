@@ -8,6 +8,7 @@
 import Foundation
 import PencilKit
 
+//문자열로 그림 저장
 extension PKDrawing {
     func base64EncodedString() -> String {
         return dataRepresentation().base64EncodedString()

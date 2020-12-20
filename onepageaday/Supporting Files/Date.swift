@@ -6,6 +6,8 @@
 //
 
 import Foundation
+
+//책에 나타낼 날짜
 extension Date {
     func toString(format: String = "yyyy-MM-dd HH:mm") -> String {
             let formatter = DateFormatter()

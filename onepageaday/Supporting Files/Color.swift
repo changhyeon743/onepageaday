@@ -1,70 +1,49 @@
+import Foundation
 import UIKit
 
-// https://cocoacasts.com/from-hex-to-uicolor-and-back-in-swift
+//https://mobiraft.com/ios/swift/swift-recipe/convert-hex-colour-to-uicolor/
 extension UIColor {
-
-    // MARK: - Initialization
-
-    convenience init?(hex: String) {
-        var hexSanitized = hex.trimmingCharacters(in: .whitespacesAndNewlines)
-        hexSanitized = hexSanitized.replacingOccurrences(of: "#", with: "")
-
-        var rgb: UInt32 = 0
-
-        var r: CGFloat = 0.0
-        var g: CGFloat = 0.0
-        var b: CGFloat = 0.0
-        var a: CGFloat = 1.0
-
-        let length = hexSanitized.count
-
-        guard Scanner(string: hexSanitized).scanHexInt32(&rgb) else { return nil }
-
-        if length == 6 {
-            r = CGFloat((rgb & 0xFF0000) >> 16) / 255.0
-            g = CGFloat((rgb & 0x00FF00) >> 8) / 255.0
-            b = CGFloat(rgb & 0x0000FF) / 255.0
-
-        } else if length == 8 {
-            r = CGFloat((rgb & 0xFF000000) >> 24) / 255.0
-            g = CGFloat((rgb & 0x00FF0000) >> 16) / 255.0
-            b = CGFloat((rgb & 0x0000FF00) >> 8) / 255.0
-            a = CGFloat(rgb & 0x000000FF) / 255.0
-
+    convenience init?(_ string: String) {
+        let hex = string.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
+        
+        if #available(iOS 13, *) {
+            //If your string is not a hex colour String then we are returning white color. you can change this to any default colour you want.
+            guard let int = Scanner(string: hex).scanInt32(representation: .hexadecimal) else { return nil }
+            
+            let a, r, g, b: Int32
+            switch hex.count {
+            case 3:     (a, r, g, b) = (255, (int >> 8) * 17, (int >> 4 & 0xF) * 17, (int & 0xF) * 17)  // RGB (12-bit)
+            case 6:     (a, r, g, b) = (255, int >> 16, int >> 8 & 0xFF, int & 0xFF)                    // RGB (24-bit)
+            case 8:     (a, r, g, b) = (int >> 24, int >> 16 & 0xFF, int >> 8 & 0xFF, int & 0xFF)       // ARGB (32-bit)
+            default:    (a, r, g, b) = (255, 0, 0, 0)
+            }
+            
+            self.init(red: CGFloat(r) / 255.0, green: CGFloat(g) / 255.0, blue: CGFloat(b) / 255.0, alpha: CGFloat(a) / 255.0)
+            
         } else {
-            return nil
-        }
-
-        self.init(red: r, green: g, blue: b, alpha: a)
-    }
-
-    // MARK: - Computed Properties
-
-    var toHex: String? {
-        return toHex()
-    }
-
-    // MARK: - From UIColor to String
-
-    func toHex(alpha: Bool = false) -> String? {
-        guard let components = cgColor.components, components.count >= 3 else {
-            return nil
-        }
-
-        let r = Float(components[0])
-        let g = Float(components[1])
-        let b = Float(components[2])
-        var a = Float(1.0)
-
-        if components.count >= 4 {
-            a = Float(components[3])
-        }
-
-        if alpha {
-            return String(format: "%02lX%02lX%02lX%02lX", lroundf(r * 255), lroundf(g * 255), lroundf(b * 255), lroundf(a * 255))
-        } else {
-            return String(format: "%02lX%02lX%02lX", lroundf(r * 255), lroundf(g * 255), lroundf(b * 255))
+            var int = UInt32()
+            
+            Scanner(string: hex).scanHexInt32(&int)
+            let a, r, g, b: UInt32
+            switch hex.count {
+            case 3:     (a, r, g, b) = (255, (int >> 8) * 17, (int >> 4 & 0xF) * 17, (int & 0xF) * 17)  // RGB (12-bit)
+            case 6:     (a, r, g, b) = (255, int >> 16, int >> 8 & 0xFF, int & 0xFF)                    // RGB (24-bit)
+            case 8:     (a, r, g, b) = (int >> 24, int >> 16 & 0xFF, int >> 8 & 0xFF, int & 0xFF)       // ARGB (32-bit)
+            default:    (a, r, g, b) = (255, 0, 0, 0)
+            }
+            
+            self.init(red: CGFloat(r) / 255.0, green: CGFloat(g) / 255.0, blue: CGFloat(b) / 255.0, alpha: CGFloat(a) / 255.0)
         }
     }
-
+    
+    func toHexString() -> String {
+            var r:CGFloat = 0
+            var g:CGFloat = 0
+            var b:CGFloat = 0
+            var a:CGFloat = 0
+            getRed(&r, green: &g, blue: &b, alpha: &a)
+            let rgb:Int = (Int)(r*255)<<16 | (Int)(g*255)<<8 | (Int)(b*255)<<0
+            return String(format:"%06x", rgb)
+        }
 }
+
