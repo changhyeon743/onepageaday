@@ -9,6 +9,7 @@ import UIKit
 import CryptoKit
 import AuthenticationServices
 import FirebaseAuth
+import GoogleSignIn
 import Kingfisher
 
 class LoginViewController: UIViewController {
@@ -21,7 +22,7 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         imageView.kf.indicatorType = .activity
-        imageView.kf.setImage(with: URL(string: "https://media.giphy.com/media/GZd8nPH3TcNSU/giphy.gif"))
+        imageView.kf.setImage(with: URL(string: "https://media.giphy.com/media/GZd8nPH3TcNSU/giphy.gif"),options: [.memoryCacheExpiration(.expired)])
         
         signInWithApple.contentEdgeInsets = UIEdgeInsets(top: 10, left: 16, bottom: 10, right: 16)
 
@@ -39,14 +40,15 @@ class LoginViewController: UIViewController {
     
     deinit {
         print("LoginViewController deinit")
-        //메모리 누수 방지
-        ImageCache.default.clearMemoryCache()
     }
 }
 
+
+
+
 //MARK: APPLE
 @available(iOS 13.0, *)
-extension LoginViewController: ASAuthorizationControllerDelegate  {
+extension LoginViewController: ASAuthorizationControllerDelegate,ASAuthorizationControllerPresentationContextProviding  {
     func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
     if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
         guard let nonce = currentNonce else {
@@ -86,14 +88,6 @@ extension LoginViewController: ASAuthorizationControllerDelegate  {
         // Handle error.
         print("Sign in with Apple errored: \(error)")
     }
-    
-    
-}
-
-
-extension LoginViewController{
-    // Unhashed nonce.
-    
 
     @available(iOS 13, *)
     func startSignInWithAppleFlow() {
@@ -154,9 +148,7 @@ extension LoginViewController{
 
       return result
     }
-}
-
-extension LoginViewController: ASAuthorizationControllerPresentationContextProviding {
+    
     func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
         return self.view.window!
     }

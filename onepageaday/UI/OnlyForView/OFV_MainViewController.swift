@@ -10,6 +10,7 @@ import PencilKit
 
 
 ///OFV = Only For View , 메모리 누수 최소화 목표위해 코드 재작성. touch Recognizer 등등 배제
+//시간 되면 다시 만들기..!
 class OFV_MainViewController: UIViewController, PKCanvasViewDelegate {
 
     private var currentQuestion:Question?
@@ -20,6 +21,7 @@ class OFV_MainViewController: UIViewController, PKCanvasViewDelegate {
     private var indexLabel: UILabel!
     private var questionLabel: UILabel!
     
+    //
     override func viewDidLoad() {
         super.viewDidLoad()
         indexLabel = UILabel(frame: CGRect.zero)

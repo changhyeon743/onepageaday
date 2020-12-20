@@ -29,6 +29,8 @@ protocol MainViewControllerDelegate: class {
     func dragBegin()
     func dragEnd(textView: EditableTextView, touchPos: CGPoint)
     func dragEnd(imageView: EditableImageView, touchPos: CGPoint)
+    
+    func insertSticker(url: String)
 }
 
 class MainViewController: UIViewController {
@@ -44,7 +46,7 @@ class MainViewController: UIViewController {
     //Edit Mode
     private var isEditingMode:Bool = false {
         didSet {
-            [startDrawButton,addTextViewButton,imageButton].forEach({ (btn) in
+            [startDrawButton,addTextViewButton,imageButton,colorWell].forEach({ (btn) in
                 if (isEditingMode) {
                     btn?.fadeIn()
                     gradientLayer.isHidden = false
@@ -57,14 +59,12 @@ class MainViewController: UIViewController {
                 //편집모드진입
                 showToast(text: "편집 모드")
                 pageControllerDelegate?.stopScroll()
-                modeToggleButton.setImage(UIImage(systemName: "arrow.backward", withConfiguration: UIImage.SymbolConfiguration(pointSize: 20)), for: .normal)
-                modeToggleButton.setTitle("", for: .normal)
+                modeToggleButton.setImage(UIImage(systemName: "xmark", withConfiguration: UIImage.SymbolConfiguration(pointSize: 20)), for: .normal)
                 
             } else {
                 //편집모드종료
                 showToast(text: "보기 모드")
                 modeToggleButton.setImage(nil, for: .normal)
-                modeToggleButton.setTitle("", for: .normal)
 
                 
                 pageControllerDelegate?.startScroll()
@@ -87,6 +87,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var imageButton: UIButton!
     @IBOutlet weak var trashView: UIImageView!
+    @IBOutlet weak var colorWell: UIColorWell!
     
     //로컬 변수 업데이트시 static에 적용 (구조 수정 필요)
     private var currentQuestion:Question?
@@ -102,12 +103,6 @@ class MainViewController: UIViewController {
         
         self.view.clipsToBounds = true
         
-        if let question = currentQuestion {
-            indexLabel.text =
-                String(format: "%03d", question.index+1)
-            questionLabel.text = question.text
-        }
-        
         setUI()
         
         //편집 모드 진입을 위한 제스처
@@ -120,6 +115,15 @@ class MainViewController: UIViewController {
     
     //MARK: setUI
     func setUI() {
+        
+        //BackGround ColorWell UI Setting
+        colorWell.title = "배경색"
+        colorWell.addTarget(self, action: #selector(colorWellValueChanged(_:)), for: .valueChanged)
+        colorWell.selectedColor = UIColor(self.currentQuestion?.backGroundColor ?? defaultColor)
+
+        setQuestionText()
+        
+        
         //배경색
         //self.view.backgroundColor = UIColor(hexString: currentQuestion?.backGroundColor ?? "FFFFFF")
         
@@ -144,22 +148,7 @@ class MainViewController: UIViewController {
         //self.view.frame = CGRect(x: Device.base.adjusted/2-Device.base/2, y: Device.baseHeight.adjustedHeight/2-Device.baseHeight/2, width: Device.base, height: Device.baseHeight)
         //self.view.transform = CGAffineTransform(scaleX: Device.ratio, y: Device.ratioHeight)
         
-        //스티커 메뉴
-        self.imageButton.showsMenuAsPrimaryAction = true
-        self.imageButton.menu = UIMenu(title: "스티커",
-                                       image: nil,
-                                       identifier: nil,
-                                       options: .displayInline,
-                                       children: [
-                                        UIAction(title: "행복", image: UIImage(systemName: "face.smiling"), handler: { [weak self] _ in
-                                          //로그아웃
-                                            self?.createGiphyContent(tag: "행복")
-                                       }),
-                                        UIAction(title: "사진", image: UIImage(systemName: "photo.on.rectangle.angled"), handler: { [weak self] _ in
-                                            print("사진")
-                                       }),
-                                       
-                                       ])
+        setMenus()
         
         //그림 관련 UI
         
@@ -210,10 +199,60 @@ class MainViewController: UIViewController {
         
     }
     
-    override func viewSafeAreaInsetsDidChange() {
-        print(self.drawingView.safeAreaInsets)
-        
+    func setQuestionText() {
+        //Question, text set
+        if let question = currentQuestion {
+            indexLabel.text =
+                String(format: "%03d", question.index+1)
+            questionLabel.text = question.text
+            guard let color = UIColor(self.currentQuestion?.backGroundColor ?? defaultColor) else {return}
+            UIView.animate(withDuration: 0.2) { [self] in
+                if (color.isLight() == true) {
+                    indexLabel.textColor = .black
+                    questionLabel.textColor = .black
+                } else {
+                    indexLabel.textColor = .white
+                    questionLabel.textColor = .white
+                }
+            }
+            
+        }
     }
+    
+    //MARK: MENU!
+    func setMenus() {
+        //스티커 메뉴
+        self.imageButton.showsMenuAsPrimaryAction = true
+        self.imageButton.menu = UIMenu(title: "스티커",
+                                       image: nil,
+                                       identifier: nil,
+                                       options: .displayInline,
+                                       children: [
+                                        UIAction(title: "스티커", image: UIImage(systemName: "face.smiling"), handler: { [weak self] _ in
+                                          
+                                            if let vc = self?.storyboard?.instantiateViewController(identifier: "StickerViewController") as? StickerViewController {
+                                                vc.modalPresentationStyle = .formSheet
+                                                vc.parentDelegate = self
+                                                vc.mode = .sticker
+                                                self?.present(vc, animated: true, completion: nil)
+                                            }
+//                                            self?.createGiphyContent(tag: "행복")
+                                       }),
+                                        UIAction(title: "GIF", image: UIImage(systemName: "square"), handler: { [weak self] _ in
+                                            if let vc = self?.storyboard?.instantiateViewController(identifier: "StickerViewController") as? StickerViewController {
+                                                vc.modalPresentationStyle = .formSheet
+                                                vc.parentDelegate = self
+                                                vc.mode = .gif
+                                                self?.present(vc, animated: true, completion: nil)
+                                            }
+                                       }),
+                                        UIAction(title: "사진", image: UIImage(systemName: "photo.on.rectangle.angled"), handler: { [weak self] _ in
+                                            print("사진")
+                                       }),
+                                       
+                                       ])
+    }
+    
     //currentQuestion 활용하여 데이터 생성
     func createViewsWithData() {
         //텍스트
@@ -285,6 +324,14 @@ class MainViewController: UIViewController {
             drawingEnd()
         }
     }
+    
+    @objc func colorWellValueChanged(_ sender: Any) {
+        self.currentQuestion?.backGroundColor = self.colorWell.selectedColor?.toHexString()
+        UIView.animate(withDuration: 0.3) {
+            self.view.backgroundColor = UIColor(self.currentQuestion?.backGroundColor ?? defaultColor)
+        }
+        setQuestionText()
+    }
 }
 
 //MARK: PKCanvas Delegate
@@ -294,16 +341,11 @@ extension MainViewController: PKCanvasViewDelegate {
 
 //MARK: 스티커 관련 함수들
 extension MainViewController: MainViewControllerDelegate {
-    
-    func createGiphyContent(tag: String) {
-        API.giphyApi.getRandomContentby(tag: tag) { (json) in
-            
-            let url = json["data"]["images"]["fixed_width"]["url"].stringValue
-            let imageView = self.makeImageView(imageViewData: ImageViewData(center: CGPoint(x: self.view.center.x.reverseAdjusted, y: self.view.center.y.reverseAdjustedHeight), angle: 0, scale: 1, imageURL: url))
-            
-            self.currentQuestion?.imageViewDatas.append(imageView.imageViewData)
-            self.view.addSubview(imageView)
-        }
+    func insertSticker(url: String) {
+        let imageView = self.makeImageView(imageViewData: ImageViewData(center: CGPoint(x: self.view.center.x.reverseAdjusted, y: self.view.center.y.reverseAdjustedHeight), angle: 0, scale: 1.3, imageURL: url))
+        
+        self.currentQuestion?.imageViewDatas.append(imageView.imageViewData)
+        self.view.addSubview(imageView)
     }
     
     @IBAction func imageButtonPressed(_ sender: Any) {
@@ -391,7 +433,7 @@ extension MainViewController {
     }
     /// 드래그 종료, 삭제 필요시 삭제
     func dragEnd(textView: EditableTextView, touchPos: CGPoint) {
-        showViews([modeToggleButton,addTextViewButton,startDrawButton,imageButton])
+        showViews([modeToggleButton,addTextViewButton,startDrawButton,imageButton,colorWell])
 
         let size:CGFloat = 40.0
         let touchArea = CGRect(x: touchPos.x-size/2, y: touchPos.y-size/2, width: size, height: size)
@@ -408,7 +450,7 @@ extension MainViewController {
     
     /// 드래그 종료, 삭제 필요시 삭제
     func dragEnd(imageView: EditableImageView, touchPos: CGPoint) {
-        showViews([modeToggleButton,addTextViewButton,startDrawButton,imageButton])
+        showViews([modeToggleButton,addTextViewButton,startDrawButton,imageButton,colorWell])
 
         let size:CGFloat = 40.0
         let touchArea = CGRect(x: touchPos.x-size/2, y: touchPos.y-size/2, width: size, height: size)
@@ -425,7 +467,7 @@ extension MainViewController {
     
     ///드래그 시작,  삭제뷰 생성
     func dragBegin() {
-        hideViews([modeToggleButton,addTextViewButton,startDrawButton,imageButton])
+        hideViews([modeToggleButton,addTextViewButton,startDrawButton,imageButton,colorWell])
         self.view.bringSubviewToFront(trashView)
         trashView.fadeIn()
         self.trashView.transform = CGAffineTransform(scaleX: 0, y: 0)
@@ -470,7 +512,7 @@ extension MainViewController {
     func textViewEditingBegin(textView: EditableTextView) {
         isEditingTextView = true
         
-        hideViews([modeToggleButton,addTextViewButton,startDrawButton,imageButton])
+        hideViews([modeToggleButton,addTextViewButton,colorWell,startDrawButton,imageButton])
         showViews([doneButton,darkView])
         
         self.view.bringSubviewToFront(self.darkView)
@@ -483,14 +525,14 @@ extension MainViewController {
         //빈 텍스트 버리기
         
         hideViews([doneButton,darkView])
-        showViews([imageButton,modeToggleButton,addTextViewButton,startDrawButton,imageButton])
+        showViews([imageButton,modeToggleButton,colorWell,addTextViewButton,startDrawButton,imageButton])
     }
     
     func drawingBegin() {
         isDrawing = true
         showToast(text: "그리기 시작")
         
-        hideViews([addTextViewButton,modeToggleButton,imageButton,startDrawButton])
+        hideViews([addTextViewButton,modeToggleButton,colorWell,imageButton,startDrawButton])
         showViews([doneButton])
         
         self.drawingView.isUserInteractionEnabled = true
@@ -509,7 +551,7 @@ extension MainViewController {
         
         
         hideViews([doneButton])
-        showViews([imageButton,modeToggleButton,addTextViewButton,startDrawButton])
+        showViews([imageButton,modeToggleButton,colorWell,addTextViewButton,startDrawButton])
         
         self.drawingView.isUserInteractionEnabled = false
         toolPicker.setVisible(false, forFirstResponder: drawingView)
@@ -523,6 +565,7 @@ extension MainViewController {
         self.view.bringSubviewToFront(doneButton)
         self.view.bringSubviewToFront(startDrawButton)
         self.view.bringSubviewToFront(addTextViewButton)
+        self.view.bringSubviewToFront(colorWell)
     }
     
     func hideViews(_ views: [UIView]) {

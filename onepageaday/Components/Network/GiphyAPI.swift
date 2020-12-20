@@ -8,18 +8,31 @@
 import Foundation
 import Alamofire
 import SwiftyJSON
+import Kingfisher
+
+enum GiphyMode: Int {
+    case sticker, gif
+}
 
 class GiphyAPI {
     let api_key = "faIsfUAcOV93GtYZma2AmZndLSkJar5D"
+    init() {
+        KingfisherManager.shared.downloader.downloadTimeout = 60
+    }
     
     //트렌드
-    func getTrendContents(completion:@escaping(JSON)->Void) {
+    func getTrendContents(mode:GiphyMode ,completion:@escaping(JSON)->Void) {
         let parameters = [
             "api_key" : api_key,
-            "limit" : "25"
+            "limit" : "9"
         ]
+        
+        var url = "https://api.giphy.com/v1/stickers/trending"
+        if (mode == .gif) {
+            url = "https://api.giphy.com/v1/gifs/trending"
+        }
             
-        Alamofire.request("https://api.giphy.com/v1/stickers/trending",method:.get,parameters:parameters,encoding:URLEncoding.queryString)
+        Alamofire.request(url,method:.get,parameters:parameters,encoding:URLEncoding.queryString)
                 .responseJSON(completionHandler: { (response) in
                     //1. JSON 변환
                     if let value = response.result.value,response.result.isSuccess {
@@ -28,19 +41,26 @@ class GiphyAPI {
                 })
         }
     
-    func getRandomContentby(tag: String,completion:@escaping(JSON)->Void) {
+    func search(with q: String, mode: GiphyMode, completion: @escaping(JSON)->Void) {
+        
         let parameters = [
             "api_key" : api_key,
-            "tag" : tag
+            "q" : q,
+            "limit": "9"
         ]
         
-        Alamofire.request("https://api.giphy.com/v1/stickers/random",method:.get,parameters:parameters,encoding:URLEncoding.queryString)
-                .responseJSON(completionHandler: { (response) in
-                    //1. JSON 변환
-                    if let value = response.result.value,response.result.isSuccess {
-                        completion(JSON(value))
-                    }
-                })
+        var url = "https://api.giphy.com/v1/stickers/search"
+        if (mode == .gif) {
+            url = "https://api.giphy.com/v1/gifs/search"
         }
+        
+        Alamofire.request(url,method:.get,parameters:parameters,encoding:URLEncoding.queryString)
+            .responseJSON(completionHandler: { (response) in
+                //1. JSON 변환
+                if let value = response.result.value,response.result.isSuccess {
+                    completion(JSON(value))
+                }
+            })
+    }
     
 }

@@ -22,6 +22,8 @@
 		7840E32A257FAAA8009B216B /* onepageadayUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7840E329257FAAA8009B216B /* onepageadayUITests.swift */; };
 		7853DC772587AAD900600F6A /* ShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7853DC762587AAD900600F6A /* ShopViewController.swift */; };
 		78576E8E257FDEF7006F0B3F /* EditableTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78576E8D257FDEF7006F0B3F /* EditableTextView.swift */; };
+		7861CB26258FA7B50035D29E /* StickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7861CB25258FA7B50035D29E /* StickerCell.swift */; };
+		7861CB2E258FA87D0035D29E /* StickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7861CB2D258FA87D0035D29E /* StickerViewController.swift */; };
 		7863C9BF2588589500B5773D /* BookCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7863C9BE2588589500B5773D /* BookCell.xib */; };
 		7863C9C42588596600B5773D /* BookCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7863C9C32588596600B5773D /* BookCell.swift */; };
 		787086B8258C448D00D454A8 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787086B7258C448D00D454A8 /* LoginViewController.swift */; };
@@ -91,6 +93,8 @@
 		7840E32B257FAAA8009B216B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7853DC762587AAD900600F6A /* ShopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopViewController.swift; sourceTree = "<group>"; };
 		78576E8D257FDEF7006F0B3F /* EditableTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableTextView.swift; sourceTree = "<group>"; };
+		7861CB25258FA7B50035D29E /* StickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerCell.swift; sourceTree = "<group>"; };
+		7861CB2D258FA87D0035D29E /* StickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerViewController.swift; sourceTree = "<group>"; };
 		7863C9BE2588589500B5773D /* BookCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookCell.xib; sourceTree = "<group>"; };
 		7863C9C32588596600B5773D /* BookCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCell.swift; sourceTree = "<group>"; };
 		787086B7258C448D00D454A8 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -232,6 +236,15 @@
 			path = onepageadayUITests;
 			sourceTree = "<group>";
 		};
+		7861CB24258FA79A0035D29E /* Shop */ = {
+			isa = PBXGroup;
+			children = (
+				7853DC762587AAD900600F6A /* ShopViewController.swift */,
+				789CBC2F25889E76001D11B1 /* ShopDetailViewController.swift */,
+			);
+			path = Shop;
+			sourceTree = "<group>";
+		};
 		7870871B258F1D0C00D454A8 /* OnlyForView */ = {
 			isa = PBXGroup;
 			children = (
@@ -292,6 +305,7 @@
 				78FE241225879E6700E4BE31 /* BookFlowLayout.swift */,
 				7863C9C32588596600B5773D /* BookCell.swift */,
 				78FE24242587A89700E4BE31 /* ShopCell.swift */,
+				7861CB25258FA7B50035D29E /* StickerCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -319,11 +333,11 @@
 			isa = PBXGroup;
 			children = (
 				787086B7258C448D00D454A8 /* LoginViewController.swift */,
+				7861CB24258FA79A0035D29E /* Shop */,
 				78C0E19C258317F300FC3842 /* BookSelectingViewController.swift */,
-				7853DC762587AAD900600F6A /* ShopViewController.swift */,
-				789CBC2F25889E76001D11B1 /* ShopDetailViewController.swift */,
 				78E9088D25822B4200944B60 /* MainPageViewController.swift */,
 				7840E30B257FAA9E009B216B /* MainViewController.swift */,
+				7861CB2D258FA87D0035D29E /* StickerViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -363,6 +377,7 @@
 				7840E301257FAA9E009B216B /* Frameworks */,
 				7840E302257FAA9E009B216B /* Resources */,
 				443027EEBD680218C0A54AD3 /* [CP] Embed Pods Frameworks */,
+				F7F84D6C20747C83833785F4 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -567,6 +582,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		F7F84D6C20747C83833785F4 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-onepageaday/Pods-onepageaday-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-onepageaday/Pods-onepageaday-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-onepageaday/Pods-onepageaday-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -580,6 +612,7 @@
 				787A0464258BD8050018A232 /* BookManager.swift in Sources */,
 				78576E8E257FDEF7006F0B3F /* EditableTextView.swift in Sources */,
 				7870871D258F1D2600D454A8 /* OFV_MainViewController.swift in Sources */,
+				7861CB2E258FA87D0035D29E /* StickerViewController.swift in Sources */,
 				7863C9C42588596600B5773D /* BookCell.swift in Sources */,
 				78DC817E258B12C700C6C2D3 /* FirebaseAPI.swift in Sources */,
 				7870870B258F139300D454A8 /* UIView.swift in Sources */,
@@ -604,6 +637,7 @@
 				7840E30A257FAA9E009B216B /* SceneDelegate.swift in Sources */,
 				78708722258F1FD300D454A8 /* OFV_TextView.swift in Sources */,
 				78FE24252587A89700E4BE31 /* ShopCell.swift in Sources */,
+				7861CB26258FA7B50035D29E /* StickerCell.swift in Sources */,
 				78708700258D90A400D454A8 /* Device.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
