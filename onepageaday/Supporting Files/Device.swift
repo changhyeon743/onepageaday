@@ -10,8 +10,8 @@ import UIKit
 
 class Device {
   // Base width in point, use iPhone 6
-  static let base: CGFloat = 768
-    static let baseHeight:CGFloat = 1024
+  static let base: CGFloat = 375
+    static let baseHeight:CGFloat = 667
 
   static var ratio: CGFloat {
     return UIScreen.main.bounds.width / base

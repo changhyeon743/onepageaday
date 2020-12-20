@@ -28,4 +28,19 @@ class GiphyAPI {
                 })
         }
     
+    func getRandomContentby(tag: String,completion:@escaping(JSON)->Void) {
+        let parameters = [
+            "api_key" : api_key,
+            "tag" : tag
+        ]
+        
+        Alamofire.request("https://api.giphy.com/v1/stickers/random",method:.get,parameters:parameters,encoding:URLEncoding.queryString)
+                .responseJSON(completionHandler: { (response) in
+                    //1. JSON 변환
+                    if let value = response.result.value,response.result.isSuccess {
+                        completion(JSON(value))
+                    }
+                })
+        }
+    
 }

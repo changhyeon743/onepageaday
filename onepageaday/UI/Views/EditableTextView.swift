@@ -230,7 +230,9 @@ extension EditableTextView: UITextViewDelegate {
         parentDelegate?.textViewEditingEnd()
 
         if (self.textViewData.text.isEmpty) {
+            self.parentDelegate?.removeTextView(textViewData: self.textViewData)
             self.removeFromSuperview()
+            
         }
         
         

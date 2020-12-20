@@ -10,9 +10,12 @@ import UIKit
 protocol MainPageViewControllerDelegate: class{
     func stopScroll()
     func startScroll()
+    
+    //DrawingView UI Problem FIX
 }
 
 class MainPageViewController: UIPageViewController,UIPageViewControllerDelegate, UIPageViewControllerDataSource,MainPageViewControllerDelegate {
+    
     
     var panGesture:UIPanGestureRecognizer!
     
@@ -22,12 +25,12 @@ class MainPageViewController: UIPageViewController,UIPageViewControllerDelegate,
     override func viewDidLoad() {
         self.dataSource = self
         self.delegate = self
-        
+                
         self.setViewControllers([createViewController(currentIndex)], direction: .forward, animated: false, completion: nil)
         
         panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(_:)))
         self.view.addGestureRecognizer(panGesture)
-
+        
     }
     
     var viewTranslation = CGPoint(x: 0, y: 0)
@@ -50,6 +53,8 @@ class MainPageViewController: UIPageViewController,UIPageViewControllerDelegate,
 //                if let index = API.books.firstIndex(where: {$0.id == self.book?.id}) {
 //                    API.books[index].currentIndex = 0
 //                }
+                book?.modifiedDate = Date()
+                API.firebase.updateBook(book: book)
                 dismiss(animated: true, completion: nil)
             }
         default:
@@ -98,6 +103,17 @@ class MainPageViewController: UIPageViewController,UIPageViewControllerDelegate,
         return UIViewController()
     }
     
+    var tempCurrentIndex = 0
+    
+    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+        if (completed && finished) {
+            //오른으로 움직였는가?
+            if let vc = pageViewController.viewControllers?.first as? MainViewController {
+                book?.currentIndex = vc.currentIndex
+            }
+            
+        }
+    }
     /// 편집 모드
     func stopScroll() {
         print("stop!")

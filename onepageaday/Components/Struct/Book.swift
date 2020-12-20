@@ -16,5 +16,7 @@ struct Book: Codable,Identifiable {
     var author: String
     var currentIndex: Int
     
+    var createDate: Date
+    var modifiedDate: Date
     
 }

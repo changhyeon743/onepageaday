@@ -16,9 +16,9 @@
                 <rect key="frame" x="0.0" y="0.0" width="292" height="550"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="기본적인 매일력" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="vg4-dP-doR">
-                        <rect key="frame" x="16" y="264.5" width="260" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="기본적인 매일력" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.40000000000000002" translatesAutoresizingMaskIntoConstraints="NO" id="vg4-dP-doR">
+                        <rect key="frame" x="16" y="262" width="260" height="26.5"/>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                         <userDefinedRuntimeAttributes>
@@ -30,11 +30,18 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2020.12.19" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aWe-vZ-KxE">
+                        <rect key="frame" x="115.5" y="304.5" width="61.5" height="14.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="aWe-vZ-KxE" firstAttribute="top" secondItem="vg4-dP-doR" secondAttribute="bottom" constant="16" id="C33-6k-xC0"/>
                     <constraint firstItem="vg4-dP-doR" firstAttribute="leading" secondItem="ntk-yU-SGS" secondAttribute="leading" constant="16" id="D3F-CD-Xph"/>
                     <constraint firstItem="vg4-dP-doR" firstAttribute="centerY" secondItem="ntk-yU-SGS" secondAttribute="centerY" id="tNc-OF-9Nt"/>
                     <constraint firstAttribute="trailing" secondItem="vg4-dP-doR" secondAttribute="trailing" constant="16" id="z1l-Kt-5cH"/>
+                    <constraint firstItem="aWe-vZ-KxE" firstAttribute="centerX" secondItem="ntk-yU-SGS" secondAttribute="centerX" id="zpT-aB-yhc"/>
                     <constraint firstItem="vg4-dP-doR" firstAttribute="centerX" secondItem="ntk-yU-SGS" secondAttribute="centerX" id="zv8-Xt-56z"/>
                 </constraints>
             </collectionViewCellContentView>
@@ -43,6 +50,7 @@
                 <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
             </userDefinedRuntimeAttributes>
             <connections>
+                <outlet property="dateLabel" destination="aWe-vZ-KxE" id="WRA-cH-RIX"/>
                 <outlet property="titleLabel" destination="vg4-dP-doR" id="CM6-58-YWv"/>
             </connections>
             <point key="canvasLocation" x="375.36231884057975" y="85.044642857142847"/>

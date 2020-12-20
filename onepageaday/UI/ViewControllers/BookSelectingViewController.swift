@@ -12,7 +12,11 @@ import SkeletonView
 private let reuseIdentifier = "cell"
 
 protocol BookSelectingViewControllerDelegate: class {
+    
+    //For shop
     func bookDownloaded()
+    
+    
 }
 
 
@@ -91,7 +95,8 @@ class BookSelectingViewController: UIViewController, SkeletonCollectionViewDeleg
     func fetchBooks() {
         API.firebase.fetchBooks(with: Auth.auth().currentUser?.uid ?? "", completion: { (books) in
             API.books = books
-            //self.books.sort { $0. < $1.deadline }
+            
+            API.books?.sort { $0.createDate > $1.createDate }
             self.collectionView.hideSkeleton()
             self.collectionView.reloadData()
         })
@@ -100,7 +105,7 @@ class BookSelectingViewController: UIViewController, SkeletonCollectionViewDeleg
     @IBAction func trashButtonPressed(_ sender: Any) {
         //or?
         if currentPage < API.books?.count ?? 0 {
-            let alert = UIAlertController(title: "삭제", message: "\(API.books?[currentPage].title) 을(를) 삭제하시겠습니까?", preferredStyle: .alert)
+            let alert = UIAlertController(title: "삭제", message: "\(API.books?[currentPage].title ?? "") 을(를) 삭제하시겠습니까?", preferredStyle: .alert)
 
             alert.addAction(UIAlertAction(title: "삭제", style: .destructive, handler: { _ in
                 API.firebase.deleteBook(with: API.books?[self.currentPage].id ?? "")
@@ -157,7 +162,7 @@ class BookSelectingViewController: UIViewController, SkeletonCollectionViewDeleg
             cell.hideSkeleton()
             
             cell.titleLabel.text = API.books?[indexPath.row].title
-            
+            cell.dateLabel.text = API.books?[indexPath.row].createDate.toString()
             cell.backgroundColor = UIColor(hue: CGFloat(arc4random_uniform(360))/360, saturation: 0.5, brightness: 0.8, alpha: 1)
             return cell
         } else {
@@ -182,6 +187,7 @@ class BookSelectingViewController: UIViewController, SkeletonCollectionViewDeleg
                 //vc.modalPresentationStyle = .overCurrentContext
                 vc.modalPresentationStyle = .fullScreen
                 vc.book = API.books?[indexPath.row]
+                vc.currentIndex = API.books?[indexPath.row].currentIndex ?? 0
                 self.present(vc, animated:true, completion: nil)
             }
         }

@@ -12,8 +12,12 @@ class BookCell: UICollectionViewCell{
     
     @IBOutlet weak var titleLabel: UILabel!
     
-    override class func awakeFromNib() {
+    @IBOutlet weak var dateLabel: UILabel!
+    
+    override func awakeFromNib() {
         super.awakeFromNib()
         //self.titleLabel.showAnimatedGradientSkeleton()
+        self.layer.cornerRadius = 4.0
+        self.clipsToBounds = true
     }
 }

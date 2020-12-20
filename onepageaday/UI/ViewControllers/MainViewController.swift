@@ -15,6 +15,7 @@ protocol MainViewControllerDelegate: class {
     
     func textViewUpdated(textViewData: TextViewData)
     func textViewEditingBegin(textView: EditableTextView)
+    func removeTextView(textViewData: TextViewData)
     func textViewEditingEnd()
     
     
@@ -31,6 +32,9 @@ protocol MainViewControllerDelegate: class {
 }
 
 class MainViewController: UIViewController {
+    
+    
+    
     //public because of pageviewcontroller
     public var currentIndex:Int = 0
     
@@ -38,25 +42,31 @@ class MainViewController: UIViewController {
     private var isEditingTextView:Bool = false
     private var isDrawing:Bool = false
     
+    
+    
     //Edit Mode
     private var isEditingMode:Bool = false {
         didSet {
-            startDrawButton.isHidden = !isEditingMode
-            addTextViewButton.isHidden = !isEditingMode
-            imageButton.isHidden = !isEditingMode
+            [startDrawButton,addTextViewButton,imageButton].forEach {
+                if (isEditingMode) {
+                    $0?.fadeIn()
+                } else {
+                    $0?.fadeOut()
+                }
+            }
 
             if (isEditingMode) {
                 //편집모드진입
                 showToast(text: "편집 모드")
                 pageControllerDelegate?.stopScroll()
-                modeToggleButton.setImage(UIImage(systemName: "checkmark.square", withConfiguration: UIImage.SymbolConfiguration(pointSize: 24)), for: .normal)
-                modeToggleButton.setTitle("완료", for: .normal)
+                modeToggleButton.setImage(UIImage(systemName: "arrow.backward", withConfiguration: UIImage.SymbolConfiguration(pointSize: 20)), for: .normal)
+                modeToggleButton.setTitle("", for: .normal)
                 
             } else {
                 //편집모드종료
                 showToast(text: "보기 모드")
-                modeToggleButton.setImage(UIImage(systemName: "square.and.pencil", withConfiguration: UIImage.SymbolConfiguration(pointSize: 24)), for: .normal)
-                modeToggleButton.setTitle("편집", for: .normal)
+                modeToggleButton.setImage(nil, for: .normal)
+                modeToggleButton.setTitle("", for: .normal)
 
                 
                 pageControllerDelegate?.startScroll()
@@ -64,6 +74,7 @@ class MainViewController: UIViewController {
         }
     }
     
+    //이름 바꿔
     @IBOutlet weak var modeToggleButton:UIButton!
     @IBOutlet weak var addTextViewButton: UIButton!
     @IBOutlet weak var doneButton: UIButton!
@@ -90,7 +101,7 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         
         if let question = currentQuestion {
             indexLabel.text =
@@ -108,17 +119,36 @@ class MainViewController: UIViewController {
     
     //MARK: setUI
     func setUI() {
+        //뒤로가기 버튼 누르는 범위 늘리기
+        self.modeToggleButton.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 16, right: 16)
+        
+        
         //텍스트 관련 UI
         self.darkView = createDarkView()
         self.view.addSubview(darkView)
         
-        self.view.frame = CGRect(x: Device.base.adjusted/2-Device.base/2, y: Device.baseHeight.adjustedHeight/2-Device.baseHeight/2, width: Device.base, height: Device.baseHeight)
-        self.view.transform = CGAffineTransform(scaleX: Device.ratio, y: Device.ratioHeight)
+        //self.view.frame = CGRect(x: Device.base.adjusted/2-Device.base/2, y: Device.baseHeight.adjustedHeight/2-Device.baseHeight/2, width: Device.base, height: Device.baseHeight)
+        //self.view.transform = CGAffineTransform(scaleX: Device.ratio, y: Device.ratioHeight)
+        
+        //스티커 메뉴
+        self.imageButton.showsMenuAsPrimaryAction = true
+        self.imageButton.menu = UIMenu(title: "스티커",
+                                       image: nil,
+                                       identifier: nil,
+                                       options: .displayInline,
+                                       children: [
+                                        UIAction(title: "행복", image: UIImage(systemName: "face.smiling"), handler: { _ in
+                                          //로그아웃
+                                        self.createGiphyContent(tag: "행복")
+                                       }),
+                                        UIAction(title: "사진", image: UIImage(systemName: "photo.on.rectangle.angled"), handler: { _ in
+                                            print("사진")
+                                       }),
+                                       
+                                       ])
+        
         //그림 관련 UI
-        self.drawingView = PKCanvasView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height))
-        
-        
-        
+        self.drawingView = PKCanvasView(frame: CGRect.zero)
         self.drawingView.delegate = self
         self.drawingView.alwaysBounceVertical = true
         self.drawingView.drawingPolicy = .anyInput
@@ -145,10 +175,17 @@ class MainViewController: UIViewController {
         
         //need to place onn createViewWithData but here.. ( need to fix )
         self.view.addSubview(drawingView)
-        self.drawingView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
-        self.drawingView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
-        self.drawingView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
-        self.drawingView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
+        self.drawingView.backgroundColor = .clear
+        self.drawingView.transform = CGAffineTransform(scaleX: Device.ratio, y: Device.ratioHeight)
+        self.drawingView.widthAnchor.constraint(equalToConstant: Device.base).isActive = true
+        self.drawingView.heightAnchor.constraint(equalToConstant: Device.baseHeight).isActive = true
+        self.drawingView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        self.drawingView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
+        
+//        self.drawingView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
+//        self.drawingView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
+//        self.drawingView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
+//        self.drawingView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
         self.drawingView.translatesAutoresizingMaskIntoConstraints = false
         
         //버튼 앞으로
@@ -165,13 +202,13 @@ class MainViewController: UIViewController {
         
         //이미지
         currentQuestion?.imageViewDatas.forEach{
-            let adjusted = ImageViewData(center: CGPoint(x: $0.center.x.adjusted, y: $0.center.y.adjusted), angle: $0.angle, scale: $0.scale, imageURL: $0.imageURL)
-            self.view.addSubview(makeImageView(imageViewData: adjusted))
-            
+            self.view.addSubview(makeImageView(imageViewData: $0))
         }
         
     }
     
+    
+    ///생성자라고 생각하면 편함(From MainPageViewController)
     func setValues(question:Question, delegate: MainPageViewControllerDelegate) {
         self.currentQuestion = question
         self.pageControllerDelegate = delegate
@@ -179,11 +216,14 @@ class MainViewController: UIViewController {
     
     
     
+    
+    
     //편집 모드 토글
     @IBAction func modeToggleButtonPressed() {
         isEditingMode = !isEditingMode
         if (!isEditingMode) { //완료버튼 pressed
-            //local
+            
+            //local 변경
             if let index = API.currentQuestions.firstIndex(where: {$0.id == self.currentQuestion?.id}),let question = currentQuestion {
                 API.currentQuestions[index] = question
             }
@@ -203,7 +243,7 @@ class MainViewController: UIViewController {
 //            }
             //텍스트 한 개도 없을 경우?
             
-            print(currentQuestion?.textViewDatas)
+            //print(currentQuestion?.textViewDatas)
 //            if currentQuestion?.textViewDatas.count == 0 {
 //                let editableTextView = makeEditableTextView(textViewData: TextViewData(center: CGPoint(x: self.view.bounds.width/2, y: self.view.bounds.height/2), angle: 0, scale: 1, text: "") )
 //                self.view.addSubview(editableTextView)
@@ -235,16 +275,27 @@ extension MainViewController: PKCanvasViewDelegate {
 
 //MARK: 스티커 관련 함수들
 extension MainViewController: MainViewControllerDelegate {
-    @IBAction func imageButtonPressed(_ sender: Any) {
-        API.giphyApi.getTrendContents { (json) in
+    
+    func createGiphyContent(tag: String) {
+        API.giphyApi.getRandomContentby(tag: tag) { (json) in
             
-            let url = json["data"][Int.random(in: 0...20)]["images"]["fixed_width"]["url"].stringValue
-            
+            let url = json["data"]["images"]["fixed_width"]["url"].stringValue
             let imageView = self.makeImageView(imageViewData: ImageViewData(center: CGPoint(x: self.view.center.x, y: self.view.center.y), angle: 0, scale: 1, imageURL: url))
             
             self.currentQuestion?.imageViewDatas.append(imageView.imageViewData)
             self.view.addSubview(imageView)
         }
+    }
+    
+    @IBAction func imageButtonPressed(_ sender: Any) {
+//        API.giphyApi.getTrendContents { (json) in
+//            let url = json["data"][Int.random(in: 0...20)]["images"]["fixed_width"]["url"].stringValue
+//
+//            let imageView = self.makeImageView(imageViewData: ImageViewData(center: CGPoint(x: self.view.center.x, y: self.view.center.y), angle: 0, scale: 1, imageURL: url))
+//
+//            self.currentQuestion?.imageViewDatas.append(imageView.imageViewData)
+//            self.view.addSubview(imageView)
+//        }
     }
     
     func makeImageView(imageViewData: ImageViewData) -> EditableImageView {
@@ -279,7 +330,7 @@ extension MainViewController {
     func createDarkView() -> UIView {
         darkView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
         darkView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.45)
-        darkView.isHidden = true
+        darkView.fadeOut()
         let darkViewTouchRecognizer = UITapGestureRecognizer(target: self, action: #selector(darkViewTouchRecognized))
         self.darkView.addGestureRecognizer(darkViewTouchRecognizer)
         
@@ -318,8 +369,16 @@ extension MainViewController {
 
 //MARK: DELEGATE ( 뷰와의 상호작용 )
 extension MainViewController {
+    func removeTextView(textViewData: TextViewData) {
+        if let index = currentQuestion?.textViewDatas.firstIndex(where: {$0.token == textViewData.token}) {
+            self.currentQuestion?.textViewDatas.remove(at: index)
+            
+        }
+    }
     /// 드래그 종료, 삭제 필요시 삭제
     func dragEnd(textView: EditableTextView, touchPos: CGPoint) {
+        showViews([modeToggleButton,addTextViewButton,startDrawButton,imageButton])
+
         let size:CGFloat = 40.0
         let touchArea = CGRect(x: touchPos.x-size/2, y: touchPos.y-size/2, width: size, height: size)
         
@@ -330,11 +389,13 @@ extension MainViewController {
             }
             
         }
-        self.trashView.isHidden = true
+        self.trashView.fadeOut()
     }
     
     /// 드래그 종료, 삭제 필요시 삭제
     func dragEnd(imageView: EditableImageView, touchPos: CGPoint) {
+        showViews([modeToggleButton,addTextViewButton,startDrawButton,imageButton])
+
         let size:CGFloat = 40.0
         let touchArea = CGRect(x: touchPos.x-size/2, y: touchPos.y-size/2, width: size, height: size)
         
@@ -345,13 +406,14 @@ extension MainViewController {
             }
         }
         
-        self.trashView.isHidden = true
+        self.trashView.fadeOut()
     }
     
     ///드래그 시작,  삭제뷰 생성
     func dragBegin() {
+        hideViews([modeToggleButton,addTextViewButton,startDrawButton,imageButton])
         self.view.bringSubviewToFront(trashView)
-        trashView.isHidden = false
+        trashView.fadeIn()
         self.trashView.transform = CGAffineTransform(scaleX: 0, y: 0)
 
         UIView.animate(withDuration: 0.2,
@@ -450,14 +512,14 @@ extension MainViewController {
     }
     
     func hideViews(_ views: [UIView]) {
-        views.forEach { (v) in
-            v.isHidden = true
+        views.forEach {
+            $0.fadeOut()
         }
     }
     
     func showViews(_ views: [UIView]) {
-        views.forEach { (v) in
-            v.isHidden = false
+        views.forEach {
+            $0.fadeIn()
         }
     }
 }

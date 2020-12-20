@@ -71,6 +71,9 @@ class FirebaseAPI {
         do {
             guard let id = book?.id else { return }
             try db.collection("books").document(id).setData(from: book)
+            if let index = API.books?.firstIndex(where: {$0.id == book?.id}), let book = book {
+                API.books?[index] = book
+            }
         } catch {
             print(error.localizedDescription)
         }
@@ -78,17 +81,15 @@ class FirebaseAPI {
     
     func addBook(book: Book, question: [String],completion: @escaping()->Void) {
         //Book adding
+        
         do {
             let bookId = try db.collection("books").addDocument(from: book).documentID
             var indexCount = -1
             try question.forEach({ (str) in
                 indexCount+=1
-                let _ = try db.collection("questions").addDocument(from: Question(index: indexCount,text: str, book: bookId ), completion: { (_) in
-                    completion()
-                })
+                let _ = try db.collection("questions").addDocument(from: Question(index: indexCount,text: str, book: bookId ))
             })
-            
-            
+            completion()
         } catch {
             print(error.localizedDescription)
         }
