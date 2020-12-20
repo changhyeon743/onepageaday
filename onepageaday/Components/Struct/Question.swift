@@ -28,7 +28,7 @@ struct Question:Codable,Identifiable {
     var imageViewDatas: [ImageViewData] = []
     var drawings: String = ""
     
-    var backGroundColor: String? = "000000"
+    var backGroundColor: String? = UIColor(hue: CGFloat(arc4random_uniform(360))/360, saturation: 0.5, brightness: 0.8, alpha: 1).toHex
     
     var book: String = ""
     

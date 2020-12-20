@@ -24,6 +24,8 @@ class OFV_MainViewController: UIViewController, PKCanvasViewDelegate {
         super.viewDidLoad()
         indexLabel = UILabel(frame: CGRect.zero)
         questionLabel = UILabel(frame: CGRect.zero)
+        indexLabel.textColor = .black
+        questionLabel.textColor = .black
         
         indexLabel.font = UIFont.systemFont(ofSize: 35, weight: .bold)
         questionLabel.font = UIFont.systemFont(ofSize: 20, weight: .bold)

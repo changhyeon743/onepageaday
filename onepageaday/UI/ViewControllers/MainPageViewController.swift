@@ -23,7 +23,13 @@ class MainPageViewController: UIPageViewController,UIPageViewControllerDelegate,
     var book:Book?
     var currentIndex:Int = 0
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     override func viewDidLoad() {
+
+        
         self.dataSource = self
         self.delegate = self
                 
@@ -55,7 +61,6 @@ class MainPageViewController: UIPageViewController,UIPageViewControllerDelegate,
 //                    API.books[index].currentIndex = 0
 //                }
                 book?.modifiedDate = Date()
-                ImageCache.default.clearMemoryCache()
                 API.firebase.updateBook(book: book)
                 dismiss(animated: true, completion: nil)
             }
@@ -98,7 +103,14 @@ class MainPageViewController: UIPageViewController,UIPageViewControllerDelegate,
                 controller.currentIndex = index
                 controller.setValues(question: API.currentQuestions[index], delegate: self)
                 controller.createViewsWithData()
-                controller.view.backgroundColor = randomColor
+                
+                if let bg = API.currentQuestions[index].backGroundColor {
+                    controller.view.backgroundColor = UIColor(hex: bg )
+                    print(bg)
+                } else {
+                    controller.view.backgroundColor = randomColor
+                }
+                
             }
             return controller
         }

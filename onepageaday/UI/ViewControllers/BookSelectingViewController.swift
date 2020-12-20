@@ -102,20 +102,26 @@ class BookSelectingViewController: UIViewController, SkeletonCollectionViewDeleg
         })
     }
 
-    @IBAction func trashButtonPressed(_ sender: Any) {
+    @IBAction func trashButtonPressed(_ sender: UIButton) {
         //or?
         if currentPage < API.books?.count ?? 0 {
-            let alert = UIAlertController(title: "삭제", message: "\(API.books?[currentPage].title ?? "") 을(를) 삭제하시겠습니까?", preferredStyle: .alert)
+            let alert = UIAlertController(title: "\(API.books?[currentPage].title ?? "") 을(를) 삭제하시겠습니까?", message:  nil, preferredStyle: .actionSheet)
 
             alert.addAction(UIAlertAction(title: "삭제", style: .destructive, handler: { _ in
                 API.firebase.deleteBook(with: API.books?[self.currentPage].id ?? "")
                 API.books?.remove(at: self.currentPage)
+                let indexPath = IndexPath(item: self.currentPage, section: 0)
+                self.collectionView.performBatchUpdates({
+                    self.collectionView.deleteItems(at:[indexPath])
+                }, completion:{ [weak self] _ in
+                    self?.scrollViewDidEndDecelerating(self!.collectionView)
+                })
                 
-                self.collectionView.reloadData()
                 
                 self.viewDidLayoutSubviews()
             }))
             alert.addAction(UIAlertAction(title: "취소하기", style: .cancel, handler: nil))
+            alert.popoverPresentationController?.sourceView = sender as UIView
 
             self.present(alert, animated: true, completion: nil)
         }

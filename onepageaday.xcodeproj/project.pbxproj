@@ -33,6 +33,8 @@
 		7870871D258F1D2600D454A8 /* OFV_MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7870871C258F1D2600D454A8 /* OFV_MainViewController.swift */; };
 		78708722258F1FD300D454A8 /* OFV_TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78708721258F1FD300D454A8 /* OFV_TextView.swift */; };
 		7870872A258F20A500D454A8 /* OFV_ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78708729258F20A500D454A8 /* OFV_ImageView.swift */; };
+		7870872F258F369900D454A8 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7870872E258F369900D454A8 /* Color.swift */; };
+		78708738258F551500D454A8 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78708737258F551500D454A8 /* Toast.swift */; };
 		787A0464258BD8050018A232 /* BookManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787A0463258BD8050018A232 /* BookManager.swift */; };
 		789CBC3025889E76001D11B1 /* ShopDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789CBC2F25889E76001D11B1 /* ShopDetailViewController.swift */; };
 		78A758882581D34B006FAFB1 /* DesignElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A758872581D34B006FAFB1 /* DesignElements.swift */; };
@@ -102,6 +104,8 @@
 		7870871C258F1D2600D454A8 /* OFV_MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OFV_MainViewController.swift; sourceTree = "<group>"; };
 		78708721258F1FD300D454A8 /* OFV_TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OFV_TextView.swift; sourceTree = "<group>"; };
 		78708729258F20A500D454A8 /* OFV_ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OFV_ImageView.swift; sourceTree = "<group>"; };
+		7870872E258F369900D454A8 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		78708737258F551500D454A8 /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		787A0463258BD8050018A232 /* BookManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookManager.swift; sourceTree = "<group>"; };
 		789CBC2F25889E76001D11B1 /* ShopDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopDetailViewController.swift; sourceTree = "<group>"; };
 		78A758872581D34B006FAFB1 /* DesignElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignElements.swift; sourceTree = "<group>"; };
@@ -266,6 +270,8 @@
 				787086FF258D90A400D454A8 /* Device.swift */,
 				78708704258DDB3A00D454A8 /* Date.swift */,
 				7870870A258F139300D454A8 /* UIView.swift */,
+				7870872E258F369900D454A8 /* Color.swift */,
+				78708737258F551500D454A8 /* Toast.swift */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -588,8 +594,10 @@
 				78FE241325879E6700E4BE31 /* BookFlowLayout.swift in Sources */,
 				789CBC3025889E76001D11B1 /* ShopDetailViewController.swift in Sources */,
 				787086B8258C448D00D454A8 /* LoginViewController.swift in Sources */,
+				78708738258F551500D454A8 /* Toast.swift in Sources */,
 				78E9088E25822B4200944B60 /* MainPageViewController.swift in Sources */,
 				7853DC772587AAD900600F6A /* ShopViewController.swift in Sources */,
+				7870872F258F369900D454A8 /* Color.swift in Sources */,
 				78C0E19D258317F300FC3842 /* BookSelectingViewController.swift in Sources */,
 				78E9089F25822F9900944B60 /* Question.swift in Sources */,
 				78E061372586F27800EEE1C7 /* String.swift in Sources */,

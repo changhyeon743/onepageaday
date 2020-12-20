@@ -44,11 +44,13 @@ class MainViewController: UIViewController {
     //Edit Mode
     private var isEditingMode:Bool = false {
         didSet {
-            [startDrawButton,addTextViewButton,imageButton].forEach({ [weak self] (btn) in
+            [startDrawButton,addTextViewButton,imageButton].forEach({ (btn) in
                 if (isEditingMode) {
                     btn?.fadeIn()
+                    gradientLayer.isHidden = false
                 } else {
                     btn?.fadeOut()
+                    gradientLayer.isHidden = true
                 }
             })
             if (isEditingMode) {
@@ -98,7 +100,6 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.edgesForExtendedLayout = []
         self.view.clipsToBounds = true
         
         if let question = currentQuestion {
@@ -115,8 +116,23 @@ class MainViewController: UIViewController {
         
     }
     
+    var gradientLayer: CAGradientLayer = CAGradientLayer()
+    
     //MARK: setUI
     func setUI() {
+        //배경색
+        //self.view.backgroundColor = UIColor(hexString: currentQuestion?.backGroundColor ?? "FFFFFF")
+        
+        gradientLayer.colors = [UIColor.black.withAlphaComponent(0.6).cgColor,
+                                    UIColor.black.withAlphaComponent(0.0).cgColor]
+        //gradientLayer.locations = [0.0, 1.0]
+        gradientLayer.frame = self.view.bounds
+        gradientLayer.locations = [0.07]
+        gradientLayer.startPoint = CGPoint(x: 1.0, y: 0.0)
+        gradientLayer.endPoint = CGPoint(x: 1.0, y: 0.135)
+        self.view.layer.addSublayer(gradientLayer)
+        gradientLayer.isHidden = true
+        
         //뒤로가기 버튼 누르는 범위 늘리기
         self.modeToggleButton.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 16, right: 16)
         
@@ -146,10 +162,12 @@ class MainViewController: UIViewController {
                                        ])
         
         //그림 관련 UI
+        
         self.drawingView = PKCanvasView(frame: CGRect.zero)
         self.drawingView.delegate = self
         self.drawingView.alwaysBounceVertical = true
         self.drawingView.drawingPolicy = .anyInput
+        self.drawingView.contentInsetAdjustmentBehavior = .never
         self.drawingView.backgroundColor = .clear
         self.drawingView.isUserInteractionEnabled = false
         
@@ -189,8 +207,13 @@ class MainViewController: UIViewController {
         
         //버튼 앞으로
         bringButtonsToFront()
+        
     }
     
+    override func viewSafeAreaInsetsDidChange() {
+        print(self.drawingView.safeAreaInsets)
+        
+    }
     //currentQuestion 활용하여 데이터 생성
     func createViewsWithData() {
         //텍스트
@@ -504,40 +527,20 @@ extension MainViewController {
     
     func hideViews(_ views: [UIView]) {
         views.forEach {
-            $0.fadeOut()
+            $0.isHidden = true
         }
+        gradientLayer.isHidden = true
+
     }
     
     func showViews(_ views: [UIView]) {
         views.forEach {
-            $0.fadeIn()
+            $0.isHidden = false
         }
+        gradientLayer.isHidden = false
+
     }
 }
 
 
-//Toast Message
-extension UIViewController {
-    func showToast(text: String) {
-        
-        let label = UILabel(frame: CGRect(x: self.view.bounds.width/2-65, y: self.view.bounds.height - 25-150, width: 130, height: 30))
-        
-        label.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
-        label.text = text
-        label.textAlignment = .center
-        label.textColor = .white
-        
-        self.view.addSubview(label)
-        
-        label.backgroundColor = UIColor.black.withAlphaComponent(0.6)
-        label.layer.cornerRadius = 7
-        label.clipsToBounds = true
-        
-        UIView.animate(withDuration: 1, delay: 1, options: .curveEaseOut) {
-            label.alpha = 0
-        } completion: { (complete) in
-            label.removeFromSuperview()
-        }
-        
-    }
-}
+
