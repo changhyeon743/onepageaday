@@ -19,6 +19,7 @@ class FirebaseAPI {
     
     private var db = Firestore.firestore()
     private var storageRef = Storage.storage().reference()
+    
     //트렌드
     func fetchBooks(with userID: String, completion:@escaping([Book])->Void) {
         db.collection("books").whereField("author", isEqualTo: userID).getDocuments() { (querySnapshot, err) in
@@ -64,9 +65,11 @@ class FirebaseAPI {
     }
     
     func updateQuestion(question: Question?) {
+        var newQuestion = question
+        newQuestion?.modifiedDate = Date()
         do {
-            guard let id = question?.id else { return }
-            try db.collection("questions").document(id).setData(from: question)
+            guard let id = newQuestion?.id else { return }
+            try db.collection("questions").document(id).setData(from: newQuestion)
         } catch {
             print(error.localizedDescription)
         }
@@ -163,5 +166,9 @@ class FirebaseAPI {
             print(error.localizedDescription)
           }
         }
+    }
+    
+    func getQuestionsAt(date: Date) {
+        
     }
 }

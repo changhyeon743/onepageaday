@@ -20,6 +20,7 @@ struct Question:Codable,Identifiable {
     
     @DocumentID var id: String? = UUID().uuidString
     
+    var modifiedDate: Date?
     
     var index: Int = 0
     var text: String = ""

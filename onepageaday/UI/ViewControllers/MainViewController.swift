@@ -404,7 +404,7 @@ extension MainViewController {
     func createDarkView() -> UIView {
         darkView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
         darkView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.45)
-        darkView.fadeOut()
+        darkView.isHidden=true
         let darkViewTouchRecognizer = UITapGestureRecognizer(target: self, action: #selector(darkViewTouchRecognized))
         self.darkView.addGestureRecognizer(darkViewTouchRecognizer)
         
@@ -472,8 +472,9 @@ extension MainViewController {
     }
     /// 드래그 종료, 삭제 필요시 삭제
     func dragEnd(textView: EditableTextView, touchPos: CGPoint) {
-        showViews([modeToggleButton,addTextViewButton,startDrawButton,imageButton,colorWell])
-
+        if !isEditingTextView {
+            showViews([modeToggleButton,addTextViewButton,startDrawButton,imageButton,colorWell])
+        }
         let size:CGFloat = 40.0
         let touchArea = CGRect(x: touchPos.x-size/2, y: touchPos.y-size/2, width: size, height: size)
         
@@ -490,21 +491,23 @@ extension MainViewController {
     /// 드래그 종료, 삭제 필요시 삭제
     func dragEnd(imageView: EditableImageView, touchPos: CGPoint) {
         showViews([modeToggleButton,addTextViewButton,startDrawButton,imageButton,colorWell])
-
         let size:CGFloat = 40.0
         let touchArea = CGRect(x: touchPos.x-size/2, y: touchPos.y-size/2, width: size, height: size)
         
         if (touchArea.intersects(self.trashView.frame)) {
             if let index = currentQuestion?.imageViewDatas.firstIndex(where: { $0.token == imageView.imageViewData.token }){
+                
                 currentQuestion?.imageViewDatas.remove(at: index )
                 imageView.removeFromSuperview()
             }
+            
+            //Storage일 경우 이미지 삭제 필요
+            if (API.firebase.isFireBaseStorageLink(url: imageView.imageViewData.imageURL)) {
+                API.firebase.deleteImage(token: imageView.imageViewData.token)
+            }
         }
         
-        //Storage일 경우 이미지 삭제 필요
-        if (API.firebase.isFireBaseStorageLink(url: imageView.imageViewData.imageURL)) {
-            API.firebase.deleteImage(token: imageView.imageViewData.token)
-        }
+        
         
         self.trashView.fadeOut()
     }
@@ -558,6 +561,7 @@ extension MainViewController {
         
         hideViews([modeToggleButton,addTextViewButton,colorWell,startDrawButton,imageButton])
         showViews([doneButton,darkView])
+        
         
         self.view.bringSubviewToFront(self.darkView)
         self.view.bringSubviewToFront(self.doneButton)
