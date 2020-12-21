@@ -69,7 +69,8 @@ class FirebaseAPI {
         var newQuestion = question
         newQuestion?.modifiedDate = Date()
         do {
-            guard let id = bookID else { return }
+            guard let id = question?.id else { return }
+            guard let bookID = bookID else { return }
             try db.collection("books/\(bookID)/questions").document(id).setData(from: newQuestion)
         } catch {
             print(error.localizedDescription)
