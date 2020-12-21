@@ -18,7 +18,6 @@ protocol MainViewControllerDelegate: class {
     func removeTextView(textViewData: TextViewData)
     func textViewEditingEnd()
     
-    
     func getIsEditingTextView()->Bool
     func getIsEditingMode()->Bool
     func getIsDrawing() -> Bool
@@ -117,8 +116,15 @@ class MainViewController: UIViewController {
         
     }
     
-    var gradientLayer: CAGradientLayer = CAGradientLayer()
     
+    ///생성자라고 생각하면 편함(From MainPageViewController)
+    func setValues(question:Question, bookID: String?, delegate: MainPageViewControllerDelegate) {
+        self.currentQuestion = question
+        self.currentBookId = bookID
+        self.pageControllerDelegate = delegate
+    }
+    
+    var gradientLayer: CAGradientLayer = CAGradientLayer()
     //MARK: setUI
     func setUI() {
         //Image Picker
@@ -266,7 +272,7 @@ class MainViewController: UIViewController {
                                        ])
     }
     
-    //currentQuestion 활용하여 데이터 생성
+    //MARK: currentQuestion 활용하여 데이터 생성
     func createViewsWithData() {
         //텍스트
         currentQuestion?.textViewDatas.forEach{
@@ -282,12 +288,7 @@ class MainViewController: UIViewController {
     }
     
     
-    ///생성자라고 생각하면 편함(From MainPageViewController)
-    func setValues(question:Question, bookID: String?, delegate: MainPageViewControllerDelegate) {
-        self.currentQuestion = question
-        self.currentBookId = bookID
-        self.pageControllerDelegate = delegate
-    }
+    //MARK: modeToggle
     
     //편집 모드 토글
     @IBAction func modeToggleButtonPressed() {
@@ -339,6 +340,7 @@ class MainViewController: UIViewController {
         }
     }
     
+    //MARK: ColorWell
     @objc func colorWellValueChanged(_ sender: Any) {
         self.currentQuestion?.backGroundColor = self.colorWell.selectedColor?.toHexString()
         UIView.animate(withDuration: 0.3) {
@@ -420,9 +422,11 @@ extension MainViewController {
     
     @IBAction func addTextViewButtonPressed() {
         self.view.bringSubviewToFront(doneButton)
+        //let min = a < b ? a : b
+        let isLight = UIColor(currentQuestion?.backGroundColor ?? defaultColor)?.isLight()
+        let defaultTextColor = isLight ?? true ? "000000" : "FFFFFF"
         
-        
-        let editableTextView = makeEditableTextView(textViewData: TextViewData(center: CGPoint(x: (self.view.bounds.width/2).reverseAdjusted, y: (self.view.bounds.height/2).reverseAdjustedHeight), angle: 0, scale: 1, text: "") )
+        let editableTextView = makeEditableTextView(textViewData: TextViewData(center: CGPoint(x: (self.view.bounds.width/2).reverseAdjusted, y: (self.view.bounds.height/2).reverseAdjustedHeight), angle: 0, scale: 1, text: "", textColor: defaultTextColor))
         self.view.addSubview(editableTextView)
         editableTextView.becomeFirstResponder()
         
@@ -475,7 +479,7 @@ extension MainViewController {
     }
     /// 드래그 종료, 삭제 필요시 삭제
     func dragEnd(textView: EditableTextView, touchPos: CGPoint) {
-        if !isEditingTextView {
+        if !isEditingTextView { //조금 드래그하면 편집과 동시에 움직여짐 방지
             showViews([modeToggleButton,addTextViewButton,startDrawButton,imageButton,colorWell])
         }
         let size:CGFloat = 40.0
@@ -489,6 +493,12 @@ extension MainViewController {
             
         }
         self.trashView.fadeOut()
+        
+        //z-index 바꾸기(제일 앞으로)
+        if let index = currentQuestion?.textViewDatas.firstIndex(where: {$0.token == textView.textViewData.token}), let length = currentQuestion?.textViewDatas.count  {
+            currentQuestion?.textViewDatas.move(at: index, to: length-1)
+        }
+        
     }
     
     /// 드래그 종료, 삭제 필요시 삭제
@@ -513,6 +523,11 @@ extension MainViewController {
         
         
         self.trashView.fadeOut()
+        
+        //z-index 바꾸기(제일 앞으로)=
+        if let index = currentQuestion?.imageViewDatas.firstIndex(where: {$0.token == imageView.imageViewData.token}), let length = currentQuestion?.imageViewDatas.count  {
+            currentQuestion?.imageViewDatas.move(at: index, to: length-1)
+        }
     }
     
     ///드래그 시작,  삭제뷰 생성

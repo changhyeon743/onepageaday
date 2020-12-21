@@ -153,7 +153,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="QJV-jT-pY9">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="QJV-jT-pY9" customClass="CollectionView">
                                 <rect key="frame" x="0.0" y="82" width="414" height="760"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="lFl-a4-dxh">
@@ -202,6 +202,10 @@
                             <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Giphy 검색" translatesAutoresizingMaskIntoConstraints="NO" id="Cih-Up-w5C">
                                 <rect key="frame" x="4" y="26" width="406" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <scopeButtonTitles>
+                                    <string>Title</string>
+                                    <string>Title</string>
+                                </scopeButtonTitles>
                             </searchBar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fRr-fg-9M6">
                                 <rect key="frame" x="160.5" y="9" width="93" height="7"/>

@@ -10,6 +10,7 @@
 		003ECB047CDCC05809B8F912 /* Pods_onepageaday.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4B928A1E391D0234C9506F1 /* Pods_onepageaday.framework */; };
 		6F2A1475C2164726B48F0622 /* Pods_onepageadayTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9DFDEE0EEE9B60A7F305482 /* Pods_onepageadayTests.framework */; };
 		78001F6A258B889600102D27 /* PKDrawing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78001F69258B889600102D27 /* PKDrawing.swift */; };
+		78075CCD25909D3C00EC9139 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78075CCC25909D3C00EC9139 /* Array.swift */; };
 		782685472587106E00F0A295 /* GiphyAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782685462587106E00F0A295 /* GiphyAPI.swift */; };
 		7826855C2587114E00F0A295 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7826855B2587114E00F0A295 /* API.swift */; };
 		7840E308257FAA9E009B216B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7840E307257FAA9E009B216B /* AppDelegate.swift */; };
@@ -75,6 +76,7 @@
 		28E54BDF9D99E02EF3FCACB7 /* Pods-onepageaday.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-onepageaday.release.xcconfig"; path = "Pods/Target Support Files/Pods-onepageaday/Pods-onepageaday.release.xcconfig"; sourceTree = "<group>"; };
 		4BCC35ADE6CE9260CDE33DFE /* Pods-onepageaday.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-onepageaday.debug.xcconfig"; path = "Pods/Target Support Files/Pods-onepageaday/Pods-onepageaday.debug.xcconfig"; sourceTree = "<group>"; };
 		78001F69258B889600102D27 /* PKDrawing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PKDrawing.swift; sourceTree = "<group>"; };
+		78075CCC25909D3C00EC9139 /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		782685462587106E00F0A295 /* GiphyAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiphyAPI.swift; sourceTree = "<group>"; };
 		7826855B2587114E00F0A295 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		7840E304257FAA9E009B216B /* onepageaday.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = onepageaday.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -282,6 +284,7 @@
 				7870870A258F139300D454A8 /* UIView.swift */,
 				7870872E258F369900D454A8 /* Color.swift */,
 				78708737258F551500D454A8 /* Toast.swift */,
+				78075CCC25909D3C00EC9139 /* Array.swift */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -591,6 +594,7 @@
 				78001F6A258B889600102D27 /* PKDrawing.swift in Sources */,
 				7840E30C257FAA9E009B216B /* MainViewController.swift in Sources */,
 				787086DD258C915100D454A8 /* ShopItem.swift in Sources */,
+				78075CCD25909D3C00EC9139 /* Array.swift in Sources */,
 				787A0464258BD8050018A232 /* BookManager.swift in Sources */,
 				78576E8E257FDEF7006F0B3F /* EditableTextView.swift in Sources */,
 				7870871D258F1D2600D454A8 /* OFV_MainViewController.swift in Sources */,

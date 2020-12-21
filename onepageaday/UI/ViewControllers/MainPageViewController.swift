@@ -103,7 +103,6 @@ class MainPageViewController: UIPageViewController,UIPageViewControllerDelegate,
                 controller.currentIndex = index
                 controller.setValues(question: API.currentQuestions[index],bookID: book?.id, delegate: self)
                 
-                controller.createViewsWithData()
                 
                 if let bg = API.currentQuestions[index].backGroundColor {
                     controller.view.backgroundColor = UIColor(bg)
@@ -111,6 +110,8 @@ class MainPageViewController: UIPageViewController,UIPageViewControllerDelegate,
                 } else {
                     controller.view.backgroundColor = randomColor
                 }
+                
+                controller.createViewsWithData()
                 
             }
             return controller

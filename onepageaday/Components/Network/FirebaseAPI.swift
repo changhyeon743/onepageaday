@@ -22,7 +22,7 @@ class FirebaseAPI {
     
     //트렌드
     func fetchBooks(with userID: String, completion:@escaping([Book])->Void) {
-        db.collection("books").whereField("author", isEqualTo: userID).getDocuments() { (querySnapshot, err) in
+        db.collection("books").whereField("author", isEqualTo: userID).getDocuments(source: .default) { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
@@ -40,11 +40,11 @@ class FirebaseAPI {
     //1. Question 전부 fetch
     //2. Question 일부만 fetch
     //3. 실시간 fetch
-    func fetchQuestion(with bookID: String ,completion:@escaping([Question])->Void){
+    func fetchQuestions(with bookID: String ,completion:@escaping([Question])->Void){
         db
             .collection("books/\(bookID)/questions")
             .order(by: "index")
-            .getDocuments() { (querySnapshot, err) in
+            .getDocuments(source: .default) { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
@@ -55,6 +55,7 @@ class FirebaseAPI {
                             return try question.data(as: Question.self)
                         } catch {
                             print(error.localizedDescription)
+                            
                         }
                         return nil
                     }
@@ -117,13 +118,37 @@ class FirebaseAPI {
                 print("Error getting documents: \(err)")
             } else {
                 guard let query = querySnapshot else {return}
+                
+//                query.documents.map{
+//                    JSON($0.data())["imageViewDatas"].arrayValue.map {
+//                        $0["token"].stringValue
+//                    }
+//                }.forEach {
+//                    $0.forEach { (token) in
+//                        self.deleteImage(token: token)
+//                    }
+//                }
+                
+                var tokens:[String] = []
+                //질문 삭제 및 이미지 토큰 수집
                 query.documents.forEach { (document) in
+                    JSON(document.data())["imageViewDatas"].arrayValue.forEach {
+                        //only collect token which is stored on Firebase
+                        let token = $0["token"].stringValue
+                        if !token.isEmpty && self.isFireBaseStorageLink(url: $0["imageURL"].stringValue) {
+                            tokens.append(token)
+                        }
+                    }
                     self.db.collection("books/\(bookID)/questions").document(document.documentID).delete()
+                }
+                
+                tokens.forEach{
+                    self.deleteImage(token: $0)
                 }
             }
         }
         
-        //
+        //책 삭제
         db.collection("books").document(bookID).delete() { err in
             if let err = err {
                 print("Error removing document: \(err)")

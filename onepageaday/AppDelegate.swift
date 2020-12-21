@@ -24,6 +24,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         FirebaseApp.configure()
         
+        //if nonpro
+        //Firestore.firestore().disableNetwork(completion: nil)
+        
 //        let defaults = UserDefaults.standard
 //        if let questions = defaults.object(forKey: "Questions") as? Data {
 //            let decoder = JSONDecoder()

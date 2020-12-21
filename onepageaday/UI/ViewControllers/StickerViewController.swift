@@ -15,6 +15,7 @@ class StickerViewController: UIViewController,UISearchBarDelegate {
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var searchBar: UISearchBar!
+    
     //위에 회색
     @IBOutlet weak var stickyView: UIView!
     
@@ -50,11 +51,9 @@ class StickerViewController: UIViewController,UISearchBarDelegate {
                 self.collectionView.reloadData()
             }
         } else {
-            API.giphyApi.search(with: searchBar.text ?? "행복", mode: mode) { (json) in
+            API.giphyApi.search(with: searchBar.text!, mode: mode) { (json) in
                 self.items = json["data"].arrayValue.map{$0["images"]["preview_gif"]["url"].stringValue}
                 self.items_forParent = json["data"].arrayValue.map{$0["images"]["fixed_width"]["url"].stringValue}
-
-                self.collectionView.reloadData()
             }
         }
         

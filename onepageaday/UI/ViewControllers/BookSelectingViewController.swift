@@ -59,6 +59,7 @@ class BookSelectingViewController: UIViewController, SkeletonCollectionViewDeleg
         self.view.addSubview(activityIndicator)
         self.presentationController?.delegate = self
     
+        //Firestore.firestore().disableNetwork(completion: nil)
         self.collectionView.showAnimatedGradientSkeleton()
 
         settingButton.showsMenuAsPrimaryAction = true
@@ -75,7 +76,11 @@ class BookSelectingViewController: UIViewController, SkeletonCollectionViewDeleg
                                             print(error.localizedDescription)
                                         }
                                         
-                                     })])
+                                     }),
+                                     UIAction(title: "캐시삭제", image: nil, identifier: nil, handler: { _ in
+                                        Firestore.firestore().clearPersistence(completion: nil)
+                                     })
+                                     ])
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -187,7 +192,7 @@ class BookSelectingViewController: UIViewController, SkeletonCollectionViewDeleg
         guard let id = API.books?[indexPath.row].id else {return}
         activityIndicator.startAnimating()
         //부드럽게 만드는거 필요함
-        API.firebase.fetchQuestion(with: id) { (questions) in
+        API.firebase.fetchQuestions(with: id) { (questions) in
             self.activityIndicator.stopAnimating()
             
             if (questions.count > 0) {

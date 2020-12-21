@@ -16,6 +16,7 @@ class EditableTextView: UITextView {
     
     //편집/되돌아가기용 캐시
     var cacheTextViewData: TextViewData = TextViewData(center: CGPoint.zero, angle: 0, scale: 1, text: "")
+    var toolbar: UIToolbar!
     
     ///with textview Data
     init(frame: CGRect, textContainer: NSTextContainer?, parentView: UIView, parentDelegate: MainViewControllerDelegate, textViewData: TextViewData) {
@@ -29,17 +30,72 @@ class EditableTextView: UITextView {
         updateTextViewTransform()
         
         addGestures()
+        
         //UI..
-        self.textColor = UIColor.label
-        self.backgroundColor = .none
+        self.textColor = UIColor(textViewData.textColor)
+//        print(parentView.backgroundColor?.toHexString())
+//        if (parentView.backgroundColor?.isLight() ?? true) {
+//            self.textColor = .black
+//        } else {
+//            self.textColor = .white
+//        }
+        
+        self.backgroundColor = .clear
         self.font = UIFont.systemFont(ofSize: 40)
-        self.textAlignment = .center
         //End..
         
         self.textViewData = textViewData
         self.text = textViewData.text
         self.center = CGPoint(x: textViewData.center.x.adjusted, y: textViewData.center.y.adjustedHeight)
         self.transform = self.transform.scaledBy(x: textViewData.scale, y: textViewData.scale).rotated(by: textViewData.angle)
+        
+        
+        
+        //textview Input악세서리
+        toolbar = UIToolbar(frame:CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
+        toolbar.barStyle = .default
+        //appearance 변경해야 해서 메모리에 저장
+        toolbar.items = [
+        UIBarButtonItem(image: UIImage(systemName: "text.alignleft"), style: .plain, target: self, action: #selector(align)),
+        UIBarButtonItem(image: UIImage(systemName: "paintpalette"), style: .plain, target: self, action: #selector(color)),
+        UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
+        UIBarButtonItem(title: "완료", style: .plain, target: self, action: #selector(done))]
+        toolbar.sizeToFit()
+        self.inputAccessoryView = toolbar
+
+        //TextAlignment ( 변수 사용할 게 많아서 마지막에 호출 )
+        setAlignment()
+        
+        self.layoutIfNeeded()
+    }
+    @objc func color() {
+        
+    }
+    @objc func align() {
+        if self.textViewData.alignment == .left {
+            self.textViewData.alignment = .middle
+        } else if self.textViewData.alignment == .middle {
+            self.textViewData.alignment = .right
+        } else {
+            self.textViewData.alignment = .left
+        }
+        setAlignment()
+        self.parentDelegate?.textViewUpdated(textViewData: self.textViewData)
+
+    }
+    @objc func done() {
+        self.weakParentView?.endEditing(true)
+    }
+    func setAlignment() {
+        self.textAlignment = NSTextAlignment.init(rawValue: textViewData.alignment.rawValue) ?? .center
+        if self.textViewData.alignment == .left {
+            self.toolbar.items?[0].image = UIImage(systemName: "text.alignleft")
+        } else if self.textViewData.alignment == .middle {
+            self.toolbar.items?[0].image = UIImage(systemName: "text.aligncenter")
+        } else {
+            self.toolbar.items?[0].image = UIImage(systemName: "text.alignright")
+        }
+        
     }
     
     func addGestures() {
@@ -105,6 +161,7 @@ extension EditableTextView: UIGestureRecognizerDelegate {
     //드래그앤드롭
     @objc func handlePan(_ gestureRecognizer: UIPanGestureRecognizer) {
         if gestureRecognizer.state == .began {
+            self.weakParentView?.bringSubviewToFront(self)
             self.parentDelegate?.dragBegin()
         }
         if gestureRecognizer.state == .began || gestureRecognizer.state == .changed && !isEditingSomething(){
@@ -114,8 +171,7 @@ extension EditableTextView: UIGestureRecognizerDelegate {
             let newPoint = CGPoint(x: gestureRecognizer.view!.center.x+translation.x, y: gestureRecognizer.view!.center.y+translation.y)
             gestureRecognizer.view!.center = newPoint
             gestureRecognizer.setTranslation(CGPoint.zero, in: weakParentView)
-            self.weakParentView?.bringSubviewToFront(self)
-
+            
         }
         
         if gestureRecognizer.state == .ended {
@@ -178,7 +234,6 @@ extension EditableTextView: UIGestureRecognizerDelegate {
 }
 
 //textview funcs
-
 extension EditableTextView: UITextViewDelegate {
     func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
         //그림그리기 Or 다른 텍스트 편집중일경우 return false

@@ -32,7 +32,7 @@ class ShopViewController: UIViewController, SkeletonTableViewDelegate, SkeletonT
     }
     
     func shopitemsUpdate() {
-        let seconds = 2.0
+        let seconds = 1.0
         DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
             self.shopItems = [ShopItem(title: "남자에게 물어볼 50 가지 질문",
             detail: "https://psycatgames.com/ko/magazine/conversation-starters/250-questions-to-ask-a-guy/#5",
@@ -209,7 +209,7 @@ class ShopViewController: UIViewController, SkeletonTableViewDelegate, SkeletonT
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 96
+        return 64
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

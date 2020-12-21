@@ -105,6 +105,7 @@ extension EditableImageView: UIGestureRecognizerDelegate {
     //드래그앤드롭
     @objc func handlePan(_ gestureRecognizer: UIPanGestureRecognizer) {
         if gestureRecognizer.state == .began {
+            self.weakParentView?.bringSubviewToFront(self)
             self.parentDelegate?.dragBegin()
         }
         if gestureRecognizer.state == .began || gestureRecognizer.state == .changed && !isEditingSomething(){
@@ -115,7 +116,6 @@ extension EditableImageView: UIGestureRecognizerDelegate {
             let newPoint = CGPoint(x: gestureRecognizer.view!.center.x+translation.x, y: gestureRecognizer.view!.center.y+translation.y)
             gestureRecognizer.view!.center = newPoint
             gestureRecognizer.setTranslation(CGPoint.zero, in: weakParentView)
-            self.weakParentView?.bringSubviewToFront(self)
         }
         
         if gestureRecognizer.state == .ended {
