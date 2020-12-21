@@ -31,14 +31,12 @@ struct Question:Codable,Identifiable {
     
     var backGroundColor: String? = UIColor(hue: CGFloat(arc4random_uniform(360))/360, saturation: 0.5, brightness: 0.8, alpha: 1).toHexString()
     
-    var book: String = ""
     
     var os: OS = .iOS
     
-    init(index: Int, text: String, book: String) {
+    init(index: Int, text: String) {
         self.index = index
         self.text = text
-        self.book = book
         self.textViewDatas = []
         self.imageViewDatas = []
         self.drawings = ""

@@ -42,8 +42,8 @@ class FirebaseAPI {
     //3. 실시간 fetch
     func fetchQuestion(with bookID: String ,completion:@escaping([Question])->Void){
         db
-            .collection("questions")
-            .whereField("book", isEqualTo: bookID)
+            .collection("books/\(bookID)/questions")
+            .order(by: "index")
             .getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
@@ -64,12 +64,13 @@ class FirebaseAPI {
         }
     }
     
-    func updateQuestion(question: Question?) {
+    func updateQuestion(question: Question?,bookID:String?) {
+        
         var newQuestion = question
         newQuestion?.modifiedDate = Date()
         do {
-            guard let id = newQuestion?.id else { return }
-            try db.collection("questions").document(id).setData(from: newQuestion)
+            guard let id = bookID else { return }
+            try db.collection("books/\(bookID)/questions").document(id).setData(from: newQuestion)
         } catch {
             print(error.localizedDescription)
         }
@@ -92,10 +93,11 @@ class FirebaseAPI {
         
         do {
             let bookId = try db.collection("books").addDocument(from: book).documentID
+            
             var indexCount = -1
             try question.forEach({ (str) in
                 indexCount+=1
-                let _ = try db.collection("questions").addDocument(from: Question(index: indexCount,text: str, book: bookId ))
+                let _ = try db.collection("books/\(bookId)/questions").addDocument(from: Question(index: indexCount,text: str ))
             })
             completion()
         } catch {
@@ -108,15 +110,14 @@ class FirebaseAPI {
         //cascade images
         
         //cascade questions
-        db.collection("questions")
-            .whereField("book", isEqualTo: bookID)
+        db.collection("books/\(bookID)/questions")
             .getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
                 guard let query = querySnapshot else {return}
                 query.documents.forEach { (document) in
-                    self.db.collection("questions").document(document.documentID).delete()
+                    self.db.collection("books/\(bookID)/questions").document(document.documentID).delete()
                 }
             }
         }

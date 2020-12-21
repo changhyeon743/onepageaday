@@ -91,6 +91,8 @@ class MainViewController: UIViewController {
     
     //로컬 변수 업데이트시 static에 적용 (구조 수정 필요)
     private var currentQuestion:Question?
+    private var currentBookId: String?
+    
     let imagePicker = UIImagePickerController()
 
     private weak var pageControllerDelegate:MainPageViewControllerDelegate?
@@ -281,8 +283,9 @@ class MainViewController: UIViewController {
     
     
     ///생성자라고 생각하면 편함(From MainPageViewController)
-    func setValues(question:Question, delegate: MainPageViewControllerDelegate) {
+    func setValues(question:Question, bookID: String?, delegate: MainPageViewControllerDelegate) {
         self.currentQuestion = question
+        self.currentBookId = bookID
         self.pageControllerDelegate = delegate
     }
     
@@ -298,7 +301,7 @@ class MainViewController: UIViewController {
             }
             
             //network
-            API.firebase.updateQuestion(question: currentQuestion)
+            API.firebase.updateQuestion(question: currentQuestion, bookID: currentBookId)
         }
     }
     

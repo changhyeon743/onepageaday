@@ -101,7 +101,8 @@ class MainPageViewController: UIPageViewController,UIPageViewControllerDelegate,
             let controller = storyboard.instantiateViewController(withIdentifier: "MainViewController") as! MainViewController
             if API.currentQuestions.count >= 1 {
                 controller.currentIndex = index
-                controller.setValues(question: API.currentQuestions[index], delegate: self)
+                controller.setValues(question: API.currentQuestions[index],bookID: book?.id, delegate: self)
+                
                 controller.createViewsWithData()
                 
                 if let bg = API.currentQuestions[index].backGroundColor {

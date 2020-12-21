@@ -189,15 +189,22 @@ class BookSelectingViewController: UIViewController, SkeletonCollectionViewDeleg
         //부드럽게 만드는거 필요함
         API.firebase.fetchQuestion(with: id) { (questions) in
             self.activityIndicator.stopAnimating()
-            API.currentQuestions = questions
-            API.currentQuestions.sort{$0.index < $1.index}
-            if let vc = self.storyboard!.instantiateViewController(identifier: "MainPageViewController") as? MainPageViewController {
-                //vc.modalPresentationStyle = .overCurrentContext
-                vc.modalPresentationStyle = .fullScreen
-                vc.book = API.books?[indexPath.row]
-                vc.currentIndex = API.books?[indexPath.row].currentIndex ?? 0
-                self.present(vc, animated:true, completion: nil)
+            
+            if (questions.count > 0) {
+                API.currentQuestions = questions
+                if let vc = self.storyboard!.instantiateViewController(identifier: "MainPageViewController") as? MainPageViewController {
+                    //vc.modalPresentationStyle = .overCurrentContext
+                    vc.modalPresentationStyle = .fullScreen
+                    vc.book = API.books?[indexPath.row]
+                    vc.currentIndex = API.books?[indexPath.row].currentIndex ?? 0
+                    self.present(vc, animated:true, completion: nil)
+                }
+            } else {
+                let alert = UIAlertController(title: "오류", message: "정상적으로 불러올 수 없음", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
             }
+            
         }
     }
 
