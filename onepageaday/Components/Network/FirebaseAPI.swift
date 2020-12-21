@@ -9,11 +9,16 @@ import Foundation
 import SwiftyJSON
 import Firebase
 import FirebaseFirestoreSwift
+import FirebaseStorage
 
 class FirebaseAPI {
     
-    private var db = Firestore.firestore()
+    func isFireBaseStorageLink(url: String) -> Bool {
+        return url.starts(with: "https://firebasestorage.googleapis.com")
+    }
     
+    private var db = Firestore.firestore()
+    private var storageRef = Storage.storage().reference()
     //트렌드
     func fetchBooks(with userID: String, completion:@escaping([Book])->Void) {
         db.collection("books").whereField("author", isEqualTo: userID).getDocuments() { (querySnapshot, err) in
@@ -97,6 +102,8 @@ class FirebaseAPI {
     }
     
     func deleteBook(with bookID: String) {
+        //cascade images
+        
         //cascade questions
         db.collection("questions")
             .whereField("book", isEqualTo: bookID)
@@ -119,6 +126,42 @@ class FirebaseAPI {
             else {
                 print("Document successfully removed!")
             }
+        }
+    }
+    
+    //삭제되는 경우는 사용자 드래그, and 책 통째로 삭제!
+    //https://fomaios.tistory.com/entry/Swift-Storage%EC%97%90%EC%84%9C-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EC%97%85%EB%A1%9C%EB%93%9C-%EB%B0%8F-%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%93%9C%ED%95%98%EA%B8%B0
+    func uploadImage(image:UIImage, token: String, completion: @escaping((String)->Void)) {
+        let data = image.jpegData(compressionQuality: 0.2)!
+        let metadata = StorageMetadata()
+        metadata.contentType = "image/jpeg"
+            
+        let storeImage = storageRef.child("images").child(token)
+        storeImage.putData(data, metadata: metadata) { (metadata, err) in
+            if let error = err {
+                print(error.localizedDescription)
+            } else {
+                storeImage.downloadURL { (url, err) in
+                    if let error = err {
+                        print(error.localizedDescription)
+                    } else {
+                        if let url = url?.absoluteString {
+                            completion(url)
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    func deleteImage(token:String) {
+        let desertRef = storageRef.child("images").child(token)
+
+        // Delete the file
+        desertRef.delete { error in
+          if let error = error {
+            print(error.localizedDescription)
+          }
         }
     }
 }

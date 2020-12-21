@@ -108,9 +108,11 @@ class BookSelectingViewController: UIViewController, SkeletonCollectionViewDeleg
             let alert = UIAlertController(title: "\(API.books?[currentPage].title ?? "") 을(를) 삭제하시겠습니까?", message:  nil, preferredStyle: .actionSheet)
 
             alert.addAction(UIAlertAction(title: "삭제", style: .destructive, handler: { _ in
+                
                 API.firebase.deleteBook(with: API.books?[self.currentPage].id ?? "")
                 API.books?.remove(at: self.currentPage)
                 let indexPath = IndexPath(item: self.currentPage, section: 0)
+                
                 self.collectionView.performBatchUpdates({
                     self.collectionView.deleteItems(at:[indexPath])
                 }, completion:{ [weak self] _ in

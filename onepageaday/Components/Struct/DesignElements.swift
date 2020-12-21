@@ -38,12 +38,16 @@ struct ImageViewData: Codable {
     
     var token:String
     
-    init(center: CGPoint, angle:CGFloat, scale: CGFloat, imageURL: String) {
+    init(center: CGPoint, angle:CGFloat, scale: CGFloat, imageURL: String, token:String="") {
         self.center = center
         self.angle = angle
         self.scale = scale
         self.imageURL = imageURL
-        self.token = UUID().uuidString
+        if (token.isEmpty) {
+            self.token = UUID().uuidString
+        } else {
+            self.token = token
+        }
 
     }
     

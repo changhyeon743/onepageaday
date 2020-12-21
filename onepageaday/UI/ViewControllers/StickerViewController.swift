@@ -105,7 +105,7 @@ extension StickerViewController: UICollectionViewDelegate, UICollectionViewDataS
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let url = items_forParent?[indexPath.row] {
-            self.parentDelegate?.insertSticker(url: url)
+            self.parentDelegate?.insertSticker(url: url, token: UUID().uuidString)
             
             self.dismiss(animated: true, completion: nil)
         }

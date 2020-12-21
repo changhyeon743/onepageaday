@@ -30,7 +30,7 @@ protocol MainViewControllerDelegate: class {
     func dragEnd(textView: EditableTextView, touchPos: CGPoint)
     func dragEnd(imageView: EditableImageView, touchPos: CGPoint)
     
-    func insertSticker(url: String)
+    func insertSticker(url: String,token:String)
 }
 
 class MainViewController: UIViewController {
@@ -91,8 +91,12 @@ class MainViewController: UIViewController {
     
     //로컬 변수 업데이트시 static에 적용 (구조 수정 필요)
     private var currentQuestion:Question?
-    
+    let imagePicker = UIImagePickerController()
+
     private weak var pageControllerDelegate:MainPageViewControllerDelegate?
+    
+    //ImagePicker
+    
     
     deinit {
         print("MainViewController deinit")
@@ -115,6 +119,10 @@ class MainViewController: UIViewController {
     
     //MARK: setUI
     func setUI() {
+        //Image Picker
+        self.imagePicker.sourceType = .photoLibrary // 앨범에서 가져옴
+        self.imagePicker.allowsEditing = true // 수정 가능 여부
+        self.imagePicker.delegate = self // picker delegate
         
         //BackGround ColorWell UI Setting
         colorWell.title = "배경색"
@@ -247,7 +255,10 @@ class MainViewController: UIViewController {
                                             }
                                        }),
                                         UIAction(title: "사진", image: UIImage(systemName: "photo.on.rectangle.angled"), handler: { [weak self] _ in
-                                            print("사진")
+                                            if let picker = self?.imagePicker {
+                                                self?.present(picker, animated: true, completion: nil)
+                                            }
+                                            
                                        }),
                                        
                                        ])
@@ -341,11 +352,13 @@ extension MainViewController: PKCanvasViewDelegate {
 
 //MARK: 스티커 관련 함수들
 extension MainViewController: MainViewControllerDelegate {
-    func insertSticker(url: String) {
-        let imageView = self.makeImageView(imageViewData: ImageViewData(center: CGPoint(x: self.view.center.x.reverseAdjusted, y: self.view.center.y.reverseAdjustedHeight), angle: 0, scale: 1.3, imageURL: url))
+    func insertSticker(url: String,token:String = "") {
+        let data = ImageViewData(center: CGPoint(x: self.view.center.x.reverseAdjusted, y: self.view.center.y.reverseAdjustedHeight), angle: 0, scale: 1.3, imageURL: url, token: token)
+        let imageView = self.makeImageView(imageViewData: data)
         
         self.currentQuestion?.imageViewDatas.append(imageView.imageViewData)
         self.view.addSubview(imageView)
+        self.view.bringSubviewToFront(imageView)
     }
     
     @IBAction func imageButtonPressed(_ sender: Any) {
@@ -422,6 +435,32 @@ extension MainViewController {
     }
 }
 
+//MARK: 이미지관련함수
+extension MainViewController: UIImagePickerControllerDelegate,UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+            
+            if let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+                //token create
+                let token = UUID().uuidString
+                
+                //Firebase upload
+                API.firebase.uploadImage(image: image, token: token) { (url) in
+                    print(url)
+                    self.insertSticker(url: url, token: token)
+                }
+                
+                //url create
+                
+                //insertSticker
+                
+            }
+            
+        
+            picker.dismiss(animated: true, completion: nil) // picker를 닫아줌
+            
+    }
+}
+
 
 //MARK: DELEGATE ( 뷰와의 상호작용 )
 extension MainViewController {
@@ -460,6 +499,11 @@ extension MainViewController {
                 currentQuestion?.imageViewDatas.remove(at: index )
                 imageView.removeFromSuperview()
             }
+        }
+        
+        //Storage일 경우 이미지 삭제 필요
+        if (API.firebase.isFireBaseStorageLink(url: imageView.imageViewData.imageURL)) {
+            API.firebase.deleteImage(token: imageView.imageViewData.token)
         }
         
         self.trashView.fadeOut()
@@ -583,6 +627,8 @@ extension MainViewController {
         gradientLayer.isHidden = false
 
     }
+    
+    
 }
 
 

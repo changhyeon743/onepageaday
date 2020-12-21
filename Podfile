@@ -7,6 +7,7 @@ target 'onepageaday' do
   
   # Pods for onepageaday
   pod 'Firebase/Auth'
+  pod 'Firebase/Storage'
   pod 'Firebase/Firestore'
   pod 'Kingfisher', '~> 5.0'
   pod 'Alamofire'
