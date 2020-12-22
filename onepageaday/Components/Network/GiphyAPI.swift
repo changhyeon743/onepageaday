@@ -20,6 +20,16 @@ class GiphyAPI {
         KingfisherManager.shared.downloader.downloadTimeout = 60
     }
     
+    
+    func getStillURL(from url: String) -> String{
+        var complete_url = url
+        if let dotRange = url.range(of: ".gif") {
+            complete_url.removeSubrange(dotRange.lowerBound..<complete_url.endIndex)
+            complete_url.append("_s.gif")
+        }
+        return complete_url
+    }
+    
     //트렌드
     func getTrendContents(mode:GiphyMode ,completion:@escaping(JSON)->Void) {
         let parameters = [

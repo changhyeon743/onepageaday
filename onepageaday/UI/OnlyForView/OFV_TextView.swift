@@ -22,10 +22,19 @@ class OFV_TextView: UITextView {
         self.center = textViewData.center
         self.transform = self.transform.scaledBy(x: textViewData.scale, y: textViewData.scale).rotated(by: textViewData.angle)
         
-        self.textColor = UIColor.label
+        setColor()
         self.backgroundColor = .none
         self.font = UIFont.systemFont(ofSize: 40)
-        self.textAlignment = .center
+        setAlignment()
+        
+    }
+    
+    func setColor() {
+        self.textColor = UIColor(textViewData.textColor)
+    }
+    
+    func setAlignment() {
+        self.textAlignment = NSTextAlignment.init(rawValue: textViewData.alignment.rawValue) ?? .center
         
     }
     

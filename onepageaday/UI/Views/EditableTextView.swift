@@ -32,7 +32,6 @@ class EditableTextView: UITextView {
         addGestures()
         
         //UI..
-        self.textColor = UIColor(textViewData.textColor)
 //        print(parentView.backgroundColor?.toHexString())
 //        if (parentView.backgroundColor?.isLight() ?? true) {
 //            self.textColor = .black
@@ -56,20 +55,30 @@ class EditableTextView: UITextView {
         toolbar.barStyle = .default
         //appearance 변경해야 해서 메모리에 저장
         toolbar.items = [
-        UIBarButtonItem(image: UIImage(systemName: "text.alignleft"), style: .plain, target: self, action: #selector(align)),
-        UIBarButtonItem(image: UIImage(systemName: "paintpalette"), style: .plain, target: self, action: #selector(color)),
+            UIBarButtonItem(image: UIImage(systemName: "text.alignleft"), style: .plain, target: self, action: #selector(align)),
         UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
-        UIBarButtonItem(title: "완료", style: .plain, target: self, action: #selector(done))]
+
+            ]
+        
+        let colors = ["ffffff","e74c3c","#e67e22","#f1c40f","#2ecc71","#3498db","#9b59b6","000000"]
+        colors.forEach {
+            let item = UIBarButtonItem(image: UIImage(systemName: "circle.fill"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(color(_:)))
+            item.tintColor = UIColor($0)
+            toolbar.items?.append(item)
+        }
+        
         toolbar.sizeToFit()
         self.inputAccessoryView = toolbar
 
         //TextAlignment ( 변수 사용할 게 많아서 마지막에 호출 )
         setAlignment()
-        
+        setColor()
         self.layoutIfNeeded()
     }
-    @objc func color() {
-        
+    @objc func color(_ sender: UIBarButtonItem) {
+        print(sender.tintColor)
+        self.textViewData.textColor = sender.tintColor?.toHexString() ?? "000000"
+        setColor()
     }
     @objc func align() {
         if self.textViewData.alignment == .left {
@@ -83,9 +92,11 @@ class EditableTextView: UITextView {
         self.parentDelegate?.textViewUpdated(textViewData: self.textViewData)
 
     }
-    @objc func done() {
-        self.weakParentView?.endEditing(true)
+    
+    func setColor() {
+        self.textColor = UIColor(textViewData.textColor)
     }
+    
     func setAlignment() {
         self.textAlignment = NSTextAlignment.init(rawValue: textViewData.alignment.rawValue) ?? .center
         if self.textViewData.alignment == .left {

@@ -103,6 +103,7 @@ class MainViewController: UIViewController {
         print("MainViewController deinit")
     }
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -113,6 +114,7 @@ class MainViewController: UIViewController {
         //편집 모드 진입을 위한 제스처
         let touchRecognizer = UITapGestureRecognizer(target: self, action: #selector(touchRecognized(_:)))
         self.view.addGestureRecognizer(touchRecognizer)
+        
         
     }
     
@@ -317,13 +319,19 @@ class MainViewController: UIViewController {
             //텍스트 한 개도 없을 경우?
             
             //print(currentQuestion?.textViewDatas)
-//            if currentQuestion?.textViewDatas.count == 0 {
-//                let editableTextView = makeEditableTextView(textViewData: TextViewData(center: CGPoint(x: self.view.bounds.width/2, y: self.view.bounds.height/2), angle: 0, scale: 1, text: "") )
-//                self.view.addSubview(editableTextView)
-//                editableTextView.becomeFirstResponder()
-//
-//                currentQuestion?.textViewDatas.append(editableTextView.textViewData)
-//            }
+            if currentQuestion?.textViewDatas.count == 0 {
+                addTextViewButtonPressed()
+            } else {
+                //TEST
+                
+                let vc = OFV_MainViewController()
+                vc.setValues(question: currentQuestion)
+                
+                if let bg = currentQuestion?.backGroundColor {
+                    vc.view.backgroundColor = UIColor(bg)
+                }
+                present(vc, animated: true, completion: nil)
+            }
             
         }
     }

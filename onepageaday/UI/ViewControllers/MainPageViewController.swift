@@ -7,6 +7,7 @@
 
 import UIKit
 import Kingfisher
+import FirebaseFirestore
 
 protocol MainPageViewControllerDelegate: class{
     func stopScroll()
@@ -102,7 +103,6 @@ class MainPageViewController: UIPageViewController,UIPageViewControllerDelegate,
             if API.currentQuestions.count >= 1 {
                 controller.currentIndex = index
                 controller.setValues(question: API.currentQuestions[index],bookID: book?.id, delegate: self)
-                
                 
                 if let bg = API.currentQuestions[index].backGroundColor {
                     controller.view.backgroundColor = UIColor(bg)

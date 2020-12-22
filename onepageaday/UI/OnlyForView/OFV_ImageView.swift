@@ -21,9 +21,10 @@ class OFV_ImageView: UIImageView {
         
         self.transform = self.transform.scaledBy(x: imageViewData.scale, y: imageViewData.scale).rotated(by: imageViewData.angle)
         
-        if let url = URL(string: imageViewData.imageURL) {
+        if let url = URL(string: API.giphyApi.getStillURL(from: imageViewData.imageURL)) {
             self.kf.indicatorType = .activity
             self.kf.setImage(with: url, options: [.transition(ImageTransition.fade(0.5))])
+            
         }
         
         

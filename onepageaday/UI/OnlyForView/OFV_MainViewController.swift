@@ -24,13 +24,14 @@ class OFV_MainViewController: UIViewController, PKCanvasViewDelegate {
     //
     override func viewDidLoad() {
         super.viewDidLoad()
-        indexLabel = UILabel(frame: CGRect.zero)
-        questionLabel = UILabel(frame: CGRect.zero)
-        indexLabel.textColor = .black
-        questionLabel.textColor = .black
+        indexLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 100))
+        questionLabel = UILabel(frame: CGRect(x: 0, y: 100, width: 200, height: 100))
+        
         
         indexLabel.font = UIFont.systemFont(ofSize: 35, weight: .bold)
         questionLabel.font = UIFont.systemFont(ofSize: 20, weight: .bold)
+        indexLabel.textAlignment = .center
+        questionLabel.textAlignment = .center
         
         self.view.addSubview(indexLabel)
         self.view.addSubview(questionLabel)
@@ -41,17 +42,33 @@ class OFV_MainViewController: UIViewController, PKCanvasViewDelegate {
             questionLabel.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: 12),
             questionLabel.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 12),
             questionLabel.topAnchor.constraint(equalTo: indexLabel.bottomAnchor, constant: 10)
-            
         ])
+        indexLabel.translatesAutoresizingMaskIntoConstraints = false
+        questionLabel.translatesAutoresizingMaskIntoConstraints = false
         
+        setQuestionText()
+        setUI()
+        // Do any additional setup after loading the view.
+    }
+    
+    func setQuestionText() {
+        //Question, text set
         if let question = currentQuestion {
             indexLabel.text =
                 String(format: "%03d", question.index+1)
             questionLabel.text = question.text
+            guard let color = UIColor(self.currentQuestion?.backGroundColor ?? defaultColor) else {return}
+            UIView.animate(withDuration: 0.2) { [self] in
+                if (color.isLight() == true) {
+                    indexLabel.textColor = .black
+                    questionLabel.textColor = .black
+                } else {
+                    indexLabel.textColor = .white
+                    questionLabel.textColor = .white
+                }
+            }
+            
         }
-        
-        setUI()
-        // Do any additional setup after loading the view.
     }
     
     func setUI() {
@@ -70,7 +87,8 @@ class OFV_MainViewController: UIViewController, PKCanvasViewDelegate {
         self.drawingView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         self.drawingView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
         self.drawingView.translatesAutoresizingMaskIntoConstraints = false
-
+        self.drawingView.drawing =  (try? PKDrawing.init(base64Encoded: self.currentQuestion?.drawings ?? "")) ?? PKDrawing()
+        
         createViewsWithData()
         
     }
