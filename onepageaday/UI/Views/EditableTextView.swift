@@ -44,9 +44,8 @@ class EditableTextView: UITextView {
         //End..
         
         self.textViewData = textViewData
-        self.text = textViewData.text
         self.center = CGPoint(x: textViewData.center.x.adjusted, y: textViewData.center.y.adjustedHeight)
-        self.transform = self.transform.scaledBy(x: textViewData.scale, y: textViewData.scale).rotated(by: textViewData.angle)
+        self.transform = self.transform.scaledBy(x: textViewData.scale.adjusted, y: textViewData.scale.adjusted).rotated(by: textViewData.angle)
         
         
         
@@ -74,6 +73,9 @@ class EditableTextView: UITextView {
         setAlignment()
         setColor()
         self.layoutIfNeeded()
+        
+        self.text = textViewData.text
+
     }
     @objc func color(_ sender: UIBarButtonItem) {
         print(sender.tintColor)
@@ -139,7 +141,7 @@ class EditableTextView: UITextView {
     func updateTextViewTransform() {
         self.textViewData.center = CGPoint(x: self.center.x.reverseAdjusted, y: self.center.y.reverseAdjustedHeight)
         self.textViewData.angle = atan2(self.transform.b, self.transform.a)
-        self.textViewData.scale = scale(from: self.transform)
+        self.textViewData.scale = scale(from: self.transform).reverseAdjusted
     }
     
     func updateTextViewString() {

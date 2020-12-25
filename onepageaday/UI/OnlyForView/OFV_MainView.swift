@@ -11,7 +11,7 @@ import PencilKit
 
 ///OFV = Only For View , 메모리 누수 최소화 목표위해 코드 재작성. touch Recognizer 등등 배제
 //시간 되면 다시 만들기..!
-class OFV_MainViewController: UIViewController, PKCanvasViewDelegate {
+class OFV_MainView: UIView, PKCanvasViewDelegate {
 
     private var currentQuestion:Question?
     
@@ -22,34 +22,42 @@ class OFV_MainViewController: UIViewController, PKCanvasViewDelegate {
     private var questionLabel: UILabel!
     
     //
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        indexLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 100))
-        questionLabel = UILabel(frame: CGRect(x: 0, y: 100, width: 200, height: 100))
+    
+    init(frame: CGRect, currentQuestion: Question) {
+        super.init(frame: frame)
+        self.currentQuestion = currentQuestion
+        
+        indexLabel = UILabel(frame: CGRect(x: 0, y: 0, width: Constant.OFV.cellWidth, height: 100))
+        questionLabel = UILabel(frame: CGRect(x: 0, y: 100, width: Constant.OFV.cellWidth, height: 100))
         
         
-        indexLabel.font = UIFont.systemFont(ofSize: 35, weight: .bold)
-        questionLabel.font = UIFont.systemFont(ofSize: 20, weight: .bold)
+        indexLabel.font = UIFont.systemFont(ofSize: 35 / Constant.OFV.magnification, weight: .bold)
+        questionLabel.font = UIFont.systemFont(ofSize: 20 / Constant.OFV.magnification, weight: .bold)
+        questionLabel.numberOfLines = 0
         indexLabel.textAlignment = .center
         questionLabel.textAlignment = .center
         
-        self.view.addSubview(indexLabel)
-        self.view.addSubview(questionLabel)
+        self.addSubview(indexLabel)
+        self.addSubview(questionLabel)
         NSLayoutConstraint.activate([
-            indexLabel.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: 12),
-            indexLabel.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 12),
-            indexLabel.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 169),
-            questionLabel.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: 12),
-            questionLabel.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 12),
-            questionLabel.topAnchor.constraint(equalTo: indexLabel.bottomAnchor, constant: 10)
+            indexLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -12 / Constant.OFV.magnification),
+            indexLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 12 / Constant.OFV.magnification),
+            indexLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 120 / Constant.OFV.magnification),
+            questionLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -12 / Constant.OFV.magnification),
+            questionLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 12 / Constant.OFV.magnification),
+            questionLabel.topAnchor.constraint(equalTo: indexLabel.bottomAnchor, constant: 10 / Constant.OFV.magnification)
         ])
         indexLabel.translatesAutoresizingMaskIntoConstraints = false
         questionLabel.translatesAutoresizingMaskIntoConstraints = false
-        
         setQuestionText()
         setUI()
-        // Do any additional setup after loading the view.
+        
     }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     
     func setQuestionText() {
         //Question, text set
@@ -72,7 +80,7 @@ class OFV_MainViewController: UIViewController, PKCanvasViewDelegate {
     }
     
     func setUI() {
-        self.view.clipsToBounds = true
+        self.clipsToBounds = true
         
         self.drawingView = PKCanvasView(frame: CGRect.zero)
         self.drawingView.delegate = self
@@ -80,12 +88,12 @@ class OFV_MainViewController: UIViewController, PKCanvasViewDelegate {
         self.drawingView.drawingPolicy = .anyInput
         self.drawingView.backgroundColor = .clear
         self.drawingView.isUserInteractionEnabled = false
-        self.view.addSubview(drawingView)
-        self.drawingView.transform = CGAffineTransform(scaleX: Device.ratio, y: Device.ratioHeight)
+        self.addSubview(drawingView)
+        self.drawingView.transform = CGAffineTransform(scaleX: 1 / Constant.OFV.magnification, y: 1 / Constant.OFV.magnification)
         self.drawingView.widthAnchor.constraint(equalToConstant: Device.base).isActive = true
         self.drawingView.heightAnchor.constraint(equalToConstant: Device.baseHeight).isActive = true
-        self.drawingView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        self.drawingView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
+        self.drawingView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        self.drawingView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
         self.drawingView.translatesAutoresizingMaskIntoConstraints = false
         self.drawingView.drawing =  (try? PKDrawing.init(base64Encoded: self.currentQuestion?.drawings ?? "")) ?? PKDrawing()
         
@@ -100,20 +108,23 @@ class OFV_MainViewController: UIViewController, PKCanvasViewDelegate {
     func createViewsWithData() {
         //텍스트
         currentQuestion?.textViewDatas.forEach{
-            self.view.addSubview(makeOFVTextView(textViewData: $0))
+            let tv = makeOFVTextView(textViewData: $0)
+            
+            self.addSubview(tv)
             
         }
         
         //이미지
         currentQuestion?.imageViewDatas.forEach{
-            self.view.addSubview(makeOFVImageView(imageViewData: $0))
+            self.addSubview(makeOFVImageView(imageViewData: $0))
         }
         
     }
     
     func makeOFVTextView(textViewData: TextViewData) -> OFV_TextView {
-        let textView = OFV_TextView(frame: CGRect(x: self.view.center.x-self.view.bounds.width/2, y: self.view.center.y-50, width: self.view.bounds.width, height: 100), textContainer: nil, textViewData: textViewData)
         
+        
+        let textView = OFV_TextView(frame: CGRect(x: 0, y: 0, width: Constant.OFV.cellWidth, height: Constant.Design.textViewHeight / Constant.OFV.magnification), textContainer: nil, textViewData: textViewData)
         
         
         return textView
@@ -122,8 +133,9 @@ class OFV_MainViewController: UIViewController, PKCanvasViewDelegate {
     }
     
     func makeOFVImageView(imageViewData: ImageViewData) -> OFV_ImageView {
+        
         let imageView = OFV_ImageView(
-            frame: CGRect(x: self.view.center.x-50, y: self.view.center.y-50, width: 100, height: 100),
+            frame: CGRect(x: self.center.x-50, y: self.center.y-50, width: Constant.Design.imageViewWidth, height: Constant.Design.imageViewHeight),
             imageViewData: imageViewData)
         
         return imageView

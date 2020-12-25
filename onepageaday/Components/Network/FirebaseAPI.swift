@@ -40,7 +40,38 @@ class FirebaseAPI {
     //1. Question 전부 fetch
     //2. Question 일부만 fetch
     //3. 실시간 fetch
+    //Cache first Server last
     func fetchQuestions(with bookID: String ,completion:@escaping([Question])->Void){
+        db
+            .collection("books/\(bookID)/questions")
+            .order(by: "index")
+            .getDocuments(source: .cache) { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                if let query = querySnapshot {
+                    
+                    let questions = query.documents.compactMap { (question) -> Question? in
+                        do {
+                            return try question.data(as: Question.self)
+                        } catch {
+                            print(error.localizedDescription)
+                            
+                        }
+                        return nil
+                    }
+                    if (questions.count == 0) {
+                        self.fetchQuestionsWithServer(with: bookID) { (questions_) in
+                            completion(questions_)
+                        }
+                    } else {
+                        completion(questions)
+                    }
+                }
+            }
+        }
+    }
+    func fetchQuestionsWithServer(with bookID: String ,completion:@escaping([Question])->Void){
         db
             .collection("books/\(bookID)/questions")
             .order(by: "index")

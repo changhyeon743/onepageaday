@@ -48,18 +48,29 @@ class StickerViewController: UIViewController,UISearchBarDelegate {
                 self.items = json["data"].arrayValue.map{$0["images"]["preview_gif"]["url"].stringValue}
                 self.items_forParent = json["data"].arrayValue.map{$0["images"]["fixed_width"]["url"].stringValue}
 
-                self.collectionView.reloadData()
+                self.collectionView.performBatchUpdates({
+                    let indexSet = IndexSet(integersIn: 0...0)
+                    self.collectionView.reloadSections(indexSet)
+                }, completion: nil)
             }
         } else {
             API.giphyApi.search(with: searchBar.text!, mode: mode) { (json) in
+                print(json["data"].arrayValue)
                 self.items = json["data"].arrayValue.map{$0["images"]["preview_gif"]["url"].stringValue}
                 self.items_forParent = json["data"].arrayValue.map{$0["images"]["fixed_width"]["url"].stringValue}
+                
+                self.collectionView.performBatchUpdates({
+                    let indexSet = IndexSet(integersIn: 0...0)
+                    self.collectionView.reloadSections(indexSet)
+                }, completion: nil)
             }
         }
-        
+        print(searchText)
     }
     
-    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.view.endEditing(true)
+    }
     
 
 }
@@ -109,4 +120,5 @@ extension StickerViewController: UICollectionViewDelegate, UICollectionViewDataS
             self.dismiss(animated: true, completion: nil)
         }
     }
+    
 }

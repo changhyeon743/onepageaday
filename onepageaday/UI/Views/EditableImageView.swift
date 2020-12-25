@@ -26,7 +26,7 @@ class EditableImageView: AnimatedImageView {
         //ADJUSTED!!
         self.center = CGPoint(x: imageViewData.center.x.adjusted, y: imageViewData.center.y.adjustedHeight)
         
-        self.transform = self.transform.scaledBy(x: imageViewData.scale, y: imageViewData.scale).rotated(by: imageViewData.angle)
+        self.transform = self.transform.scaledBy(x: imageViewData.scale.adjusted, y: imageViewData.scale.adjusted).rotated(by: imageViewData.angle)
         
         if let url = URL(string: imageViewData.imageURL) {
             self.kf.indicatorType = .activity
@@ -74,7 +74,7 @@ class EditableImageView: AnimatedImageView {
     func updateImageViewTransform() {
         self.imageViewData.center = CGPoint(x: self.center.x.reverseAdjusted, y: self.center.y.reverseAdjustedHeight)
         self.imageViewData.angle = atan2(self.transform.b, self.transform.a)
-        self.imageViewData.scale = scale(from: self.transform)
+        self.imageViewData.scale = scale(from: self.transform).reverseAdjusted
     }
     
     

@@ -17,9 +17,11 @@ class OFV_ImageView: UIImageView {
         
         self.imageViewData = imageViewData
         //ADJUSTED!!
-        self.center = imageViewData.center
         
-        self.transform = self.transform.scaledBy(x: imageViewData.scale, y: imageViewData.scale).rotated(by: imageViewData.angle)
+        //현재 좌표는 iPhone6
+        self.center = CGPoint(x: imageViewData.center.x / Constant.OFV.magnification, y: imageViewData.center.y / Constant.OFV.magnification)
+        
+        self.transform = self.transform.scaledBy(x: imageViewData.scale / Constant.OFV.magnification, y: imageViewData.scale / Constant.OFV.magnification).rotated(by: imageViewData.angle)
         
         if let url = URL(string: API.giphyApi.getStillURL(from: imageViewData.imageURL)) {
             self.kf.indicatorType = .activity

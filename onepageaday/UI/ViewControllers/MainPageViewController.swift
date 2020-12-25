@@ -13,6 +13,8 @@ protocol MainPageViewControllerDelegate: class{
     func stopScroll()
     func startScroll()
     
+    func setViewControllerIndex(index:Int)
+    
     //DrawingView UI Problem FIX
 }
 
@@ -119,11 +121,9 @@ class MainPageViewController: UIPageViewController,UIPageViewControllerDelegate,
         return UIViewController()
     }
     
-    var tempCurrentIndex = 0
     
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
         if (completed && finished) {
-            //오른으로 움직였는가?
             if let vc = pageViewController.viewControllers?.first as? MainViewController {
                 book?.currentIndex = vc.currentIndex
             }
@@ -146,7 +146,13 @@ class MainPageViewController: UIPageViewController,UIPageViewControllerDelegate,
         panGesture.isEnabled = true
     }
     
-    
+    func setViewControllerIndex(index: Int) {
+        self.currentIndex = index
+        book?.currentIndex = currentIndex
+        self.setViewControllers([createViewController(currentIndex)], direction: .forward, animated: false, completion: nil)
+        startScroll()
+
+    }
     
     deinit {
         //메모리 누수 방지

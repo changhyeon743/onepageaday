@@ -18,24 +18,35 @@ class OFV_TextView: UITextView {
         self.isScrollEnabled = false
         
         self.textViewData = textViewData
-        self.text = textViewData.text
-        self.center = textViewData.center
-        self.transform = self.transform.scaledBy(x: textViewData.scale, y: textViewData.scale).rotated(by: textViewData.angle)
         
-        setColor()
-        self.backgroundColor = .none
-        self.font = UIFont.systemFont(ofSize: 40)
+        
+        self.center = CGPoint(x: textViewData.center.x / Constant.OFV.magnification, y: textViewData.center.y / Constant.OFV.magnification)
+
+        self.transform = self.transform.scaledBy(x: textViewData.scale / Constant.OFV.magnification, y: textViewData.scale / Constant.OFV.magnification).rotated(by: textViewData.angle)
+        
+        self.backgroundColor = .gray
+        self.font = UIFont.systemFont(ofSize: 40 / Constant.OFV.magnification)
+       
+        //TextAlignment ( 변수 사용할 게 많아서 마지막에 호출 )
         setAlignment()
+        setColor()
+        self.layoutIfNeeded()
+        
+        //First Alignment Last text!!
+        self.text = textViewData.text
         
     }
+    
+    
     
     func setColor() {
         self.textColor = UIColor(textViewData.textColor)
     }
+    //addsubview 이후에 해야됨!
     
     func setAlignment() {
         self.textAlignment = NSTextAlignment.init(rawValue: textViewData.alignment.rawValue) ?? .center
-        
+        print("\(self.textViewData.text) / \(self.textAlignment.rawValue)")
     }
     
     required init?(coder: NSCoder) {

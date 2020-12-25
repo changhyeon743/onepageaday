@@ -35,7 +35,7 @@
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="나를 소개해주세요." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ZHl-kh-jhh">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="나를 소개해주세요." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ZHl-kh-jhh">
                                 <rect key="frame" x="12" y="221" width="390" height="24"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -139,6 +139,7 @@
                         <outlet property="startDrawButton" destination="bYd-7h-GZ2" id="nON-xu-6Ur"/>
                         <outlet property="trashView" destination="1bs-2B-rdB" id="P0s-Yc-Z0l"/>
                         <segue destination="S4R-It-jvd" kind="show" id="QJM-iT-br7"/>
+                        <segue destination="hGF-Xd-Arq" kind="show" id="307-zh-CdG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -463,6 +464,86 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZQj-kd-lpc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1155" y="-856"/>
+        </scene>
+        <!--Index View Controller-->
+        <scene sceneID="aqh-pp-Nh9">
+            <objects>
+                <viewController storyboardIdentifier="OFV_IndexViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="hGF-Xd-Arq" customClass="OFV_IndexViewController" customModule="onepageaday" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="AUG-hb-wey">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="N8i-ZH-e4y" customClass="CollectionView">
+                                <rect key="frame" x="0.0" y="129" width="414" height="713"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="3h6-ts-P6d">
+                                    <size key="itemSize" width="204" height="359"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="4MU-FV-9GH" customClass="OFV_ContainerCollectionViewCell" customModule="onepageaday" customModuleProvider="target">
+                                        <rect key="frame" x="105" y="0.0" width="204" height="359"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="axB-SB-9NB">
+                                            <rect key="frame" x="0.0" y="0.0" width="204" height="359"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="204" height="359"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </collectionViewCell>
+                                </cells>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </collectionView>
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" text="" placeholder="질문 검색" showsScopeBar="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jnO-QB-J3P">
+                                <rect key="frame" x="4" y="26" width="406" height="103"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <scopeButtonTitles>
+                                    <string>모든 질문</string>
+                                    <string>답변이 있는 질문</string>
+                                </scopeButtonTitles>
+                            </searchBar>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AhQ-2i-ZLl">
+                                <rect key="frame" x="160.5" y="9" width="93" height="7"/>
+                                <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="93" id="KBF-po-cns"/>
+                                    <constraint firstAttribute="height" constant="7" id="Mnj-dz-6B9"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="lT2-1Z-Pqa"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="AhQ-2i-ZLl" firstAttribute="top" secondItem="lT2-1Z-Pqa" secondAttribute="top" constant="9" id="2bC-o5-x4R"/>
+                            <constraint firstItem="AhQ-2i-ZLl" firstAttribute="centerX" secondItem="AUG-hb-wey" secondAttribute="centerX" id="Hg5-0q-XP5"/>
+                            <constraint firstItem="jnO-QB-J3P" firstAttribute="leading" secondItem="lT2-1Z-Pqa" secondAttribute="leading" constant="4" id="KRV-5H-d9p"/>
+                            <constraint firstItem="N8i-ZH-e4y" firstAttribute="top" secondItem="jnO-QB-J3P" secondAttribute="bottom" id="TOW-WW-9UY"/>
+                            <constraint firstItem="jnO-QB-J3P" firstAttribute="top" secondItem="lT2-1Z-Pqa" secondAttribute="top" constant="26" id="XgH-Q0-W3B"/>
+                            <constraint firstItem="jnO-QB-J3P" firstAttribute="trailing" secondItem="lT2-1Z-Pqa" secondAttribute="trailing" constant="-4" id="aUy-c3-qET"/>
+                            <constraint firstAttribute="bottom" secondItem="N8i-ZH-e4y" secondAttribute="bottom" id="bFJ-d5-A2w"/>
+                            <constraint firstItem="lT2-1Z-Pqa" firstAttribute="trailing" secondItem="N8i-ZH-e4y" secondAttribute="trailing" id="g8x-Vm-Iuq"/>
+                            <constraint firstItem="N8i-ZH-e4y" firstAttribute="leading" secondItem="lT2-1Z-Pqa" secondAttribute="leading" id="jcC-Gs-alF"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="8vE-TQ-UaU"/>
+                    <connections>
+                        <outlet property="collectionView" destination="N8i-ZH-e4y" id="rbQ-aa-Tde"/>
+                        <outlet property="searchBar" destination="jnO-QB-J3P" id="sG7-Fv-ps9"/>
+                        <outlet property="stickyView" destination="AhQ-2i-ZLl" id="Op5-cx-zat"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vrb-Ea-r3h" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-200.00000000000003" y="585.9375"/>
         </scene>
     </scenes>
     <resources>

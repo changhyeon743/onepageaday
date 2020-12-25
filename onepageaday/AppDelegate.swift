@@ -24,6 +24,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         FirebaseApp.configure()
         
+        //서버에서 파베 중지시키면 중지
+        
+        
         //if nonpro
         //Firestore.firestore().disableNetwork(completion: nil)
         

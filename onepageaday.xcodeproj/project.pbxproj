@@ -13,6 +13,7 @@
 		78075CCD25909D3C00EC9139 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78075CCC25909D3C00EC9139 /* Array.swift */; };
 		782685472587106E00F0A295 /* GiphyAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782685462587106E00F0A295 /* GiphyAPI.swift */; };
 		7826855C2587114E00F0A295 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7826855B2587114E00F0A295 /* API.swift */; };
+		78273C032591C11900805B59 /* OFV_IndexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78273C022591C11900805B59 /* OFV_IndexViewController.swift */; };
 		7840E308257FAA9E009B216B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7840E307257FAA9E009B216B /* AppDelegate.swift */; };
 		7840E30A257FAA9E009B216B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7840E309257FAA9E009B216B /* SceneDelegate.swift */; };
 		7840E30C257FAA9E009B216B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7840E30B257FAA9E009B216B /* MainViewController.swift */; };
@@ -21,6 +22,7 @@
 		7840E314257FAAA7009B216B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7840E312257FAAA7009B216B /* LaunchScreen.storyboard */; };
 		7840E31F257FAAA8009B216B /* onepageadayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7840E31E257FAAA8009B216B /* onepageadayTests.swift */; };
 		7840E32A257FAAA8009B216B /* onepageadayUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7840E329257FAAA8009B216B /* onepageadayUITests.swift */; };
+		784E79272595BB0C0075B51D /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784E79262595BB0C0075B51D /* Constant.swift */; };
 		7853DC772587AAD900600F6A /* ShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7853DC762587AAD900600F6A /* ShopViewController.swift */; };
 		78576E8E257FDEF7006F0B3F /* EditableTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78576E8D257FDEF7006F0B3F /* EditableTextView.swift */; };
 		7861CB26258FA7B50035D29E /* StickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7861CB25258FA7B50035D29E /* StickerCell.swift */; };
@@ -33,7 +35,7 @@
 		78708700258D90A400D454A8 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787086FF258D90A400D454A8 /* Device.swift */; };
 		78708705258DDB3A00D454A8 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78708704258DDB3A00D454A8 /* Date.swift */; };
 		7870870B258F139300D454A8 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7870870A258F139300D454A8 /* UIView.swift */; };
-		7870871D258F1D2600D454A8 /* OFV_MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7870871C258F1D2600D454A8 /* OFV_MainViewController.swift */; };
+		7870871D258F1D2600D454A8 /* OFV_MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7870871C258F1D2600D454A8 /* OFV_MainView.swift */; };
 		78708722258F1FD300D454A8 /* OFV_TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78708721258F1FD300D454A8 /* OFV_TextView.swift */; };
 		7870872A258F20A500D454A8 /* OFV_ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78708729258F20A500D454A8 /* OFV_ImageView.swift */; };
 		7870872F258F369900D454A8 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7870872E258F369900D454A8 /* Color.swift */; };
@@ -48,6 +50,7 @@
 		78E9088E25822B4200944B60 /* MainPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E9088D25822B4200944B60 /* MainPageViewController.swift */; };
 		78E9089F25822F9900944B60 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E9089E25822F9900944B60 /* Question.swift */; };
 		78E908B52582726D00944B60 /* EditableImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E908B42582726D00944B60 /* EditableImageView.swift */; };
+		78EAE0532591C1FE007E79BA /* OFV_ContainerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78EAE0522591C1FE007E79BA /* OFV_ContainerCollectionViewCell.swift */; };
 		78FE241325879E6700E4BE31 /* BookFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FE241225879E6700E4BE31 /* BookFlowLayout.swift */; };
 		78FE24202587A70A00E4BE31 /* ShopCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78FE241F2587A70A00E4BE31 /* ShopCell.xib */; };
 		78FE24252587A89700E4BE31 /* ShopCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FE24242587A89700E4BE31 /* ShopCell.swift */; };
@@ -79,6 +82,7 @@
 		78075CCC25909D3C00EC9139 /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		782685462587106E00F0A295 /* GiphyAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiphyAPI.swift; sourceTree = "<group>"; };
 		7826855B2587114E00F0A295 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		78273C022591C11900805B59 /* OFV_IndexViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OFV_IndexViewController.swift; sourceTree = "<group>"; };
 		7840E304257FAA9E009B216B /* onepageaday.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = onepageaday.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7840E307257FAA9E009B216B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7840E309257FAA9E009B216B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -93,6 +97,7 @@
 		7840E325257FAAA8009B216B /* onepageadayUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = onepageadayUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7840E329257FAAA8009B216B /* onepageadayUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = onepageadayUITests.swift; sourceTree = "<group>"; };
 		7840E32B257FAAA8009B216B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		784E79262595BB0C0075B51D /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		7853DC762587AAD900600F6A /* ShopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopViewController.swift; sourceTree = "<group>"; };
 		78576E8D257FDEF7006F0B3F /* EditableTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableTextView.swift; sourceTree = "<group>"; };
 		7861CB25258FA7B50035D29E /* StickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerCell.swift; sourceTree = "<group>"; };
@@ -106,7 +111,7 @@
 		787086FF258D90A400D454A8 /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		78708704258DDB3A00D454A8 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		7870870A258F139300D454A8 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
-		7870871C258F1D2600D454A8 /* OFV_MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OFV_MainViewController.swift; sourceTree = "<group>"; };
+		7870871C258F1D2600D454A8 /* OFV_MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OFV_MainView.swift; sourceTree = "<group>"; };
 		78708721258F1FD300D454A8 /* OFV_TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OFV_TextView.swift; sourceTree = "<group>"; };
 		78708729258F20A500D454A8 /* OFV_ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OFV_ImageView.swift; sourceTree = "<group>"; };
 		7870872E258F369900D454A8 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
@@ -121,6 +126,7 @@
 		78E9088D25822B4200944B60 /* MainPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageViewController.swift; sourceTree = "<group>"; };
 		78E9089E25822F9900944B60 /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		78E908B42582726D00944B60 /* EditableImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableImageView.swift; sourceTree = "<group>"; };
+		78EAE0522591C1FE007E79BA /* OFV_ContainerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OFV_ContainerCollectionViewCell.swift; sourceTree = "<group>"; };
 		78FE241225879E6700E4BE31 /* BookFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookFlowLayout.swift; sourceTree = "<group>"; };
 		78FE241F2587A70A00E4BE31 /* ShopCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShopCell.xib; sourceTree = "<group>"; };
 		78FE24242587A89700E4BE31 /* ShopCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopCell.swift; sourceTree = "<group>"; };
@@ -250,9 +256,11 @@
 		7870871B258F1D0C00D454A8 /* OnlyForView */ = {
 			isa = PBXGroup;
 			children = (
-				7870871C258F1D2600D454A8 /* OFV_MainViewController.swift */,
+				78273C022591C11900805B59 /* OFV_IndexViewController.swift */,
+				7870871C258F1D2600D454A8 /* OFV_MainView.swift */,
 				78708721258F1FD300D454A8 /* OFV_TextView.swift */,
 				78708729258F20A500D454A8 /* OFV_ImageView.swift */,
+				78EAE0522591C1FE007E79BA /* OFV_ContainerCollectionViewCell.swift */,
 			);
 			path = OnlyForView;
 			sourceTree = "<group>";
@@ -263,6 +271,8 @@
 				78001F6E258B8EEB00102D27 /* Struct */,
 				782685452587105400F0A295 /* Network */,
 				78E908B22582722400944B60 /* Model */,
+				784E79262595BB0C0075B51D /* Constant.swift */,
+				787086FF258D90A400D454A8 /* Device.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -279,7 +289,6 @@
 			isa = PBXGroup;
 			children = (
 				78001F69258B889600102D27 /* PKDrawing.swift */,
-				787086FF258D90A400D454A8 /* Device.swift */,
 				78708704258DDB3A00D454A8 /* Date.swift */,
 				7870870A258F139300D454A8 /* UIView.swift */,
 				7870872E258F369900D454A8 /* Color.swift */,
@@ -596,13 +605,15 @@
 				787086DD258C915100D454A8 /* ShopItem.swift in Sources */,
 				78075CCD25909D3C00EC9139 /* Array.swift in Sources */,
 				787A0464258BD8050018A232 /* BookManager.swift in Sources */,
+				784E79272595BB0C0075B51D /* Constant.swift in Sources */,
 				78576E8E257FDEF7006F0B3F /* EditableTextView.swift in Sources */,
-				7870871D258F1D2600D454A8 /* OFV_MainViewController.swift in Sources */,
+				7870871D258F1D2600D454A8 /* OFV_MainView.swift in Sources */,
 				7861CB2E258FA87D0035D29E /* StickerViewController.swift in Sources */,
 				7863C9C42588596600B5773D /* BookCell.swift in Sources */,
 				78DC817E258B12C700C6C2D3 /* FirebaseAPI.swift in Sources */,
 				7870870B258F139300D454A8 /* UIView.swift in Sources */,
 				782685472587106E00F0A295 /* GiphyAPI.swift in Sources */,
+				78EAE0532591C1FE007E79BA /* OFV_ContainerCollectionViewCell.swift in Sources */,
 				78E9088925820F4400944B60 /* Book.swift in Sources */,
 				78E908B52582726D00944B60 /* EditableImageView.swift in Sources */,
 				7840E308257FAA9E009B216B /* AppDelegate.swift in Sources */,
@@ -618,6 +629,7 @@
 				78E9089F25822F9900944B60 /* Question.swift in Sources */,
 				78A758882581D34B006FAFB1 /* DesignElements.swift in Sources */,
 				7826855C2587114E00F0A295 /* API.swift in Sources */,
+				78273C032591C11900805B59 /* OFV_IndexViewController.swift in Sources */,
 				7870872A258F20A500D454A8 /* OFV_ImageView.swift in Sources */,
 				78DC8179258B0A2600C6C2D3 /* Template.swift in Sources */,
 				7840E30A257FAA9E009B216B /* SceneDelegate.swift in Sources */,

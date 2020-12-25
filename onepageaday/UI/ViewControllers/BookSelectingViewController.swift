@@ -78,7 +78,7 @@ class BookSelectingViewController: UIViewController, SkeletonCollectionViewDeleg
                                         
                                      }),
                                      UIAction(title: "캐시삭제", image: nil, identifier: nil, handler: { _ in
-                                        Firestore.firestore().clearPersistence(completion: nil)
+                                        
                                      })
                                      ])
         // Uncomment the following line to preserve selection between presentations
@@ -109,7 +109,8 @@ class BookSelectingViewController: UIViewController, SkeletonCollectionViewDeleg
 
     @IBAction func trashButtonPressed(_ sender: UIButton) {
         //or?
-        if currentPage < API.books?.count ?? 0 {
+        guard let bookCount = API.books?.count else {return}
+        if currentPage < bookCount && bookCount > 1 {
             let alert = UIAlertController(title: "\(API.books?[currentPage].title ?? "") 을(를) 삭제하시겠습니까?", message:  nil, preferredStyle: .actionSheet)
 
             alert.addAction(UIAlertAction(title: "삭제", style: .destructive, handler: { _ in
@@ -131,6 +132,10 @@ class BookSelectingViewController: UIViewController, SkeletonCollectionViewDeleg
             alert.popoverPresentationController?.sourceView = sender as UIView
 
             self.present(alert, animated: true, completion: nil)
+        } else {
+            let alert = UIAlertController(title: "삭제 실패", message: "1개 이상의 책을 소지하고 있어야합니다.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
+            present(alert, animated: true, completion: nil)
         }
         
     }

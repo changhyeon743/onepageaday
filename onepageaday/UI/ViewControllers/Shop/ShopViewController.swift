@@ -36,7 +36,7 @@ class ShopViewController: UIViewController, SkeletonTableViewDelegate, SkeletonT
         DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
             self.shopItems = [ShopItem(title: "남자에게 물어볼 50 가지 질문",
             detail: "https://psycatgames.com/ko/magazine/conversation-starters/250-questions-to-ask-a-guy/#5",
-            questions: ["기술이 발전하면 가능하다면 태어나려고합니까?",
+            questions: ["기술이 발전하면 \n 가능하다면 태어나려고합니까?",
                "할아버지의 헤어 스타일이나 이름을 원하십니까?",
                "가장 좋아하는 계절은 무엇이며 왜 그렇습니까?",
                "종교가 항상 존재할 것이라고 생각합니까?",

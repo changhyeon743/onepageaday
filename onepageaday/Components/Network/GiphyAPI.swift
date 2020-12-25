@@ -67,8 +67,11 @@ class GiphyAPI {
         Alamofire.request(url,method:.get,parameters:parameters,encoding:URLEncoding.queryString)
             .responseJSON(completionHandler: { (response) in
                 //1. JSON 변환
+                print(response)
                 if let value = response.result.value,response.result.isSuccess {
                     completion(JSON(value))
+                } else {
+                    print(response.error?.localizedDescription)
                 }
             })
     }

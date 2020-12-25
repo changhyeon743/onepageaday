@@ -278,6 +278,7 @@ class MainViewController: UIViewController {
     func createViewsWithData() {
         //텍스트
         currentQuestion?.textViewDatas.forEach{
+            
             self.view.addSubview(makeEditableTextView(textViewData: $0))
             
         }
@@ -319,18 +320,16 @@ class MainViewController: UIViewController {
             //텍스트 한 개도 없을 경우?
             
             //print(currentQuestion?.textViewDatas)
-            if currentQuestion?.textViewDatas.count == 0 {
+            if currentQuestion?.textViewDatas.count == 0 && currentQuestion?.imageViewDatas.count == 0 {
                 addTextViewButtonPressed()
             } else {
                 //TEST
-                
-                let vc = OFV_MainViewController()
-                vc.setValues(question: currentQuestion)
-                
-                if let bg = currentQuestion?.backGroundColor {
-                    vc.view.backgroundColor = UIColor(bg)
+                if let vc = storyboard?.instantiateViewController(withIdentifier: "OFV_IndexViewController") as? OFV_IndexViewController {
+                    vc.pageViewControllerDelegate = self.pageControllerDelegate
+                    present(vc, animated: true, completion: nil)
+
                 }
-                present(vc, animated: true, completion: nil)
+                
             }
             
         }
@@ -387,7 +386,7 @@ extension MainViewController: MainViewControllerDelegate {
     
     func makeImageView(imageViewData: ImageViewData) -> EditableImageView {
         let imageView = EditableImageView(
-            frame: CGRect(x: self.view.center.x-50, y: self.view.center.y-50, width: 100, height: 100),
+            frame: CGRect(x: self.view.center.x-50, y: self.view.center.y-50, width: Constant.Design.imageViewWidth, height: Constant.Design.imageViewHeight),
             parentView: self.view,
             parentDelegate: self, imageViewData: imageViewData)
         
@@ -442,7 +441,7 @@ extension MainViewController {
     }
     
     func makeEditableTextView(textViewData: TextViewData) -> EditableTextView {
-        let textView = EditableTextView(frame: CGRect(x: self.view.center.x-self.view.bounds.width/2, y: self.view.center.y-50, width: self.view.bounds.width, height: 100), textContainer: nil, parentView: self.view, parentDelegate: self, textViewData: textViewData)
+        let textView = EditableTextView(frame: CGRect(x: self.view.center.x-self.view.bounds.width/2, y: self.view.center.y-50, width: self.view.bounds.width, height: Constant.Design.textViewHeight), textContainer: nil, parentView: self.view, parentDelegate: self, textViewData: textViewData)
         
         return textView
         
