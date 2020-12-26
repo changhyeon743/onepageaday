@@ -59,6 +59,17 @@ class StickerViewController: UIViewController,UISearchBarDelegate {
                 self.items = json["data"].arrayValue.map{$0["images"]["preview_gif"]["url"].stringValue}
                 self.items_forParent = json["data"].arrayValue.map{$0["images"]["fixed_width"]["url"].stringValue}
                 
+                if (self.items?.count == 0) {
+                    let view = UIView(frame: CGRect(x: 0, y: 0, width: self.collectionView.bounds.width, height: self.collectionView.bounds.height))
+                    let label = UILabel(frame: CGRect(x: 12, y: 12, width: 100, height: 50))
+                    label.text = "검색결과 없음"
+                    label.textColor = .label
+                    view.addSubview(label)
+                    self.collectionView.backgroundView = view
+                } else {
+                    self.collectionView.backgroundView = nil
+                }
+
                 self.collectionView.performBatchUpdates({
                     let indexSet = IndexSet(integersIn: 0...0)
                     self.collectionView.reloadSections(indexSet)

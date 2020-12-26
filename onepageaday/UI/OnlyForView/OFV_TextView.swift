@@ -7,25 +7,23 @@
 
 import UIKit
 
-class OFV_TextView: UITextView {
+//Use UILabel instead of TextView
+class OFV_TextView: UILabel {
     
     public var textViewData: TextViewData = TextViewData(center: CGPoint.zero, angle: 0, scale: 1, text: "")
     
-    init(frame: CGRect, textContainer: NSTextContainer?, textViewData: TextViewData) {
-        super.init(frame: frame, textContainer: textContainer)
+    init(frame: CGRect, textViewData: TextViewData) {
+        super.init(frame: frame)
         
         self.layer.allowsEdgeAntialiasing = true // iOS7 and above.
-        self.isScrollEnabled = false
-        
         self.textViewData = textViewData
-        
-        
+        self.adjustsFontSizeToFitWidth = true
         self.center = CGPoint(x: textViewData.center.x / Constant.OFV.magnification, y: textViewData.center.y / Constant.OFV.magnification)
 
         self.transform = self.transform.scaledBy(x: textViewData.scale / Constant.OFV.magnification, y: textViewData.scale / Constant.OFV.magnification).rotated(by: textViewData.angle)
         
-        self.backgroundColor = .gray
-        self.font = UIFont.systemFont(ofSize: 40 / Constant.OFV.magnification)
+        self.backgroundColor = .clear
+        self.font = Constant.Design.textViewFont
        
         //TextAlignment ( 변수 사용할 게 많아서 마지막에 호출 )
         setAlignment()

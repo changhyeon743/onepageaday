@@ -14,11 +14,12 @@ protocol MainPageViewControllerDelegate: class{
     func startScroll()
     
     func setViewControllerIndex(index:Int)
-    
+    func dismissAndSave()
     //DrawingView UI Problem FIX
 }
 
 class MainPageViewController: UIPageViewController,UIPageViewControllerDelegate, UIPageViewControllerDataSource,MainPageViewControllerDelegate {
+    
     
     
     var panGesture:UIPanGestureRecognizer!
@@ -35,11 +36,10 @@ class MainPageViewController: UIPageViewController,UIPageViewControllerDelegate,
         
         self.dataSource = self
         self.delegate = self
-                
         self.setViewControllers([createViewController(currentIndex)], direction: .forward, animated: false, completion: nil)
         
         panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(_:)))
-        self.view.addGestureRecognizer(panGesture)
+        //self.view.addGestureRecognizer(panGesture)
         
     }
     
@@ -63,9 +63,7 @@ class MainPageViewController: UIPageViewController,UIPageViewControllerDelegate,
 //                if let index = API.books.firstIndex(where: {$0.id == self.book?.id}) {
 //                    API.books[index].currentIndex = 0
 //                }
-                book?.modifiedDate = Date()
-                API.firebase.updateBook(book: book)
-                dismiss(animated: true, completion: nil)
+                
             }
         default:
             break
@@ -98,7 +96,7 @@ class MainPageViewController: UIPageViewController,UIPageViewControllerDelegate,
 
     func createViewController(_ index: Int) -> UIViewController {
         var randomColor: UIColor {
-            return UIColor(hue: CGFloat(arc4random_uniform(360))/360, saturation: 0.5, brightness: 0.8, alpha: 1)
+            return UIColor(Constant.Design.backGroundColors.randomElement() ?? defaultColor)!
         }
         if let storyboard = self.storyboard {
             let controller = storyboard.instantiateViewController(withIdentifier: "MainViewController") as! MainViewController
@@ -153,6 +151,13 @@ class MainPageViewController: UIPageViewController,UIPageViewControllerDelegate,
         startScroll()
 
     }
+    
+    func dismissAndSave() {
+        book?.modifiedDate = Date()
+        API.firebase.updateBook(book: book)
+        dismiss(animated: true, completion: nil)
+    }
+    
     
     deinit {
         //메모리 누수 방지

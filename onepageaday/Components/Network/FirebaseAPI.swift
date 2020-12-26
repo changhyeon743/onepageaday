@@ -71,6 +71,9 @@ class FirebaseAPI {
             }
         }
     }
+    
+    
+    
     func fetchQuestionsWithServer(with bookID: String ,completion:@escaping([Question])->Void){
         db
             .collection("books/\(bookID)/questions")
@@ -226,7 +229,34 @@ class FirebaseAPI {
         }
     }
     
-    func getQuestionsAt(date: Date) {
+    func fetchQuestionToday(completion:@escaping([Question])->Void) {
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.year, .month, .day], from: Date())
+        let start = calendar.date(from: components)!
+        let end = calendar.date(byAdding: .day, value: 1, to: start)!
         
+        Firestore.firestore().collectionGroup("questions")
+            .whereField("modifiedDate", isGreaterThanOrEqualTo: start)
+            .whereField("modifiedDate", isLessThanOrEqualTo: end)
+            .order(by: "modifiedDate", descending: true)
+            .getDocuments { (queryShapshot, err) in
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                } else {
+                    if let query = queryShapshot {
+                        
+                        let questions = query.documents.compactMap { (question) -> Question? in
+                            do {
+                                return try question.data(as: Question.self)
+                            } catch {
+                                print(error.localizedDescription)
+                                
+                            }
+                            return nil
+                        }
+                        completion(questions)
+                    }
+                }
+        }
     }
 }

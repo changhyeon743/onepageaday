@@ -51,6 +51,7 @@
 		78E9089F25822F9900944B60 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E9089E25822F9900944B60 /* Question.swift */; };
 		78E908B52582726D00944B60 /* EditableImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E908B42582726D00944B60 /* EditableImageView.swift */; };
 		78EAE0532591C1FE007E79BA /* OFV_ContainerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78EAE0522591C1FE007E79BA /* OFV_ContainerCollectionViewCell.swift */; };
+		78EFE36325963B6B0068407F /* ThemeIndexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78EFE36225963B6B0068407F /* ThemeIndexViewController.swift */; };
 		78FE241325879E6700E4BE31 /* BookFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FE241225879E6700E4BE31 /* BookFlowLayout.swift */; };
 		78FE24202587A70A00E4BE31 /* ShopCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78FE241F2587A70A00E4BE31 /* ShopCell.xib */; };
 		78FE24252587A89700E4BE31 /* ShopCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FE24242587A89700E4BE31 /* ShopCell.swift */; };
@@ -127,6 +128,7 @@
 		78E9089E25822F9900944B60 /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		78E908B42582726D00944B60 /* EditableImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableImageView.swift; sourceTree = "<group>"; };
 		78EAE0522591C1FE007E79BA /* OFV_ContainerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OFV_ContainerCollectionViewCell.swift; sourceTree = "<group>"; };
+		78EFE36225963B6B0068407F /* ThemeIndexViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeIndexViewController.swift; sourceTree = "<group>"; };
 		78FE241225879E6700E4BE31 /* BookFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookFlowLayout.swift; sourceTree = "<group>"; };
 		78FE241F2587A70A00E4BE31 /* ShopCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShopCell.xib; sourceTree = "<group>"; };
 		78FE24242587A89700E4BE31 /* ShopCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopCell.swift; sourceTree = "<group>"; };
@@ -350,6 +352,7 @@
 				78E9088D25822B4200944B60 /* MainPageViewController.swift */,
 				7840E30B257FAA9E009B216B /* MainViewController.swift */,
 				7861CB2D258FA87D0035D29E /* StickerViewController.swift */,
+				78EFE36225963B6B0068407F /* ThemeIndexViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -631,6 +634,7 @@
 				7826855C2587114E00F0A295 /* API.swift in Sources */,
 				78273C032591C11900805B59 /* OFV_IndexViewController.swift in Sources */,
 				7870872A258F20A500D454A8 /* OFV_ImageView.swift in Sources */,
+				78EFE36325963B6B0068407F /* ThemeIndexViewController.swift in Sources */,
 				78DC8179258B0A2600C6C2D3 /* Template.swift in Sources */,
 				7840E30A257FAA9E009B216B /* SceneDelegate.swift in Sources */,
 				78708722258F1FD300D454A8 /* OFV_TextView.swift in Sources */,

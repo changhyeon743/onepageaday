@@ -123,8 +123,8 @@ class OFV_MainView: UIView, PKCanvasViewDelegate {
     
     func makeOFVTextView(textViewData: TextViewData) -> OFV_TextView {
         
-        
-        let textView = OFV_TextView(frame: CGRect(x: 0, y: 0, width: Constant.OFV.cellWidth, height: Constant.Design.textViewHeight / Constant.OFV.magnification), textContainer: nil, textViewData: textViewData)
+        //BASE는 기본으로 가져가고 후에 Scale로 조절
+        let textView = OFV_TextView(frame: CGRect(x: 0, y: 0, width: Device.base, height: Constant.Design.textViewHeight / Constant.OFV.magnification), textViewData: textViewData)
         
         
         return textView

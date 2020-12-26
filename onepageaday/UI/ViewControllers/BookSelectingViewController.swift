@@ -77,8 +77,21 @@ class BookSelectingViewController: UIViewController, SkeletonCollectionViewDeleg
                                         }
                                         
                                      }),
-                                     UIAction(title: "캐시삭제", image: nil, identifier: nil, handler: { _ in
+                                     UIAction(title: "sub collection query", image: nil, identifier: nil, handler: { _ in
+                                        let calendar = Calendar.current
+                                        let components = calendar.dateComponents([.year, .month, .day], from: Date())
+                                        let start = calendar.date(from: components)!
+                                        let end = calendar.date(byAdding: .day, value: 1, to: start)!
                                         
+                                        Firestore.firestore().collectionGroup("questions")
+                                            .whereField("modifiedDate", isGreaterThanOrEqualTo: start)
+                                            .whereField("modifiedDate", isLessThanOrEqualTo: end)
+                                            .getDocuments { (snapshot, error) in
+                                                print(error)
+                                                snapshot?.documents.forEach({ (document) in
+                                                    print(document.data())
+                                                })
+                                        }
                                      })
                                      ])
         // Uncomment the following line to preserve selection between presentations

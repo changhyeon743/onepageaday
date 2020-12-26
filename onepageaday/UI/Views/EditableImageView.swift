@@ -61,9 +61,6 @@ class EditableImageView: AnimatedImageView {
         self.addGestureRecognizer(rotate)
         
         
-        let tap = UITapGestureRecognizer.init(target: self, action: #selector(tapRecognized(_:)))
-        tap.delegate = self
-        self.addGestureRecognizer(tap)
     }
     
     
@@ -172,14 +169,6 @@ extension EditableImageView: UIGestureRecognizerDelegate {
 
     }
     
-    @objc func tapRecognized(_ recognizer : UIRotationGestureRecognizer) {
-        if let view = recognizer.view {
-            updateImageViewTransform()
-            self.parentDelegate?.imageViewUpdated(imageViewData: imageViewData)
-
-        }
-
-    }
     
     //MARK:- UIGestureRecognizerDelegate Methods
     func gestureRecognizer(_: UIGestureRecognizer,

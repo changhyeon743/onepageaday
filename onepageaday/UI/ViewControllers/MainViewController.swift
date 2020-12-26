@@ -58,14 +58,19 @@ class MainViewController: UIViewController {
                 //편집모드진입
                 showToast(text: "편집 모드")
                 pageControllerDelegate?.stopScroll()
-                modeToggleButton.setImage(UIImage(systemName: "xmark", withConfiguration: UIImage.SymbolConfiguration(pointSize: 20)), for: .normal)
+                modeToggleButton.setImage(UIImage(systemName: "", withConfiguration: UIImage.SymbolConfiguration(pointSize: 24)), for: .normal)
+                
+                modeToggleButton.setTitle("저장", for: .normal)
+                additionalMenuButton.fadeOut()
                 
             } else {
                 //편집모드종료
                 showToast(text: "보기 모드")
-                modeToggleButton.setImage(nil, for: .normal)
+               
+                modeToggleButton.setImage(UIImage(systemName: "", withConfiguration: UIImage.SymbolConfiguration(pointSize: 24)), for: .normal)
+                modeToggleButton.setTitle("편집", for: .normal)
 
-                
+                additionalMenuButton.fadeIn()
                 pageControllerDelegate?.startScroll()
             }
         }
@@ -87,6 +92,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak var imageButton: UIButton!
     @IBOutlet weak var trashView: UIImageView!
     @IBOutlet weak var colorWell: UIColorWell!
+    @IBOutlet weak var additionalMenuButton: UIButton!
     
     //로컬 변수 업데이트시 static에 적용 (구조 수정 필요)
     private var currentQuestion:Question?
@@ -97,6 +103,8 @@ class MainViewController: UIViewController {
     private weak var pageControllerDelegate:MainPageViewControllerDelegate?
     
     //ImagePicker
+    
+    
     
     
     deinit {
@@ -117,7 +125,10 @@ class MainViewController: UIViewController {
         
         
     }
-    
+    override func viewDidAppear(_ animated: Bool) {
+        //weak
+        setMenus()
+    }
     
     ///생성자라고 생각하면 편함(From MainPageViewController)
     func setValues(question:Question, bookID: String?, delegate: MainPageViewControllerDelegate) {
@@ -156,8 +167,8 @@ class MainViewController: UIViewController {
         gradientLayer.isHidden = true
         
         //뒤로가기 버튼 누르는 범위 늘리기
-        self.modeToggleButton.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 16, right: 16)
-        
+        self.modeToggleButton.contentEdgeInsets = UIEdgeInsets(top: 0, left: 16, bottom: 16, right: 0)
+        self.additionalMenuButton.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 16, right: 16)
         
         //텍스트 관련 UI
         self.darkView = createDarkView()
@@ -172,6 +183,7 @@ class MainViewController: UIViewController {
         
         self.drawingView = PKCanvasView(frame: CGRect.zero)
         self.drawingView.delegate = self
+        self.drawingView.isRulerActive = false
         self.drawingView.alwaysBounceVertical = true
         self.drawingView.drawingPolicy = .anyInput
         self.drawingView.contentInsetAdjustmentBehavior = .never
@@ -266,21 +278,65 @@ class MainViewController: UIViewController {
                                        }),
                                         UIAction(title: "사진", image: UIImage(systemName: "photo.on.rectangle.angled"), handler: { [weak self] _ in
                                             if let picker = self?.imagePicker {
+                                                picker.sourceType = .photoLibrary // 앨범에서 가져옴
                                                 self?.present(picker, animated: true, completion: nil)
                                             }
                                             
                                        }),
+                                        UIAction(title: "카메라", image: UIImage(systemName: "camera"), handler: { [weak self] _ in
+                                        if let picker = self?.imagePicker {
+                                            picker.sourceType = .camera // 앨범에서 가져옴
+                                            self?.present(picker, animated: true, completion: nil)
+                                        }
+                                        
+                                        }),
                                        
                                        ])
+        
+        self.additionalMenuButton.showsMenuAsPrimaryAction = true
+        self.additionalMenuButton.menu = UIMenu(title: "추가 메뉴",
+                                         image: UIImage(systemName: "gear"),
+                                         identifier: nil,
+                                         options: .displayInline,
+                                         children: [UIAction(title: "모아 보기", image: UIImage(systemName: "square.grid.2x2"), handler: { [weak self] _ in
+                                            self?.commitQuestion()
+                                                
+                                            if let vc = self?.storyboard?.instantiateViewController(withIdentifier: "OFV_IndexViewController") as? OFV_IndexViewController {
+                                                vc.pageViewControllerDelegate = self?.pageControllerDelegate
+                                                self?.present(vc, animated: true, completion: nil)
+                                            }
+                                            
+                                         }),
+                                         UIAction(title: "이 질문의 다른 답변 보기", image: UIImage(systemName: "person.2"), identifier: nil, handler: { [weak self] _ in
+                                            API.firebase.fetchQuestionToday { (questions) in
+                                                if let vc = self?.storyboard?.instantiateViewController(withIdentifier: "ThemeIndexViewController") as? ThemeIndexViewController {
+                                                    vc.items = questions
+                                                    let dateFormatter = DateFormatter()
+                                                    dateFormatter.locale = .current
+                                                    dateFormatter.timeZone = .current
+                                                    dateFormatter.dateFormat = "yyyy년 MM월 dd일의 매일력"
+                                                    
+                                                    vc.title = dateFormatter.string(from: Date())
+                                                    self?.present(vc, animated: true, completion: nil)
+                                                }
+                                            }
+                                         }),
+                                         UIAction(title: "답변 삭제", image: UIImage(systemName: "trash"), identifier: nil, handler: {
+                                            [weak self] _ in
+                                            self?.currentQuestion?.textViewDatas = []
+                                            self?.currentQuestion?.imageViewDatas = []
+                                            self?.currentQuestion?.drawings = ""
+                                            self?.commitQuestion()
+                                            self?.pageControllerDelegate?.setViewControllerIndex(index: self?.currentQuestion?.index ?? 0)
+                                         })
+                                         ])
     }
     
     //MARK: currentQuestion 활용하여 데이터 생성
     func createViewsWithData() {
         //텍스트
         currentQuestion?.textViewDatas.forEach{
-            
             self.view.addSubview(makeEditableTextView(textViewData: $0))
-            
         }
         
         //이미지
@@ -291,6 +347,9 @@ class MainViewController: UIViewController {
     }
     
     
+    @IBAction func dismissButtonPressed(_ sender: Any) {
+        
+    }
     //MARK: modeToggle
     
     //편집 모드 토글
@@ -298,41 +357,44 @@ class MainViewController: UIViewController {
         isEditingMode = !isEditingMode
         
         if (!isEditingMode) { //완료버튼 pressed일 경우 저장 시작
+            commitQuestion()
             
-            //local 변경
-            if let index = API.currentQuestions.firstIndex(where: {$0.id == self.currentQuestion?.id}),let question = currentQuestion {
-                API.currentQuestions[index] = question
-            }
-            
-            //network
-            API.firebase.updateQuestion(question: currentQuestion, bookID: currentBookId)
         }
+    }
+    
+    func commitQuestion() {
+        //local 변경
+        if let index = API.currentQuestions.firstIndex(where: {$0.id == self.currentQuestion?.id}),let question = currentQuestion {
+            API.currentQuestions[index] = question
+        }
+        
+        //network
+        API.firebase.updateQuestion(question: currentQuestion, bookID: currentBookId)
     }
     
     //터치로 편집모드진입
     @objc func touchRecognized(_ recognizer: UITapGestureRecognizer) {
-        if (!self.isEditingMode) {
-            self.isEditingMode = true
-        } else { //그리기 모드도 아닐 경우 취소
-//            if (!isDrawing && !isEditingTextView) {
-//                self.isEditingMode = false
-//            }
-            //텍스트 한 개도 없을 경우?
-            
-            //print(currentQuestion?.textViewDatas)
-            if currentQuestion?.textViewDatas.count == 0 && currentQuestion?.imageViewDatas.count == 0 {
-                addTextViewButtonPressed()
-            } else {
-                //TEST
-                if let vc = storyboard?.instantiateViewController(withIdentifier: "OFV_IndexViewController") as? OFV_IndexViewController {
-                    vc.pageViewControllerDelegate = self.pageControllerDelegate
-                    present(vc, animated: true, completion: nil)
-
+        if (recognizer.location(in: self.view).y > 200) {
+            if (!self.isEditingMode) {
+                self.isEditingMode = true
+            } else { //그리기 모드도 아닐 경우 취소
+    //            if (!isDrawing && !isEditingTextView) {
+    //                self.isEditingMode = false
+    //            }
+                //텍스트 한 개도 없을 경우?
+                
+                //print(currentQuestion?.textViewDatas)
+                if currentQuestion?.textViewDatas.count == 0 && currentQuestion?.imageViewDatas.count == 0 {
+                    addTextViewButtonPressed()
+                } else {
+                    //TEST
+                    
+                    
                 }
                 
             }
-            
         }
+        
     }
     
     //그리기 or 텍스트 종료
@@ -355,6 +417,8 @@ class MainViewController: UIViewController {
         }
         setQuestionText()
     }
+    
+    
 }
 
 //MARK: PKCanvas Delegate

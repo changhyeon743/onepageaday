@@ -40,7 +40,7 @@ class EditableTextView: UITextView {
 //        }
         
         self.backgroundColor = .clear
-        self.font = UIFont.systemFont(ofSize: 40)
+        self.font = Constant.Design.textViewFont
         //End..
         
         self.textViewData = textViewData
@@ -59,8 +59,7 @@ class EditableTextView: UITextView {
 
             ]
         
-        let colors = ["ffffff","e74c3c","#e67e22","#f1c40f","#2ecc71","#3498db","#9b59b6","000000"]
-        colors.forEach {
+        Constant.Design.textColors.forEach {
             let item = UIBarButtonItem(image: UIImage(systemName: "circle.fill"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(color(_:)))
             item.tintColor = UIColor($0)
             toolbar.items?.append(item)
