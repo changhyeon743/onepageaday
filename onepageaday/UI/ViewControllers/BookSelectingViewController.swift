@@ -18,10 +18,12 @@ protocol BookSelectingViewControllerDelegate: class {
 }
 
 enum AdditionalItem: Int {
+    case openShop
     case todayBooks
     case buyPro
     case buyRealBook
     
+    static let count = 4
 }
 
 
@@ -45,9 +47,9 @@ class BookSelectingViewController: UIViewController, SkeletonCollectionViewDeleg
         activityIndicator.stopAnimating()
         return activityIndicator }()
     
+    @IBOutlet weak var trashButton: UIButton!
     @IBOutlet weak var collectionView:UICollectionView!
     @IBOutlet weak var settingButton: UIButton!
-    
     var currentPage:Int = 0
     
     override func viewWillAppear(_ animated: Bool) {
@@ -94,7 +96,6 @@ class BookSelectingViewController: UIViewController, SkeletonCollectionViewDeleg
                                             .whereField("modifiedDate", isGreaterThanOrEqualTo: start)
                                             .whereField("modifiedDate", isLessThanOrEqualTo: end)
                                             .getDocuments { (snapshot, error) in
-                                                print(error)
                                                 snapshot?.documents.forEach({ (document) in
                                                     print(document.data())
                                                 })
@@ -131,7 +132,8 @@ class BookSelectingViewController: UIViewController, SkeletonCollectionViewDeleg
     @IBAction func trashButtonPressed(_ sender: UIButton) {
         //or?
         guard let bookCount = API.books?.count else {return}
-        if currentPage < bookCount && bookCount > 1 {
+        
+        if currentPage < bookCount && bookCount > 1{
             let alert = UIAlertController(title: "\(API.books?[currentPage].title ?? "") 을(를) 삭제하시겠습니까?", message:  nil, preferredStyle: .actionSheet)
 
             alert.addAction(UIAlertAction(title: "삭제", style: .destructive, handler: { _ in
@@ -161,7 +163,7 @@ class BookSelectingViewController: UIViewController, SkeletonCollectionViewDeleg
         
     }
     
-    @IBAction func enterShop(_ sender: Any) {
+    @IBAction func enterShop(_ sender: Any?) {
 //        let db = Firestore.firestore()
 //        db.collection("Information").document("shop").getDocument() { (snapshot, err) in
 //            if let err = err {
@@ -192,7 +194,7 @@ class BookSelectingViewController: UIViewController, SkeletonCollectionViewDeleg
         if (section == 0) {
             return API.books?.count ?? 10
         } else {
-            return 3
+            return AdditionalItem.count
         }
     }
     
@@ -202,7 +204,10 @@ class BookSelectingViewController: UIViewController, SkeletonCollectionViewDeleg
     func collectionSkeletonView(_ skeletonView: UICollectionView, cellIdentifierForItemAt indexPath: IndexPath) -> ReusableCellIdentifier {
         return reuseIdentifier
     }
-
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+           return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        }
     
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -232,6 +237,11 @@ class BookSelectingViewController: UIViewController, SkeletonCollectionViewDeleg
                 cell.imageView.kf.indicatorType = .activity
 
                 switch indexPath.row{
+                case AdditionalItem.openShop.rawValue:
+                    cell.titleLabel.text = "상점"
+                    cell.dateLabel.text = "새로운 매일력을 다운로드 하세요."
+                    cell.imageView.kf.setImage(with: URL(string: "https://product-image.juniqe-production.juniqe.com/media/catalog/product/seo-cache/x800/648/28/648-28-101P/Today-Is-The-Day-Kind-of-Style-Poster.jpg"))
+                    break
                 case AdditionalItem.todayBooks.rawValue:
                     cell.titleLabel.text = "오늘의 매일력"
                     cell.dateLabel.text = "오늘의 매일력을 볼 수 있습니다."
@@ -292,6 +302,9 @@ class BookSelectingViewController: UIViewController, SkeletonCollectionViewDeleg
             }
         } else {
             switch indexPath.row {
+            case AdditionalItem.openShop.rawValue:
+                enterShop(nil)
+                break
             case AdditionalItem.todayBooks.rawValue:
                 API.firebase.fetchQuestionToday { (questions) in
                     if let vc = self.storyboard?.instantiateViewController(withIdentifier: "ThemeIndexViewController") as? ThemeIndexViewController {
@@ -308,6 +321,7 @@ class BookSelectingViewController: UIViewController, SkeletonCollectionViewDeleg
                 break
             case AdditionalItem.buyPro.rawValue:
                 //Buy pro
+                print("Buy pro")
                 break
             case AdditionalItem.buyRealBook.rawValue:
                 //open safari
@@ -323,6 +337,9 @@ class BookSelectingViewController: UIViewController, SkeletonCollectionViewDeleg
     }
 
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        
+        trashButton.isHidden = false
+        
         let x = scrollView.contentOffset.x
         let w = scrollView.bounds.size.width
         let currentPage = Int(ceil(x/w))
@@ -330,11 +347,14 @@ class BookSelectingViewController: UIViewController, SkeletonCollectionViewDeleg
         self.currentPage = currentPage
         
         guard let bookCount = API.books?.count else {return}
-        if currentPage > bookCount {
-            print("hide trash")
+        if currentPage >= bookCount {
+            trashButton.isHidden = true
         } else {
-            print("show trash")
+            trashButton.isHidden = false
         }
+    }
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        trashButton.isHidden = true
     }
     
     

@@ -369,6 +369,7 @@
                     <connections>
                         <outlet property="collectionView" destination="eVk-BC-j9z" id="6zB-Xj-tl9"/>
                         <outlet property="settingButton" destination="znH-0e-Wf4" id="Ena-2Z-l8x"/>
+                        <outlet property="trashButton" destination="VbY-mT-z1M" id="kR2-NG-NIZ"/>
                         <segue destination="xvc-EY-pzc" kind="show" id="kDU-Ih-zN1"/>
                     </connections>
                 </viewController>
@@ -478,6 +479,9 @@
                                 <rect key="frame" x="302" y="13" width="92" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="닫기"/>
+                                <connections>
+                                    <action selector="dismissButtonPressed:" destination="vD4-cA-p6J" eventType="touchUpInside" id="MN2-Ra-cOH"/>
+                                </connections>
                             </button>
                         </barButtonItem>
                     </navigationItem>

@@ -108,7 +108,6 @@ class ShopViewController: UIViewController, SkeletonTableViewDelegate, SkeletonT
                 "음식을 먹을 때마다 페이지를 넘기거나 혀를 물 때마다 손가락으로 종이를 자르시겠습니까?",
                 "몇 대의 휴대폰이 고장 났습니까?",
                 "어떤 여성 유명인이 가장 큰 역할 모델입니까?",
-                "콘돔 사용을 거부하는 남성에 대한 귀하의 의견은 무엇입니까?",
                 "닉네임이 있습니까? 어떻게 얻었습니까?",
                 "마지막으로 웃었던 시간이 언제였습니까?",
                 "세상에서 가장 강한 사람입니까 아니면 세상에서 가장 빠른 사람입니까?",
@@ -139,7 +138,7 @@ class ShopViewController: UIViewController, SkeletonTableViewDelegate, SkeletonT
                 "가장 좋은 결정은 무엇입니까?",
                 "처녀가되는 것이 어색하다고 생각되는 나이가 있습니까?",
                 "할머니가 당신에게 준 가장 좋은 조언은 무엇입니까?",
-            ], imageLink: <#T##String#>, bookImage: <#T##String#>)
+            ], imageLink: "https://i.pinimg.com/564x/2f/d7/8e/2fd78e90c645537e3089306b79aa509b.jpg", bookImage: "https://i.pinimg.com/564x/2f/d7/8e/2fd78e90c645537e3089306b79aa509b.jpg")
             ]
             self.tableView.reloadData()
         }
@@ -152,6 +151,9 @@ class ShopViewController: UIViewController, SkeletonTableViewDelegate, SkeletonT
         return 1
     }
 
+    @IBAction func dismissButtonPressed(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
     func collectionSkeletonView(_ skeletonView: UITableView, cellIdentifierForRowAt indexPath: IndexPath) -> ReusableCellIdentifier {
         return "ShopCell"
     }
