@@ -14,4 +14,6 @@ struct ShopItem {
     var questions: [String]
     
     var imageLink: String
+    
+    var bookImage: String
 }

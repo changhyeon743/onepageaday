@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,34 +17,57 @@
                 <rect key="frame" x="0.0" y="0.0" width="292" height="550"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="기본적인 매일력" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.40000000000000002" translatesAutoresizingMaskIntoConstraints="NO" id="vg4-dP-doR">
-                        <rect key="frame" x="16" y="262" width="260" height="26.5"/>
-                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OHg-Xx-SuT">
+                        <rect key="frame" x="0.0" y="0.0" width="292" height="550"/>
                         <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="number" keyPath="lastLineFillPercent">
-                                <integer key="value" value="50"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="number" keyPath="linesCornerRadius">
-                                <integer key="value" value="6"/>
-                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                         </userDefinedRuntimeAttributes>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2020.12.19" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aWe-vZ-KxE">
-                        <rect key="frame" x="115.5" y="304.5" width="61.5" height="14.5"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    </imageView>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="RUc-LF-0gE">
+                        <rect key="frame" x="0.0" y="230" width="292" height="90"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="기본적인 매일력" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.40000000000000002" translatesAutoresizingMaskIntoConstraints="NO" id="vg4-dP-doR">
+                                <rect key="frame" x="12" y="24" width="268" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="lastLineFillPercent">
+                                        <integer key="value" value="50"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="linesCornerRadius">
+                                        <integer key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2020.12.19" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aWe-vZ-KxE">
+                                <rect key="frame" x="12" y="52.5" width="268" height="13.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <color key="textColor" systemColor="placeholderTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <edgeInsets key="layoutMargins" top="24" left="12" bottom="24" right="12"/>
+                    </stackView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="aWe-vZ-KxE" firstAttribute="top" secondItem="vg4-dP-doR" secondAttribute="bottom" constant="16" id="C33-6k-xC0"/>
-                    <constraint firstItem="vg4-dP-doR" firstAttribute="leading" secondItem="ntk-yU-SGS" secondAttribute="leading" constant="16" id="D3F-CD-Xph"/>
-                    <constraint firstItem="vg4-dP-doR" firstAttribute="centerY" secondItem="ntk-yU-SGS" secondAttribute="centerY" id="tNc-OF-9Nt"/>
-                    <constraint firstAttribute="trailing" secondItem="vg4-dP-doR" secondAttribute="trailing" constant="16" id="z1l-Kt-5cH"/>
-                    <constraint firstItem="aWe-vZ-KxE" firstAttribute="centerX" secondItem="ntk-yU-SGS" secondAttribute="centerX" id="zpT-aB-yhc"/>
-                    <constraint firstItem="vg4-dP-doR" firstAttribute="centerX" secondItem="ntk-yU-SGS" secondAttribute="centerX" id="zv8-Xt-56z"/>
+                    <constraint firstAttribute="trailing" secondItem="OHg-Xx-SuT" secondAttribute="trailing" id="Ikp-Cv-cFJ"/>
+                    <constraint firstAttribute="trailing" secondItem="RUc-LF-0gE" secondAttribute="trailing" id="Muq-Rt-2C8"/>
+                    <constraint firstItem="OHg-Xx-SuT" firstAttribute="leading" secondItem="ntk-yU-SGS" secondAttribute="leading" id="Yf3-7O-aZR"/>
+                    <constraint firstItem="RUc-LF-0gE" firstAttribute="centerX" secondItem="ntk-yU-SGS" secondAttribute="centerX" id="c5P-jV-3XP"/>
+                    <constraint firstAttribute="bottom" secondItem="OHg-Xx-SuT" secondAttribute="bottom" id="f8n-It-LP3"/>
+                    <constraint firstItem="RUc-LF-0gE" firstAttribute="leading" secondItem="ntk-yU-SGS" secondAttribute="leading" id="hLs-uC-j4g"/>
+                    <constraint firstItem="OHg-Xx-SuT" firstAttribute="top" secondItem="ntk-yU-SGS" secondAttribute="top" id="l1w-oM-Zqm"/>
+                    <constraint firstItem="RUc-LF-0gE" firstAttribute="centerY" secondItem="ntk-yU-SGS" secondAttribute="centerY" id="zPT-Im-dKc"/>
                 </constraints>
+                <userDefinedRuntimeAttributes>
+                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                </userDefinedRuntimeAttributes>
             </collectionViewCellContentView>
             <size key="customSize" width="292" height="550"/>
             <userDefinedRuntimeAttributes>
@@ -51,9 +75,18 @@
             </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="dateLabel" destination="aWe-vZ-KxE" id="WRA-cH-RIX"/>
+                <outlet property="imageView" destination="OHg-Xx-SuT" id="K0o-xl-XS8"/>
                 <outlet property="titleLabel" destination="vg4-dP-doR" id="CM6-58-YWv"/>
             </connections>
             <point key="canvasLocation" x="375.36231884057975" y="85.044642857142847"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <systemColor name="placeholderTextColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

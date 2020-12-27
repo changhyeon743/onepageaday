@@ -21,11 +21,11 @@ class OFV_IndexViewController: UIViewController {
     
     var pageViewControllerDelegate: MainPageViewControllerDelegate?
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.delegate = self
         collectionView.dataSource = self
-        
         
         searchBar.delegate = self
         

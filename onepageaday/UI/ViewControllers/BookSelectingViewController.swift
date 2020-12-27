@@ -15,9 +15,15 @@ protocol BookSelectingViewControllerDelegate: class {
     
     //For shop
     func bookDownloaded()
-    
+}
+
+enum AdditionalItem: Int {
+    case todayBooks
+    case buyPro
+    case buyRealBook
     
 }
+
 
 
 class BookSelectingViewController: UIViewController, SkeletonCollectionViewDelegate, SkeletonCollectionViewDataSource,BookSelectingViewControllerDelegate,UIAdaptivePresentationControllerDelegate {
@@ -75,7 +81,8 @@ class BookSelectingViewController: UIViewController, SkeletonCollectionViewDeleg
                                         } catch {
                                             print(error.localizedDescription)
                                         }
-                                        
+
+
                                      }),
                                      UIAction(title: "sub collection query", image: nil, identifier: nil, handler: { _ in
                                         let calendar = Calendar.current
@@ -116,6 +123,7 @@ class BookSelectingViewController: UIViewController, SkeletonCollectionViewDeleg
             
             API.books?.sort { $0.createDate > $1.createDate }
             self.collectionView.hideSkeleton()
+            
             self.collectionView.reloadData()
         })
     }
@@ -174,8 +182,18 @@ class BookSelectingViewController: UIViewController, SkeletonCollectionViewDeleg
     }
     // MARK: UICollectionViewDataSource
 
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        if (API.books == nil) {
+            return 1
+        }
+        return 2
+    }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return API.books?.count ?? 10
+        if (section == 0) {
+            return API.books?.count ?? 10
+        } else {
+            return 3
+        }
     }
     
     func collectionSkeletonView(_ skeletonView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -185,20 +203,62 @@ class BookSelectingViewController: UIViewController, SkeletonCollectionViewDeleg
         return reuseIdentifier
     }
 
-
-
+    
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if (API.books != nil) {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! BookCell
-            cell.hideSkeleton()
+            if (indexPath.section == 0) {
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! BookCell
+                cell.titleLabel.hideSkeleton()
+                cell.dateLabel.hideSkeleton()
+                cell.imageView.hideSkeleton()
+                
+                cell.titleLabel.text = API.books?[indexPath.row].title
+                cell.dateLabel.text = API.books?[indexPath.row].createDate.toString()
+                //cell.backgroundColor = UIColor(hue: CGFloat(arc4random_uniform(360))/360, saturation: 0.5, brightness: 0.8, alpha: 1)
+                if let url = API.books?[indexPath.row].backGroundImage {
+                    cell.imageView.kf.indicatorType = .activity
+                    cell.imageView.kf.setImage(with: URL(string: url))
+                } else {
+                    cell.imageView.image = nil
+                    cell.imageView.backgroundColor = UIColor(Constant.Design.backGroundColors.randomElement() ?? defaultColor)
+                }
+                return cell
+            } else {
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! BookCell
+                cell.titleLabel.hideSkeleton()
+                cell.dateLabel.hideSkeleton()
+                cell.imageView.hideSkeleton()
+                cell.imageView.kf.indicatorType = .activity
+
+                switch indexPath.row{
+                case AdditionalItem.todayBooks.rawValue:
+                    cell.titleLabel.text = "오늘의 매일력"
+                    cell.dateLabel.text = "오늘의 매일력을 볼 수 있습니다."
+                    cell.imageView.kf.setImage(with: URL(string: "https://product-image.juniqe-production.juniqe.com/media/catalog/product/seo-cache/x800/648/28/648-28-101P/Today-Is-The-Day-Kind-of-Style-Poster.jpg"))
+                    break
+                case AdditionalItem.buyPro.rawValue:
+                    cell.titleLabel.text = "프로 버전 구매하기"
+                    cell.dateLabel.text = "돈내라"
+                    cell.imageView.kf.setImage(with: URL(string: "https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/MWP22_AV1?wid=1144&hei=1144&fmt=jpeg&qlt=80&op_usm=0.5,0.5&.v=1591634652000"))
+                    break
+                case AdditionalItem.buyRealBook.rawValue:
+                    cell.titleLabel.text = "매일력 책 구매하기"
+                    cell.dateLabel.text = "리마크프레스 사이트로 연결됩니다"
+                    cell.imageView.kf.setImage(with: URL(string: "https://contents.sixshop.com/thumbnails/uploadedFiles/13311/product/image_1581581880733_1000.jpg"))
+                    break
+                default: break
+                    
+                }
+                
+                return cell
+            }
             
-            cell.titleLabel.text = API.books?[indexPath.row].title
-            cell.dateLabel.text = API.books?[indexPath.row].createDate.toString()
-            cell.backgroundColor = UIColor(hue: CGFloat(arc4random_uniform(360))/360, saturation: 0.5, brightness: 0.8, alpha: 1)
-            return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! BookCell
-            cell.showAnimatedGradientSkeleton()
+            cell.titleLabel.showAnimatedGradientSkeleton()
+            cell.dateLabel.showAnimatedGradientSkeleton()
+            cell.imageView.showAnimatedGradientSkeleton()
             return cell
         }
         
@@ -207,28 +267,59 @@ class BookSelectingViewController: UIViewController, SkeletonCollectionViewDeleg
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let id = API.books?[indexPath.row].id else {return}
-        activityIndicator.startAnimating()
-        //부드럽게 만드는거 필요함
-        API.firebase.fetchQuestions(with: id) { (questions) in
-            self.activityIndicator.stopAnimating()
-            
-            if (questions.count > 0) {
-                API.currentQuestions = questions
-                if let vc = self.storyboard!.instantiateViewController(identifier: "MainPageViewController") as? MainPageViewController {
-                    //vc.modalPresentationStyle = .overCurrentContext
-                    vc.modalPresentationStyle = .fullScreen
-                    vc.book = API.books?[indexPath.row]
-                    vc.currentIndex = API.books?[indexPath.row].currentIndex ?? 0
-                    self.present(vc, animated:true, completion: nil)
+        if indexPath.section == 0 {
+            guard let id = API.books?[indexPath.row].id else {return}
+            activityIndicator.startAnimating()
+            //부드럽게 만드는거 필요함
+            API.firebase.fetchQuestions(with: id) { (questions) in
+                self.activityIndicator.stopAnimating()
+                
+                if (questions.count > 0) {
+                    API.currentQuestions = questions
+                    if let vc = self.storyboard!.instantiateViewController(identifier: "MainPageViewController") as? MainPageViewController {
+                        //vc.modalPresentationStyle = .overCurrentContext
+                        vc.modalPresentationStyle = .fullScreen
+                        vc.book = API.books?[indexPath.row]
+                        vc.currentIndex = API.books?[indexPath.row].currentIndex ?? 0
+                        self.present(vc, animated:true, completion: nil)
+                    }
+                } else {
+                    let alert = UIAlertController(title: "오류", message: "정상적으로 불러올 수 없음", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
                 }
-            } else {
-                let alert = UIAlertController(title: "오류", message: "정상적으로 불러올 수 없음", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
+                
             }
-            
+        } else {
+            switch indexPath.row {
+            case AdditionalItem.todayBooks.rawValue:
+                API.firebase.fetchQuestionToday { (questions) in
+                    if let vc = self.storyboard?.instantiateViewController(withIdentifier: "ThemeIndexViewController") as? ThemeIndexViewController {
+                        vc.items = questions
+                        let dateFormatter = DateFormatter()
+                        dateFormatter.locale = .current
+                        dateFormatter.timeZone = .current
+                        dateFormatter.dateFormat = "yyyy년 MM월 dd일의 매일력"
+                        
+                        vc.title = dateFormatter.string(from: Date())
+                        self.present(vc, animated: true, completion: nil)
+                    }
+                }
+                break
+            case AdditionalItem.buyPro.rawValue:
+                //Buy pro
+                break
+            case AdditionalItem.buyRealBook.rawValue:
+                //open safari
+                if let url = URL(string: "https://www.sixshop.com/remarkpress/product/9") {
+                    UIApplication.shared.open(url)
+                }
+                break
+            default:
+                break
+            }
         }
+        
     }
 
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
@@ -237,9 +328,21 @@ class BookSelectingViewController: UIViewController, SkeletonCollectionViewDeleg
         let currentPage = Int(ceil(x/w))
         // Do whatever with currentPage.
         self.currentPage = currentPage
+        
+        guard let bookCount = API.books?.count else {return}
+        if currentPage > bookCount {
+            print("hide trash")
+        } else {
+            print("show trash")
+        }
     }
+    
+    
     
     func bookDownloaded() {
         fetchBooks()
     }
+    
+    
+    
 }

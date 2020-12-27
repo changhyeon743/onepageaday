@@ -42,11 +42,11 @@
                                     <action selector="doneButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ul4-U7-vW0"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="44c-Tm-YyD">
-                                <rect key="frame" x="15" y="64" width="25" height="24.5"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="44c-Tm-YyD" userLabel="닫기">
+                                <rect key="frame" x="15" y="64" width="32.5" height="27.5"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" image="xmark" catalog="system">
-                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="24" weight="regular"/>
+                                <state key="normal" image="arrow.backward" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="28" weight="regular"/>
                                 </state>
                                 <connections>
                                     <action selector="dismissButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QfV-0Y-sn2"/>
@@ -113,14 +113,11 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="obd-fe-4ux">
-                                <rect key="frame" x="53" y="64" width="29.5" height="28.5"/>
+                                <rect key="frame" x="60.5" y="64" width="29.5" height="28.5"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="gearshape" catalog="system">
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="24" weight="regular"/>
                                 </state>
-                                <connections>
-                                    <action selector="additionalMenuButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uGD-xX-s0a"/>
-                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -283,7 +280,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Deb-DI-7sC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-200" y="-856"/>
+            <point key="canvasLocation" x="-114" y="-856"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="k8k-MD-F2o">
@@ -300,7 +297,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AiH-Xu-vVh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2100" y="-494"/>
+            <point key="canvasLocation" x="-2128" y="-508"/>
         </scene>
         <!--Book Selecting View Controller-->
         <scene sceneID="EH5-jK-pXG">
@@ -382,7 +379,7 @@
         <!--편집-->
         <scene sceneID="b2Q-fJ-zXu">
             <objects>
-                <pageViewController storyboardIdentifier="MainPageViewController" autoresizesArchivedViewToFullSize="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="none" id="YRL-as-FBD" customClass="MainPageViewController" customModule="onepageaday" customModuleProvider="target" sceneMemberID="viewController">
+                <pageViewController storyboardIdentifier="MainPageViewController" autoresizesArchivedViewToFullSize="NO" modalTransitionStyle="crossDissolve" useStoryboardIdentifierAsRestorationIdentifier="YES" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="none" id="YRL-as-FBD" customClass="MainPageViewController" customModule="onepageaday" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" title="편집" id="Z9f-ZY-85e"/>
                 </pageViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CsT-Op-o1P" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -654,6 +651,7 @@
     </scenes>
     <resources>
         <image name="applelogo" catalog="system" width="103" height="128"/>
+        <image name="arrow.backward" catalog="system" width="128" height="98"/>
         <image name="cart" catalog="system" width="128" height="102"/>
         <image name="gear" catalog="system" width="128" height="119"/>
         <image name="gearshape" catalog="system" width="128" height="121"/>
@@ -662,7 +660,6 @@
         <image name="textformat" catalog="system" width="128" height="78"/>
         <image name="trash" catalog="system" width="121" height="128"/>
         <image name="trash.circle" catalog="system" width="128" height="121"/>
-        <image name="xmark" catalog="system" width="128" height="113"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

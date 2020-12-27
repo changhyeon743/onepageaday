@@ -303,23 +303,15 @@ class MainViewController: UIViewController {
                                                 
                                             if let vc = self?.storyboard?.instantiateViewController(withIdentifier: "OFV_IndexViewController") as? OFV_IndexViewController {
                                                 vc.pageViewControllerDelegate = self?.pageControllerDelegate
-                                                self?.present(vc, animated: true, completion: nil)
+                                                
+                                                self?.present(vc, animated: true, completion: {
+                                                    vc.collectionView.scrollToItem(at: IndexPath(item: self?.currentQuestion?.index ?? 0, section: 0), at: .bottom, animated: true)
+                                                })
                                             }
                                             
                                          }),
                                          UIAction(title: "이 질문의 다른 답변 보기", image: UIImage(systemName: "person.2"), identifier: nil, handler: { [weak self] _ in
-                                            API.firebase.fetchQuestionToday { (questions) in
-                                                if let vc = self?.storyboard?.instantiateViewController(withIdentifier: "ThemeIndexViewController") as? ThemeIndexViewController {
-                                                    vc.items = questions
-                                                    let dateFormatter = DateFormatter()
-                                                    dateFormatter.locale = .current
-                                                    dateFormatter.timeZone = .current
-                                                    dateFormatter.dateFormat = "yyyy년 MM월 dd일의 매일력"
-                                                    
-                                                    vc.title = dateFormatter.string(from: Date())
-                                                    self?.present(vc, animated: true, completion: nil)
-                                                }
-                                            }
+                                            
                                          }),
                                          UIAction(title: "답변 삭제", image: UIImage(systemName: "trash"), identifier: nil, handler: {
                                             [weak self] _ in
@@ -348,7 +340,7 @@ class MainViewController: UIViewController {
     
     
     @IBAction func dismissButtonPressed(_ sender: Any) {
-        
+        pageControllerDelegate?.dismissAndSave()
     }
     //MARK: modeToggle
     

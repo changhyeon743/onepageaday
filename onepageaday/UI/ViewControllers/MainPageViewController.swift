@@ -21,9 +21,6 @@ protocol MainPageViewControllerDelegate: class{
 class MainPageViewController: UIPageViewController,UIPageViewControllerDelegate, UIPageViewControllerDataSource,MainPageViewControllerDelegate {
     
     
-    
-    var panGesture:UIPanGestureRecognizer!
-    
     var book:Book?
     var currentIndex:Int = 0
     
@@ -38,38 +35,8 @@ class MainPageViewController: UIPageViewController,UIPageViewControllerDelegate,
         self.delegate = self
         self.setViewControllers([createViewController(currentIndex)], direction: .forward, animated: false, completion: nil)
         
-        panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(_:)))
-        //self.view.addGestureRecognizer(panGesture)
-        
     }
     
-    var viewTranslation = CGPoint(x: 0, y: 0)
-    @objc func handlePanGesture(_ sender: UIPanGestureRecognizer) {
-        switch sender.state {
-        case .changed:
-            viewTranslation = sender.translation(in: view)
-            if (self.viewTranslation.y > 0) {
-                UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-                    self.view.transform = CGAffineTransform(translationX: 0, y: self.viewTranslation.y)
-                })
-            }
-            
-        case .ended:
-            if viewTranslation.y < 200 {
-                UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-                    self.view.transform = .identity
-                })
-            } else {
-//                if let index = API.books.firstIndex(where: {$0.id == self.book?.id}) {
-//                    API.books[index].currentIndex = 0
-//                }
-                
-            }
-        default:
-            break
-        }
-    }
-
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         let currentIndex = (viewController as! MainViewController).currentIndex
         if (currentIndex > 0) {
@@ -133,7 +100,6 @@ class MainPageViewController: UIPageViewController,UIPageViewControllerDelegate,
         print("stop!")
         self.delegate = nil;
         self.dataSource = nil;
-        panGesture.isEnabled = false
     }
     
     /// 뷰 모드
@@ -141,7 +107,6 @@ class MainPageViewController: UIPageViewController,UIPageViewControllerDelegate,
         print("start!")
         self.delegate = self;
         self.dataSource = self;
-        panGesture.isEnabled = true
     }
     
     func setViewControllerIndex(index: Int) {

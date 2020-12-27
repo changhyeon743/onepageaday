@@ -254,7 +254,7 @@ class FirebaseAPI {
                             }
                             return nil
                         }
-                        completion(questions)
+                        completion(questions.filter{!$0.drawings.isEmpty || $0.textViewDatas.count > 0 || $0.imageViewDatas.count > 0})
                     }
                 }
         }
