@@ -16,4 +16,6 @@ struct ShopItem {
     var imageLink: String
     
     var bookImage: String
+    
+    var privateMode: Bool
 }

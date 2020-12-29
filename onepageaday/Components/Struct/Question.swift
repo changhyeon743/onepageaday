@@ -31,15 +31,16 @@ struct Question:Codable,Identifiable {
     
     var backGroundColor: String? = Constant.Design.backGroundColors.randomElement() ?? defaultColor
     
-    
+    var privateMode: Bool = false
     var os: OS = .iOS
     
-    init(index: Int, text: String) {
+    init(index: Int, text: String,privateMode: Bool) {
         self.index = index
         self.text = text
         self.textViewDatas = []
         self.imageViewDatas = []
         self.drawings = ""
+        self.privateMode = privateMode
         self.os = .iOS
     }
 }

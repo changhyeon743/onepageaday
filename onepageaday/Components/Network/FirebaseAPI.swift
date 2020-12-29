@@ -124,7 +124,7 @@ class FirebaseAPI {
         }
     }
     
-    func addBook(book: Book, question: [String],completion: @escaping()->Void) {
+    func addBook(book: Book, question: [String],privateMode: Bool,completion: @escaping()->Void) {
         //Book adding
         
         do {
@@ -133,7 +133,7 @@ class FirebaseAPI {
             var indexCount = -1
             try question.forEach({ (str) in
                 indexCount+=1
-                let _ = try db.collection("books/\(bookId)/questions").addDocument(from: Question(index: indexCount,text: str ))
+                let _ = try db.collection("books/\(bookId)/questions").addDocument(from: Question(index: indexCount,text: str, privateMode: privateMode ))
             })
             completion()
         } catch {
@@ -236,6 +236,7 @@ class FirebaseAPI {
         let end = calendar.date(byAdding: .day, value: 1, to: start)!
         
         Firestore.firestore().collectionGroup("questions")
+            .whereField("privateMode", isEqualTo: false)
             .whereField("modifiedDate", isGreaterThanOrEqualTo: start)
             .whereField("modifiedDate", isLessThanOrEqualTo: end)
             .order(by: "modifiedDate", descending: true)

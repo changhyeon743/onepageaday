@@ -86,7 +86,7 @@ class ShopViewController: UIViewController, SkeletonTableViewDelegate, SkeletonT
                "당신은 오히려 하우스 보트 나 산의 오두막에서 살기를 원하십니까?",
                "가장 흥미로운 사실은 무엇입니까?",
                "휴식하는 사자와 함께 10 분 동안 앉아 있거나 배고픈 악어의 등을 가로 질러 달리고 싶습니까?"],
-            imageLink: "https://psycatgames.com/ko/magazine/conversation-starters/250-questions-to-ask-a-guy/feature-image_hu4a7c8397bd008fb23013e84fd92f05ba_1338079_1920x1080_fill_q75_box_center.jpg", bookImage: "https://psycatgames.com/ko/magazine/conversation-starters/250-questions-to-ask-a-guy/feature-image_hu4a7c8397bd008fb23013e84fd92f05ba_1338079_1920x1080_fill_q75_box_center.jpg"),
+            imageLink: "https://psycatgames.com/ko/magazine/conversation-starters/250-questions-to-ask-a-guy/feature-image_hu4a7c8397bd008fb23013e84fd92f05ba_1338079_1920x1080_fill_q75_box_center.jpg", bookImage: "https://psycatgames.com/ko/magazine/conversation-starters/250-questions-to-ask-a-guy/feature-image_hu4a7c8397bd008fb23013e84fd92f05ba_1338079_1920x1080_fill_q75_box_center.jpg", privateMode: true),
 
             ShopItem(title: "여자에게 물어볼 50 가지 질문", detail: "질문", questions: [
                 "전통적으로 여성스러운 것으로 간주되지 않는 것은 무엇입니까?",
@@ -138,7 +138,7 @@ class ShopViewController: UIViewController, SkeletonTableViewDelegate, SkeletonT
                 "가장 좋은 결정은 무엇입니까?",
                 "처녀가되는 것이 어색하다고 생각되는 나이가 있습니까?",
                 "할머니가 당신에게 준 가장 좋은 조언은 무엇입니까?",
-            ], imageLink: "https://i.pinimg.com/564x/2f/d7/8e/2fd78e90c645537e3089306b79aa509b.jpg", bookImage: "https://i.pinimg.com/564x/2f/d7/8e/2fd78e90c645537e3089306b79aa509b.jpg")
+            ], imageLink: "https://i.pinimg.com/564x/2f/d7/8e/2fd78e90c645537e3089306b79aa509b.jpg", bookImage: "https://i.pinimg.com/564x/2f/d7/8e/2fd78e90c645537e3089306b79aa509b.jpg", privateMode: false)
             ]
             self.tableView.reloadData()
         }
@@ -170,9 +170,10 @@ class ShopViewController: UIViewController, SkeletonTableViewDelegate, SkeletonT
         if shopItems != nil {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ShopCell
             cell.hideSkeleton()
-            
+            let privateText = (shopItems![indexPath.row]).privateMode ? "이 책의 답변은 기본적으로 비공개됩니다." : "이 책의 답변은 기본적으로 공개됩니다."
             cell.titleLabel.text = shopItems![indexPath.row].title
-            cell.detailLabel.text = shopItems![indexPath.row].detail
+            cell.detailLabel.text = privateText
+            
             
             cell.downloadButton.tag = indexPath.row
             cell.downloadButton.addTarget(self, action: #selector(downloadButtonPressed(_:)), for: .touchUpInside)
@@ -201,7 +202,7 @@ class ShopViewController: UIViewController, SkeletonTableViewDelegate, SkeletonT
                         createDate: Date(),
                         modifiedDate: Date())
         
-        API.firebase.addBook(book: book, question: shopItems![row].questions) {
+        API.firebase.addBook(book: book, question: shopItems![row].questions, privateMode: shopItems![row].privateMode) {
             let alert = UIAlertController(title: "다운로드 완료", message: "\(book.title)이(가) 서랍에 추가됨", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
             self.present(alert, animated: true, completion: nil)

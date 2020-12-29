@@ -105,8 +105,6 @@ class MainViewController: UIViewController {
     //ImagePicker
     
     
-    
-    
     deinit {
         print("MainViewController deinit")
     }
@@ -251,6 +249,7 @@ class MainViewController: UIViewController {
     
     //MARK: MENU!
     func setMenus() {
+        guard let privateMode = currentQuestion?.privateMode else {return}
         //스티커 메뉴
         self.imageButton.showsMenuAsPrimaryAction = true
         self.imageButton.menu = UIMenu(title: "스티커",
@@ -320,19 +319,33 @@ class MainViewController: UIViewController {
                                             self?.currentQuestion?.drawings = ""
                                             self?.commitQuestion()
                                             self?.pageControllerDelegate?.setViewControllerIndex(index: self?.currentQuestion?.index ?? 0)
-                                         })
+                                         }),
+                                         UIAction(title: privateMode ? "비공개" : "공개",
+                                                  image: privateMode ? UIImage(systemName: "lock.fill") : UIImage(systemName: "person.2"), identifier: nil, handler: {
+                                            [weak self] _ in
+                                                    self?.currentQuestion?.privateMode.toggle()
+                                                    if (self?.currentQuestion?.privateMode == true) {
+                                                        self?.showToast(text: "비공개")
+                                                    } else {
+                                                        self?.showToast(text: "공개")
+                                                    }
+                                                    self?.setMenus()
+                                                    self?.commitQuestion()
+                                         }),
                                          ])
+        
     }
     
     //MARK: currentQuestion 활용하여 데이터 생성
     func createViewsWithData() {
+        guard let question = currentQuestion else {return}
         //텍스트
-        currentQuestion?.textViewDatas.forEach{
+        question.textViewDatas.forEach{
             self.view.addSubview(makeEditableTextView(textViewData: $0))
         }
         
         //이미지
-        currentQuestion?.imageViewDatas.forEach{
+        question.imageViewDatas.forEach{
             self.view.addSubview(makeImageView(imageViewData: $0))
         }
         
