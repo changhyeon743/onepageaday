@@ -9,6 +9,7 @@ import UIKit
 import PencilKit
 import Firebase
 import FirebaseFirestoreSwift
+import AVFoundation
 //TODO: Model 만들어 사용하기
 protocol MainViewControllerDelegate: class {
     func imageViewUpdated(imageViewData: ImageViewData)
@@ -40,7 +41,7 @@ class MainViewController: UIViewController {
     private var isEditingTextView:Bool = false
     private var isDrawing:Bool = false
     
-    
+    lazy var activityIndicator: UIActivityIndicatorView = { return makeActivityIndicator(center: self.view.center) }()
     
     //Edit Mode
     private var isEditingMode:Bool = false {
@@ -114,13 +115,15 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         
         self.view.clipsToBounds = true
-        
+        self.view.addSubview(activityIndicator)
+
         setUI()
         
         //편집 모드 진입을 위한 제스처
         let touchRecognizer = UITapGestureRecognizer(target: self, action: #selector(touchRecognized(_:)))
         self.view.addGestureRecognizer(touchRecognizer)
         
+        self.view.bringSubviewToFront(activityIndicator)
         
     }
     override func viewDidAppear(_ animated: Bool) {
@@ -283,10 +286,18 @@ class MainViewController: UIViewController {
                                             
                                        }),
                                         UIAction(title: "카메라", image: UIImage(systemName: "camera"), handler: { [weak self] _ in
-                                        if let picker = self?.imagePicker {
-                                            picker.sourceType = .camera // 앨범에서 가져옴
-                                            self?.present(picker, animated: true, completion: nil)
-                                        }
+                                            if AVCaptureDevice.authorizationStatus(for: .video) ==  .authorized {
+                                                //already authorized
+                                                self?.callCameraPicker()
+                                            } else {
+                                                AVCaptureDevice.requestAccess(for: .video, completionHandler: { (granted: Bool) in
+                                                    if granted {
+                                                        self?.callCameraPicker()
+                                                    } else {
+                                                        //access denied
+                                                    }
+                                                })
+                                            }
                                         
                                         }),
                                        
@@ -310,7 +321,12 @@ class MainViewController: UIViewController {
                                             
                                          }),
                                          UIAction(title: "이 질문의 다른 답변 보기", image: UIImage(systemName: "person.2"), identifier: nil, handler: { [weak self] _ in
-                                            
+                                            if let vc = self?.storyboard?.instantiateViewController(withIdentifier: "ThemeIndexViewController") as? ThemeIndexViewController {
+                                                vc.theme = .titleSearch
+                                                
+                                                vc.title = self?.currentQuestion?.text ?? ""
+                                                self?.present(vc, animated: true, completion: nil)
+                                            }
                                          }),
                                          UIAction(title: "답변 삭제", image: UIImage(systemName: "trash"), identifier: nil, handler: {
                                             [weak self] _ in
@@ -333,6 +349,14 @@ class MainViewController: UIViewController {
                                                     self?.commitQuestion()
                                          }),
                                          ])
+        
+    }
+    
+    func callCameraPicker() {
+        let picker = self.imagePicker
+        
+        picker.sourceType = .camera // 앨범에서 가져옴
+        self.present(picker, animated: true, completion: nil)
         
     }
     

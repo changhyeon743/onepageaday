@@ -10,10 +10,13 @@
 		003ECB047CDCC05809B8F912 /* Pods_onepageaday.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4B928A1E391D0234C9506F1 /* Pods_onepageaday.framework */; };
 		6F2A1475C2164726B48F0622 /* Pods_onepageadayTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9DFDEE0EEE9B60A7F305482 /* Pods_onepageadayTests.framework */; };
 		78001F6A258B889600102D27 /* PKDrawing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78001F69258B889600102D27 /* PKDrawing.swift */; };
+		780469BE25A2E7FE004A8FFB /* PurchasePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780469BD25A2E7FE004A8FFB /* PurchasePageViewController.swift */; };
 		78075CCD25909D3C00EC9139 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78075CCC25909D3C00EC9139 /* Array.swift */; };
 		782685472587106E00F0A295 /* GiphyAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782685462587106E00F0A295 /* GiphyAPI.swift */; };
 		7826855C2587114E00F0A295 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7826855B2587114E00F0A295 /* API.swift */; };
 		78273C032591C11900805B59 /* OFV_IndexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78273C022591C11900805B59 /* OFV_IndexViewController.swift */; };
+		78365CE0259F097D00CACE52 /* ShopHashTagPickViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78365CDF259F097D00CACE52 /* ShopHashTagPickViewController.swift */; };
+		78365CE8259F0BC000CACE52 /* ShopItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78365CE7259F0BC000CACE52 /* ShopItems.swift */; };
 		7840E308257FAA9E009B216B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7840E307257FAA9E009B216B /* AppDelegate.swift */; };
 		7840E30A257FAA9E009B216B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7840E309257FAA9E009B216B /* SceneDelegate.swift */; };
 		7840E30C257FAA9E009B216B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7840E30B257FAA9E009B216B /* MainViewController.swift */; };
@@ -43,6 +46,7 @@
 		787A0464258BD8050018A232 /* BookManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787A0463258BD8050018A232 /* BookManager.swift */; };
 		789CBC3025889E76001D11B1 /* ShopDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789CBC2F25889E76001D11B1 /* ShopDetailViewController.swift */; };
 		78A758882581D34B006FAFB1 /* DesignElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A758872581D34B006FAFB1 /* DesignElements.swift */; };
+		78BCC847259D910C00E7028D /* ThemeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BCC846259D910C00E7028D /* ThemeCollectionViewCell.swift */; };
 		78C0E19D258317F300FC3842 /* BookSelectingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C0E19C258317F300FC3842 /* BookSelectingViewController.swift */; };
 		78DC8179258B0A2600C6C2D3 /* Template.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DC8178258B0A2600C6C2D3 /* Template.swift */; };
 		78DC817E258B12C700C6C2D3 /* FirebaseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DC817D258B12C700C6C2D3 /* FirebaseAPI.swift */; };
@@ -51,6 +55,7 @@
 		78E9089F25822F9900944B60 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E9089E25822F9900944B60 /* Question.swift */; };
 		78E908B52582726D00944B60 /* EditableImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E908B42582726D00944B60 /* EditableImageView.swift */; };
 		78EAE0532591C1FE007E79BA /* OFV_ContainerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78EAE0522591C1FE007E79BA /* OFV_ContainerCollectionViewCell.swift */; };
+		78EE1FF225A2841E00366F6E /* PurchaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78EE1FF125A2841E00366F6E /* PurchaseViewController.swift */; };
 		78EFE36325963B6B0068407F /* ThemeIndexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78EFE36225963B6B0068407F /* ThemeIndexViewController.swift */; };
 		78FE241325879E6700E4BE31 /* BookFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FE241225879E6700E4BE31 /* BookFlowLayout.swift */; };
 		78FE24202587A70A00E4BE31 /* ShopCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78FE241F2587A70A00E4BE31 /* ShopCell.xib */; };
@@ -80,10 +85,13 @@
 		28E54BDF9D99E02EF3FCACB7 /* Pods-onepageaday.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-onepageaday.release.xcconfig"; path = "Pods/Target Support Files/Pods-onepageaday/Pods-onepageaday.release.xcconfig"; sourceTree = "<group>"; };
 		4BCC35ADE6CE9260CDE33DFE /* Pods-onepageaday.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-onepageaday.debug.xcconfig"; path = "Pods/Target Support Files/Pods-onepageaday/Pods-onepageaday.debug.xcconfig"; sourceTree = "<group>"; };
 		78001F69258B889600102D27 /* PKDrawing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PKDrawing.swift; sourceTree = "<group>"; };
+		780469BD25A2E7FE004A8FFB /* PurchasePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasePageViewController.swift; sourceTree = "<group>"; };
 		78075CCC25909D3C00EC9139 /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		782685462587106E00F0A295 /* GiphyAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiphyAPI.swift; sourceTree = "<group>"; };
 		7826855B2587114E00F0A295 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		78273C022591C11900805B59 /* OFV_IndexViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OFV_IndexViewController.swift; sourceTree = "<group>"; };
+		78365CDF259F097D00CACE52 /* ShopHashTagPickViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopHashTagPickViewController.swift; sourceTree = "<group>"; };
+		78365CE7259F0BC000CACE52 /* ShopItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopItems.swift; sourceTree = "<group>"; };
 		7840E304257FAA9E009B216B /* onepageaday.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = onepageaday.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7840E307257FAA9E009B216B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7840E309257FAA9E009B216B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -120,6 +128,7 @@
 		787A0463258BD8050018A232 /* BookManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookManager.swift; sourceTree = "<group>"; };
 		789CBC2F25889E76001D11B1 /* ShopDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopDetailViewController.swift; sourceTree = "<group>"; };
 		78A758872581D34B006FAFB1 /* DesignElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignElements.swift; sourceTree = "<group>"; };
+		78BCC846259D910C00E7028D /* ThemeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeCollectionViewCell.swift; sourceTree = "<group>"; };
 		78C0E19C258317F300FC3842 /* BookSelectingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSelectingViewController.swift; sourceTree = "<group>"; };
 		78DC8178258B0A2600C6C2D3 /* Template.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Template.swift; sourceTree = "<group>"; };
 		78DC817D258B12C700C6C2D3 /* FirebaseAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAPI.swift; sourceTree = "<group>"; };
@@ -128,6 +137,7 @@
 		78E9089E25822F9900944B60 /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		78E908B42582726D00944B60 /* EditableImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableImageView.swift; sourceTree = "<group>"; };
 		78EAE0522591C1FE007E79BA /* OFV_ContainerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OFV_ContainerCollectionViewCell.swift; sourceTree = "<group>"; };
+		78EE1FF125A2841E00366F6E /* PurchaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PurchaseViewController.swift; path = onepageaday/UI/ViewControllers/Popup/PurchaseViewController.swift; sourceTree = SOURCE_ROOT; };
 		78EFE36225963B6B0068407F /* ThemeIndexViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeIndexViewController.swift; sourceTree = "<group>"; };
 		78FE241225879E6700E4BE31 /* BookFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookFlowLayout.swift; sourceTree = "<group>"; };
 		78FE241F2587A70A00E4BE31 /* ShopCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShopCell.xib; sourceTree = "<group>"; };
@@ -249,6 +259,8 @@
 		7861CB24258FA79A0035D29E /* Shop */ = {
 			isa = PBXGroup;
 			children = (
+				78365CE7259F0BC000CACE52 /* ShopItems.swift */,
+				78365CDF259F097D00CACE52 /* ShopHashTagPickViewController.swift */,
 				7853DC762587AAD900600F6A /* ShopViewController.swift */,
 				789CBC2F25889E76001D11B1 /* ShopDetailViewController.swift */,
 			);
@@ -265,6 +277,23 @@
 				78EAE0522591C1FE007E79BA /* OFV_ContainerCollectionViewCell.swift */,
 			);
 			path = OnlyForView;
+			sourceTree = "<group>";
+		};
+		7882DA0C25A0115000A77C94 /* Popup */ = {
+			isa = PBXGroup;
+			children = (
+				78EE1FF125A2841E00366F6E /* PurchaseViewController.swift */,
+			);
+			path = Popup;
+			sourceTree = "<group>";
+		};
+		78BCC84B259D984A00E7028D /* Social */ = {
+			isa = PBXGroup;
+			children = (
+				78EFE36225963B6B0068407F /* ThemeIndexViewController.swift */,
+				78BCC846259D910C00E7028D /* ThemeCollectionViewCell.swift */,
+			);
+			path = Social;
 			sourceTree = "<group>";
 		};
 		78E908A62582717A00944B60 /* Components */ = {
@@ -346,13 +375,15 @@
 		78E908B32582724400944B60 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				780469BD25A2E7FE004A8FFB /* PurchasePageViewController.swift */,
+				7882DA0C25A0115000A77C94 /* Popup */,
+				78BCC84B259D984A00E7028D /* Social */,
 				787086B7258C448D00D454A8 /* LoginViewController.swift */,
 				7861CB24258FA79A0035D29E /* Shop */,
 				78C0E19C258317F300FC3842 /* BookSelectingViewController.swift */,
 				78E9088D25822B4200944B60 /* MainPageViewController.swift */,
 				7840E30B257FAA9E009B216B /* MainViewController.swift */,
 				7861CB2D258FA87D0035D29E /* StickerViewController.swift */,
-				78EFE36225963B6B0068407F /* ThemeIndexViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -615,8 +646,10 @@
 				7863C9C42588596600B5773D /* BookCell.swift in Sources */,
 				78DC817E258B12C700C6C2D3 /* FirebaseAPI.swift in Sources */,
 				7870870B258F139300D454A8 /* UIView.swift in Sources */,
+				780469BE25A2E7FE004A8FFB /* PurchasePageViewController.swift in Sources */,
 				782685472587106E00F0A295 /* GiphyAPI.swift in Sources */,
 				78EAE0532591C1FE007E79BA /* OFV_ContainerCollectionViewCell.swift in Sources */,
+				78365CE0259F097D00CACE52 /* ShopHashTagPickViewController.swift in Sources */,
 				78E9088925820F4400944B60 /* Book.swift in Sources */,
 				78E908B52582726D00944B60 /* EditableImageView.swift in Sources */,
 				7840E308257FAA9E009B216B /* AppDelegate.swift in Sources */,
@@ -625,12 +658,15 @@
 				789CBC3025889E76001D11B1 /* ShopDetailViewController.swift in Sources */,
 				787086B8258C448D00D454A8 /* LoginViewController.swift in Sources */,
 				78708738258F551500D454A8 /* Toast.swift in Sources */,
+				78EE1FF225A2841E00366F6E /* PurchaseViewController.swift in Sources */,
 				78E9088E25822B4200944B60 /* MainPageViewController.swift in Sources */,
 				7853DC772587AAD900600F6A /* ShopViewController.swift in Sources */,
 				7870872F258F369900D454A8 /* Color.swift in Sources */,
 				78C0E19D258317F300FC3842 /* BookSelectingViewController.swift in Sources */,
+				78BCC847259D910C00E7028D /* ThemeCollectionViewCell.swift in Sources */,
 				78E9089F25822F9900944B60 /* Question.swift in Sources */,
 				78A758882581D34B006FAFB1 /* DesignElements.swift in Sources */,
+				78365CE8259F0BC000CACE52 /* ShopItems.swift in Sources */,
 				7826855C2587114E00F0A295 /* API.swift in Sources */,
 				78273C032591C11900805B59 /* OFV_IndexViewController.swift in Sources */,
 				7870872A258F20A500D454A8 /* OFV_ImageView.swift in Sources */,

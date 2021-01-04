@@ -26,26 +26,26 @@ enum AdditionalItem: Int {
     static let count = 4
 }
 
-
+func makeActivityIndicator(center: CGPoint) -> UIActivityIndicatorView {
+    let activityIndicator = UIActivityIndicatorView()
+    activityIndicator.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+    activityIndicator.center = center
+    activityIndicator.backgroundColor = .init(white: 0, alpha: 0.5)
+    activityIndicator.layer.cornerRadius = 14
+    activityIndicator.clipsToBounds = true
+    activityIndicator.color = .white
+    
+    // Also show the indicator even when the animation is stopped.
+    activityIndicator.hidesWhenStopped = true
+    activityIndicator.style = .large
+    // Start animation.
+    activityIndicator.stopAnimating()
+    return activityIndicator
+}
 
 class BookSelectingViewController: UIViewController, SkeletonCollectionViewDelegate, SkeletonCollectionViewDataSource,BookSelectingViewControllerDelegate,UIAdaptivePresentationControllerDelegate {
     
-    lazy var activityIndicator: UIActivityIndicatorView = {
-            // Create an indicator.
-        let activityIndicator = UIActivityIndicatorView()
-        activityIndicator.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
-        activityIndicator.center = self.view.center
-        activityIndicator.backgroundColor = .init(white: 0, alpha: 0.5)
-        activityIndicator.layer.cornerRadius = 14
-        activityIndicator.clipsToBounds = true
-        activityIndicator.color = .white
-        
-        // Also show the indicator even when the animation is stopped.
-        activityIndicator.hidesWhenStopped = true
-        activityIndicator.style = .large
-        // Start animation.
-        activityIndicator.stopAnimating()
-        return activityIndicator }()
+    lazy var activityIndicator: UIActivityIndicatorView = { return makeActivityIndicator(center: self.view.center) }()
     
     @IBOutlet weak var trashButton: UIButton!
     @IBOutlet weak var collectionView:UICollectionView!
@@ -249,7 +249,7 @@ class BookSelectingViewController: UIViewController, SkeletonCollectionViewDeleg
                     break
                 case AdditionalItem.buyPro.rawValue:
                     cell.titleLabel.text = "프로 버전 구매하기"
-                    cell.dateLabel.text = "돈내라"
+                    cell.dateLabel.text = "₩1000"
                     cell.imageView.kf.setImage(with: URL(string: "https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/MWP22_AV1?wid=1144&hei=1144&fmt=jpeg&qlt=80&op_usm=0.5,0.5&.v=1591634652000"))
                     break
                 case AdditionalItem.buyRealBook.rawValue:
@@ -306,22 +306,26 @@ class BookSelectingViewController: UIViewController, SkeletonCollectionViewDeleg
                 enterShop(nil)
                 break
             case AdditionalItem.todayBooks.rawValue:
-                API.firebase.fetchQuestionToday { (questions) in
-                    if let vc = self.storyboard?.instantiateViewController(withIdentifier: "ThemeIndexViewController") as? ThemeIndexViewController {
-                        vc.items = questions
-                        let dateFormatter = DateFormatter()
-                        dateFormatter.locale = .current
-                        dateFormatter.timeZone = .current
-                        dateFormatter.dateFormat = "yyyy년 MM월 dd일의 매일력"
-                        
-                        vc.title = dateFormatter.string(from: Date())
-                        self.present(vc, animated: true, completion: nil)
-                    }
+                if let vc = self.storyboard?.instantiateViewController(withIdentifier: "ThemeIndexViewController") as? ThemeIndexViewController {
+                    vc.theme = .today
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.locale = .current
+                    dateFormatter.timeZone = .current
+                    dateFormatter.dateFormat = "yyyy년 MM월 dd일의 매일력"
+                    
+                    vc.title = dateFormatter.string(from: Date())
+                    self.present(vc, animated: true, completion: nil)
                 }
+                
                 break
             case AdditionalItem.buyPro.rawValue:
                 //Buy pro
                 print("Buy pro")
+                if let vc = self.storyboard?.instantiateViewController(identifier: "PurchasePageViewController") as? PurchasePageViewController {
+                    vc.modalPresentationStyle = .overCurrentContext
+                    vc.purchaseItemList = [PurchaseItem(title: "기기간 동기화", detail: "여러 기기간 동기화 활성화", imageLink: "https://image.freepik.com/free-vector/synchronization-cellphone-mobile-phone-computer-pc-illustration_101884-555.jpg")]
+                    present(vc, animated: true, completion: nil)
+                }
                 break
             case AdditionalItem.buyRealBook.rawValue:
                 //open safari

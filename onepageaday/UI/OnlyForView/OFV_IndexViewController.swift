@@ -7,6 +7,7 @@
 
 import UIKit
 
+// 모아보기!
 class OFV_IndexViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!

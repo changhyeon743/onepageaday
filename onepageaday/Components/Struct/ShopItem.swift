@@ -18,4 +18,6 @@ struct ShopItem {
     var bookImage: String
     
     var privateMode: Bool
+    
+    var hashtags: [String]
 }

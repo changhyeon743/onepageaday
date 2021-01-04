@@ -134,6 +134,8 @@ class FirebaseAPI {
             try question.forEach({ (str) in
                 indexCount+=1
                 let _ = try db.collection("books/\(bookId)/questions").addDocument(from: Question(index: indexCount,text: str, privateMode: privateMode ))
+//                db.collection("books/\(bookId)/questions/\(question_id)/Social").document("like").setData(["like": 0])
+                
             })
             completion()
         } catch {
@@ -229,18 +231,53 @@ class FirebaseAPI {
         }
     }
     
-    func fetchQuestionToday(completion:@escaping([Question])->Void) {
+    func fetchQuestionToday(after:DocumentSnapshot?, completion:@escaping([Question],DocumentSnapshot?)->Void) {
         let calendar = Calendar.current
         let components = calendar.dateComponents([.year, .month, .day], from: Date())
         let start = calendar.date(from: components)!
         let end = calendar.date(byAdding: .day, value: 1, to: start)!
         
-        Firestore.firestore().collectionGroup("questions")
+        
+        let query = Firestore.firestore().collectionGroup("questions")
             .whereField("privateMode", isEqualTo: false)
             .whereField("modifiedDate", isGreaterThanOrEqualTo: start)
             .whereField("modifiedDate", isLessThanOrEqualTo: end)
             .order(by: "modifiedDate", descending: true)
-            .getDocuments { (queryShapshot, err) in
+            .limit(to: 6)
+            
+        let query_complete = (after != nil) ? query.start(afterDocument: after!) : query
+        query_complete.getDocuments { (queryShapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                if let query = queryShapshot {
+                    
+                    let questions = query.documents.compactMap { (question) -> Question? in
+                        do {
+                            return try question.data(as: Question.self)
+                        } catch {
+                            print(error.localizedDescription)
+                            
+                        }
+                        return nil
+                    }
+                    completion(questions.filter{!$0.drawings.isEmpty || $0.textViewDatas.count > 0 || $0.imageViewDatas.count > 0},query.documents.last)
+                }
+            }
+        }
+    }
+    
+    func fetchQuestion(withName:String,after:DocumentSnapshot?, completion:@escaping([Question],DocumentSnapshot?)->Void) {
+        
+        let query = Firestore.firestore().collectionGroup("questions")
+            .whereField("privateMode", isEqualTo: false)
+            .whereField("text", isEqualTo: withName)
+            .order(by: "modifiedDate", descending: true)
+            .limit(to: 6)
+        
+        let query_complete = (after != nil) ? query.start(afterDocument: after!) : query
+            
+        query_complete.getDocuments { (queryShapshot, err) in
                 if let err = err {
                     print("Error getting documents: \(err)")
                 } else {
@@ -255,7 +292,7 @@ class FirebaseAPI {
                             }
                             return nil
                         }
-                        completion(questions.filter{!$0.drawings.isEmpty || $0.textViewDatas.count > 0 || $0.imageViewDatas.count > 0})
+                        completion(questions.filter{!$0.drawings.isEmpty || $0.textViewDatas.count > 0 || $0.imageViewDatas.count > 0}, query.documents.last)
                     }
                 }
         }
