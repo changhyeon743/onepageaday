@@ -10,10 +10,11 @@ import Foundation
 struct ShopItem {
     var title: String
     var detail: String
+    var price: Int
     
     var questions: [String]
     
-    var imageLink: String
+    var additionalImageLinks: [String]
     
     var bookImage: String
     

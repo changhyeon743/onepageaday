@@ -9,7 +9,7 @@ import Foundation
 
 class ShopItems {
     let shopItems = [ShopItem(title: "남자에게 물어볼 50 가지 질문",
-                              detail: "https://psycatgames.com/ko/magazine/conversation-starters/250-questions-to-ask-a-guy/#5",
+                              detail: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sodales, magna vitae convallis bibendum, purus turpis faucibus quam, a feugiat orci ante eget tortor. Maecenas magna dolor, tempus ac odio consequat, placerat elementum purus. Donec nec enim dui. Praesent elementum tempor urna eu volutpat. Cras venenatis tortor at dui imperdiet, ornare tincidunt est imperdiet. Integer tempor risus non dolor hendrerit elementum. Nulla egestas metus et vehicula iaculis. Vivamus at diam non libero cursus tempus. In hac habitasse platea dictumst. Morbi ex sapien, sagittis nec est in, tincidunt malesuada eros. Nulla volutpat nisl eros, in pretium arcu posuere eget. Sed nec urna eget metus ultrices varius.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sodales, magna vitae convallis bibendum, purus turpis faucibus quam, a feugiat orci ante eget tortor. Maecenas magna dolor, tempus ac odio consequat, placerat elementum purus. Donec nec enim dui. Praesent elementum tempor urna eu volutpat. Cras venenatis tortor at dui imperdiet, ornare tincidunt est imperdiet. Integer tempor risus non dolor hendrerit elementum. Nulla egestas metus et vehicula iaculis. Vivamus at diam non libero cursus tempus. In hac habitasse platea dictumst. Morbi ex sapien, sagittis nec est in, tincidunt malesuada eros. Nulla volutpat nisl eros, in pretium arcu posuere eget. Sed nec urna eget metus ultrices varius.", price: 1000,
                               questions: ["기술이 발전하면 \n 가능하다면 태어나려고합니까?",
                                  "할아버지의 헤어 스타일이나 이름을 원하십니까?",
                                  "가장 좋아하는 계절은 무엇이며 왜 그렇습니까?",
@@ -60,9 +60,9 @@ class ShopItems {
                                  "당신은 오히려 하우스 보트 나 산의 오두막에서 살기를 원하십니까?",
                                  "가장 흥미로운 사실은 무엇입니까?",
                                  "휴식하는 사자와 함께 10 분 동안 앉아 있거나 배고픈 악어의 등을 가로 질러 달리고 싶습니까?"],
-                              imageLink: "https://psycatgames.com/ko/magazine/conversation-starters/250-questions-to-ask-a-guy/feature-image_hu4a7c8397bd008fb23013e84fd92f05ba_1338079_1920x1080_fill_q75_box_center.jpg", bookImage: "https://psycatgames.com/ko/magazine/conversation-starters/250-questions-to-ask-a-guy/feature-image_hu4a7c8397bd008fb23013e84fd92f05ba_1338079_1920x1080_fill_q75_box_center.jpg", privateMode: true, hashtags: ["남자","50가지 이상","무료","최근발매"]),
+                              additionalImageLinks: ["https://previews.123rf.com/images/dafnadar/dafnadar1707/dafnadar170700015/82894770-handsome-young-adult-men-in-shirt-and-trousers-hand-drawing-illustration-with-black-line-art-man-wit.jpg","https://psycatgames.com/ko/magazine/conversation-starters/250-questions-to-ask-a-guy/feature-image_hu4a7c8397bd008fb23013e84fd92f05ba_1338079_1920x1080_fill_q75_box_center.jpg"], bookImage: "https://psycatgames.com/ko/magazine/conversation-starters/250-questions-to-ask-a-guy/feature-image_hu4a7c8397bd008fb23013e84fd92f05ba_1338079_1920x1080_fill_q75_box_center.jpg", privateMode: true, hashtags: ["남자","50가지 이상","무료","최근발매"]),
 
-                              ShopItem(title: "여자에게 물어볼 50 가지 질문", detail: "질문", questions: [
+                     ShopItem(title: "여자에게 물어볼 50 가지 질문", detail: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sodales, magna vitae convallis bibendum, purus turpis faucibus quam, a feugiat orci ante eget tortor. Maecenas magna dolor, tempus ac odio consequat, placerat elementum purus. Donec nec enim dui. Praesent elementum tempor urna eu volutpat. Cras venenatis tortor at dui imperdiet, ornare tincidunt est imperdiet. Integer tempor risus non dolor hendrerit elementum. Nulla egestas metus et vehicula iaculis. Vivamus at diam non libero cursus tempus. In hac habitasse platea dictumst. Morbi ex sapien, sagittis nec est in, tincidunt malesuada eros. Nulla volutpat nisl eros, in pretium arcu posuere eget. Sed nec urna eget metus ultrices varius.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sodales, magna vitae convallis bibendum, purus turpis faucibus quam, a feugiat orci ante eget tortor. Maecenas magna dolor, tempus ac odio consequat, placerat elementum purus. Donec nec enim dui. Praesent elementum tempor urna eu volutpat. Cras venenatis tortor at dui imperdiet, ornare tincidunt est imperdiet. Integer tempor risus non dolor hendrerit elementum. Nulla egestas metus et vehicula iaculis. Vivamus at diam non libero cursus tempus. In hac habitasse platea dictumst. Morbi ex sapien, sagittis nec est in, tincidunt malesuada eros. Nulla volutpat nisl eros, in pretium arcu posuere eget. Sed nec urna eget metus ultrices varius.", price: 1000, questions: [
                                   "전통적으로 여성스러운 것으로 간주되지 않는 것은 무엇입니까?",
                                   "가장 좋아하는 가상의 인물은 누구이며 왜 그런가요?",
                                   "당신은 오히려 모든 언어를 알고 동물과 대화하는 방법을 알고 싶습니까?",
@@ -112,6 +112,52 @@ class ShopItems {
                                   "가장 좋은 결정은 무엇입니까?",
                                   "처녀가되는 것이 어색하다고 생각되는 나이가 있습니까?",
                                   "할머니가 당신에게 준 가장 좋은 조언은 무엇입니까?",
-                              ], imageLink: "https://i.pinimg.com/564x/2f/d7/8e/2fd78e90c645537e3089306b79aa509b.jpg", bookImage: "https://i.pinimg.com/564x/2f/d7/8e/2fd78e90c645537e3089306b79aa509b.jpg", privateMode: false, hashtags: ["여자","50가지 이상","무료","최근발매"])
+                              ], additionalImageLinks: ["https://i.pinimg.com/564x/2f/d7/8e/2fd78e90c645537e3089306b79aa509b.jpg"], bookImage: "https://i.pinimg.com/564x/2f/d7/8e/2fd78e90c645537e3089306b79aa509b.jpg", privateMode: false, hashtags: ["여자","50가지 이상","무료","최근발매"]),
+                     ShopItem(title: "기본적인 매일력",
+                              detail: "50가지 질문입니다.\n Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sodales, magna vitae convallis bibendum, purus turpis faucibus quam, a feugiat orci ante eget tortor. Maecenas magna dolor, tempus ac odio consequat, placerat elementum purus. Donec nec enim dui. Praesent elementum tempor urna eu volutpat. Cras venenatis tortor at dui imperdiet, ornare tincidunt est imperdiet. Integer tempor risus non dolor hendrerit elementum. Nulla egestas metus et vehicula iaculis. Vivamus at diam non libero cursus tempus. In hac habitasse platea dictumst. Morbi ex sapien, sagittis nec est in, tincidunt malesuada eros. Nulla volutpat nisl eros, in pretium arcu posuere eget. Sed nec urna eget metus ultrices varius.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sodales, magna vitae convallis bibendum, purus turpis faucibus quam, a feugiat orci ante eget tortor. Maecenas magna dolor, tempus ac odio consequat, placerat elementum purus. Donec nec enim dui. Praesent elementum tempor urna eu volutpat. Cras venenatis tortor at dui imperdiet, ornare tincidunt est imperdiet. Integer tempor risus non dolor hendrerit elementum. Nulla egestas metus et vehicula iaculis. Vivamus at diam non libero cursus tempus. In hac habitasse platea dictumst. Morbi ex sapien, sagittis nec est in, tincidunt malesuada eros. Nulla volutpat nisl eros, in pretium arcu posuere eget. Sed nec urna eget metus ultrices varius.",
+                              price: 5000,
+                              questions: [
+                        "눈을 감으면 무슨 생각이 나나요?",
+                        "혼자 있으면 무얼 하나요?",
+                        "아무것도 하지 않고 5분만 멈추어 볼까요?",
+                        "오늘은 —— 날",
+                        "오늘은 —— 않는 날",
+                        "오늘 점심으로 무엇을 먹었나요?",
+                        "오늘은 손을 몇 번 씻었을까요?",
+                        "오늘 날씨는 어떤가요?",
+                        "숲에 무엇이 있나요?",
+                        "이번 주말에 무얼 할까요?",
+                        "설날에는 무엇을 할까요?",
+                        "어제 누구를 만났나요?",
+                        "눈을 감고 나를 그려보세요.",
+                        "누워서 보이는 것을 말해볼까요?",
+                        "집 주변에 자주 가는 곳이 있나요?",
+                        "점심시간에 무얼 했나요?",
+                        "인터넷으로 무엇을 검색해 볼까요?",
+                        "학교에서 어떤 이야기를 들었나요?",
+                        "바다에 무엇이 있나요?",
+                        "우리 10분만 같이 걸어볼까요?",
+                        "자기 전에 어떤 생각을 하나요?",
+                        "거짓말을 한 적이 있나요?",
+                        "나만의 비밀 장소가 있나요?",
+                        "잠이 오지 않을 때 어떻게 하나요?",
+                        "친구란 무엇일까요?",
+                        "쉬는 날 무엇을 하고 싶은가요?",
+                        "오늘 가장 기억에 남는 색은 무엇인가요?",
+                        "아침에 일어나면 무슨 생각을 하나요?",
+                        "내가 서 있는 땅 속에 무엇이 있을까요?",
+                        "내 옷장에서 가장 많은 색은 무엇인가요?",
+                        "오늘 어제와 다른 점은 무엇인가요?",
+                        "10분 동안 쉬어볼까요?",
+                        "눈을 감고 좋아하는 친구를 생각해 보세요.",
+                        "생일날에는 무엇을 할까요?",
+                        "감추고 싶은 비밀이 있나요?",
+                        "어제 가장 오랫동안 함께한 사람은 누구인가요?",
+                        "슬프지 않은 데 눈물을 흘릴 수 있나요?",
+                     
+                     ],
+                     additionalImageLinks: ["https://contents.sixshop.com/uploadedFiles/16736/product/image_1580274048321.jpg"],
+                     bookImage: "https://tumblbug-psi.imgix.net/690c9f262a25131d07655e5589af183e6e51bf02/db874d83e6481d92b6e09636d5330a93bf2c6f42/d66634dce8d4512d91af2c7f450b58ab457eb3b2/230c1548-bda5-4db2-893a-419e0f9cf30a.jpg?ixlib=rb-1.1.0&w=1240&auto=format%2C%20compress&lossless=true&ch=save-data&s=431ce3a2b541b4e6759adb626b48323c", privateMode: false, hashtags: ["유료","남녀노소"])
                               ]
+    
 }

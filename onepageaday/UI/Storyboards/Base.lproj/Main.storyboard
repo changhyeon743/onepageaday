@@ -273,14 +273,115 @@
                     <view key="view" contentMode="scaleToFill" id="Kyu-1Q-Ttt">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s4l-Ub-QbE">
+                                <rect key="frame" x="0.0" y="56" width="414" height="752"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="DfQ-v4-hfU">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1994.5"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="9Jx-Bd-WqG">
+                                                <rect key="frame" x="32" y="32" width="350" height="202.5"/>
+                                                <subviews>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eLT-o8-JfC">
+                                                        <rect key="frame" x="0.0" y="0.0" width="114" height="202.5"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="114" id="Ke9-YY-78N"/>
+                                                            <constraint firstAttribute="width" secondItem="eLT-o8-JfC" secondAttribute="height" multiplier="9:16" id="rRm-nY-OQ3"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="coV-ZF-7Ln">
+                                                        <rect key="frame" x="130" y="0.0" width="220" height="202.5"/>
+                                                        <subviews>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Wg4-Xf-50D">
+                                                                <rect key="frame" x="0.0" y="0.0" width="220" height="55"/>
+                                                                <subviews>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="제목" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="AYN-pe-3uq">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="220" height="29"/>
+                                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
+                                                                        <nil key="textColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="해시태그" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="VwE-oX-2T5">
+                                                                        <rect key="frame" x="0.0" y="37" width="220" height="18"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
+                                                            </stackView>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lUz-kE-FTC">
+                                                                <rect key="frame" x="0.0" y="172.5" width="220" height="30"/>
+                                                                <color key="backgroundColor" name="AccentColor"/>
+                                                                <state key="normal" title="₩1200">
+                                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </state>
+                                                            </button>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                            </stackView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="공개/ 비공개" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nHN-lE-4Xa">
+                                                <rect key="frame" x="32" y="266.5" width="350" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KkP-kH-Y4J">
+                                                <rect key="frame" x="32" y="319" width="350" height="1643.5"/>
+                                                <mutableString key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean placerat vel lectus sit amet convallis. In eu ligula luctus, semper turpis sit amet, convallis sapien. Morbi porttitor, turpis ac blandit blandit, nunc justo finibus purus, ac congue dui ante facilisis odio. Sed euismod nisi ac urna tristique fringilla. Vivamus semper nulla id consequat rhoncus. Quisque rhoncus finibus lacus, ac euismod leo egestas eget. Morbi facilisis mi ut accumsan ultricies. Integer non neque nec eros hendrerit tempus. Nunc id ex nec lectus fringilla pulvinar nec eu neque.
+
+Curabitur pharetra dolor nulla, eget lobortis nisi dignissim sit amet. Vestibulum fermentum rutrum augue ut fringilla. Aliquam et nulla volutpat, aliquam augue sit amet, dapibus eros. Aenean ut lectus congue nibh congue luctus in non nisl. Duis blandit urna vel nunc consectetur, vel consequat est viverra. Duis elementum tincidunt tempor. Mauris dictum auctor quam id tristique. Maecenas lobortis metus sed diam suscipit sodales. Mauris maximus turpis sed nisi auctor, eu maximus lorem semper. In rutrum pellentesque sem dapibus elementum. Phasellus enim sem, efficitur sed arcu non, tempor suscipit augue. Nullam porta hendrerit lorem. Cras non dui et leo fringilla rhoncus. Nam tempor luctus arcu, id ornare enim aliquam eu. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nam eget mollis odio, id rutrum lacus.
+
+Phasellus nec hendrerit ex. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Vestibulum nec pharetra nunc, nec vehicula metus. In et nulla non nunc maximus dignissim. Etiam vehicula elit a rhoncus luctus. Aliquam sed congue justo. In semper mattis nibh et sagittis. Morbi cursus rhoncus est, non fermentum erat vestibulum nec. Fusce rutrum accumsan feugiat. Nunc cursus fringilla risus, ut posuere elit rhoncus et. Nulla facilisi. Mauris quis auctor sem.
+
+Nunc laoreet convallis dolor, id commodo orci vulputate quis. Suspendisse odio neque, pulvinar vel consequat nec, dapibus a felis. Proin porta neque aliquet nulla auctor tristique. Praesent aliquet feugiat dolor mattis imperdiet. Aliquam hendrerit dolor nibh, facilisis euismod est fringilla pharetra. In luctus, mi eget ornare euismod, ante risus congue eros, at rutrum tortor orci sed magna. Integer aliquet ullamcorper dolor in tincidunt. Aenean finibus, metus pharetra imperdiet luctus, diam magna bibendum augue, eget ultrices nulla odio eget magna. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nulla in ipsum felis. Vestibulum ac scelerisque nibh.
+
+Nullam hendrerit risus et bibendum blandit. Nulla et purus augue. Cras a tempus felis. Cras non libero convallis enim tempor malesuada vestibulum sit amet eros. Nullam a nisl id sem posuere iaculis eu ut tortor. Nam a purus nibh. Nulla blandit turpis felis, ac dignissim risus convallis a. Nullam mattis lacinia felis. Mauris quis metus placerat, ornare nisl at, elementum metus. Phasellus porta lectus non enim mollis suscipit vel nec urna. Nam malesuada vitae mi sed volutpat. Integer dictum lorem lectus, quis volutpat tellus viverra eget. In et eleifend justo, ut vestibulum urna.
+
+</mutableString>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <edgeInsets key="layoutMargins" top="32" left="32" bottom="32" right="32"/>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="DfQ-v4-hfU" firstAttribute="width" secondItem="eQL-Yt-QVa" secondAttribute="width" id="YPF-3N-Hdc"/>
+                                    <constraint firstItem="DfQ-v4-hfU" firstAttribute="leading" secondItem="vY4-gi-QXw" secondAttribute="leading" id="cus-Vz-6Ek"/>
+                                    <constraint firstItem="DfQ-v4-hfU" firstAttribute="bottom" secondItem="vY4-gi-QXw" secondAttribute="bottom" id="hTT-DO-K85"/>
+                                    <constraint firstItem="DfQ-v4-hfU" firstAttribute="top" secondItem="vY4-gi-QXw" secondAttribute="top" id="i6b-w8-U6O"/>
+                                    <constraint firstItem="DfQ-v4-hfU" firstAttribute="trailing" secondItem="vY4-gi-QXw" secondAttribute="trailing" id="wjS-Og-ltF"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="vY4-gi-QXw"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="eQL-Yt-QVa"/>
+                            </scrollView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="Dxc-m0-eLH"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="s4l-Ub-QbE" firstAttribute="bottom" secondItem="Dxc-m0-eLH" secondAttribute="bottom" id="9EC-qa-ygk"/>
+                            <constraint firstItem="s4l-Ub-QbE" firstAttribute="top" secondItem="Dxc-m0-eLH" secondAttribute="top" id="GIl-VL-ftY"/>
+                            <constraint firstItem="s4l-Ub-QbE" firstAttribute="leading" secondItem="Dxc-m0-eLH" secondAttribute="leading" id="J9W-Dh-FXg"/>
+                            <constraint firstItem="s4l-Ub-QbE" firstAttribute="trailing" secondItem="Dxc-m0-eLH" secondAttribute="trailing" id="OMI-jJ-fY2"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="fLf-3X-ad5"/>
+                    <connections>
+                        <outlet property="bookImageView" destination="eLT-o8-JfC" id="6Sp-1w-WdK"/>
+                        <outlet property="contentStackView" destination="DfQ-v4-hfU" id="UHL-fh-WEW"/>
+                        <outlet property="detailLabel" destination="KkP-kH-Y4J" id="2pp-Jh-2U9"/>
+                        <outlet property="hashTagLabel" destination="VwE-oX-2T5" id="VZu-Pe-FQo"/>
+                        <outlet property="privateModeLabel" destination="nHN-lE-4Xa" id="jc0-kJ-9ys"/>
+                        <outlet property="purchaseButton" destination="lUz-kE-FTC" id="SKh-9r-CTg"/>
+                        <outlet property="titleLabel" destination="AYN-pe-3uq" id="OFH-T4-y10"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Deb-DI-7sC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="745" y="-856"/>
+            <point key="canvasLocation" x="744.92753623188412" y="-856.47321428571422"/>
         </scene>
         <!--Purchase Page View Controller-->
         <scene sceneID="mKQ-TA-b3p">

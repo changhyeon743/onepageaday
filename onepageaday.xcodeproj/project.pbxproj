@@ -259,7 +259,6 @@
 		7861CB24258FA79A0035D29E /* Shop */ = {
 			isa = PBXGroup;
 			children = (
-				78365CE7259F0BC000CACE52 /* ShopItems.swift */,
 				78365CDF259F097D00CACE52 /* ShopHashTagPickViewController.swift */,
 				7853DC762587AAD900600F6A /* ShopViewController.swift */,
 				789CBC2F25889E76001D11B1 /* ShopDetailViewController.swift */,
@@ -311,6 +310,7 @@
 		78E908A72582718500944B60 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				78365CE7259F0BC000CACE52 /* ShopItems.swift */,
 				7840E310257FAAA7009B216B /* Assets.xcassets */,
 			);
 			path = Resources;
@@ -855,12 +855,14 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = onepageaday/onepageaday.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = BZY7R6DV42;
 				INFOPLIST_FILE = onepageaday/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = remarkpress.onepageaday;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -876,12 +878,14 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = onepageaday/onepageaday.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = BZY7R6DV42;
 				INFOPLIST_FILE = onepageaday/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = remarkpress.onepageaday;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

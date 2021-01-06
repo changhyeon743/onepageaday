@@ -74,7 +74,7 @@ class ShopViewController: UIViewController, SkeletonTableViewDelegate, SkeletonT
             cell.downloadButton.tag = indexPath.row
             cell.downloadButton.addTarget(self, action: #selector(downloadButtonPressed(_:)), for: .touchUpInside)
             cell.itemImageView?.kf.indicatorType = .activity
-            cell.itemImageView?.kf.setImage(with: URL(string:shopItems![indexPath.row].imageLink))
+            cell.itemImageView?.kf.setImage(with: URL(string:shopItems![indexPath.row].bookImage))
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ShopCell
@@ -114,6 +114,7 @@ class ShopViewController: UIViewController, SkeletonTableViewDelegate, SkeletonT
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let vc = self.storyboard?.instantiateViewController(identifier: "ShopDetailViewController") as? ShopDetailViewController {
             vc.title = shopItems?[indexPath.row].title
+            vc.shopItem = shopItems?[indexPath.row]
             self.navigationController?.pushViewController(vc, animated: true)
         }
         

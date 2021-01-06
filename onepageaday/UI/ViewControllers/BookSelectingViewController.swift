@@ -321,9 +321,10 @@ class BookSelectingViewController: UIViewController, SkeletonCollectionViewDeleg
             case AdditionalItem.buyPro.rawValue:
                 //Buy pro
                 print("Buy pro")
-                if let vc = self.storyboard?.instantiateViewController(identifier: "PurchasePageViewController") as? PurchasePageViewController {
+                if let vc = self.storyboard?.instantiateViewController(identifier: "PurchaseViewController") as? PurchaseViewController {
                     vc.modalPresentationStyle = .overCurrentContext
-                    vc.purchaseItemList = [PurchaseItem(title: "기기간 동기화", detail: "여러 기기간 동기화 활성화", imageLink: "https://image.freepik.com/free-vector/synchronization-cellphone-mobile-phone-computer-pc-illustration_101884-555.jpg")]
+                    vc.item = PurchaseItem(title: "기기간 동기화", detail: "여러 기기간 동기화 활성화", imageLink: "https://image.freepik.com/free-vector/synchronization-cellphone-mobile-phone-computer-pc-illustration_101884-555.jpg")
+                    //vc.purchaseItemList = [PurchaseItem(title: "기기간 동기화", detail: "여러 기기간 동기화 활성화", imageLink: "https://image.freepik.com/free-vector/synchronization-cellphone-mobile-phone-computer-pc-illustration_101884-555.jpg")]
                     present(vc, animated: true, completion: nil)
                 }
                 break

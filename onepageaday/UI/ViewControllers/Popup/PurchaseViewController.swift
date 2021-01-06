@@ -33,6 +33,9 @@ class PurchaseViewController: UIViewController {
         
         purchaseButton.layer.cornerRadius = 16
         purchaseButton.clipsToBounds = true
+        purchaseButton.addAction(UIAction(handler: { _ in
+            self.dismiss(animated: true, completion: nil)
+        }), for: .touchUpInside)
     }
     
 

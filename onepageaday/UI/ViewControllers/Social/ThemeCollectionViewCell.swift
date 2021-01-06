@@ -47,16 +47,27 @@ class ThemeCollectionViewCell: UICollectionViewCell,UIContextMenuInteractionDele
     }
     func createContextMenu() -> UIMenu {
         
-        let shareAction = UIAction(title: "Like", image: UIImage(systemName: "heart")) { _ in
-            print("Like")
-        }
-        let saveToPhotos = UIAction(title: "Save", image: UIImage(systemName: "photo")) { _ in
+        let saveToPhotos = UIAction(title: "사진첩에 저장", image: UIImage(systemName: "photo")) { _ in
             print("Save to Photos")
+            if let img = self.image {
+                UIImageWriteToSavedPhotosAlbum(img, self, #selector(self.imageSaved(_:didFinishSavingWithError:contextInfo:)), nil)
+            }
+
         }
-        let report = UIAction(title: "Report", image: UIImage(systemName: "bell")) { _ in
+        let report = UIAction(title: "신고", image: UIImage(systemName: "bell")) { _ in
             print("report")
+            
         }
-        return UIMenu(title: "", children: [shareAction, saveToPhotos, report])
+        return UIMenu(title: "", children: [saveToPhotos, report])
     }
     
+    @objc func imageSaved(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
+            if let error = error {
+                // we got back an error!
+                print(error.localizedDescription)
+            } else {
+                print("saved")
+                
+            }
+        }
 }
