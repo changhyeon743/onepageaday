@@ -231,9 +231,9 @@ class FirebaseAPI {
         }
     }
     
-    func fetchQuestionToday(after:DocumentSnapshot?, completion:@escaping([Question],DocumentSnapshot?)->Void) {
+    func fetchQuestion(withDate: Date,after:DocumentSnapshot?, completion:@escaping([Question],DocumentSnapshot?)->Void) {
         let calendar = Calendar.current
-        let components = calendar.dateComponents([.year, .month, .day], from: Date())
+        let components = calendar.dateComponents([.year, .month, .day], from: withDate)
         let start = calendar.date(from: components)!
         let end = calendar.date(byAdding: .day, value: 1, to: start)!
         
@@ -296,5 +296,16 @@ class FirebaseAPI {
                     }
                 }
         }
+    }
+    
+    func addReport(questionId: String, content: String ,completion: @escaping()->Void) {
+        //Book adding
+        
+        let report = try db.collection("reports").document().setData(["content": content,"questionId": questionId]) { err in
+            if (err == nil) {
+                completion()
+            }
+        }
+        
     }
 }

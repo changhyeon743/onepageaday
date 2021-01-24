@@ -17,19 +17,20 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Anf-75-I5y">
-                        <rect key="frame" x="12" y="12" width="96" height="96"/>
+                        <rect key="frame" x="12" y="12" width="54" height="96"/>
                         <constraints>
-                            <constraint firstAttribute="width" secondItem="Anf-75-I5y" secondAttribute="height" multiplier="1:1" id="2ju-4N-Fmy"/>
+                            <constraint firstAttribute="width" secondItem="Anf-75-I5y" secondAttribute="height" multiplier="9:16" id="2ju-4N-Fmy"/>
+                            <constraint firstAttribute="width" constant="54" id="rwy-9z-JWe"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                         </userDefinedRuntimeAttributes>
                     </imageView>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="K7E-VQ-Dlo">
-                        <rect key="frame" x="120" y="12" width="500" height="96"/>
+                        <rect key="frame" x="78" y="12" width="542" height="96"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O1S-3e-zA8">
-                                <rect key="frame" x="0.0" y="0.0" width="500" height="45.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="542" height="45.5"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -38,7 +39,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="luw-Ob-y1P">
-                                <rect key="frame" x="0.0" y="50.5" width="500" height="45.5"/>
+                                <rect key="frame" x="0.0" y="50.5" width="542" height="45.5"/>
                                 <string key="text">DetailDetailDetailDetailDetailDetailDetailDetailDetailDetailDetailDetailDetailDetailDetailDetailDetailDetailDetailDetailDetailDetailDetailDetailDetailDetailDetailDetailDetailDetail</string>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

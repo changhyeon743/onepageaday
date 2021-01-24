@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Firebase
+
 class ImagePreviewController: UIViewController {
     private let imageView = UIImageView()
     init(image: UIImage) {
@@ -27,6 +29,9 @@ class ThemeCollectionViewCell: UICollectionViewCell,UIContextMenuInteractionDele
     var image: UIImage?
     
     var id: String?
+    
+    var parentDelegate: ThemeIndexViewControllerDelegate?
+    
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         //trigger user interactoin
         UINotificationFeedbackGenerator().notificationOccurred(.success)
@@ -47,27 +52,21 @@ class ThemeCollectionViewCell: UICollectionViewCell,UIContextMenuInteractionDele
     }
     func createContextMenu() -> UIMenu {
         
-        let saveToPhotos = UIAction(title: "사진첩에 저장", image: UIImage(systemName: "photo")) { _ in
+        let saveToPhotos = UIAction(title: "사진첩에 저장", image: UIImage(systemName: "photo")) { [weak self]_ in
             print("Save to Photos")
-            if let img = self.image {
-                UIImageWriteToSavedPhotosAlbum(img, self, #selector(self.imageSaved(_:didFinishSavingWithError:contextInfo:)), nil)
+            if let img = self?.image {
+                self?.parentDelegate?.save(uiimage: img)
             }
 
         }
-        let report = UIAction(title: "신고", image: UIImage(systemName: "bell")) { _ in
+        let report = UIAction(title: "신고", image: UIImage(systemName: "bell")) { [weak self] _ in
             print("report")
+            guard let questionId = self?.id else {return}
+            self?.parentDelegate?.report(questionId: questionId)
             
         }
         return UIMenu(title: "", children: [saveToPhotos, report])
     }
     
-    @objc func imageSaved(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
-            if let error = error {
-                // we got back an error!
-                print(error.localizedDescription)
-            } else {
-                print("saved")
-                
-            }
-        }
+   
 }

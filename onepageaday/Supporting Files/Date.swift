@@ -15,4 +15,11 @@ extension Date {
             formatter.dateFormat = format
             return formatter.string(from: self)
         }
+        var dayAfter: Date {
+            return Calendar.current.date(byAdding: .day, value: 1, to: self)!
+        }
+
+        var dayBefore: Date {
+            return Calendar.current.date(byAdding: .day, value: -1, to: self)!
+        }
 }

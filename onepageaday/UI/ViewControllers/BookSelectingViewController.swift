@@ -86,21 +86,7 @@ class BookSelectingViewController: UIViewController, SkeletonCollectionViewDeleg
 
 
                                      }),
-                                     UIAction(title: "sub collection query", image: nil, identifier: nil, handler: { _ in
-                                        let calendar = Calendar.current
-                                        let components = calendar.dateComponents([.year, .month, .day], from: Date())
-                                        let start = calendar.date(from: components)!
-                                        let end = calendar.date(byAdding: .day, value: 1, to: start)!
-                                        
-                                        Firestore.firestore().collectionGroup("questions")
-                                            .whereField("modifiedDate", isGreaterThanOrEqualTo: start)
-                                            .whereField("modifiedDate", isLessThanOrEqualTo: end)
-                                            .getDocuments { (snapshot, error) in
-                                                snapshot?.documents.forEach({ (document) in
-                                                    print(document.data())
-                                                })
-                                        }
-                                     })
+                                     
                                      ])
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -308,12 +294,7 @@ class BookSelectingViewController: UIViewController, SkeletonCollectionViewDeleg
             case AdditionalItem.todayBooks.rawValue:
                 if let vc = self.storyboard?.instantiateViewController(withIdentifier: "ThemeIndexViewController") as? ThemeIndexViewController {
                     vc.theme = .today
-                    let dateFormatter = DateFormatter()
-                    dateFormatter.locale = .current
-                    dateFormatter.timeZone = .current
-                    dateFormatter.dateFormat = "yyyy년 MM월 dd일의 매일력"
                     
-                    vc.title = dateFormatter.string(from: Date())
                     self.present(vc, animated: true, completion: nil)
                 }
                 
@@ -323,8 +304,7 @@ class BookSelectingViewController: UIViewController, SkeletonCollectionViewDeleg
                 print("Buy pro")
                 if let vc = self.storyboard?.instantiateViewController(identifier: "PurchaseViewController") as? PurchaseViewController {
                     vc.modalPresentationStyle = .overCurrentContext
-                    vc.item = PurchaseItem(title: "기기간 동기화", detail: "여러 기기간 동기화 활성화", imageLink: "https://image.freepik.com/free-vector/synchronization-cellphone-mobile-phone-computer-pc-illustration_101884-555.jpg")
-                    //vc.purchaseItemList = [PurchaseItem(title: "기기간 동기화", detail: "여러 기기간 동기화 활성화", imageLink: "https://image.freepik.com/free-vector/synchronization-cellphone-mobile-phone-computer-pc-illustration_101884-555.jpg")]
+                    vc.modalTransitionStyle = .crossDissolve
                     present(vc, animated: true, completion: nil)
                 }
                 break

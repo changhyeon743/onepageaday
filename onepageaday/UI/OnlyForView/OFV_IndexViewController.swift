@@ -42,16 +42,16 @@ class OFV_IndexViewController: UIViewController {
 
 extension OFV_IndexViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        updateItemsWith(searchText: searchText)
+        updateItemsWith(searchText: searchText,textViewEndEditing: false)
     }
     func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
         print(selectedScope)
         self.searchMode = selectedScope
         //목록 업데이트
-        updateItemsWith(searchText: searchBar.text ?? "")
+        updateItemsWith(searchText: searchBar.text ?? "",textViewEndEditing: true)
     }
     
-    func updateItemsWith(searchText: String) {
+    func updateItemsWith(searchText: String, textViewEndEditing: Bool) {
         if searchText.isEmpty { //전체 검색
             if searchMode == 0 { //모든 질문
                 filteredData = API.currentQuestions
@@ -68,7 +68,7 @@ extension OFV_IndexViewController: UISearchBarDelegate {
                     .filter { $0.text.contains(searchText) }
             }
         }
-        self.view.endEditing(true)
+        self.view.endEditing(textViewEndEditing)
         self.collectionView.reloadData()
     }
 }

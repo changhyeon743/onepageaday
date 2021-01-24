@@ -10,7 +10,6 @@
 		003ECB047CDCC05809B8F912 /* Pods_onepageaday.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4B928A1E391D0234C9506F1 /* Pods_onepageaday.framework */; };
 		6F2A1475C2164726B48F0622 /* Pods_onepageadayTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9DFDEE0EEE9B60A7F305482 /* Pods_onepageadayTests.framework */; };
 		78001F6A258B889600102D27 /* PKDrawing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78001F69258B889600102D27 /* PKDrawing.swift */; };
-		780469BE25A2E7FE004A8FFB /* PurchasePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780469BD25A2E7FE004A8FFB /* PurchasePageViewController.swift */; };
 		78075CCD25909D3C00EC9139 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78075CCC25909D3C00EC9139 /* Array.swift */; };
 		782685472587106E00F0A295 /* GiphyAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782685462587106E00F0A295 /* GiphyAPI.swift */; };
 		7826855C2587114E00F0A295 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7826855B2587114E00F0A295 /* API.swift */; };
@@ -32,6 +31,7 @@
 		7861CB2E258FA87D0035D29E /* StickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7861CB2D258FA87D0035D29E /* StickerViewController.swift */; };
 		7863C9BF2588589500B5773D /* BookCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7863C9BE2588589500B5773D /* BookCell.xib */; };
 		7863C9C42588596600B5773D /* BookCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7863C9C32588596600B5773D /* BookCell.swift */; };
+		786769C225B127A100E63EC3 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786769C125B127A100E63EC3 /* File.swift */; };
 		787086B8258C448D00D454A8 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787086B7258C448D00D454A8 /* LoginViewController.swift */; };
 		787086C7258C475100D454A8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 787086C6258C475100D454A8 /* GoogleService-Info.plist */; };
 		787086DD258C915100D454A8 /* ShopItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787086DC258C915100D454A8 /* ShopItem.swift */; };
@@ -85,7 +85,6 @@
 		28E54BDF9D99E02EF3FCACB7 /* Pods-onepageaday.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-onepageaday.release.xcconfig"; path = "Pods/Target Support Files/Pods-onepageaday/Pods-onepageaday.release.xcconfig"; sourceTree = "<group>"; };
 		4BCC35ADE6CE9260CDE33DFE /* Pods-onepageaday.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-onepageaday.debug.xcconfig"; path = "Pods/Target Support Files/Pods-onepageaday/Pods-onepageaday.debug.xcconfig"; sourceTree = "<group>"; };
 		78001F69258B889600102D27 /* PKDrawing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PKDrawing.swift; sourceTree = "<group>"; };
-		780469BD25A2E7FE004A8FFB /* PurchasePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasePageViewController.swift; sourceTree = "<group>"; };
 		78075CCC25909D3C00EC9139 /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		782685462587106E00F0A295 /* GiphyAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiphyAPI.swift; sourceTree = "<group>"; };
 		7826855B2587114E00F0A295 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
@@ -113,6 +112,7 @@
 		7861CB2D258FA87D0035D29E /* StickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerViewController.swift; sourceTree = "<group>"; };
 		7863C9BE2588589500B5773D /* BookCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookCell.xib; sourceTree = "<group>"; };
 		7863C9C32588596600B5773D /* BookCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCell.swift; sourceTree = "<group>"; };
+		786769C125B127A100E63EC3 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		787086B7258C448D00D454A8 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		787086BC258C452400D454A8 /* onepageaday.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = onepageaday.entitlements; sourceTree = "<group>"; };
 		787086C6258C475100D454A8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -290,7 +290,6 @@
 			isa = PBXGroup;
 			children = (
 				78EFE36225963B6B0068407F /* ThemeIndexViewController.swift */,
-				78BCC846259D910C00E7028D /* ThemeCollectionViewCell.swift */,
 			);
 			path = Social;
 			sourceTree = "<group>";
@@ -325,6 +324,7 @@
 				7870872E258F369900D454A8 /* Color.swift */,
 				78708737258F551500D454A8 /* Toast.swift */,
 				78075CCC25909D3C00EC9139 /* Array.swift */,
+				786769C125B127A100E63EC3 /* File.swift */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -343,6 +343,7 @@
 		78E908B0258271BA00944B60 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				78BCC846259D910C00E7028D /* ThemeCollectionViewCell.swift */,
 				78576E8D257FDEF7006F0B3F /* EditableTextView.swift */,
 				78E908B42582726D00944B60 /* EditableImageView.swift */,
 				78FE241225879E6700E4BE31 /* BookFlowLayout.swift */,
@@ -375,7 +376,6 @@
 		78E908B32582724400944B60 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				780469BD25A2E7FE004A8FFB /* PurchasePageViewController.swift */,
 				7882DA0C25A0115000A77C94 /* Popup */,
 				78BCC84B259D984A00E7028D /* Social */,
 				787086B7258C448D00D454A8 /* LoginViewController.swift */,
@@ -646,7 +646,6 @@
 				7863C9C42588596600B5773D /* BookCell.swift in Sources */,
 				78DC817E258B12C700C6C2D3 /* FirebaseAPI.swift in Sources */,
 				7870870B258F139300D454A8 /* UIView.swift in Sources */,
-				780469BE25A2E7FE004A8FFB /* PurchasePageViewController.swift in Sources */,
 				782685472587106E00F0A295 /* GiphyAPI.swift in Sources */,
 				78EAE0532591C1FE007E79BA /* OFV_ContainerCollectionViewCell.swift in Sources */,
 				78365CE0259F097D00CACE52 /* ShopHashTagPickViewController.swift in Sources */,
@@ -672,6 +671,7 @@
 				7870872A258F20A500D454A8 /* OFV_ImageView.swift in Sources */,
 				78EFE36325963B6B0068407F /* ThemeIndexViewController.swift in Sources */,
 				78DC8179258B0A2600C6C2D3 /* Template.swift in Sources */,
+				786769C225B127A100E63EC3 /* File.swift in Sources */,
 				7840E30A257FAA9E009B216B /* SceneDelegate.swift in Sources */,
 				78708722258F1FD300D454A8 /* OFV_TextView.swift in Sources */,
 				78FE24252587A89700E4BE31 /* ShopCell.swift in Sources */,
@@ -855,7 +855,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = onepageaday/onepageaday.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = BZY7R6DV42;
 				INFOPLIST_FILE = onepageaday/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -878,7 +878,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = onepageaday/onepageaday.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = BZY7R6DV42;
 				INFOPLIST_FILE = onepageaday/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
