@@ -13,13 +13,13 @@ import PencilKit
 //시간 되면 다시 만들기..!
 class OFV_MainView: UIView, PKCanvasViewDelegate {
 
-    private var currentQuestion:Question?
+    public var currentQuestion:Question?
     
     private var drawingView: PKCanvasView!
     private var drawing: PKDrawing!
 
     private var indexLabel: UILabel!
-    private var questionLabel: UILabel!
+    public var questionLabel: UILabel!
     
     //
     
@@ -58,9 +58,6 @@ class OFV_MainView: UIView, PKCanvasViewDelegate {
         fatalError("init(coder:) has not been implemented")
     }
     
-    deinit {
-        print("deinit mainview")
-    }
     
     
     func setQuestionText() {

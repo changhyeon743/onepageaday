@@ -311,7 +311,7 @@ class MainViewController: UIViewController {
                                          children: [UIAction(title: "모아 보기", image: UIImage(systemName: "square.grid.2x2"), handler: { [weak self] _ in
                                             self?.commitQuestion()
                                                 
-                                            if let vc = self?.storyboard?.instantiateViewController(withIdentifier: "OFV_IndexViewController") as? OFV_IndexViewController {
+                                            if let vc = self?.storyboard?.instantiateViewController(withIdentifier: "OFV_IndexViewController") as? IndexViewController {
                                                 vc.pageViewControllerDelegate = self?.pageControllerDelegate
                                                 
                                                 self?.present(vc, animated: true, completion: {
@@ -321,12 +321,12 @@ class MainViewController: UIViewController {
                                             
                                          }),
                                          UIAction(title: "이 질문의 다른 답변 보기", image: UIImage(systemName: "person.2"), identifier: nil, handler: { [weak self] _ in
-                                            if let vc = self?.storyboard?.instantiateViewController(withIdentifier: "ThemeIndexViewController") as? ThemeIndexViewController {
-                                                vc.theme = .titleSearch
-                                                
-                                                vc.title = self?.currentQuestion?.text ?? ""
-                                                self?.present(vc, animated: true, completion: nil)
-                                            }
+//                                            if let vc = self?.storyboard?.instantiateViewController(withIdentifier: "ThemeIndexViewController") as? NewsFeedViewController {
+//                                                vc.theme = .titleSearch
+//                                                
+//                                                vc.title = self?.currentQuestion?.text ?? ""
+//                                                self?.present(vc, animated: true, completion: nil)
+//                                            }
                                          }),
                                          UIAction(title: "답변 삭제", image: UIImage(systemName: "trash"), identifier: nil, handler: {
                                             [weak self] _ in

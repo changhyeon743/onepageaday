@@ -292,12 +292,12 @@ class BookSelectingViewController: UIViewController, SkeletonCollectionViewDeleg
                 enterShop(nil)
                 break
             case AdditionalItem.todayBooks.rawValue:
-                if let vc = self.storyboard?.instantiateViewController(withIdentifier: "ThemeIndexViewController") as? ThemeIndexViewController {
-                    vc.theme = .today
-                    
-                    self.present(vc, animated: true, completion: nil)
-                }
-                
+//                if let vc = self.storyboard?.instantiateViewController(withIdentifier: "ThemeIndexViewController") as? NewsFeedViewController {
+//                    //vc.theme = .today
+//                    
+//                    self.present(vc, animated: true, completion: nil)
+//                }
+//                
                 break
             case AdditionalItem.buyPro.rawValue:
                 //Buy pro

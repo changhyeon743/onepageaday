@@ -23,6 +23,7 @@ class ImagePreviewController: UIViewController {
     }
 }
 
+//socialCollection
 class ThemeCollectionViewCell: UICollectionViewCell,UIContextMenuInteractionDelegate {
     
     var renderer: UIGraphicsImageRenderer?

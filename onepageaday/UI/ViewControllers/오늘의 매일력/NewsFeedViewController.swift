@@ -16,103 +16,49 @@ protocol ThemeIndexViewControllerDelegate : class {
 
 //오늘의 매일력 / 기타 등등
 //TODO: Skeleton
-class ThemeIndexViewController: UIViewController , SkeletonCollectionViewDelegate, SkeletonCollectionViewDataSource,UICollectionViewDelegateFlowLayout,UICollectionViewDataSourcePrefetching,ThemeIndexViewControllerDelegate {
+class NewsFeedViewController: UIViewController , SkeletonCollectionViewDelegate, SkeletonCollectionViewDataSource,UICollectionViewDelegateFlowLayout,ThemeIndexViewControllerDelegate {
+    
     lazy var activityIndicator: UIActivityIndicatorView = { return makeActivityIndicator(center: self.view.center) }()
     
-    
-    
-    enum Theme:Int {
-        case titleSearch, today
-    }
-    
-    var theme: Theme? = .today
     var lastDocument: DocumentSnapshot?
     
     @IBOutlet weak var collectionView: UICollectionView!
     
     
-    @IBOutlet weak var backButton: UIButton!
-    @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var titleLabel: UILabel!
     
     var items: [Question]?
     
-    var date:Date = Date()
+    var refreshControl = UIRefreshControl()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.prefetchDataSource = self
+        
+        refreshControl.attributedTitle = NSAttributedString(string: "당겨서 새로고침")
+        refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
+        collectionView.addSubview(refreshControl)
         
         activityIndicator.startAnimating()
         self.view.addSubview(activityIndicator)
 
-        
-        if (theme == .today) {
-            setTitleToDate()
-        } else {
-            //이전 다음 비활성화
-            backButton.removeFromSuperview()
-            nextButton.removeFromSuperview()
-        }
         fetchData()
-        titleLabel.text = title
-        let gesture = UITapGestureRecognizer(target: self, action: #selector(callDatePicker))
-        titleLabel.isUserInteractionEnabled = true
-        titleLabel.addGestureRecognizer(gesture)
-
-    }
-    var blurEffectView:UIVisualEffectView!
-    var datePicker:UIDatePicker!
-    @objc func callDatePicker() {
-        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.regular)
-        blurEffectView = UIVisualEffectView(effect: blurEffect)
-        blurEffectView.frame = self.view.bounds
-        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        self.view.addSubview(blurEffectView)
-        datePicker = UIDatePicker()
-        datePicker.date = self.date
-        datePicker.datePickerMode = .date
-        datePicker.locale = .current
-        datePicker.preferredDatePickerStyle = UIDatePickerStyle.inline
-        datePicker.addAction(UIAction(handler: { [weak self] (action) in
-            self?.date = self?.datePicker.date ?? Date()
-            self?.fetchData()
-            self?.setTitleToDate()
-            self?.datePicker.removeFromSuperview()
-            self?.blurEffectView.removeFromSuperview()
-        }), for: .valueChanged)
-        
-       
-        self.view.addSubview(datePicker)
-        datePicker.translatesAutoresizingMaskIntoConstraints = false
-        datePicker.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
-        datePicker.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        view.bringSubviewToFront(datePicker)
-        
-        blurEffectView?.isUserInteractionEnabled = true
-        blurEffectView?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissDatePicker)))
-    }
-    @objc func dismissDatePicker() {
-        datePicker.removeFromSuperview()
-        blurEffectView.removeFromSuperview()
     }
     
-    func setTitleToDate() {
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = .current
-        dateFormatter.timeZone = .current
-        dateFormatter.dateFormat = "yyyy년 MM월 dd일의 매일력"
+    @objc func refresh(_ sender: AnyObject) {
+        self.items = nil
         
-        self.title = dateFormatter.string(from: date)
-        titleLabel.text = title
+        fetchData()
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: Constant.OFV.cellWidth, height: Constant.OFV.cellHeight)
     }
+    
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return items?.count ?? 10
     }
@@ -121,20 +67,9 @@ class ThemeIndexViewController: UIViewController , SkeletonCollectionViewDelegat
         return "cell"
     }
     
-    @IBAction func beforeButtonPressed(_ sender: Any) {
-        date = date.dayBefore
-        fetchData()
-        setTitleToDate()
-    }
-    @IBAction func nextButtonPressed(_ sender: Any) {
-        if (date.dayAfter.timeIntervalSince1970 < Date().timeIntervalSince1970) {
-            date = date.dayAfter
-            fetchData()
-            setTitleToDate()
-        }
-    }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
         if let items = self.items {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ThemeCollectionViewCell
             let view = OFV_MainView(frame: CGRect(x: 0, y: 0, width: Constant.OFV.cellWidth, height: Constant.OFV.cellHeight),currentQuestion: items[indexPath.row])
@@ -168,38 +103,70 @@ class ThemeIndexViewController: UIViewController , SkeletonCollectionViewDelegat
         
     }
     
-    
-    
-    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
-        guard let items = self.items else {return}
-        for indexPath in indexPaths {
-            print(indexPath.row)
-            if items.count == items.count - indexPath.row { //Don't know why...
-              print("ADD DATA")
-                addData()
-            }
+    var isWaitingForFetch: Bool = false
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        
+        guard let cnt = self.items?.count else {return}
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy년 MM월 dd일"
+        self.titleLabel.text = dateFormatter.string(from: self.items?[indexPath.row].modifiedDate ?? Date())
+
+            
+        if indexPath.row == cnt - 1 && !isWaitingForFetch {
+            isWaitingForFetch = true
+            addData()
         }
     }
     
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        //instagram like?
+//        if let vc = storyboard?.instantiateViewController(identifier: "NewsFeedDetailViewController") as? NewsFeedDetailViewController {
+//            guard let q = items?[indexPath.row] else { return }
+//            let view = OFV_MainView(frame: CGRect(x: 0, y: 0, width: vc.view.bounds.width, height: vc.view.bounds.height),currentQuestion: q)
+//            
+//            
+//            vc.ofv_mainView = view
+//            vc.view.addSubview(vc.ofv_mainView!)
+//            vc.ofv_mainView?.leftAnchor.constraint(equalTo: vc.view.leftAnchor).isActive = true
+//            vc.ofv_mainView?.rightAnchor.constraint(equalTo: vc.view.rightAnchor).isActive = true
+//            vc.ofv_mainView?.topAnchor.constraint(equalTo: vc.view.topAnchor).isActive = true
+//            vc.ofv_mainView?.bottomAnchor.constraint(equalTo: vc.view.bottomAnchor).isActive = true
+//            vc.ofv_mainView?.translatesAutoresizingMaskIntoConstraints = false
+//            
+//            
+//            self.present(vc, animated: true, completion: nil)
+//        }
+//    }
+//    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
+//        guard let items = self.items else {return}
+//        for indexPath in indexPaths {
+//            if items.count == items.count - indexPath.row { //Don't know why...
+//                print("ADD DATA")
+//                addData()
+//            }
+//        }
+//    }
+    
     func fetchData() {
         self.activityIndicator.startAnimating()
-        if (self.theme == Theme.today) {
-            API.firebase.fetchQuestion(withDate: date,after: nil) { (questions,lastDocument)  in
-                self.items = questions
-                self.collectionView.reloadData()
-                self.lastDocument = lastDocument
-                self.activityIndicator.stopAnimating()
-                self.noResult()
-            }
-        } else if (self.theme == Theme.titleSearch){
-            API.firebase.fetchQuestion(withName: self.title ?? "", after: nil) { (questions,lastDocument)  in
-                self.items = questions
-                self.collectionView.reloadData()
-                self.lastDocument = lastDocument
-                self.noResult()
-                self.activityIndicator.stopAnimating()
-            }
+        API.firebase.fetchNewestQuestions(after: nil) { (questions,lastDocument)  in
+            self.items = questions
+            self.collectionView.reloadData()
+            self.lastDocument = lastDocument
+            self.activityIndicator.stopAnimating()
+            self.noResult()
+            self.refreshControl.endRefreshing()
         }
+//        } else if (self.theme == Theme.titleSearch){
+//            API.firebase.fetchQuestion(withName: self.title ?? "", after: nil) { (questions,lastDocument)  in
+//                self.items = questions
+//                self.collectionView.reloadData()
+//                self.lastDocument = lastDocument
+//                self.noResult()
+//                self.activityIndicator.stopAnimating()
+//            }
+//        }
         
     }
     func noResult() {
@@ -218,22 +185,22 @@ class ThemeIndexViewController: UIViewController , SkeletonCollectionViewDelegat
     func addData() {
         if let last = lastDocument {
             activityIndicator.startAnimating()
-            if (self.theme == Theme.today) {
-                API.firebase.fetchQuestion(withDate:date,after: last) { (questions,lastDocument)  in
-                    self.activityIndicator.stopAnimating()
-                    self.items?.append(contentsOf: questions)
-                    self.collectionView.reloadData()
-                    
-                    self.lastDocument = lastDocument
-                }
-            } else if (self.theme == Theme.titleSearch) {
-                API.firebase.fetchQuestion(withName: self.title ?? "", after: nil) { (questions,lastDocument)  in
-                    self.activityIndicator.stopAnimating()
-                    self.items?.append(contentsOf: questions)
-                    self.collectionView.reloadData()
-                    self.lastDocument = lastDocument
-                }
+            API.firebase.fetchNewestQuestions(after: last) { (questions,lastDocument)  in
+                self.activityIndicator.stopAnimating()
+                self.items?.append(contentsOf: questions)
+                self.collectionView.reloadData()
+                self.isWaitingForFetch = false
+                self.lastDocument = lastDocument
             }
+            
+//            } else if (self.theme == Theme.titleSearch) {
+//                API.firebase.fetchQuestion(withName: self.title ?? "", after: nil) { (questions,lastDocument)  in
+//                    self.activityIndicator.stopAnimating()
+//                    self.items?.append(contentsOf: questions)
+//                    self.collectionView.reloadData()
+//                    self.lastDocument = lastDocument
+//                }
+//            }
             
         } else {
             print("이미 마지막")

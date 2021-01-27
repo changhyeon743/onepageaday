@@ -474,9 +474,9 @@ Nullam hendrerit risus et bibendum blandit. Nulla et purus augue. Cras a tempus 
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AiH-Xu-vVh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1542" y="-106"/>
+            <point key="canvasLocation" x="-1588" y="-188"/>
         </scene>
-        <!--Item-->
+        <!--내 책-->
         <scene sceneID="EH5-jK-pXG">
             <objects>
                 <viewController storyboardIdentifier="BookSelectingViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="hOi-xl-CzU" customClass="BookSelectingViewController" customModule="onepageaday" customModuleProvider="target" sceneMemberID="viewController">
@@ -517,7 +517,7 @@ Nullam hendrerit risus et bibendum blandit. Nulla et purus augue. Cras a tempus 
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VbY-mT-z1M">
-                                <rect key="frame" x="187.5" y="752.5" width="39.5" height="44.5"/>
+                                <rect key="frame" x="187.5" y="736.5" width="39.5" height="44.5"/>
                                 <color key="tintColor" systemColor="labelColor"/>
                                 <state key="normal" image="trash" catalog="system">
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="36"/>
@@ -530,7 +530,7 @@ Nullam hendrerit risus et bibendum blandit. Nulla et purus augue. Cras a tempus 
                         <viewLayoutGuide key="safeArea" id="8MW-48-tL4"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="8MW-48-tL4" firstAttribute="bottom" secondItem="VbY-mT-z1M" secondAttribute="bottom" constant="16" id="BAQ-3N-mhL"/>
+                            <constraint firstItem="8MW-48-tL4" firstAttribute="bottom" secondItem="VbY-mT-z1M" secondAttribute="bottom" constant="32" id="BAQ-3N-mhL"/>
                             <constraint firstItem="rPK-gd-BkI" firstAttribute="top" secondItem="8MW-48-tL4" secondAttribute="top" constant="15" id="GmJ-CI-0WM"/>
                             <constraint firstItem="8MW-48-tL4" firstAttribute="bottom" secondItem="eVk-BC-j9z" secondAttribute="bottom" id="Uec-8E-yfE"/>
                             <constraint firstItem="eVk-BC-j9z" firstAttribute="leading" secondItem="8MW-48-tL4" secondAttribute="leading" id="Yjl-oO-xGs"/>
@@ -542,7 +542,7 @@ Nullam hendrerit risus et bibendum blandit. Nulla et purus augue. Cras a tempus 
                             <constraint firstItem="znH-0e-Wf4" firstAttribute="top" secondItem="8MW-48-tL4" secondAttribute="top" constant="15" id="zdo-Ll-6Fi"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="Vob-S5-TCx"/>
+                    <tabBarItem key="tabBarItem" title="내 책" image="book.fill" catalog="system" id="Vob-S5-TCx"/>
                     <navigationItem key="navigationItem" id="t03-43-bYf"/>
                     <connections>
                         <outlet property="collectionView" destination="eVk-BC-j9z" id="6zB-Xj-tl9"/>
@@ -717,7 +717,7 @@ Nullam hendrerit risus et bibendum blandit. Nulla et purus augue. Cras a tempus 
         <!--Index View Controller-->
         <scene sceneID="aqh-pp-Nh9">
             <objects>
-                <viewController storyboardIdentifier="OFV_IndexViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="hGF-Xd-Arq" customClass="OFV_IndexViewController" customModule="onepageaday" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="OFV_IndexViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="hGF-Xd-Arq" customClass="IndexViewController" customModule="onepageaday" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="AUG-hb-wey">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -732,7 +732,7 @@ Nullam hendrerit risus et bibendum blandit. Nulla et purus augue. Cras a tempus 
                                     <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="4MU-FV-9GH" customClass="OFV_ContainerCollectionViewCell" customModule="onepageaday" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="4MU-FV-9GH" customClass="IndexCollectionViewCell" customModule="onepageaday" customModuleProvider="target">
                                         <rect key="frame" x="105" y="10" width="204" height="359"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="axB-SB-9NB">
@@ -794,16 +794,16 @@ Nullam hendrerit risus et bibendum blandit. Nulla et purus augue. Cras a tempus 
             </objects>
             <point key="canvasLocation" x="-200" y="526"/>
         </scene>
-        <!--Item-->
+        <!--새로운 이야기-->
         <scene sceneID="WRJ-4B-C7T">
             <objects>
-                <viewController storyboardIdentifier="ThemeIndexViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="xvc-EY-pzc" customClass="ThemeIndexViewController" customModule="onepageaday" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ThemeIndexViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="xvc-EY-pzc" customClass="NewsFeedViewController" customModule="onepageaday" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cQC-h2-Hum">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="FoR-HO-sST">
-                                <rect key="frame" x="0.0" y="106" width="414" height="790"/>
+                                <rect key="frame" x="0.0" y="100" width="414" height="796"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="gEC-Hb-6mu">
                                     <size key="itemSize" width="123" height="235"/>
@@ -833,28 +833,14 @@ Nullam hendrerit risus et bibendum blandit. Nulla et purus augue. Cras a tempus 
                                 </userDefinedRuntimeAttributes>
                             </collectionView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="WbG-6N-GHk">
-                                <rect key="frame" x="16" y="60" width="382" height="30"/>
+                                <rect key="frame" x="16" y="60" width="382" height="24"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LUX-Na-nlh">
-                                        <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
-                                        <state key="normal" title="이전"/>
-                                        <connections>
-                                            <action selector="beforeButtonPressed:" destination="xvc-EY-pzc" eventType="touchUpInside" id="hbD-w6-M7F"/>
-                                        </connections>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오늘의 매일력" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="YMd-OE-p2f">
-                                        <rect key="frame" x="137" y="0.0" width="108.5" height="30"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="새로운 이야기" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="YMd-OE-p2f">
+                                        <rect key="frame" x="0.0" y="0.0" width="382" height="24"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HUe-Te-o2d">
-                                        <rect key="frame" x="352" y="0.0" width="30" height="30"/>
-                                        <state key="normal" title="다음"/>
-                                        <connections>
-                                            <action selector="nextButtonPressed:" destination="xvc-EY-pzc" eventType="touchUpInside" id="6kF-44-FkD"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                             </stackView>
                         </subviews>
@@ -870,12 +856,10 @@ Nullam hendrerit risus et bibendum blandit. Nulla et purus augue. Cras a tempus 
                             <constraint firstItem="FoR-HO-sST" firstAttribute="top" secondItem="WbG-6N-GHk" secondAttribute="bottom" constant="16" id="uQb-3i-ESg"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="BxO-TJ-X7W"/>
+                    <tabBarItem key="tabBarItem" title="새로운 이야기" image="person.3.fill" catalog="system" id="BxO-TJ-X7W"/>
                     <navigationItem key="navigationItem" id="VGf-bX-lns"/>
                     <connections>
-                        <outlet property="backButton" destination="LUX-Na-nlh" id="w6V-7U-BQZ"/>
                         <outlet property="collectionView" destination="FoR-HO-sST" id="eri-QI-PIL"/>
-                        <outlet property="nextButton" destination="HUe-Te-o2d" id="Rfb-TM-cMV"/>
                         <outlet property="titleLabel" destination="YMd-OE-p2f" id="u1y-lg-0j1"/>
                     </connections>
                 </viewController>
@@ -889,6 +873,7 @@ Nullam hendrerit risus et bibendum blandit. Nulla et purus augue. Cras a tempus 
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="6oT-Er-n9l" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="2hf-38-Py5">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
@@ -901,18 +886,51 @@ Nullam hendrerit risus et bibendum blandit. Nulla et purus augue. Cras a tempus 
             </objects>
             <point key="canvasLocation" x="-3378.2608695652175" y="-165.40178571428569"/>
         </scene>
+        <!--News Feed Detail View Controller-->
+        <scene sceneID="bov-Lm-Vos">
+            <objects>
+                <viewController storyboardIdentifier="NewsFeedDetailViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="THM-oM-ad9" customClass="NewsFeedDetailViewController" customModule="onepageaday" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="C7h-zz-kzY">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TZN-XH-3dH">
+                                <rect key="frame" x="367" y="60" width="31" height="29"/>
+                                <state key="normal" image="xmark" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="30"/>
+                                </state>
+                                <connections>
+                                    <action selector="closeButtonPressed:" destination="THM-oM-ad9" eventType="touchUpInside" id="3y4-DX-vB5"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="0KN-IU-mYa"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="0KN-IU-mYa" firstAttribute="trailing" secondItem="TZN-XH-3dH" secondAttribute="trailing" constant="16" id="4ZX-MK-OcC"/>
+                            <constraint firstItem="TZN-XH-3dH" firstAttribute="top" secondItem="0KN-IU-mYa" secondAttribute="top" constant="16" id="lEb-Yc-OCJ"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6Ru-c0-WRC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1720" y="526"/>
+        </scene>
     </scenes>
     <resources>
         <image name="applelogo" catalog="system" width="103" height="128"/>
         <image name="arrow.backward" catalog="system" width="128" height="98"/>
+        <image name="book.fill" catalog="system" width="128" height="102"/>
         <image name="cart" catalog="system" width="128" height="102"/>
         <image name="gear" catalog="system" width="128" height="119"/>
         <image name="gearshape" catalog="system" width="128" height="121"/>
         <image name="hand.draw" catalog="system" width="128" height="113"/>
+        <image name="person.3.fill" catalog="system" width="128" height="61"/>
         <image name="photo" catalog="system" width="128" height="93"/>
         <image name="textformat" catalog="system" width="128" height="78"/>
         <image name="trash" catalog="system" width="121" height="128"/>
         <image name="trash.circle" catalog="system" width="128" height="121"/>
+        <image name="xmark" catalog="system" width="128" height="113"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

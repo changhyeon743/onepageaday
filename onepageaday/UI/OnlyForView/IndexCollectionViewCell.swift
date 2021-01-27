@@ -7,7 +7,7 @@
 
 import UIKit
 
-class OFV_ContainerCollectionViewCell: UICollectionViewCell {
+class IndexCollectionViewCell: UICollectionViewCell {
     
     // 4
     override func prepareForReuse() {

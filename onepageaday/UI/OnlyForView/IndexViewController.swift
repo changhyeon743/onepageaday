@@ -7,8 +7,8 @@
 
 import UIKit
 
-// 모아보기!
-class OFV_IndexViewController: UIViewController {
+// 모아보기! 목차
+class IndexViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -40,7 +40,7 @@ class OFV_IndexViewController: UIViewController {
 
 }
 
-extension OFV_IndexViewController: UISearchBarDelegate {
+extension IndexViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         updateItemsWith(searchText: searchText,textViewEndEditing: false)
     }
@@ -75,7 +75,7 @@ extension OFV_IndexViewController: UISearchBarDelegate {
 
 ///배율(역수)
 
-extension OFV_IndexViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension IndexViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: Constant.OFV.cellWidth, height: Constant.OFV.cellHeight)
     }
@@ -84,7 +84,7 @@ extension OFV_IndexViewController: UICollectionViewDelegate, UICollectionViewDat
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! OFV_ContainerCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! IndexCollectionViewCell
         let view = OFV_MainView(frame: CGRect(x: 0, y: 0, width: Constant.OFV.cellWidth, height: Constant.OFV.cellHeight),currentQuestion: filteredData[indexPath.row])
         
         if let bg = filteredData[indexPath.row].backGroundColor {
