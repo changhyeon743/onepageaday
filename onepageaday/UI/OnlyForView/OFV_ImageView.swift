@@ -25,8 +25,7 @@ class OFV_ImageView: UIImageView {
         
         if let url = URL(string: API.giphyApi.getStillURL(from: imageViewData.imageURL)) {
             self.kf.indicatorType = .activity
-            self.kf.setImage(with: url, options: [.transition(ImageTransition.fade(0.5))])
-            
+            self.kf.setImage(with: url, options: [.transition(ImageTransition.fade(0.5)),.memoryCacheExpiration(.expired)])
         }
         
         

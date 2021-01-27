@@ -30,24 +30,35 @@ class ThemeCollectionViewCell: UICollectionViewCell,UIContextMenuInteractionDele
     
     var id: String?
     
-    var parentDelegate: ThemeIndexViewControllerDelegate?
+    weak var parentDelegate: ThemeIndexViewControllerDelegate?
     
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        //trigger user interactoin
-        UINotificationFeedbackGenerator().notificationOccurred(.success)
-
+    var ofv_mainView: OFV_MainView?
+    
+    
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        ofv_mainView?.removeFromSuperview()
+        ofv_mainView = nil
+    }
+    
+    deinit {
+        print("deinit ThemeCollectionViewCell")
     }
     func contextMenuInteraction(_ interaction: UIContextMenuInteraction, configurationForMenuAtLocation location: CGPoint) -> UIContextMenuConfiguration? {
 
         return UIContextMenuConfiguration(identifier: nil) {
             self.renderer = UIGraphicsImageRenderer(size: self.bounds.size)
-            self.image = self.renderer?.image { ctx in
-                self.drawHierarchy(in: self.bounds, afterScreenUpdates: true)
+            self.image = self.renderer?.image { [weak self] ctx in
+                if let b = self?.bounds {
+                    self?.drawHierarchy(in: b, afterScreenUpdates: true)
+                }
             }
             guard let img = self.image else {return nil}
                 return ImagePreviewController(image: img)
-            } actionProvider: { _ in
-                return self.createContextMenu()
+            } actionProvider: { [weak self] _ in
+                return self?.createContextMenu()
             }
     }
     func createContextMenu() -> UIMenu {

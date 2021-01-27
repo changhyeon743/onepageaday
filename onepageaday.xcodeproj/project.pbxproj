@@ -291,7 +291,8 @@
 			children = (
 				78EFE36225963B6B0068407F /* ThemeIndexViewController.swift */,
 			);
-			path = Social;
+			name = Social;
+			path = "오늘의 매일력";
 			sourceTree = "<group>";
 		};
 		78E908A62582717A00944B60 /* Components */ = {

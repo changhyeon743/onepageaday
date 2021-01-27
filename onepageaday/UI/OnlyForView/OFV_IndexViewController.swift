@@ -20,7 +20,7 @@ class OFV_IndexViewController: UIViewController {
 
     var searchMode = 0
     
-    var pageViewControllerDelegate: MainPageViewControllerDelegate?
+    weak var pageViewControllerDelegate: MainPageViewControllerDelegate?
     
     
     override func viewDidLoad() {

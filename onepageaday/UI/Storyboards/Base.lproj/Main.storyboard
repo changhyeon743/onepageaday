@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hOi-xl-CzU">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6oT-Er-n9l">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
@@ -168,7 +168,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-200" y="-206"/>
+            <point key="canvasLocation" x="710.14492753623199" y="-206.25"/>
         </scene>
         <!--Sticker View Controller-->
         <scene sceneID="HTu-zq-vL4">
@@ -264,7 +264,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uut-tb-UMU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="745" y="-206"/>
+            <point key="canvasLocation" x="1655.072463768116" y="-206.25"/>
         </scene>
         <!--Shop Detail View Controller-->
         <scene sceneID="3vK-le-vYW">
@@ -474,9 +474,9 @@ Nullam hendrerit risus et bibendum blandit. Nulla et purus augue. Cras a tempus 
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AiH-Xu-vVh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2128" y="-508"/>
+            <point key="canvasLocation" x="-1542" y="-106"/>
         </scene>
-        <!--Book Selecting View Controller-->
+        <!--Item-->
         <scene sceneID="EH5-jK-pXG">
             <objects>
                 <viewController storyboardIdentifier="BookSelectingViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="hOi-xl-CzU" customClass="BookSelectingViewController" customModule="onepageaday" customModuleProvider="target" sceneMemberID="viewController">
@@ -485,7 +485,7 @@ Nullam hendrerit risus et bibendum blandit. Nulla et purus augue. Cras a tempus 
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="eVk-BC-j9z">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="eRW-Vq-z8z">
                                     <size key="itemSize" width="128" height="128"/>
@@ -517,7 +517,7 @@ Nullam hendrerit risus et bibendum blandit. Nulla et purus augue. Cras a tempus 
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VbY-mT-z1M">
-                                <rect key="frame" x="187.5" y="805.5" width="39.5" height="44.5"/>
+                                <rect key="frame" x="187.5" y="752.5" width="39.5" height="44.5"/>
                                 <color key="tintColor" systemColor="labelColor"/>
                                 <state key="normal" image="trash" catalog="system">
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="36"/>
@@ -530,7 +530,7 @@ Nullam hendrerit risus et bibendum blandit. Nulla et purus augue. Cras a tempus 
                         <viewLayoutGuide key="safeArea" id="8MW-48-tL4"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="8MW-48-tL4" firstAttribute="bottom" secondItem="VbY-mT-z1M" secondAttribute="bottom" constant="12" id="BAQ-3N-mhL"/>
+                            <constraint firstItem="8MW-48-tL4" firstAttribute="bottom" secondItem="VbY-mT-z1M" secondAttribute="bottom" constant="16" id="BAQ-3N-mhL"/>
                             <constraint firstItem="rPK-gd-BkI" firstAttribute="top" secondItem="8MW-48-tL4" secondAttribute="top" constant="15" id="GmJ-CI-0WM"/>
                             <constraint firstItem="8MW-48-tL4" firstAttribute="bottom" secondItem="eVk-BC-j9z" secondAttribute="bottom" id="Uec-8E-yfE"/>
                             <constraint firstItem="eVk-BC-j9z" firstAttribute="leading" secondItem="8MW-48-tL4" secondAttribute="leading" id="Yjl-oO-xGs"/>
@@ -542,17 +542,17 @@ Nullam hendrerit risus et bibendum blandit. Nulla et purus augue. Cras a tempus 
                             <constraint firstItem="znH-0e-Wf4" firstAttribute="top" secondItem="8MW-48-tL4" secondAttribute="top" constant="15" id="zdo-Ll-6Fi"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="Vob-S5-TCx"/>
                     <navigationItem key="navigationItem" id="t03-43-bYf"/>
                     <connections>
                         <outlet property="collectionView" destination="eVk-BC-j9z" id="6zB-Xj-tl9"/>
                         <outlet property="settingButton" destination="znH-0e-Wf4" id="Ena-2Z-l8x"/>
                         <outlet property="trashButton" destination="VbY-mT-z1M" id="kR2-NG-NIZ"/>
-                        <segue destination="xvc-EY-pzc" kind="show" id="kDU-Ih-zN1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VXs-68-tbI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3377" y="-165"/>
+            <point key="canvasLocation" x="-2468.1159420289855" y="-165.40178571428569"/>
         </scene>
         <!--편집-->
         <scene sceneID="b2Q-fJ-zXu">
@@ -562,7 +562,7 @@ Nullam hendrerit risus et bibendum blandit. Nulla et purus augue. Cras a tempus 
                 </pageViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CsT-Op-o1P" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-923" y="-187"/>
+            <point key="canvasLocation" x="-13.043478260869566" y="-187.5"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="QOo-Xc-OCq">
@@ -794,16 +794,16 @@ Nullam hendrerit risus et bibendum blandit. Nulla et purus augue. Cras a tempus 
             </objects>
             <point key="canvasLocation" x="-200" y="526"/>
         </scene>
-        <!--Theme Index View Controller-->
+        <!--Item-->
         <scene sceneID="WRJ-4B-C7T">
             <objects>
                 <viewController storyboardIdentifier="ThemeIndexViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="xvc-EY-pzc" customClass="ThemeIndexViewController" customModule="onepageaday" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cQC-h2-Hum">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="FoR-HO-sST">
-                                <rect key="frame" x="0.0" y="86" width="414" height="756"/>
+                                <rect key="frame" x="0.0" y="106" width="414" height="790"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="gEC-Hb-6mu">
                                     <size key="itemSize" width="123" height="235"/>
@@ -832,16 +832,8 @@ Nullam hendrerit risus et bibendum blandit. Nulla et purus augue. Cras a tempus 
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </collectionView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dmt-qK-4Ge">
-                                <rect key="frame" x="160.5" y="9" width="93" height="7"/>
-                                <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="7" id="VLk-fd-KkA"/>
-                                    <constraint firstAttribute="width" constant="93" id="fak-hg-YeS"/>
-                                </constraints>
-                            </view>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="WbG-6N-GHk">
-                                <rect key="frame" x="16" y="40" width="382" height="30"/>
+                                <rect key="frame" x="16" y="60" width="382" height="30"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LUX-Na-nlh">
                                         <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
@@ -870,28 +862,44 @@ Nullam hendrerit risus et bibendum blandit. Nulla et purus augue. Cras a tempus 
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="AIG-IH-OI0" firstAttribute="trailing" secondItem="WbG-6N-GHk" secondAttribute="trailing" constant="16" id="00f-cx-Mqd"/>
-                            <constraint firstItem="WbG-6N-GHk" firstAttribute="top" secondItem="dmt-qK-4Ge" secondAttribute="bottom" constant="24" id="D56-It-zSH"/>
                             <constraint firstItem="FoR-HO-sST" firstAttribute="leading" secondItem="AIG-IH-OI0" secondAttribute="leading" id="IZH-kC-vj6"/>
                             <constraint firstAttribute="bottom" secondItem="FoR-HO-sST" secondAttribute="bottom" id="PFE-AE-WBn"/>
-                            <constraint firstItem="dmt-qK-4Ge" firstAttribute="top" secondItem="AIG-IH-OI0" secondAttribute="top" constant="9" id="RRP-fM-dCQ"/>
+                            <constraint firstItem="WbG-6N-GHk" firstAttribute="top" secondItem="AIG-IH-OI0" secondAttribute="top" constant="16" id="gMf-xc-7pc"/>
                             <constraint firstItem="WbG-6N-GHk" firstAttribute="leading" secondItem="AIG-IH-OI0" secondAttribute="leading" constant="16" id="jNu-mA-Jdm"/>
-                            <constraint firstItem="dmt-qK-4Ge" firstAttribute="centerX" secondItem="cQC-h2-Hum" secondAttribute="centerX" id="jkO-1Z-yVK"/>
                             <constraint firstItem="AIG-IH-OI0" firstAttribute="trailing" secondItem="FoR-HO-sST" secondAttribute="trailing" id="ojZ-9E-a24"/>
                             <constraint firstItem="FoR-HO-sST" firstAttribute="top" secondItem="WbG-6N-GHk" secondAttribute="bottom" constant="16" id="uQb-3i-ESg"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="BxO-TJ-X7W"/>
                     <navigationItem key="navigationItem" id="VGf-bX-lns"/>
                     <connections>
                         <outlet property="backButton" destination="LUX-Na-nlh" id="w6V-7U-BQZ"/>
                         <outlet property="collectionView" destination="FoR-HO-sST" id="eri-QI-PIL"/>
                         <outlet property="nextButton" destination="HUe-Te-o2d" id="Rfb-TM-cMV"/>
-                        <outlet property="stickyView" destination="dmt-qK-4Ge" id="QfW-zO-gbP"/>
                         <outlet property="titleLabel" destination="YMd-OE-p2f" id="u1y-lg-0j1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gS3-ay-9Vs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2207.2463768115945" y="334.82142857142856"/>
+            <point key="canvasLocation" x="-2468" y="526"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="8Sv-Bm-jyg">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="6oT-Er-n9l" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="2hf-38-Py5">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="hOi-xl-CzU" kind="relationship" relationship="viewControllers" id="mgY-EW-AbL"/>
+                        <segue destination="xvc-EY-pzc" kind="relationship" relationship="viewControllers" id="7dm-fb-JZE"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="m3y-mQ-XGX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3378.2608695652175" y="-165.40178571428569"/>
         </scene>
     </scenes>
     <resources>

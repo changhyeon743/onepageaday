@@ -9,7 +9,7 @@ import UIKit
 import Firebase
 import SkeletonView
 
-protocol ThemeIndexViewControllerDelegate : class{
+protocol ThemeIndexViewControllerDelegate : class {
     func save(uiimage: UIImage)
     func report(questionId: String)
 }
@@ -25,12 +25,11 @@ class ThemeIndexViewController: UIViewController , SkeletonCollectionViewDelegat
         case titleSearch, today
     }
     
-    var theme: Theme?
+    var theme: Theme? = .today
     var lastDocument: DocumentSnapshot?
     
     @IBOutlet weak var collectionView: UICollectionView!
     
-    @IBOutlet weak var stickyView: UIView!
     
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
@@ -47,8 +46,6 @@ class ThemeIndexViewController: UIViewController , SkeletonCollectionViewDelegat
         collectionView.dataSource = self
         collectionView.prefetchDataSource = self
         
-        stickyView.layer.cornerRadius = 4.0
-        stickyView.clipsToBounds = true
         activityIndicator.startAnimating()
         self.view.addSubview(activityIndicator)
 
@@ -80,12 +77,12 @@ class ThemeIndexViewController: UIViewController , SkeletonCollectionViewDelegat
         datePicker.datePickerMode = .date
         datePicker.locale = .current
         datePicker.preferredDatePickerStyle = UIDatePickerStyle.inline
-        datePicker.addAction(UIAction(handler: { (action) in
-            self.date = self.datePicker.date
-            self.fetchData()
-            self.setTitleToDate()
-            self.datePicker.removeFromSuperview()
-            self.blurEffectView.removeFromSuperview()
+        datePicker.addAction(UIAction(handler: { [weak self] (action) in
+            self?.date = self?.datePicker.date ?? Date()
+            self?.fetchData()
+            self?.setTitleToDate()
+            self?.datePicker.removeFromSuperview()
+            self?.blurEffectView.removeFromSuperview()
         }), for: .valueChanged)
         
        
@@ -145,18 +142,23 @@ class ThemeIndexViewController: UIViewController , SkeletonCollectionViewDelegat
             if let bg = items[indexPath.row].backGroundColor {
                 view.backgroundColor = UIColor(bg)
             }
+            
             cell.id = items[indexPath.row].id
             cell.parentDelegate = self
             cell.stopSkeletonAnimation()
-            cell.addSubview(view)
+            cell.ofv_mainView = view
+            
+            
             let interaction = UIContextMenuInteraction(delegate: cell)
             cell.addInteraction(interaction)
             cell.isUserInteractionEnabled = true
-            view.leftAnchor.constraint(equalTo: cell.leftAnchor).isActive = true
-            view.rightAnchor.constraint(equalTo: cell.rightAnchor).isActive = true
-            view.topAnchor.constraint(equalTo: cell.topAnchor).isActive = true
-            view.bottomAnchor.constraint(equalTo: cell.bottomAnchor).isActive = true
-            view.translatesAutoresizingMaskIntoConstraints = false
+            
+            cell.addSubview(cell.ofv_mainView ?? UIView())
+            cell.ofv_mainView?.leftAnchor.constraint(equalTo: cell.leftAnchor).isActive = true
+            cell.ofv_mainView?.rightAnchor.constraint(equalTo: cell.rightAnchor).isActive = true
+            cell.ofv_mainView?.topAnchor.constraint(equalTo: cell.topAnchor).isActive = true
+            cell.ofv_mainView?.bottomAnchor.constraint(equalTo: cell.bottomAnchor).isActive = true
+            cell.ofv_mainView?.translatesAutoresizingMaskIntoConstraints = false
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ThemeCollectionViewCell
@@ -176,7 +178,7 @@ class ThemeIndexViewController: UIViewController , SkeletonCollectionViewDelegat
               print("ADD DATA")
                 addData()
             }
-          }
+        }
     }
     
     func fetchData() {

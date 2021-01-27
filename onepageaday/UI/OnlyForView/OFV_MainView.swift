@@ -58,6 +58,10 @@ class OFV_MainView: UIView, PKCanvasViewDelegate {
         fatalError("init(coder:) has not been implemented")
     }
     
+    deinit {
+        print("deinit mainview")
+    }
+    
     
     func setQuestionText() {
         //Question, text set
