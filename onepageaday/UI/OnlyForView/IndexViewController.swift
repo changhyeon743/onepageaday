@@ -77,7 +77,14 @@ extension IndexViewController: UISearchBarDelegate {
 
 extension IndexViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: Constant.OFV.cellWidth, height: Constant.OFV.cellHeight)
+        let numberOfCellsInRow = 2
+        let flowLayout = collectionViewLayout as! UICollectionViewFlowLayout
+        let totalSpace = flowLayout.sectionInset.left +
+            flowLayout.sectionInset.right +
+            (flowLayout.minimumInteritemSpacing * CGFloat(numberOfCellsInRow - 1))
+        
+        let size = CGFloat((collectionView.bounds.width - totalSpace) / CGFloat(numberOfCellsInRow))
+        return CGSize(width: size, height: size * Constant.OFV.cellHeight / Constant.OFV.cellWidth)
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return filteredData.count
