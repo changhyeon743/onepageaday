@@ -76,7 +76,7 @@ extension LoginViewController: ASAuthorizationControllerDelegate,ASAuthorization
             }
             // User is signed in to Firebase with Apple.
             // ...
-            if let vc = self.storyboard!.instantiateViewController(identifier: "BookSelectingViewController") as? BookSelectingViewController {
+            if let vc = self.storyboard!.instantiateInitialViewController() {
                 self.view.window?.rootViewController = vc
             }
         }
