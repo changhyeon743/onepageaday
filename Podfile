@@ -9,6 +9,7 @@ target 'onepageaday' do
   pod 'Firebase/Auth'
   pod 'Firebase/Storage'
   pod 'Firebase/Firestore'
+  pod 'Firebase/Analytics'
   pod 'Kingfisher', '~> 5.0'
   pod 'Alamofire'
   pod 'SwiftyJSON', '~> 4.0'
