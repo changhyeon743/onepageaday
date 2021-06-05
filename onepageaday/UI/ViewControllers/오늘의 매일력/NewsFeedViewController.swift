@@ -9,14 +9,14 @@ import UIKit
 import Firebase
 import SkeletonView
 
-protocol ThemeIndexViewControllerDelegate : class {
+protocol NewsFeedViewControllerDelegate : class {
     func save(uiimage: UIImage)
     func report(questionId: String)
 }
 
 //오늘의 매일력 / 기타 등등
 //TODO: Skeleton
-class NewsFeedViewController: UIViewController , SkeletonCollectionViewDelegate, SkeletonCollectionViewDataSource,UICollectionViewDelegateFlowLayout,ThemeIndexViewControllerDelegate {
+class NewsFeedViewController: UIViewController , SkeletonCollectionViewDelegate, SkeletonCollectionViewDataSource,UICollectionViewDelegateFlowLayout,NewsFeedViewControllerDelegate {
     
     lazy var activityIndicator: UIActivityIndicatorView = { return makeActivityIndicator(center: self.view.center) }()
     
@@ -37,6 +37,7 @@ class NewsFeedViewController: UIViewController , SkeletonCollectionViewDelegate,
         
         collectionView.delegate = self
         collectionView.dataSource = self
+        collectionView.isPagingEnabled = true
         
         refreshControl.attributedTitle = NSAttributedString(string: "당겨서 새로고침")
         refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
@@ -55,7 +56,8 @@ class NewsFeedViewController: UIViewController , SkeletonCollectionViewDelegate,
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: Constant.OFV.cellWidth, height: Constant.OFV.cellHeight)
+        
+        return CGSize(width: self.collectionView.bounds.width, height: self.collectionView.bounds.height)
     }
     
     

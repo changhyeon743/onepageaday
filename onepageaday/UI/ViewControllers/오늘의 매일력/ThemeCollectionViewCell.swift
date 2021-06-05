@@ -31,7 +31,7 @@ class ThemeCollectionViewCell: UICollectionViewCell,UIContextMenuInteractionDele
     
     var id: String?
     
-    weak var parentDelegate: ThemeIndexViewControllerDelegate?
+    weak var parentDelegate: NewsFeedViewControllerDelegate?
     
     var ofv_mainView: OFV_MainView?
     
