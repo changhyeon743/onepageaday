@@ -7,6 +7,7 @@
 
 import UIKit
 
+///Deprecated
 class ShopHashTagPickViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
 

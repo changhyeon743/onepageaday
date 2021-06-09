@@ -10,6 +10,8 @@ import Foundation
 struct ShopItem {
     var title: String
     var detail: String
+    
+    ///need to be deprecated -> to item code
     var price: Int
     
     var questions: [String]

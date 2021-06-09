@@ -29,11 +29,17 @@ class ShopDetailViewController: UIViewController {
         let hashtagText = (item.hashtags.map{"#\($0)"}).joined(separator: " ")
         hashTagLabel.text =  hashtagText
         let privateText = item.privateMode ? "이 책의 답변은 기본적으로 비공개됩니다." : "이 책의 답변은 기본적으로 공개됩니다."
-        privateModeLabel.text = privateText
+        privateModeLabel.numberOfLines = 0
+        privateModeLabel.text = privateText + " \n\n총 \(item.questions.count) 개의 질문이 포함된 책입니다."
         
-        detailLabel.text = item.detail
+//        detailLabel.text = item.detail <- 나중에는 활용되야함.
+        detailLabel.text = "예시 질문 10개: \n(들어올 때마다 랜덤한 질문이 표시됩니다.)\n\n" + item.questions.shuffled().prefix(10).joined(separator: "\n\n")
         
-        purchaseButton.setTitle("₩\(item.price)", for: .normal)
+        if item.price == 0 {
+            purchaseButton.setTitle("다운로드", for: .normal)
+        } else {
+            purchaseButton.setTitle("₩\(item.price)", for: .normal)
+        }
         purchaseButton.addAction(UIAction(handler: { _ in
             let book = Book(title: item.title,
                             detail: item.detail,
