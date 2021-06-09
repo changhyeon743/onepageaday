@@ -42,12 +42,19 @@ class GiphyAPI {
             url = "https://api.giphy.com/v1/gifs/trending"
         }
             
-        Alamofire.request(url,method:.get,parameters:parameters,encoding:URLEncoding.queryString)
+        AF.request(url,method:.get,parameters:parameters,encoding:URLEncoding.queryString)
                 .responseJSON(completionHandler: { (response) in
                     //1. JSON 변환
-                    if let value = response.result.value,response.result.isSuccess {
-                        completion(JSON(value))
+                    switch response.result {
+                    
+                    case .success(_):
+                        if let value = response.value {
+                            completion(JSON(value))
+                        }
+                    case .failure(_):
+                        break
                     }
+                    
                 })
         }
     
@@ -64,11 +71,11 @@ class GiphyAPI {
             url = "https://api.giphy.com/v1/gifs/search"
         }
         
-        Alamofire.request(url,method:.get,parameters:parameters,encoding:URLEncoding.queryString)
+        AF.request(url,method:.get,parameters:parameters,encoding:URLEncoding.queryString)
             .responseJSON(completionHandler: { (response) in
                 //1. JSON 변환
                 print(response)
-                if let value = response.result.value,response.result.isSuccess {
+                if let value = response.value {
                     completion(JSON(value))
                 } else {
                     print(response.error?.localizedDescription)
