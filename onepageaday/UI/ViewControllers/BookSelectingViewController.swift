@@ -291,23 +291,23 @@ class BookSelectingViewController: UIViewController, SkeletonCollectionViewDeleg
             case AdditionalItem.openShop.rawValue:
                 enterShop(nil)
                 break
-            case AdditionalItem.todayBooks.rawValue:
+//            case AdditionalItem.todayBooks.rawValue:
 //                if let vc = self.storyboard?.instantiateViewController(withIdentifier: "ThemeIndexViewController") as? NewsFeedViewController {
 //                    //vc.theme = .today
 //                    
 //                    self.present(vc, animated: true, completion: nil)
 //                }
 //                
-                break
-            case AdditionalItem.buyPro.rawValue:
-                //Buy pro
-                print("Buy pro")
-                if let vc = self.storyboard?.instantiateViewController(identifier: "PurchaseViewController") as? PurchaseViewController {
-                    vc.modalPresentationStyle = .overCurrentContext
-                    vc.modalTransitionStyle = .crossDissolve
-                    present(vc, animated: true, completion: nil)
-                }
-                break
+//                break
+//            case AdditionalItem.buyPro.rawValue:
+//                //Buy pro
+//                print("Buy pro")
+//                if let vc = self.storyboard?.instantiateViewController(identifier: "PurchaseViewController") as? PurchaseViewController {
+//                    vc.modalPresentationStyle = .overCurrentContext
+//                    vc.modalTransitionStyle = .crossDissolve
+//                    present(vc, animated: true, completion: nil)
+//                }
+//                break
             case AdditionalItem.buyRealBook.rawValue:
                 //open safari
                 if let url = URL(string: "https://www.sixshop.com/remarkpress/product/9") {
