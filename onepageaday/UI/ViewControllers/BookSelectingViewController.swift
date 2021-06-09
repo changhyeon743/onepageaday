@@ -23,7 +23,7 @@ enum AdditionalItem: Int {
 //    case buyPro
     case buyRealBook
     
-    static let count = 4
+    static let count = 2
 }
 
 func makeActivityIndicator(center: CGPoint) -> UIActivityIndicatorView {

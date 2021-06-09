@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6oT-Er-n9l">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6oT-Er-n9l">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -179,7 +179,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="QJV-jT-pY9" customClass="CollectionView">
-                                <rect key="frame" x="0.0" y="82" width="414" height="760"/>
+                                <rect key="frame" x="0.0" y="77" width="414" height="765"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="lFl-a4-dxh">
                                     <size key="itemSize" width="128" height="128"/>
@@ -225,7 +225,7 @@
                                 </userDefinedRuntimeAttributes>
                             </collectionView>
                             <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Giphy 검색" translatesAutoresizingMaskIntoConstraints="NO" id="Cih-Up-w5C">
-                                <rect key="frame" x="4" y="26" width="406" height="56"/>
+                                <rect key="frame" x="4" y="26" width="406" height="51"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <scopeButtonTitles>
                                     <string>Title</string>
@@ -469,7 +469,7 @@ Nullam hendrerit risus et bibendum blandit. Nulla et purus augue. Cras a tempus 
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="ZXu-y5-BOc" kind="relationship" relationship="rootViewController" id="B7l-16-wWA"/>
+                        <segue destination="vD4-cA-p6J" kind="relationship" relationship="rootViewController" id="sva-Qw-bUI"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AiH-Xu-vVh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -625,50 +625,7 @@ Nullam hendrerit risus et bibendum blandit. Nulla et purus augue. Cras a tempus 
             </objects>
             <point key="canvasLocation" x="-4191" y="-165"/>
         </scene>
-        <!--매일력 상점-->
-        <scene sceneID="bt2-6r-ALU">
-            <objects>
-                <viewController id="ZXu-y5-BOc" customClass="ShopHashTagPickViewController" customModule="onepageaday" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="hFE-o3-l1i">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6Kg-fY-7zT">
-                                <rect key="frame" x="0.0" y="56" width="414" height="752"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </tableView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="iFB-Yl-ccb"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="iFB-Yl-ccb" firstAttribute="trailing" secondItem="6Kg-fY-7zT" secondAttribute="trailing" id="6tF-2x-jCO"/>
-                            <constraint firstItem="6Kg-fY-7zT" firstAttribute="top" secondItem="iFB-Yl-ccb" secondAttribute="top" id="lc4-XV-ffd"/>
-                            <constraint firstItem="6Kg-fY-7zT" firstAttribute="leading" secondItem="iFB-Yl-ccb" secondAttribute="leading" id="sOt-wH-aSm"/>
-                            <constraint firstItem="iFB-Yl-ccb" firstAttribute="bottom" secondItem="6Kg-fY-7zT" secondAttribute="bottom" id="tIP-MQ-L3w"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" title="매일력 상점" id="gSt-rI-5cD">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="z1o-SG-TMj">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="RTJ-iY-v2l">
-                                <rect key="frame" x="302" y="13" width="92" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="닫기"/>
-                                <connections>
-                                    <action selector="dismissButtonPressed:" destination="vD4-cA-p6J" eventType="touchUpInside" id="SWY-ut-gQ3"/>
-                                </connections>
-                            </button>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="tableView" destination="6Kg-fY-7zT" id="Kvu-Ps-e9e"/>
-                        <segue destination="vD4-cA-p6J" kind="show" id="Wyc-Iu-iy1"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="VA8-zX-tLM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-923" y="-841"/>
-        </scene>
-        <!--해시태그-->
+        <!--Shop View Controller-->
         <scene sceneID="CkG-Ex-oZ9">
             <objects>
                 <viewController storyboardIdentifier="ShopViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="vD4-cA-p6J" customClass="ShopViewController" customModule="onepageaday" customModuleProvider="target" sceneMemberID="viewController">
@@ -693,7 +650,7 @@ Nullam hendrerit risus et bibendum blandit. Nulla et purus augue. Cras a tempus 
                             <constraint firstItem="26h-0t-Wdg" firstAttribute="bottom" secondItem="OIh-06-guc" secondAttribute="bottom" id="xmc-aj-EeW"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="해시태그" id="hoi-sx-j4h">
+                    <navigationItem key="navigationItem" id="hoi-sx-j4h">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="Gox-qX-rUz">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="Gta-hj-PnV">
                                 <rect key="frame" x="302" y="13" width="92" height="30"/>
@@ -723,7 +680,7 @@ Nullam hendrerit risus et bibendum blandit. Nulla et purus augue. Cras a tempus 
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="N8i-ZH-e4y">
-                                <rect key="frame" x="0.0" y="129" width="414" height="713"/>
+                                <rect key="frame" x="0.0" y="124" width="414" height="718"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="3h6-ts-P6d">
                                     <size key="itemSize" width="204" height="359"/>
@@ -753,7 +710,7 @@ Nullam hendrerit risus et bibendum blandit. Nulla et purus augue. Cras a tempus 
                                 </userDefinedRuntimeAttributes>
                             </collectionView>
                             <searchBar contentMode="redraw" searchBarStyle="minimal" text="" placeholder="질문 검색" showsScopeBar="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jnO-QB-J3P">
-                                <rect key="frame" x="4" y="26" width="406" height="103"/>
+                                <rect key="frame" x="4" y="26" width="406" height="98"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <scopeButtonTitles>
                                     <string>모든 질문</string>

@@ -21,8 +21,8 @@ class ShopViewController: UIViewController, SkeletonTableViewDelegate, SkeletonT
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        shopItems = ShopItems().shopItems
         shopitemsUpdate()
-        
 
         let nibName = UINib(nibName: "ShopCell", bundle: nil)
         tableView.register(nibName, forCellReuseIdentifier: "cell")
