@@ -45,7 +45,7 @@ class FirebaseAPI {
         db
             .collection("books/\(bookID)/questions")
             .order(by: "index")
-            .getDocuments(source: .cache) { (querySnapshot, err) in
+            .getDocuments(source: .default) { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {

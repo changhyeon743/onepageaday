@@ -37,7 +37,7 @@ class NewsFeedViewController: UIViewController , SkeletonCollectionViewDelegate,
         
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.isPagingEnabled = true
+//        collectionView.isPagingEnabled = true
         
         refreshControl.attributedTitle = NSAttributedString(string: "당겨서 새로고침")
         refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
@@ -56,8 +56,14 @@ class NewsFeedViewController: UIViewController , SkeletonCollectionViewDelegate,
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let numberOfCellsInRow = 2
+        let flowLayout = collectionViewLayout as! UICollectionViewFlowLayout
+        let totalSpace = flowLayout.sectionInset.left +
+            flowLayout.sectionInset.right +
+            (flowLayout.minimumInteritemSpacing * CGFloat(numberOfCellsInRow - 1))
         
-        return CGSize(width: self.collectionView.bounds.width, height: self.collectionView.bounds.height)
+        let size = CGFloat((collectionView.bounds.width - totalSpace) / CGFloat(numberOfCellsInRow))
+        return CGSize(width: size, height: size * Constant.OFV.cellHeight / Constant.OFV.cellWidth)
     }
     
     
