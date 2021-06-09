@@ -19,8 +19,8 @@ protocol BookSelectingViewControllerDelegate: class {
 
 enum AdditionalItem: Int {
     case openShop
-    case todayBooks
-    case buyPro
+//    case todayBooks
+//    case buyPro
     case buyRealBook
     
     static let count = 4
@@ -228,16 +228,16 @@ class BookSelectingViewController: UIViewController, SkeletonCollectionViewDeleg
                     cell.dateLabel.text = "새로운 매일력을 다운로드 하세요."
                     cell.imageView.kf.setImage(with: URL(string: "https://product-image.juniqe-production.juniqe.com/media/catalog/product/seo-cache/x800/648/28/648-28-101P/Today-Is-The-Day-Kind-of-Style-Poster.jpg"))
                     break
-                case AdditionalItem.todayBooks.rawValue:
-                    cell.titleLabel.text = "오늘의 매일력"
-                    cell.dateLabel.text = "오늘의 매일력을 볼 수 있습니다."
-                    cell.imageView.kf.setImage(with: URL(string: "https://product-image.juniqe-production.juniqe.com/media/catalog/product/seo-cache/x800/648/28/648-28-101P/Today-Is-The-Day-Kind-of-Style-Poster.jpg"))
-                    break
-                case AdditionalItem.buyPro.rawValue:
-                    cell.titleLabel.text = "프로 버전 구매하기"
-                    cell.dateLabel.text = "₩1000"
-                    cell.imageView.kf.setImage(with: URL(string: "https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/MWP22_AV1?wid=1144&hei=1144&fmt=jpeg&qlt=80&op_usm=0.5,0.5&.v=1591634652000"))
-                    break
+//                case AdditionalItem.todayBooks.rawValue:
+//                    cell.titleLabel.text = "오늘의 매일력"
+//                    cell.dateLabel.text = "오늘의 매일력을 볼 수 있습니다."
+//                    cell.imageView.kf.setImage(with: URL(string: "https://product-image.juniqe-production.juniqe.com/media/catalog/product/seo-cache/x800/648/28/648-28-101P/Today-Is-The-Day-Kind-of-Style-Poster.jpg"))
+//                    break
+//                case AdditionalItem.buyPro.rawValue:
+//                    cell.titleLabel.text = "프로 버전 구매하기"
+//                    cell.dateLabel.text = "₩1000"
+//                    cell.imageView.kf.setImage(with: URL(string: "https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/MWP22_AV1?wid=1144&hei=1144&fmt=jpeg&qlt=80&op_usm=0.5,0.5&.v=1591634652000"))
+//                    break
                 case AdditionalItem.buyRealBook.rawValue:
                     cell.titleLabel.text = "매일력 책 구매하기"
                     cell.dateLabel.text = "리마크프레스 사이트로 연결됩니다"
