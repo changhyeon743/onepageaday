@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -18,16 +18,16 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OHg-Xx-SuT">
-                        <rect key="frame" x="0.0" y="0.0" width="292" height="550"/>
+                        <rect key="frame" x="24" y="158" width="244" height="368"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                         </userDefinedRuntimeAttributes>
                     </imageView>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="RUc-LF-0gE">
-                        <rect key="frame" x="0.0" y="230" width="292" height="90"/>
+                        <rect key="frame" x="0.0" y="0.0" width="292" height="134"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="기본적인 매일력" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.40000000000000002" translatesAutoresizingMaskIntoConstraints="NO" id="vg4-dP-doR">
-                                <rect key="frame" x="12" y="24" width="268" height="20.5"/>
+                                <rect key="frame" x="12" y="68" width="268" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -41,8 +41,8 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2020.12.19" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aWe-vZ-KxE">
-                                <rect key="frame" x="12" y="52.5" width="268" height="13.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2020.12.19" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aWe-vZ-KxE">
+                                <rect key="frame" x="12" y="96.5" width="268" height="13.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                 <color key="textColor" systemColor="systemGray2Color"/>
                                 <nil key="highlightedColor"/>
@@ -58,15 +58,15 @@
                         </userDefinedRuntimeAttributes>
                     </stackView>
                 </subviews>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="OHg-Xx-SuT" secondAttribute="trailing" id="Ikp-Cv-cFJ"/>
-                    <constraint firstAttribute="trailing" secondItem="RUc-LF-0gE" secondAttribute="trailing" id="Muq-Rt-2C8"/>
-                    <constraint firstItem="OHg-Xx-SuT" firstAttribute="leading" secondItem="ntk-yU-SGS" secondAttribute="leading" id="Yf3-7O-aZR"/>
-                    <constraint firstItem="RUc-LF-0gE" firstAttribute="centerX" secondItem="ntk-yU-SGS" secondAttribute="centerX" id="c5P-jV-3XP"/>
-                    <constraint firstAttribute="bottom" secondItem="OHg-Xx-SuT" secondAttribute="bottom" id="f8n-It-LP3"/>
-                    <constraint firstItem="RUc-LF-0gE" firstAttribute="leading" secondItem="ntk-yU-SGS" secondAttribute="leading" id="hLs-uC-j4g"/>
-                    <constraint firstItem="OHg-Xx-SuT" firstAttribute="top" secondItem="ntk-yU-SGS" secondAttribute="top" id="l1w-oM-Zqm"/>
-                    <constraint firstItem="RUc-LF-0gE" firstAttribute="centerY" secondItem="ntk-yU-SGS" secondAttribute="centerY" id="zPT-Im-dKc"/>
+                    <constraint firstAttribute="trailing" secondItem="OHg-Xx-SuT" secondAttribute="trailing" constant="24" id="3KX-9m-MOT"/>
+                    <constraint firstItem="RUc-LF-0gE" firstAttribute="top" secondItem="ntk-yU-SGS" secondAttribute="top" id="6AK-5W-Vgq"/>
+                    <constraint firstItem="OHg-Xx-SuT" firstAttribute="leading" secondItem="ntk-yU-SGS" secondAttribute="leading" constant="24" id="CWo-lG-HK0"/>
+                    <constraint firstAttribute="trailing" secondItem="RUc-LF-0gE" secondAttribute="trailing" id="LPA-ft-7vr"/>
+                    <constraint firstItem="OHg-Xx-SuT" firstAttribute="top" secondItem="RUc-LF-0gE" secondAttribute="bottom" constant="24" id="Yqr-OO-cnb"/>
+                    <constraint firstItem="RUc-LF-0gE" firstAttribute="leading" secondItem="ntk-yU-SGS" secondAttribute="leading" id="mOm-WB-aPj"/>
+                    <constraint firstAttribute="bottom" secondItem="OHg-Xx-SuT" secondAttribute="bottom" constant="24" id="riU-Gf-Ued"/>
                 </constraints>
                 <userDefinedRuntimeAttributes>
                     <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>

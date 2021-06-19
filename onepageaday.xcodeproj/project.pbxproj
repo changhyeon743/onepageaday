@@ -15,6 +15,8 @@
 		7826855C2587114E00F0A295 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7826855B2587114E00F0A295 /* API.swift */; };
 		78273C032591C11900805B59 /* IndexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78273C022591C11900805B59 /* IndexViewController.swift */; };
 		782E7B6125C1CBF700C3110B /* NewsFeedDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782E7B6025C1CBF700C3110B /* NewsFeedDetailViewController.swift */; };
+		7835C2BF267DB37100739B92 /* Cafe24SsurroundAir.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7835C2BE267DB36C00739B92 /* Cafe24SsurroundAir.ttf */; };
+		7835C2C2267DB39B00739B92 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7835C2C1267DB39B00739B92 /* UIFont+Extension.swift */; };
 		78365CE0259F097D00CACE52 /* ShopHashTagPickViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78365CDF259F097D00CACE52 /* ShopHashTagPickViewController.swift */; };
 		78365CE8259F0BC000CACE52 /* ShopItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78365CE7259F0BC000CACE52 /* ShopItems.swift */; };
 		7840E308257FAA9E009B216B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7840E307257FAA9E009B216B /* AppDelegate.swift */; };
@@ -91,6 +93,8 @@
 		7826855B2587114E00F0A295 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		78273C022591C11900805B59 /* IndexViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexViewController.swift; sourceTree = "<group>"; };
 		782E7B6025C1CBF700C3110B /* NewsFeedDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NewsFeedDetailViewController.swift; path = "onepageaday/UI/ViewControllers/오늘의 매일력/NewsFeedDetailViewController.swift"; sourceTree = SOURCE_ROOT; };
+		7835C2BE267DB36C00739B92 /* Cafe24SsurroundAir.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Cafe24SsurroundAir.ttf; sourceTree = "<group>"; };
+		7835C2C1267DB39B00739B92 /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		78365CDF259F097D00CACE52 /* ShopHashTagPickViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopHashTagPickViewController.swift; sourceTree = "<group>"; };
 		78365CE7259F0BC000CACE52 /* ShopItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopItems.swift; sourceTree = "<group>"; };
 		7840E304257FAA9E009B216B /* onepageaday.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = onepageaday.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -202,6 +206,13 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
+		7835C2C0267DB38D00739B92 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		7840E2FB257FAA9E009B216B = {
 			isa = PBXGroup;
 			children = (
@@ -302,6 +313,7 @@
 		78E908A62582717A00944B60 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				7835C2C0267DB38D00739B92 /* Extensions */,
 				78001F6E258B8EEB00102D27 /* Struct */,
 				782685452587105400F0A295 /* Network */,
 				78E908B22582722400944B60 /* Model */,
@@ -314,6 +326,7 @@
 		78E908A72582718500944B60 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				7835C2BE267DB36C00739B92 /* Cafe24SsurroundAir.ttf */,
 				78365CE7259F0BC000CACE52 /* ShopItems.swift */,
 				7840E310257FAAA7009B216B /* Assets.xcassets */,
 			);
@@ -330,6 +343,7 @@
 				78708737258F551500D454A8 /* Toast.swift */,
 				78075CCC25909D3C00EC9139 /* Array.swift */,
 				786769C125B127A100E63EC3 /* File.swift */,
+				7835C2C1267DB39B00739B92 /* UIFont+Extension.swift */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -525,6 +539,7 @@
 				7840E314257FAAA7009B216B /* LaunchScreen.storyboard in Resources */,
 				7840E311257FAAA7009B216B /* Assets.xcassets in Resources */,
 				7863C9BF2588589500B5773D /* BookCell.xib in Resources */,
+				7835C2BF267DB37100739B92 /* Cafe24SsurroundAir.ttf in Resources */,
 				78FE24202587A70A00E4BE31 /* ShopCell.xib in Resources */,
 				7840E30F257FAA9E009B216B /* Main.storyboard in Resources */,
 				787086C7258C475100D454A8 /* GoogleService-Info.plist in Resources */,
@@ -671,6 +686,7 @@
 				78A758882581D34B006FAFB1 /* DesignElements.swift in Sources */,
 				78365CE8259F0BC000CACE52 /* ShopItems.swift in Sources */,
 				7826855C2587114E00F0A295 /* API.swift in Sources */,
+				7835C2C2267DB39B00739B92 /* UIFont+Extension.swift in Sources */,
 				78273C032591C11900805B59 /* IndexViewController.swift in Sources */,
 				7870872A258F20A500D454A8 /* OFV_ImageView.swift in Sources */,
 				78EFE36325963B6B0068407F /* NewsFeedViewController.swift in Sources */,

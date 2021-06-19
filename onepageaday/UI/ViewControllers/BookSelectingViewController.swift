@@ -101,7 +101,9 @@ class BookSelectingViewController: UIViewController, SkeletonCollectionViewDeleg
         
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
-        // Do any additional setup after loading the view.
+        
+        self.view.backgroundColor = .backGroundColor
+        self.collectionView.backgroundColor = .backGroundColor
     }
     
     func fetchBooks() {

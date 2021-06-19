@@ -18,12 +18,9 @@ class BookCell: UICollectionViewCell{
     override func awakeFromNib() {
         super.awakeFromNib()
         //self.titleLabel.showAnimatedGradientSkeleton()
-        self.layer.cornerRadius = 12.0
-        self.clipsToBounds = true
         
-        self.layer.shadowOpacity = 0.4
-        self.layer.shadowOffset = CGSize(width: 0, height: 3)
-        self.layer.shadowRadius = 5
-        self.layer.masksToBounds = false
+        
+        self.titleLabel.font = .cafe(size: 17)
+        self.dateLabel.font = .cafe(size: 14)
     }
 }
