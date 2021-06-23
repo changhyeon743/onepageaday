@@ -93,6 +93,7 @@ class ShopViewController: UIViewController, SkeletonTableViewDelegate, SkeletonT
         let row = sender.tag
         if (shopItems == nil) { return }
         let book = Book(title: shopItems![row].title,
+                        subTitle: shopItems![row].subTitle,
                         detail: shopItems![row].detail,
                         author: Auth.auth().currentUser?.uid ?? "",
                         currentIndex: 0,

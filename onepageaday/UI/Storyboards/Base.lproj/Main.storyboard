@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6oT-Er-n9l">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
@@ -14,23 +15,23 @@
             <objects>
                 <viewController storyboardIdentifier="MainViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="MainViewController" customModule="onepageaday" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="001" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fgc-R8-2KA">
-                                <rect key="frame" x="12" y="169" width="576" height="42"/>
+                                <rect key="frame" x="12" y="169" width="390" height="42"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="나를 소개해주세요." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ZHl-kh-jhh">
-                                <rect key="frame" x="12" y="221" width="576" height="24"/>
+                                <rect key="frame" x="12" y="221" width="390" height="24"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N3e-2u-nMb">
-                                <rect key="frame" x="552" y="20" width="33" height="35"/>
+                                <rect key="frame" x="366" y="64" width="33" height="35"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
                                 <size key="titleShadowOffset" width="0.0" height="1"/>
                                 <state key="normal" title="완료">
@@ -42,7 +43,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="44c-Tm-YyD" userLabel="닫기">
-                                <rect key="frame" x="15" y="20" width="32.5" height="27.5"/>
+                                <rect key="frame" x="15" y="64" width="32.5" height="27.5"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="arrow.backward" catalog="system">
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="28" weight="regular"/>
@@ -52,7 +53,7 @@
                                 </connections>
                             </button>
                             <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="trash.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="1bs-2B-rdB">
-                                <rect key="frame" x="268" y="516.5" width="64" height="63"/>
+                                <rect key="frame" x="175" y="778.5" width="64" height="63"/>
                                 <color key="tintColor" systemColor="labelColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="64" id="GPk-rp-56n"/>
@@ -60,14 +61,14 @@
                                 </constraints>
                             </imageView>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ujP-Kz-hqK" customClass="UIColorWell">
-                                <rect key="frame" x="15" y="20" width="28" height="28"/>
+                                <rect key="frame" x="15" y="64" width="28" height="28"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="28" id="KQL-lV-DIH"/>
                                     <constraint firstAttribute="height" constant="28" id="fSf-lP-nKC"/>
                                 </constraints>
                             </view>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GR1-Bs-kZf">
-                                <rect key="frame" x="56" y="20" width="33" height="23.5"/>
+                                <rect key="frame" x="56" y="64" width="33" height="23.5"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="textformat" catalog="system">
                                     <color key="titleColor" systemColor="labelColor"/>
@@ -78,7 +79,7 @@
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bYd-7h-GZ2">
-                                <rect key="frame" x="102" y="20" width="30.5" height="27"/>
+                                <rect key="frame" x="102" y="64" width="30.5" height="27"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="hand.draw" catalog="system">
                                     <color key="titleColor" systemColor="labelColor"/>
@@ -89,7 +90,7 @@
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kyd-p1-zBD">
-                                <rect key="frame" x="145.5" y="20" width="34" height="26"/>
+                                <rect key="frame" x="145.5" y="64" width="34" height="26"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="photo" catalog="system">
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="24" weight="regular"/>
@@ -99,7 +100,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vGo-ej-BAw">
-                                <rect key="frame" x="552" y="20" width="33" height="35"/>
+                                <rect key="frame" x="366" y="64" width="33" height="35"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <size key="titleShadowOffset" width="0.0" height="1"/>
@@ -112,7 +113,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="obd-fe-4ux">
-                                <rect key="frame" x="60.5" y="20" width="29.5" height="28.5"/>
+                                <rect key="frame" x="60.5" y="64" width="29.5" height="28.5"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="gearshape" catalog="system">
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="24" weight="regular"/>
@@ -174,11 +175,11 @@
             <objects>
                 <viewController storyboardIdentifier="StickerViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="S4R-It-jvd" customClass="StickerViewController" customModule="onepageaday" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2I5-yU-OaW">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="QJV-jT-pY9" customClass="CollectionView">
-                                <rect key="frame" x="0.0" y="77" width="600" height="503"/>
+                                <rect key="frame" x="0.0" y="77" width="414" height="765"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="lFl-a4-dxh">
                                     <size key="itemSize" width="128" height="128"/>
@@ -224,7 +225,7 @@
                                 </userDefinedRuntimeAttributes>
                             </collectionView>
                             <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Giphy 검색" translatesAutoresizingMaskIntoConstraints="NO" id="Cih-Up-w5C">
-                                <rect key="frame" x="4" y="26" width="592" height="51"/>
+                                <rect key="frame" x="4" y="26" width="406" height="51"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <scopeButtonTitles>
                                     <string>Title</string>
@@ -232,7 +233,7 @@
                                 </scopeButtonTitles>
                             </searchBar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fRr-fg-9M6">
-                                <rect key="frame" x="253.5" y="9" width="93" height="7"/>
+                                <rect key="frame" x="160.5" y="9" width="93" height="7"/>
                                 <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="93" id="9DR-9a-G1C"/>
@@ -270,17 +271,17 @@
             <objects>
                 <viewController storyboardIdentifier="ShopDetailViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="fgG-Jf-s3z" customClass="ShopDetailViewController" customModule="onepageaday" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Kyu-1Q-Ttt">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s4l-Ub-QbE">
-                                <rect key="frame" x="0.0" y="56" width="600" height="524"/>
+                                <rect key="frame" x="0.0" y="56" width="414" height="752"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="DfQ-v4-hfU">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="1487.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1994.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="9Jx-Bd-WqG">
-                                                <rect key="frame" x="32" y="32" width="536" height="202.5"/>
+                                                <rect key="frame" x="32" y="32" width="350" height="202.5"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eLT-o8-JfC">
                                                         <rect key="frame" x="0.0" y="0.0" width="114" height="202.5"/>
@@ -290,19 +291,19 @@
                                                         </constraints>
                                                     </imageView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="coV-ZF-7Ln">
-                                                        <rect key="frame" x="130" y="0.0" width="406" height="202.5"/>
+                                                        <rect key="frame" x="130" y="0.0" width="220" height="202.5"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Wg4-Xf-50D">
-                                                                <rect key="frame" x="0.0" y="0.0" width="406" height="55"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="220" height="55"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="제목" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="AYN-pe-3uq">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="406" height="29"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="220" height="29"/>
                                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="해시태그" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="VwE-oX-2T5">
-                                                                        <rect key="frame" x="0.0" y="37" width="406" height="18"/>
+                                                                        <rect key="frame" x="0.0" y="37" width="220" height="18"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <nil key="highlightedColor"/>
@@ -310,7 +311,7 @@
                                                                 </subviews>
                                                             </stackView>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lUz-kE-FTC">
-                                                                <rect key="frame" x="0.0" y="172.5" width="406" height="30"/>
+                                                                <rect key="frame" x="0.0" y="172.5" width="220" height="30"/>
                                                                 <color key="backgroundColor" name="AccentColor"/>
                                                                 <state key="normal" title="₩1200">
                                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -321,13 +322,13 @@
                                                 </subviews>
                                             </stackView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="공개/ 비공개" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nHN-lE-4Xa">
-                                                <rect key="frame" x="32" y="266.5" width="536" height="20.5"/>
+                                                <rect key="frame" x="32" y="266.5" width="350" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KkP-kH-Y4J">
-                                                <rect key="frame" x="32" y="319" width="536" height="1136.5"/>
+                                                <rect key="frame" x="32" y="319" width="350" height="1643.5"/>
                                                 <string key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean placerat vel lectus sit amet convallis. In eu ligula luctus, semper turpis sit amet, convallis sapien. Morbi porttitor, turpis ac blandit blandit, nunc justo finibus purus, ac congue dui ante facilisis odio. Sed euismod nisi ac urna tristique fringilla. Vivamus semper nulla id consequat rhoncus. Quisque rhoncus finibus lacus, ac euismod leo egestas eget. Morbi facilisis mi ut accumsan ultricies. Integer non neque nec eros hendrerit tempus. Nunc id ex nec lectus fringilla pulvinar nec eu neque.
 
 Curabitur pharetra dolor nulla, eget lobortis nisi dignissim sit amet. Vestibulum fermentum rutrum augue ut fringilla. Aliquam et nulla volutpat, aliquam augue sit amet, dapibus eros. Aenean ut lectus congue nibh congue luctus in non nisl. Duis blandit urna vel nunc consectetur, vel consequat est viverra. Duis elementum tincidunt tempor. Mauris dictum auctor quam id tristique. Maecenas lobortis metus sed diam suscipit sodales. Mauris maximus turpis sed nisi auctor, eu maximus lorem semper. In rutrum pellentesque sem dapibus elementum. Phasellus enim sem, efficitur sed arcu non, tempor suscipit augue. Nullam porta hendrerit lorem. Cras non dui et leo fringilla rhoncus. Nam tempor luctus arcu, id ornare enim aliquam eu. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nam eget mollis odio, id rutrum lacus.
@@ -387,14 +388,14 @@ Nullam hendrerit risus et bibendum blandit. Nulla et purus augue. Cras a tempus 
             <objects>
                 <viewController storyboardIdentifier="PurchaseViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="UA5-zp-6Eb" customClass="PurchaseViewController" customModule="onepageaday" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="o2N-2Y-KrB">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wWv-S3-oeU">
-                                <rect key="frame" x="87" y="170" width="426" height="204"/>
+                                <rect key="frame" x="87" y="214" width="240" height="422"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nqf-gs-WQB">
-                                        <rect key="frame" x="375" y="162" width="39" height="30"/>
+                                        <rect key="frame" x="189" y="380" width="39" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="yn8-OU-oce"/>
                                         </constraints>
@@ -404,7 +405,7 @@ Nullam hendrerit risus et bibendum blandit. Nulla et purus augue. Cras a tempus 
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QqV-83-1gE">
-                                        <rect key="frame" x="283" y="128" width="131" height="30"/>
+                                        <rect key="frame" x="97" y="346" width="131" height="30"/>
                                         <color key="backgroundColor" name="AccentColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="fgX-bi-vcG"/>
@@ -418,7 +419,7 @@ Nullam hendrerit risus et bibendum blandit. Nulla et purus augue. Cras a tempus 
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="매일력 프로" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fhX-tc-ykv">
-                                        <rect key="frame" x="12" y="12" width="402" height="26.5"/>
+                                        <rect key="frame" x="12" y="12" width="216" height="26.5"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -480,11 +481,11 @@ Nullam hendrerit risus et bibendum blandit. Nulla et purus augue. Cras a tempus 
             <objects>
                 <viewController storyboardIdentifier="BookSelectingViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="hOi-xl-CzU" customClass="BookSelectingViewController" customModule="onepageaday" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CUK-hI-sDu">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="eVk-BC-j9z">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="eRW-Vq-z8z">
                                     <size key="itemSize" width="128" height="128"/>
@@ -498,7 +499,7 @@ Nullam hendrerit risus et bibendum blandit. Nulla et purus augue. Cras a tempus 
                                 </userDefinedRuntimeAttributes>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rPK-gd-BkI">
-                                <rect key="frame" x="546.5" y="15" width="38.5" height="31"/>
+                                <rect key="frame" x="360.5" y="59" width="38.5" height="31"/>
                                 <state key="normal" image="cart" catalog="system">
                                     <color key="titleColor" name="AccentColor"/>
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="28"/>
@@ -509,14 +510,14 @@ Nullam hendrerit risus et bibendum blandit. Nulla et purus augue. Cras a tempus 
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="znH-0e-Wf4">
-                                <rect key="frame" x="15" y="15" width="36" height="34.5"/>
+                                <rect key="frame" x="15" y="59" width="36" height="34.5"/>
                                 <state key="normal" image="gear" catalog="system">
                                     <color key="titleColor" name="AccentColor"/>
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="28"/>
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VbY-mT-z1M">
-                                <rect key="frame" x="280.5" y="474.5" width="39.5" height="44.5"/>
+                                <rect key="frame" x="187.5" y="736.5" width="39.5" height="44.5"/>
                                 <color key="tintColor" systemColor="labelColor"/>
                                 <state key="normal" image="trash" catalog="system">
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="36"/>
@@ -568,14 +569,14 @@ Nullam hendrerit risus et bibendum blandit. Nulla et purus augue. Cras a tempus 
             <objects>
                 <viewController storyboardIdentifier="LoginViewController" id="ua4-oE-vss" customClass="LoginViewController" customModule="onepageaday" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7Oj-1d-XEp">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Qlc-Ui-f3n">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0qW-RN-ieP">
-                                <rect key="frame" x="189.5" y="504" width="221" height="32"/>
+                                <rect key="frame" x="96.5" y="766" width="221" height="32"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="26"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title=" Login with Apple" image="applelogo" catalog="system">
@@ -587,13 +588,13 @@ Nullam hendrerit risus et bibendum blandit. Nulla et purus augue. Cras a tempus 
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="매일력" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6as-0E-fA9">
-                                <rect key="frame" x="240.5" y="128" width="119.5" height="55"/>
+                                <rect key="frame" x="147.5" y="172" width="119.5" height="55"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="46"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qkr-rw-Whx">
-                                <rect key="frame" x="232.5" y="460" width="135" height="28"/>
+                                <rect key="frame" x="139.5" y="722" width="135" height="28"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <state key="normal" title="다른 로그인 방법 선택하기">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -629,11 +630,11 @@ Nullam hendrerit risus et bibendum blandit. Nulla et purus augue. Cras a tempus 
             <objects>
                 <viewController storyboardIdentifier="ShopViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="vD4-cA-p6J" customClass="ShopViewController" customModule="onepageaday" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KiI-1Q-KlN">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="OIh-06-guc">
-                                <rect key="frame" x="0.0" y="56" width="600" height="524"/>
+                                <rect key="frame" x="0.0" y="56" width="414" height="752"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
@@ -675,11 +676,11 @@ Nullam hendrerit risus et bibendum blandit. Nulla et purus augue. Cras a tempus 
             <objects>
                 <viewController storyboardIdentifier="OFV_IndexViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="hGF-Xd-Arq" customClass="IndexViewController" customModule="onepageaday" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="AUG-hb-wey">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="N8i-ZH-e4y">
-                                <rect key="frame" x="0.0" y="124" width="600" height="456"/>
+                                <rect key="frame" x="0.0" y="124" width="414" height="718"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="3h6-ts-P6d">
                                     <size key="itemSize" width="204" height="359"/>
@@ -689,7 +690,7 @@ Nullam hendrerit risus et bibendum blandit. Nulla et purus augue. Cras a tempus 
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="4MU-FV-9GH" customClass="IndexCollectionViewCell" customModule="onepageaday" customModuleProvider="target">
-                                        <rect key="frame" x="10" y="10" width="204" height="359"/>
+                                        <rect key="frame" x="105" y="10" width="204" height="359"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="axB-SB-9NB">
                                             <rect key="frame" x="0.0" y="0.0" width="204" height="359"/>
@@ -709,7 +710,7 @@ Nullam hendrerit risus et bibendum blandit. Nulla et purus augue. Cras a tempus 
                                 </userDefinedRuntimeAttributes>
                             </collectionView>
                             <searchBar contentMode="redraw" searchBarStyle="minimal" text="" placeholder="질문 검색" showsScopeBar="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jnO-QB-J3P">
-                                <rect key="frame" x="4" y="26" width="592" height="98"/>
+                                <rect key="frame" x="4" y="26" width="406" height="98"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <scopeButtonTitles>
                                     <string>모든 질문</string>
@@ -717,7 +718,7 @@ Nullam hendrerit risus et bibendum blandit. Nulla et purus augue. Cras a tempus 
                                 </scopeButtonTitles>
                             </searchBar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AhQ-2i-ZLl">
-                                <rect key="frame" x="253.5" y="9" width="93" height="7"/>
+                                <rect key="frame" x="160.5" y="9" width="93" height="7"/>
                                 <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="93" id="KBF-po-cns"/>
@@ -755,11 +756,11 @@ Nullam hendrerit risus et bibendum blandit. Nulla et purus augue. Cras a tempus 
             <objects>
                 <viewController storyboardIdentifier="NewsFeedViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="xvc-EY-pzc" customClass="NewsFeedViewController" customModule="onepageaday" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cQC-h2-Hum">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="FoR-HO-sST">
-                                <rect key="frame" x="0.0" y="56" width="600" height="544"/>
+                                <rect key="frame" x="0.0" y="100" width="414" height="796"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="gEC-Hb-6mu">
                                     <size key="itemSize" width="123" height="235"/>
@@ -789,10 +790,10 @@ Nullam hendrerit risus et bibendum blandit. Nulla et purus augue. Cras a tempus 
                                 </userDefinedRuntimeAttributes>
                             </collectionView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="WbG-6N-GHk">
-                                <rect key="frame" x="16" y="16" width="568" height="24"/>
+                                <rect key="frame" x="16" y="60" width="382" height="24"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="새로운 이야기" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="YMd-OE-p2f">
-                                        <rect key="frame" x="0.0" y="0.0" width="568" height="24"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="382" height="24"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -847,11 +848,11 @@ Nullam hendrerit risus et bibendum blandit. Nulla et purus augue. Cras a tempus 
             <objects>
                 <viewController storyboardIdentifier="NewsFeedDetailViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="THM-oM-ad9" customClass="NewsFeedDetailViewController" customModule="onepageaday" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="C7h-zz-kzY">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TZN-XH-3dH">
-                                <rect key="frame" x="553" y="16" width="31" height="29"/>
+                                <rect key="frame" x="367" y="60" width="31" height="29"/>
                                 <state key="normal" image="xmark" catalog="system">
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="30"/>
                                 </state>

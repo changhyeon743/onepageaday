@@ -16,6 +16,7 @@
 		782E7B6125C1CBF700C3110B /* NewsFeedDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782E7B6025C1CBF700C3110B /* NewsFeedDetailViewController.swift */; };
 		7835C2BF267DB37100739B92 /* Cafe24SsurroundAir.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7835C2BE267DB36C00739B92 /* Cafe24SsurroundAir.ttf */; };
 		7835C2C2267DB39B00739B92 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7835C2C1267DB39B00739B92 /* UIFont+Extension.swift */; };
+		783F406B2683682A00513E41 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783F406A2683682A00513E41 /* ActivityIndicator.swift */; };
 		7840E308257FAA9E009B216B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7840E307257FAA9E009B216B /* AppDelegate.swift */; };
 		7840E30A257FAA9E009B216B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7840E309257FAA9E009B216B /* SceneDelegate.swift */; };
 		7840E30C257FAA9E009B216B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7840E30B257FAA9E009B216B /* MainViewController.swift */; };
@@ -89,6 +90,7 @@
 		782E7B6025C1CBF700C3110B /* NewsFeedDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NewsFeedDetailViewController.swift; path = "onepageaday/UI/ViewControllers/오늘의 매일력/NewsFeedDetailViewController.swift"; sourceTree = SOURCE_ROOT; };
 		7835C2BE267DB36C00739B92 /* Cafe24SsurroundAir.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Cafe24SsurroundAir.ttf; sourceTree = "<group>"; };
 		7835C2C1267DB39B00739B92 /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
+		783F406A2683682A00513E41 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		7840E304257FAA9E009B216B /* onepageaday.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = onepageaday.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7840E307257FAA9E009B216B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7840E309257FAA9E009B216B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -338,7 +340,9 @@
 				78576E8D257FDEF7006F0B3F /* EditableTextView.swift */,
 				78E908B42582726D00944B60 /* EditableImageView.swift */,
 				78FE241225879E6700E4BE31 /* BookFlowLayout.swift */,
+				7863C9BE2588589500B5773D /* BookCell.xib */,
 				7863C9C32588596600B5773D /* BookCell.swift */,
+				78FE241F2587A70A00E4BE31 /* ShopCell.xib */,
 				78FE24242587A89700E4BE31 /* ShopCell.swift */,
 				7861CB25258FA7B50035D29E /* StickerCell.swift */,
 			);
@@ -350,8 +354,6 @@
 			children = (
 				7840E312257FAAA7009B216B /* LaunchScreen.storyboard */,
 				7840E30D257FAA9E009B216B /* Main.storyboard */,
-				78FE241F2587A70A00E4BE31 /* ShopCell.xib */,
-				7863C9BE2588589500B5773D /* BookCell.xib */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -367,6 +369,7 @@
 				78E9088D25822B4200944B60 /* MainPageViewController.swift */,
 				7840E30B257FAA9E009B216B /* MainViewController.swift */,
 				7861CB2D258FA87D0035D29E /* StickerViewController.swift */,
+				783F406A2683682A00513E41 /* ActivityIndicator.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -586,6 +589,7 @@
 				78FE241325879E6700E4BE31 /* BookFlowLayout.swift in Sources */,
 				789CBC3025889E76001D11B1 /* ShopDetailViewController.swift in Sources */,
 				787086B8258C448D00D454A8 /* LoginViewController.swift in Sources */,
+				783F406B2683682A00513E41 /* ActivityIndicator.swift in Sources */,
 				78708738258F551500D454A8 /* Toast.swift in Sources */,
 				78EE1FF225A2841E00366F6E /* PurchaseViewController.swift in Sources */,
 				78E9088E25822B4200944B60 /* MainPageViewController.swift in Sources */,

@@ -17,6 +17,7 @@ protocol BookSelectingViewControllerDelegate: class {
     func bookDownloaded()
 }
 
+//우측 메뉴 아이템
 enum AdditionalItem: Int {
     case openShop
 //    case todayBooks
@@ -26,24 +27,8 @@ enum AdditionalItem: Int {
     static let count = 2
 }
 
-func makeActivityIndicator(center: CGPoint) -> UIActivityIndicatorView {
-    let activityIndicator = UIActivityIndicatorView()
-    activityIndicator.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
-    activityIndicator.center = center
-    activityIndicator.backgroundColor = .init(white: 0, alpha: 0.5)
-    activityIndicator.layer.cornerRadius = 14
-    activityIndicator.clipsToBounds = true
-    activityIndicator.color = .white
-    
-    // Also show the indicator even when the animation is stopped.
-    activityIndicator.hidesWhenStopped = true
-    activityIndicator.style = .large
-    // Start animation.
-    activityIndicator.stopAnimating()
-    return activityIndicator
-}
 
-class BookSelectingViewController: UIViewController, SkeletonCollectionViewDelegate, SkeletonCollectionViewDataSource,BookSelectingViewControllerDelegate,UIAdaptivePresentationControllerDelegate {
+class BookSelectingViewController: UIViewController,UIAdaptivePresentationControllerDelegate {
     
     lazy var activityIndicator: UIActivityIndicatorView = { return makeActivityIndicator(center: self.view.center) }()
     
@@ -66,7 +51,7 @@ class BookSelectingViewController: UIViewController, SkeletonCollectionViewDeleg
         super.viewDidLoad()
         self.view.addSubview(activityIndicator)
         self.presentationController?.delegate = self
-    
+        
         //Firestore.firestore().disableNetwork(completion: nil)
         self.collectionView.showAnimatedGradientSkeleton()
         settingButton.showsMenuAsPrimaryAction = true
@@ -169,6 +154,39 @@ class BookSelectingViewController: UIViewController, SkeletonCollectionViewDeleg
 //        
 
     }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        
+        trashButton.isHidden = false
+        
+        let x = scrollView.contentOffset.x
+        let w = scrollView.bounds.size.width
+        let currentPage = Int(ceil(x/w))
+        // Do whatever with currentPage.
+        self.currentPage = currentPage
+        
+        guard let bookCount = API.books?.count else {return}
+        if currentPage >= bookCount {
+            trashButton.isHidden = true
+        } else {
+            trashButton.isHidden = false
+        }
+    }
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        trashButton.isHidden = true
+    }
+    
+    
+}
+
+extension BookSelectingViewController: BookSelectingViewControllerDelegate {
+    //Delegate
+    func bookDownloaded() {
+        fetchBooks()
+    }
+}
+
+extension BookSelectingViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     // MARK: UICollectionViewDataSource
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -185,12 +203,6 @@ class BookSelectingViewController: UIViewController, SkeletonCollectionViewDeleg
         }
     }
     
-    func collectionSkeletonView(_ skeletonView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return API.books?.count ?? 10
-    }
-    func collectionSkeletonView(_ skeletonView: UICollectionView, cellIdentifierForItemAt indexPath: IndexPath) -> ReusableCellIdentifier {
-        return reuseIdentifier
-    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
            return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
@@ -202,11 +214,11 @@ class BookSelectingViewController: UIViewController, SkeletonCollectionViewDeleg
             if (indexPath.section == 0) {
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! BookCell
                 cell.titleLabel.hideSkeleton()
-                cell.dateLabel.hideSkeleton()
+                cell.detailLabel.hideSkeleton()
                 cell.imageView.hideSkeleton()
                 
                 cell.titleLabel.text = API.books?[indexPath.row].title
-                cell.dateLabel.text = API.books?[indexPath.row].createDate.toString()
+                cell.detailLabel.text = API.books?[indexPath.row].subTitle
                 //cell.backgroundColor = UIColor(hue: CGFloat(arc4random_uniform(360))/360, saturation: 0.5, brightness: 0.8, alpha: 1)
                 if let url = API.books?[indexPath.row].backGroundImage {
                     cell.imageView.kf.indicatorType = .activity
@@ -219,29 +231,19 @@ class BookSelectingViewController: UIViewController, SkeletonCollectionViewDeleg
             } else {
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! BookCell
                 cell.titleLabel.hideSkeleton()
-                cell.dateLabel.hideSkeleton()
+                cell.detailLabel.hideSkeleton()
                 cell.imageView.hideSkeleton()
                 cell.imageView.kf.indicatorType = .activity
 
                 switch indexPath.row{
                 case AdditionalItem.openShop.rawValue:
                     cell.titleLabel.text = "상점"
-                    cell.dateLabel.text = "새로운 매일력을 다운로드 하세요."
+                    cell.detailLabel.text = "새로운 매일력을 다운로드 하세요."
                     cell.imageView.kf.setImage(with: URL(string: "https://product-image.juniqe-production.juniqe.com/media/catalog/product/seo-cache/x800/648/28/648-28-101P/Today-Is-The-Day-Kind-of-Style-Poster.jpg"))
                     break
-//                case AdditionalItem.todayBooks.rawValue:
-//                    cell.titleLabel.text = "오늘의 매일력"
-//                    cell.dateLabel.text = "오늘의 매일력을 볼 수 있습니다."
-//                    cell.imageView.kf.setImage(with: URL(string: "https://product-image.juniqe-production.juniqe.com/media/catalog/product/seo-cache/x800/648/28/648-28-101P/Today-Is-The-Day-Kind-of-Style-Poster.jpg"))
-//                    break
-//                case AdditionalItem.buyPro.rawValue:
-//                    cell.titleLabel.text = "프로 버전 구매하기"
-//                    cell.dateLabel.text = "₩1000"
-//                    cell.imageView.kf.setImage(with: URL(string: "https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/MWP22_AV1?wid=1144&hei=1144&fmt=jpeg&qlt=80&op_usm=0.5,0.5&.v=1591634652000"))
-//                    break
                 case AdditionalItem.buyRealBook.rawValue:
                     cell.titleLabel.text = "매일력 책 구매하기"
-                    cell.dateLabel.text = "리마크프레스 사이트로 연결됩니다"
+                    cell.detailLabel.text = "리마크프레스 사이트로 연결됩니다"
                     cell.imageView.kf.setImage(with: URL(string: "https://contents.sixshop.com/thumbnails/uploadedFiles/13311/product/image_1581581880733_1000.jpg"))
                     break
                 default: break
@@ -254,7 +256,7 @@ class BookSelectingViewController: UIViewController, SkeletonCollectionViewDeleg
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! BookCell
             cell.titleLabel.showAnimatedGradientSkeleton()
-            cell.dateLabel.showAnimatedGradientSkeleton()
+            cell.detailLabel.showAnimatedGradientSkeleton()
             cell.imageView.showAnimatedGradientSkeleton()
             return cell
         }
@@ -292,23 +294,6 @@ class BookSelectingViewController: UIViewController, SkeletonCollectionViewDeleg
             case AdditionalItem.openShop.rawValue:
                 enterShop(nil)
                 break
-//            case AdditionalItem.todayBooks.rawValue:
-//                if let vc = self.storyboard?.instantiateViewController(withIdentifier: "ThemeIndexViewController") as? NewsFeedViewController {
-//                    //vc.theme = .today
-//                    
-//                    self.present(vc, animated: true, completion: nil)
-//                }
-//                
-//                break
-//            case AdditionalItem.buyPro.rawValue:
-//                //Buy pro
-//                print("Buy pro")
-//                if let vc = self.storyboard?.instantiateViewController(identifier: "PurchaseViewController") as? PurchaseViewController {
-//                    vc.modalPresentationStyle = .overCurrentContext
-//                    vc.modalTransitionStyle = .crossDissolve
-//                    present(vc, animated: true, completion: nil)
-//                }
-//                break
             case AdditionalItem.buyRealBook.rawValue:
                 //open safari
                 if let url = URL(string: "https://www.sixshop.com/remarkpress/product/9") {
@@ -322,33 +307,5 @@ class BookSelectingViewController: UIViewController, SkeletonCollectionViewDeleg
         
     }
 
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        
-        trashButton.isHidden = false
-        
-        let x = scrollView.contentOffset.x
-        let w = scrollView.bounds.size.width
-        let currentPage = Int(ceil(x/w))
-        // Do whatever with currentPage.
-        self.currentPage = currentPage
-        
-        guard let bookCount = API.books?.count else {return}
-        if currentPage >= bookCount {
-            trashButton.isHidden = true
-        } else {
-            trashButton.isHidden = false
-        }
-    }
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        trashButton.isHidden = true
-    }
-    
-    
-    
-    func bookDownloaded() {
-        fetchBooks()
-    }
-    
-    
     
 }

@@ -17,8 +17,8 @@ class BookFlowLayout: UICollectionViewFlowLayout {
         super.init()
 
         scrollDirection = .horizontal
-        minimumLineSpacing = 40
-        itemSize = CGSize(width: 200, height: 350)
+        minimumLineSpacing = 65
+        itemSize = CGSize(width: UIScreen.main.bounds.width/1.75, height: UIScreen.main.bounds.width/1.2)
     }
 
     required init?(coder aDecoder: NSCoder) {

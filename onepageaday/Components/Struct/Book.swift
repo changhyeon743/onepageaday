@@ -12,6 +12,7 @@ import FirebaseFirestoreSwift
 struct Book: Codable,Identifiable {
     @DocumentID var id: String? = UUID().uuidString
     var title: String
+    var subTitle: String?
     var detail: String
     var author: String
     var currentIndex: Int
