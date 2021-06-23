@@ -1,5 +1,5 @@
 # Uncomment the next line to define a global platform for your project
-# platform :ios, '9.0'
+platform :ios, '14.1'
 
 target 'onepageaday' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
@@ -17,9 +17,12 @@ target 'onepageaday' do
   # UI
   pod 'Kingfisher', '~> 5.0'
   pod 'SkeletonView'
+  pod 'SnapKit', '~> 5.0.0'
+  pod 'Then'
 
   # 통신
   pod 'Alamofire'
   pod 'SwiftyJSON', '~> 4.0'
+
 
 end

@@ -16,7 +16,6 @@
 		782E7B6125C1CBF700C3110B /* NewsFeedDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782E7B6025C1CBF700C3110B /* NewsFeedDetailViewController.swift */; };
 		7835C2BF267DB37100739B92 /* Cafe24SsurroundAir.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7835C2BE267DB36C00739B92 /* Cafe24SsurroundAir.ttf */; };
 		7835C2C2267DB39B00739B92 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7835C2C1267DB39B00739B92 /* UIFont+Extension.swift */; };
-		78365CE8259F0BC000CACE52 /* ShopItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78365CE7259F0BC000CACE52 /* ShopItems.swift */; };
 		7840E308257FAA9E009B216B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7840E307257FAA9E009B216B /* AppDelegate.swift */; };
 		7840E30A257FAA9E009B216B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7840E309257FAA9E009B216B /* SceneDelegate.swift */; };
 		7840E30C257FAA9E009B216B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7840E30B257FAA9E009B216B /* MainViewController.swift */; };
@@ -44,7 +43,6 @@
 		7870872A258F20A500D454A8 /* OFV_ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78708729258F20A500D454A8 /* OFV_ImageView.swift */; };
 		7870872F258F369900D454A8 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7870872E258F369900D454A8 /* Color.swift */; };
 		78708738258F551500D454A8 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78708737258F551500D454A8 /* Toast.swift */; };
-		787A0464258BD8050018A232 /* BookManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787A0463258BD8050018A232 /* BookManager.swift */; };
 		789CBC3025889E76001D11B1 /* ShopDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789CBC2F25889E76001D11B1 /* ShopDetailViewController.swift */; };
 		78A758882581D34B006FAFB1 /* DesignElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A758872581D34B006FAFB1 /* DesignElements.swift */; };
 		78BCC847259D910C00E7028D /* ThemeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BCC846259D910C00E7028D /* ThemeCollectionViewCell.swift */; };
@@ -91,7 +89,6 @@
 		782E7B6025C1CBF700C3110B /* NewsFeedDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NewsFeedDetailViewController.swift; path = "onepageaday/UI/ViewControllers/오늘의 매일력/NewsFeedDetailViewController.swift"; sourceTree = SOURCE_ROOT; };
 		7835C2BE267DB36C00739B92 /* Cafe24SsurroundAir.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Cafe24SsurroundAir.ttf; sourceTree = "<group>"; };
 		7835C2C1267DB39B00739B92 /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
-		78365CE7259F0BC000CACE52 /* ShopItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopItems.swift; sourceTree = "<group>"; };
 		7840E304257FAA9E009B216B /* onepageaday.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = onepageaday.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7840E307257FAA9E009B216B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7840E309257FAA9E009B216B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -126,7 +123,6 @@
 		78708729258F20A500D454A8 /* OFV_ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OFV_ImageView.swift; sourceTree = "<group>"; };
 		7870872E258F369900D454A8 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		78708737258F551500D454A8 /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
-		787A0463258BD8050018A232 /* BookManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookManager.swift; sourceTree = "<group>"; };
 		789CBC2F25889E76001D11B1 /* ShopDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopDetailViewController.swift; sourceTree = "<group>"; };
 		78A758872581D34B006FAFB1 /* DesignElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignElements.swift; sourceTree = "<group>"; };
 		78BCC846259D910C00E7028D /* ThemeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -192,13 +188,6 @@
 				7826855B2587114E00F0A295 /* API.swift */,
 			);
 			path = Network;
-			sourceTree = "<group>";
-		};
-		7835C2C0267DB38D00739B92 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Extensions;
 			sourceTree = "<group>";
 		};
 		7840E2FB257FAA9E009B216B = {
@@ -300,10 +289,8 @@
 		78E908A62582717A00944B60 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				7835C2C0267DB38D00739B92 /* Extensions */,
 				78001F6E258B8EEB00102D27 /* Struct */,
 				782685452587105400F0A295 /* Network */,
-				78E908B22582722400944B60 /* Model */,
 				784E79262595BB0C0075B51D /* Constant.swift */,
 				787086FF258D90A400D454A8 /* Device.swift */,
 			);
@@ -314,7 +301,6 @@
 			isa = PBXGroup;
 			children = (
 				7835C2BE267DB36C00739B92 /* Cafe24SsurroundAir.ttf */,
-				78365CE7259F0BC000CACE52 /* ShopItems.swift */,
 				7840E310257FAAA7009B216B /* Assets.xcassets */,
 			);
 			path = Resources;
@@ -368,14 +354,6 @@
 				7863C9BE2588589500B5773D /* BookCell.xib */,
 			);
 			path = Storyboards;
-			sourceTree = "<group>";
-		};
-		78E908B22582722400944B60 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				787A0463258BD8050018A232 /* BookManager.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		78E908B32582724400944B60 /* ViewControllers */ = {
@@ -592,7 +570,6 @@
 				7840E30C257FAA9E009B216B /* MainViewController.swift in Sources */,
 				787086DD258C915100D454A8 /* ShopItem.swift in Sources */,
 				78075CCD25909D3C00EC9139 /* Array.swift in Sources */,
-				787A0464258BD8050018A232 /* BookManager.swift in Sources */,
 				784E79272595BB0C0075B51D /* Constant.swift in Sources */,
 				78576E8E257FDEF7006F0B3F /* EditableTextView.swift in Sources */,
 				7870871D258F1D2600D454A8 /* OFV_MainView.swift in Sources */,
@@ -618,7 +595,6 @@
 				78BCC847259D910C00E7028D /* ThemeCollectionViewCell.swift in Sources */,
 				78E9089F25822F9900944B60 /* Question.swift in Sources */,
 				78A758882581D34B006FAFB1 /* DesignElements.swift in Sources */,
-				78365CE8259F0BC000CACE52 /* ShopItems.swift in Sources */,
 				7826855C2587114E00F0A295 /* API.swift in Sources */,
 				7835C2C2267DB39B00739B92 /* UIFont+Extension.swift in Sources */,
 				78273C032591C11900805B59 /* IndexViewController.swift in Sources */,
@@ -737,7 +713,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -792,7 +768,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -813,6 +789,7 @@
 				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = BZY7R6DV42;
 				INFOPLIST_FILE = onepageaday/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -836,6 +813,7 @@
 				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = BZY7R6DV42;
 				INFOPLIST_FILE = onepageaday/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
