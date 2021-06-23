@@ -17,6 +17,7 @@
 		7835C2BF267DB37100739B92 /* Cafe24SsurroundAir.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7835C2BE267DB36C00739B92 /* Cafe24SsurroundAir.ttf */; };
 		7835C2C2267DB39B00739B92 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7835C2C1267DB39B00739B92 /* UIFont+Extension.swift */; };
 		783F406B2683682A00513E41 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783F406A2683682A00513E41 /* ActivityIndicator.swift */; };
+		783F406D268370C800513E41 /* ThemeIndexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783F406C268370C800513E41 /* ThemeIndexViewController.swift */; };
 		7840E308257FAA9E009B216B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7840E307257FAA9E009B216B /* AppDelegate.swift */; };
 		7840E30A257FAA9E009B216B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7840E309257FAA9E009B216B /* SceneDelegate.swift */; };
 		7840E30C257FAA9E009B216B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7840E30B257FAA9E009B216B /* MainViewController.swift */; };
@@ -91,6 +92,7 @@
 		7835C2BE267DB36C00739B92 /* Cafe24SsurroundAir.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Cafe24SsurroundAir.ttf; sourceTree = "<group>"; };
 		7835C2C1267DB39B00739B92 /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		783F406A2683682A00513E41 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
+		783F406C268370C800513E41 /* ThemeIndexViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeIndexViewController.swift; sourceTree = "<group>"; };
 		7840E304257FAA9E009B216B /* onepageaday.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = onepageaday.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7840E307257FAA9E009B216B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7840E309257FAA9E009B216B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -361,6 +363,7 @@
 		78E908B32582724400944B60 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				783F406C268370C800513E41 /* ThemeIndexViewController.swift */,
 				7882DA0C25A0115000A77C94 /* Popup */,
 				78BCC84B259D984A00E7028D /* NewsFeed */,
 				787086B7258C448D00D454A8 /* LoginViewController.swift */,
@@ -596,6 +599,7 @@
 				7853DC772587AAD900600F6A /* ShopViewController.swift in Sources */,
 				7870872F258F369900D454A8 /* Color.swift in Sources */,
 				78C0E19D258317F300FC3842 /* BookSelectingViewController.swift in Sources */,
+				783F406D268370C800513E41 /* ThemeIndexViewController.swift in Sources */,
 				78BCC847259D910C00E7028D /* ThemeCollectionViewCell.swift in Sources */,
 				78E9089F25822F9900944B60 /* Question.swift in Sources */,
 				78A758882581D34B006FAFB1 /* DesignElements.swift in Sources */,

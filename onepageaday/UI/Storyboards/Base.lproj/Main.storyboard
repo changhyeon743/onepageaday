@@ -476,7 +476,7 @@ Nullam hendrerit risus et bibendum blandit. Nulla et purus augue. Cras a tempus 
             </objects>
             <point key="canvasLocation" x="-1588" y="-188"/>
         </scene>
-        <!--내 책-->
+        <!--나의 책-->
         <scene sceneID="EH5-jK-pXG">
             <objects>
                 <viewController storyboardIdentifier="BookSelectingViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="hOi-xl-CzU" customClass="BookSelectingViewController" customModule="onepageaday" customModuleProvider="target" sceneMemberID="viewController">
@@ -542,7 +542,7 @@ Nullam hendrerit risus et bibendum blandit. Nulla et purus augue. Cras a tempus 
                             <constraint firstItem="znH-0e-Wf4" firstAttribute="top" secondItem="8MW-48-tL4" secondAttribute="top" constant="15" id="zdo-Ll-6Fi"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="내 책" image="book.fill" catalog="system" id="Vob-S5-TCx"/>
+                    <tabBarItem key="tabBarItem" title="나의 책" image="book" catalog="system" selectedImage="book.fill" id="Vob-S5-TCx"/>
                     <navigationItem key="navigationItem" id="t03-43-bYf"/>
                     <connections>
                         <outlet property="collectionView" destination="eVk-BC-j9z" id="6zB-Xj-tl9"/>
@@ -815,7 +815,7 @@ Nullam hendrerit risus et bibendum blandit. Nulla et purus augue. Cras a tempus 
                             <constraint firstItem="FoR-HO-sST" firstAttribute="top" secondItem="WbG-6N-GHk" secondAttribute="bottom" constant="16" id="uQb-3i-ESg"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="새로운 이야기" image="person.3.fill" catalog="system" id="BxO-TJ-X7W"/>
+                    <tabBarItem key="tabBarItem" title="새로운 이야기" image="person.2" catalog="system" selectedImage="person.2.fill" id="BxO-TJ-X7W"/>
                     <navigationItem key="navigationItem" id="VGf-bX-lns"/>
                     <connections>
                         <outlet property="collectionView" destination="FoR-HO-sST" id="eri-QI-PIL"/>
@@ -824,7 +824,73 @@ Nullam hendrerit risus et bibendum blandit. Nulla et purus augue. Cras a tempus 
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gS3-ay-9Vs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2468" y="526"/>
+            <point key="canvasLocation" x="-2374" y="558"/>
+        </scene>
+        <!--Theme Index View Controller-->
+        <scene sceneID="0MP-cq-EHU">
+            <objects>
+                <viewController storyboardIdentifier="ThemeIndexViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="slh-uy-asr" customClass="ThemeIndexViewController" customModule="onepageaday" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="r7l-5k-bz9">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="50C-Kf-ElA">
+                                <rect key="frame" x="0.0" y="116" width="414" height="746"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Z8z-Pa-nJa">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="Wqt-UV-Lhi" customClass="ThemeCollectionViewCell" customModule="onepageaday" customModuleProvider="target">
+                                        <rect key="frame" x="10" y="10" width="123" height="235"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="oPe-r3-B70">
+                                            <rect key="frame" x="0.0" y="0.0" width="123" height="235"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="123" height="235"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </collectionViewCell>
+                                </cells>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="새로운 이야기" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="dJ5-Y0-6kn">
+                                <rect key="frame" x="24" y="68" width="366" height="24"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="kqI-1e-6NQ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="dJ5-Y0-6kn" secondAttribute="trailing" constant="24" id="Jah-GH-E4c"/>
+                            <constraint firstItem="dJ5-Y0-6kn" firstAttribute="top" secondItem="kqI-1e-6NQ" secondAttribute="top" constant="24" id="N2L-c5-4EQ"/>
+                            <constraint firstItem="dJ5-Y0-6kn" firstAttribute="leading" secondItem="kqI-1e-6NQ" secondAttribute="leading" constant="24" id="Tbl-he-Fhv"/>
+                            <constraint firstItem="kqI-1e-6NQ" firstAttribute="trailing" secondItem="50C-Kf-ElA" secondAttribute="trailing" id="UEq-BN-kWl"/>
+                            <constraint firstItem="kqI-1e-6NQ" firstAttribute="bottom" secondItem="50C-Kf-ElA" secondAttribute="bottom" id="X2c-yo-ApA"/>
+                            <constraint firstItem="50C-Kf-ElA" firstAttribute="top" secondItem="dJ5-Y0-6kn" secondAttribute="bottom" constant="24" id="fz5-KK-33X"/>
+                            <constraint firstItem="50C-Kf-ElA" firstAttribute="leading" secondItem="kqI-1e-6NQ" secondAttribute="leading" id="mZx-T5-lAg"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="50C-Kf-ElA" id="zpM-Sl-1iB"/>
+                        <outlet property="titleLabel" destination="dJ5-Y0-6kn" id="yKm-Fv-bri"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ycm-GY-gy1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1996" y="1231"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="8Sv-Bm-jyg">
@@ -873,18 +939,20 @@ Nullam hendrerit risus et bibendum blandit. Nulla et purus augue. Cras a tempus 
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Ru-c0-WRC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1720" y="526"/>
+            <point key="canvasLocation" x="-1641" y="547"/>
         </scene>
     </scenes>
     <resources>
         <image name="applelogo" catalog="system" width="103" height="128"/>
         <image name="arrow.backward" catalog="system" width="128" height="98"/>
+        <image name="book" catalog="system" width="128" height="102"/>
         <image name="book.fill" catalog="system" width="128" height="102"/>
         <image name="cart" catalog="system" width="128" height="102"/>
         <image name="gear" catalog="system" width="128" height="119"/>
         <image name="gearshape" catalog="system" width="128" height="121"/>
         <image name="hand.draw" catalog="system" width="128" height="113"/>
-        <image name="person.3.fill" catalog="system" width="128" height="61"/>
+        <image name="person.2" catalog="system" width="128" height="81"/>
+        <image name="person.2.fill" catalog="system" width="128" height="80"/>
         <image name="photo" catalog="system" width="128" height="93"/>
         <image name="textformat" catalog="system" width="128" height="78"/>
         <image name="trash" catalog="system" width="121" height="128"/>

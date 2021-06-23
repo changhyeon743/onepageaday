@@ -321,12 +321,10 @@ class MainViewController: UIViewController {
                                             
                                          }),
                                          UIAction(title: "이 질문의 다른 답변 보기", image: UIImage(systemName: "person.2"), identifier: nil, handler: { [weak self] _ in
-//                                            if let vc = self?.storyboard?.instantiateViewController(withIdentifier: "ThemeIndexViewController") as? NewsFeedViewController {
-//                                                vc.theme = .titleSearch
-//                                                
-//                                                vc.title = self?.currentQuestion?.text ?? ""
-//                                                self?.present(vc, animated: true, completion: nil)
-//                                            }
+                                            if let vc = self?.storyboard?.instantiateViewController(withIdentifier: "ThemeIndexViewController") as? ThemeIndexViewController {
+                                                vc.title = self?.currentQuestion?.text ?? ""
+                                                self?.present(vc, animated: true, completion: nil)
+                                            }
                                          }),
                                          UIAction(title: "답변 삭제", image: UIImage(systemName: "trash"), identifier: nil, handler: {
                                             [weak self] _ in
