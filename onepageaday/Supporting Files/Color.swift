@@ -5,9 +5,6 @@ let defaultColor = "ffffff"
 
 //https://mobiraft.com/ios/swift/swift-recipe/convert-hex-colour-to-uicolor/
 extension UIColor {
-    static var backGroundColor: UIColor {
-        return .init("faefd8") ?? UIColor.white
-    }
     
     convenience init?(_ string: String) {
         let hex = string.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)

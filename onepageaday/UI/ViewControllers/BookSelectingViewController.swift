@@ -32,6 +32,7 @@ class BookSelectingViewController: UIViewController,UIAdaptivePresentationContro
     
     lazy var activityIndicator: UIActivityIndicatorView = { return makeActivityIndicator(center: self.view.center) }()
     
+    @IBOutlet weak var shopButton: UIButton!
     @IBOutlet weak var trashButton: UIButton!
     @IBOutlet weak var collectionView:UICollectionView!
     @IBOutlet weak var settingButton: UIButton!
@@ -54,6 +55,19 @@ class BookSelectingViewController: UIViewController,UIAdaptivePresentationContro
         
         //Firestore.firestore().disableNetwork(completion: nil)
         self.collectionView.showAnimatedGradientSkeleton()
+        let nibName = UINib(nibName: "BookCell", bundle: nil)
+        self.collectionView.register(nibName, forCellWithReuseIdentifier: "cell")
+        
+        let layout = BookFlowLayout()
+        self.collectionView!.collectionViewLayout = layout
+        self.collectionView!.decelerationRate = UIScrollView.DecelerationRate.fast
+        self.collectionView.delegate = self
+        self.collectionView.dataSource = self
+        
+        self.view.backgroundColor = Constant.Design.mainBackGroundColor
+        self.collectionView.backgroundColor = Constant.Design.mainBackGroundColor
+        
+        
         settingButton.showsMenuAsPrimaryAction = true
         settingButton.menu = UIMenu(title: "설정",
                                      image: UIImage(systemName: "gear"),
@@ -72,22 +86,8 @@ class BookSelectingViewController: UIViewController,UIAdaptivePresentationContro
                                      }),
                                      
                                      ])
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Register cell classes
-        let nibName = UINib(nibName: "BookCell", bundle: nil)
-        self.collectionView.register(nibName, forCellWithReuseIdentifier: "cell")
         
-        let layout = BookFlowLayout()
-        self.collectionView!.collectionViewLayout = layout
-        self.collectionView!.decelerationRate = UIScrollView.DecelerationRate.fast
-        
-        self.collectionView.delegate = self
-        self.collectionView.dataSource = self
-        
-        self.view.backgroundColor = .backGroundColor
-        self.collectionView.backgroundColor = .backGroundColor
+        [settingButton,shopButton].forEach{$0?.tintColor = Constant.Design.mainTintColor}
     }
     
     func fetchBooks() {

@@ -547,6 +547,7 @@ Nullam hendrerit risus et bibendum blandit. Nulla et purus augue. Cras a tempus 
                     <connections>
                         <outlet property="collectionView" destination="eVk-BC-j9z" id="6zB-Xj-tl9"/>
                         <outlet property="settingButton" destination="znH-0e-Wf4" id="Ena-2Z-l8x"/>
+                        <outlet property="shopButton" destination="rPK-gd-BkI" id="bcC-Ld-LDh"/>
                         <outlet property="trashButton" destination="VbY-mT-z1M" id="kR2-NG-NIZ"/>
                     </connections>
                 </viewController>
