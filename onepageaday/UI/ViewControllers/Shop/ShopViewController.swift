@@ -8,6 +8,8 @@
 import UIKit
 import FirebaseAuth
 import SkeletonView
+import FirebaseRemoteConfig
+import SwiftyJSON
 
 class ShopViewController: UIViewController, SkeletonTableViewDelegate, SkeletonTableViewDataSource {
     
@@ -21,8 +23,8 @@ class ShopViewController: UIViewController, SkeletonTableViewDelegate, SkeletonT
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        shopItems = ShopItems().shopItems
-        shopitemsUpdate()
+
+        fetchShopItems()
 
         let nibName = UINib(nibName: "ShopCell", bundle: nil)
         tableView.register(nibName, forCellReuseIdentifier: "cell")
@@ -31,11 +33,10 @@ class ShopViewController: UIViewController, SkeletonTableViewDelegate, SkeletonT
         
     }
     
-    func shopitemsUpdate() {
-        let seconds = 0.1
-        DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
-            self.tableView.reloadData()
-        }
+    func fetchShopItems() {
+        let json = JSON(RemoteConfig.remoteConfig().configValue(forKey: "shop_items").jsonValue as Any)
+        self.shopItems = json.arrayValue.map{ShopItem.mapping(json: $0)}
+        self.tableView.reloadData()
     }
 
     // MARK: - Table view data source

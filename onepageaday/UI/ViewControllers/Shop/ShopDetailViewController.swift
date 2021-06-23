@@ -16,7 +16,7 @@ class ShopDetailViewController: UIViewController {
     
     @IBOutlet weak var contentStackView: UIStackView!
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var hashTagLabel: UILabel!
+    @IBOutlet weak var subTitleLabel: UILabel!
     @IBOutlet weak var purchaseButton: UIButton!
     @IBOutlet weak var bookImageView: UIImageView!
     @IBOutlet weak var privateModeLabel: UILabel!
@@ -26,8 +26,7 @@ class ShopDetailViewController: UIViewController {
         guard let item = shopItem else {return}
         titleLabel.text = item.title
         
-        let hashtagText = (item.hashtags.map{"#\($0)"}).joined(separator: " ")
-        hashTagLabel.text =  hashtagText
+        subTitleLabel.text =  item.subTitle
         let privateText = item.privateMode ? "이 책의 답변은 기본적으로 비공개됩니다." : "이 책의 답변은 기본적으로 공개됩니다."
         privateModeLabel.numberOfLines = 0
         privateModeLabel.text = privateText + " \n\n총 \(item.questions.count) 개의 질문이 포함된 책입니다."

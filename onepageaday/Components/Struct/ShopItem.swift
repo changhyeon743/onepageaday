@@ -6,9 +6,11 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 struct ShopItem {
     var title: String
+    var subTitle: String
     var detail: String
     
     ///need to be deprecated -> to item code
@@ -22,5 +24,16 @@ struct ShopItem {
     
     var privateMode: Bool
     
-    var hashtags: [String]
+    static func mapping(json:JSON) -> ShopItem {
+        
+        return ShopItem(title: json["title"].stringValue,
+                        subTitle: json["subTitle"].stringValue,
+                        detail: json["detail"].stringValue,
+                        price: json["price"].intValue,
+                        questions: json["questions"].arrayValue.map{$0.stringValue},
+                        additionalImageLinks: json["additionalImageLinks"].arrayValue.map{$0.stringValue},
+                        bookImage: json["bookImage"].stringValue,
+                        privateMode: json["privateMode"].boolValue)
+        
+    }
 }

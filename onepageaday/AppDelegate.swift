@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import FirebaseRemoteConfig
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -24,6 +25,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         FirebaseApp.configure()
         
+        //Remoteconfig
+        let remoteConfig = RemoteConfig.remoteConfig()
+        remoteConfig.fetch { (status, err) in
+            guard status == .success , err == nil else {return}
+            remoteConfig.fetchAndActivate(completionHandler: nil)
+        }
         //서버에서 파베 중지시키면 중지
         
         
