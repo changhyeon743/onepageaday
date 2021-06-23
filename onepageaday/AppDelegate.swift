@@ -27,7 +27,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //Remoteconfig
         let remoteConfig = RemoteConfig.remoteConfig()
-        remoteConfig.fetch { (status, err) in
+        let setting = RemoteConfigSettings()
+        setting.minimumFetchInterval = 0
+        remoteConfig.configSettings = setting
+        remoteConfig.fetch { status, err in
             guard status == .success , err == nil else {return}
             remoteConfig.fetchAndActivate(completionHandler: nil)
         }
