@@ -69,7 +69,6 @@ class BookSelectingViewController: UIViewController, SkeletonCollectionViewDeleg
     
         //Firestore.firestore().disableNetwork(completion: nil)
         self.collectionView.showAnimatedGradientSkeleton()
-        self.collectionView.backgroundColor = .blue
         settingButton.showsMenuAsPrimaryAction = true
         settingButton.menu = UIMenu(title: "설정",
                                      image: UIImage(systemName: "gear"),
