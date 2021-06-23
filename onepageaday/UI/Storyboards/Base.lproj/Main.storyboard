@@ -653,10 +653,11 @@ Nullam hendrerit risus et bibendum blandit. Nulla et purus augue. Cras a tempus 
                     </view>
                     <navigationItem key="navigationItem" id="hoi-sx-j4h">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="Gox-qX-rUz">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="Gta-hj-PnV">
-                                <rect key="frame" x="302" y="13" width="92" height="30"/>
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Gta-hj-PnV">
+                                <rect key="frame" x="376" y="17" width="18" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="닫기"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="xmark" catalog="system"/>
                                 <connections>
                                     <action selector="dismissButtonPressed:" destination="vD4-cA-p6J" eventType="touchUpInside" id="MN2-Ra-cOH"/>
                                 </connections>

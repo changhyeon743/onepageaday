@@ -40,5 +40,9 @@ struct Constant {
         static var mainTintColor: UIColor {
             return UIColor.black
         }
+        
+        static var darkGray: UIColor {
+            return UIColor.darkGray
+        }
     }
 }

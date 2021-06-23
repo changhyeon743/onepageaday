@@ -65,12 +65,11 @@ class ShopViewController: UIViewController, SkeletonTableViewDelegate, SkeletonT
         if shopItems != nil {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ShopCell
             cell.hideSkeleton()
-            //let privateText = (shopItems![indexPath.row]).privateMode ? "이 책의 답변은 기본적으로 비공개됩니다." : "이 책의 답변은 기본적으로 공개됩니다."
             cell.titleLabel.text = shopItems?[indexPath.row].title ?? ""
             
             //let hashtagText = (shopItems![indexPath.row].hashtags.map{"#\($0)"}).joined(separator: " ")
             
-            cell.detailLabel.text =  shopItems?[indexPath.row].detail ?? ""
+            cell.detailLabel.text =  shopItems?[indexPath.row].subTitle ?? ""
             
             
             cell.downloadButton.tag = indexPath.row
