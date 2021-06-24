@@ -500,8 +500,8 @@ Nullam hendrerit risus et bibendum blandit. Nulla et purus augue. Cras a tempus 
                                 </userDefinedRuntimeAttributes>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rPK-gd-BkI">
-                                <rect key="frame" x="360.5" y="59" width="38.5" height="31"/>
-                                <state key="normal" image="cart" catalog="system">
+                                <rect key="frame" x="356" y="59" width="43" height="35"/>
+                                <state key="normal" image="books.vertical" catalog="system">
                                     <color key="titleColor" name="AccentColor"/>
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="28"/>
                                 </state>
@@ -627,7 +627,7 @@ Nullam hendrerit risus et bibendum blandit. Nulla et purus augue. Cras a tempus 
             </objects>
             <point key="canvasLocation" x="-4191" y="-165"/>
         </scene>
-        <!--Shop View Controller-->
+        <!--서점-->
         <scene sceneID="CkG-Ex-oZ9">
             <objects>
                 <viewController storyboardIdentifier="ShopViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="vD4-cA-p6J" customClass="ShopViewController" customModule="onepageaday" customModuleProvider="target" sceneMemberID="viewController">
@@ -652,7 +652,7 @@ Nullam hendrerit risus et bibendum blandit. Nulla et purus augue. Cras a tempus 
                             <constraint firstItem="26h-0t-Wdg" firstAttribute="bottom" secondItem="OIh-06-guc" secondAttribute="bottom" id="xmc-aj-EeW"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="hoi-sx-j4h">
+                    <navigationItem key="navigationItem" title="서점" id="hoi-sx-j4h">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="Gox-qX-rUz">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Gta-hj-PnV">
                                 <rect key="frame" x="376" y="17" width="18" height="22"/>
@@ -904,13 +904,13 @@ Nullam hendrerit risus et bibendum blandit. Nulla et purus augue. Cras a tempus 
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="hOi-xl-CzU" kind="relationship" relationship="viewControllers" id="mgY-EW-AbL"/>
-                        <segue destination="xvc-EY-pzc" kind="relationship" relationship="viewControllers" id="7dm-fb-JZE"/>
+                        <segue destination="xvc-EY-pzc" kind="relationship" relationship="viewControllers" id="lhU-AG-fae"/>
+                        <segue destination="hOi-xl-CzU" kind="relationship" relationship="viewControllers" id="2Qc-Ov-O7P"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m3y-mQ-XGX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3378.2608695652175" y="-165.40178571428569"/>
+            <point key="canvasLocation" x="-3578" y="-72"/>
         </scene>
         <!--News Feed Detail View Controller-->
         <scene sceneID="bov-Lm-Vos">
@@ -948,7 +948,7 @@ Nullam hendrerit risus et bibendum blandit. Nulla et purus augue. Cras a tempus 
         <image name="arrow.backward" catalog="system" width="128" height="98"/>
         <image name="book" catalog="system" width="128" height="102"/>
         <image name="book.fill" catalog="system" width="128" height="102"/>
-        <image name="cart" catalog="system" width="128" height="102"/>
+        <image name="books.vertical" catalog="system" width="128" height="103"/>
         <image name="checkmark" catalog="system" width="128" height="114"/>
         <image name="cube.box" catalog="system" width="128" height="124"/>
         <image name="gear" catalog="system" width="128" height="119"/>
