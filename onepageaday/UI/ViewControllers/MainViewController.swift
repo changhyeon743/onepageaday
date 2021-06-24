@@ -59,17 +59,17 @@ class MainViewController: UIViewController {
                 //편집모드진입
                 showToast(text: "편집 모드")
                 pageControllerDelegate?.stopScroll()
-                modeToggleButton.setImage(UIImage(systemName: "", withConfiguration: UIImage.SymbolConfiguration(pointSize: 24)), for: .normal)
+                modeToggleButton.setImage(UIImage(systemName: "checkmark", withConfiguration: UIImage.SymbolConfiguration(pointSize: 24)), for: .normal)
                 
-                modeToggleButton.setTitle("저장", for: .normal)
+//                modeToggleButton.setTitle("저장", for: .normal)
                 additionalMenuButton.fadeOut()
                 
             } else {
                 //편집모드종료
                 showToast(text: "보기 모드")
                
-                modeToggleButton.setImage(UIImage(systemName: "", withConfiguration: UIImage.SymbolConfiguration(pointSize: 24)), for: .normal)
-                modeToggleButton.setTitle("편집", for: .normal)
+                modeToggleButton.setImage(UIImage(systemName: "pencil.and.outline", withConfiguration: UIImage.SymbolConfiguration(pointSize: 24)), for: .normal)
+//                modeToggleButton.setTitle("편집", for: .normal)
 
                 additionalMenuButton.fadeIn()
                 pageControllerDelegate?.startScroll()
@@ -320,13 +320,13 @@ class MainViewController: UIViewController {
                                             }
                                             
                                          }),
-                                         UIAction(title: "이 질문의 다른 답변 보기", image: UIImage(systemName: "person.2"), identifier: nil, handler: { [weak self] _ in
+                                         UIAction(title: "이 질문의 다른 답변 보기", image: UIImage(systemName: "ellipsis.bubble"), identifier: nil, handler: { [weak self] _ in
                                             if let vc = self?.storyboard?.instantiateViewController(withIdentifier: "ThemeIndexViewController") as? ThemeIndexViewController {
                                                 vc.title = self?.currentQuestion?.text ?? ""
                                                 self?.present(vc, animated: true, completion: nil)
                                             }
                                          }),
-                                         UIAction(title: "답변 삭제", image: UIImage(systemName: "trash"), identifier: nil, handler: {
+                                         UIAction(title: "답변 삭제", image: UIImage(systemName: "xmark.rectangle"), identifier: nil, handler: {
                                             [weak self] _ in
                                             self?.currentQuestion?.textViewDatas = []
                                             self?.currentQuestion?.imageViewDatas = []
@@ -335,7 +335,7 @@ class MainViewController: UIViewController {
                                             self?.pageControllerDelegate?.setViewControllerIndex(index: self?.currentQuestion?.index ?? 0)
                                          }),
                                          UIAction(title: privateMode ? "비공개" : "공개",
-                                                  image: privateMode ? UIImage(systemName: "lock.fill") : UIImage(systemName: "person.2"), identifier: nil, handler: {
+                                                  image: privateMode ? UIImage(systemName: "lock.fill") : UIImage(systemName: "lock.open"), identifier: nil, handler: {
                                             [weak self] _ in
                                                     self?.currentQuestion?.privateMode.toggle()
                                                     if (self?.currentQuestion?.privateMode == true) {

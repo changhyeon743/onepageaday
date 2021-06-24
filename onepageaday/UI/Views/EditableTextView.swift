@@ -47,6 +47,7 @@ class EditableTextView: UITextView {
         self.center = CGPoint(x: textViewData.center.x.adjusted, y: textViewData.center.y.adjustedHeight)
         self.transform = self.transform.scaledBy(x: textViewData.scale.adjusted, y: textViewData.scale.adjusted).rotated(by: textViewData.angle)
         
+        self.textContainer.maximumNumberOfLines = 1
         
         
         //textview Input악세서리
