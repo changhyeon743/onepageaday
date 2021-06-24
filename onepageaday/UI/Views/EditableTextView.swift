@@ -18,12 +18,13 @@ class EditableTextView: UITextView {
     var cacheTextViewData: TextViewData = TextViewData(center: CGPoint.zero, angle: 0, scale: 1, text: "")
     var toolbar: UIToolbar!
     
+    var wasSet = false
+    
     ///with textview Data
     init(frame: CGRect, textContainer: NSTextContainer?, parentView: UIView, parentDelegate: MainViewControllerDelegate, textViewData: TextViewData) {
         super.init(frame: frame, textContainer: textContainer)
         
         self.layer.allowsEdgeAntialiasing = true // iOS7 and above.
-        self.isScrollEnabled = false
         
         self.parentDelegate = parentDelegate
         self.weakParentView = parentView
@@ -44,10 +45,7 @@ class EditableTextView: UITextView {
         //End..
         
         self.textViewData = textViewData
-        self.center = CGPoint(x: textViewData.center.x.adjusted, y: textViewData.center.y.adjustedHeight)
-        self.transform = self.transform.scaledBy(x: textViewData.scale.adjusted, y: textViewData.scale.adjusted).rotated(by: textViewData.angle)
         
-        self.textContainer.maximumNumberOfLines = 1
         
         
         //textview Input악세서리
@@ -68,15 +66,26 @@ class EditableTextView: UITextView {
         
         toolbar.sizeToFit()
         self.inputAccessoryView = toolbar
-
+        
+        
+    }
+    
+    override func layoutSubviews() {
         //TextAlignment ( 변수 사용할 게 많아서 마지막에 호출 )
+        if (wasSet) { return }
         setAlignment()
         setColor()
-        self.layoutIfNeeded()
         
         self.text = textViewData.text
-
+        self.isScrollEnabled = false
+        self.sizeToFit()
+        self.layoutIfNeeded()
+        
+        self.center = CGPoint(x: textViewData.center.x.adjusted, y: textViewData.center.y.adjustedHeight)
+        self.transform = self.transform.scaledBy(x: textViewData.scale.adjusted, y: textViewData.scale.adjusted).rotated(by: textViewData.angle)
+        wasSet = true
     }
+    
     @objc func color(_ sender: UIBarButtonItem) {
         print(sender.tintColor)
         self.textViewData.textColor = sender.tintColor?.toHexString() ?? "000000"
