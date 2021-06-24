@@ -8,6 +8,7 @@
 import UIKit
 import Firebase
 import SkeletonView
+import SnapKit
 
 protocol NewsFeedViewControllerDelegate : class {
     func save(uiimage: UIImage)
@@ -37,7 +38,9 @@ class NewsFeedViewController: UIViewController , SkeletonCollectionViewDelegate,
         
         collectionView.delegate = self
         collectionView.dataSource = self
-//        collectionView.isPagingEnabled = true
+        collectionView.isPagingEnabled = true
+        collectionView.allowsSelection = false
+        collectionView.showsVerticalScrollIndicator = false
         
         refreshControl.attributedTitle = NSAttributedString(string: "당겨서 새로고침")
         refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
@@ -56,14 +59,15 @@ class NewsFeedViewController: UIViewController , SkeletonCollectionViewDelegate,
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let numberOfCellsInRow = 2
-        let flowLayout = collectionViewLayout as! UICollectionViewFlowLayout
-        let totalSpace = flowLayout.sectionInset.left +
-            flowLayout.sectionInset.right +
-            (flowLayout.minimumInteritemSpacing * CGFloat(numberOfCellsInRow - 1))
-        
-        let size = CGFloat((collectionView.bounds.width - totalSpace) / CGFloat(numberOfCellsInRow))
-        return CGSize(width: size, height: size * Constant.OFV.cellHeight / Constant.OFV.cellWidth)
+//        let numberOfCellsInRow = 1
+//        let flowLayout = collectionViewLayout as! UICollectionViewFlowLayout
+//        let totalSpace = flowLayout.sectionInset.left +
+//            flowLayout.sectionInset.right +
+//            (flowLayout.minimumInteritemSpacing * CGFloat(numberOfCellsInRow - 1))
+//
+//        let size = CGFloat((collectionView.bounds.width - totalSpace) / CGFloat(numberOfCellsInRow))
+//        return CGSize(width: size, height: size * Constant.OFV.cellHeight / Constant.OFV.cellWidth)
+        return .init(width: self.collectionView.frame.width, height: self.collectionView.frame.height)
     }
     
     
@@ -88,20 +92,16 @@ class NewsFeedViewController: UIViewController , SkeletonCollectionViewDelegate,
             
             cell.id = items[indexPath.row].id
             cell.parentDelegate = self
-            cell.stopSkeletonAnimation()
+            cell.hideSkeleton()
             cell.ofv_mainView = view
-            
-            
             let interaction = UIContextMenuInteraction(delegate: cell)
             cell.addInteraction(interaction)
             cell.isUserInteractionEnabled = true
             
             cell.addSubview(cell.ofv_mainView ?? UIView())
-            cell.ofv_mainView?.leftAnchor.constraint(equalTo: cell.leftAnchor).isActive = true
-            cell.ofv_mainView?.rightAnchor.constraint(equalTo: cell.rightAnchor).isActive = true
-            cell.ofv_mainView?.topAnchor.constraint(equalTo: cell.topAnchor).isActive = true
-            cell.ofv_mainView?.bottomAnchor.constraint(equalTo: cell.bottomAnchor).isActive = true
-            cell.ofv_mainView?.translatesAutoresizingMaskIntoConstraints = false
+            cell.ofv_mainView?.snp.makeConstraints{
+                $0.edges.equalTo(cell).inset(24)
+            }
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ThemeCollectionViewCell
@@ -118,7 +118,7 @@ class NewsFeedViewController: UIViewController , SkeletonCollectionViewDelegate,
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy년 MM월 dd일"
-        self.titleLabel.text = dateFormatter.string(from: self.items?[indexPath.row].modifiedDate ?? Date())
+//        self.titleLabel.text = dateFormatter.string(from: self.items?[indexPath.row].modifiedDate ?? Date())
 
             
         if indexPath.row == cnt - 1 && !isWaitingForFetch {
@@ -127,6 +127,9 @@ class NewsFeedViewController: UIViewController , SkeletonCollectionViewDelegate,
         }
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.cellForItem(at: indexPath)?.isSelected = false
+    }
 //    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 //        //instagram like?
 //        if let vc = storyboard?.instantiateViewController(identifier: "NewsFeedDetailViewController") as? NewsFeedDetailViewController {

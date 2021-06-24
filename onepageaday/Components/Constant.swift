@@ -11,7 +11,7 @@ import UIKit
 struct Constant {
     struct OFV {
         ///배율 2 -> 1/2배
-        static let magnification : CGFloat = 2
+        static let magnification : CGFloat = 1
         ///작은 셀 크기
         static let cellWidth : CGFloat = Device.base / magnification
         ///작은 셀 크기

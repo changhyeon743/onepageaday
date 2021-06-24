@@ -625,7 +625,7 @@ Nullam hendrerit risus et bibendum blandit. Nulla et purus augue. Cras a tempus 
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u5L-YY-f6z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4191" y="-165"/>
+            <point key="canvasLocation" x="-4374" y="-72"/>
         </scene>
         <!--서점-->
         <scene sceneID="CkG-Ex-oZ9">
@@ -763,17 +763,17 @@ Nullam hendrerit risus et bibendum blandit. Nulla et purus augue. Cras a tempus 
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="FoR-HO-sST">
-                                <rect key="frame" x="0.0" y="100" width="414" height="796"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="gEC-Hb-6mu">
-                                    <size key="itemSize" width="123" height="235"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="gEC-Hb-6mu">
+                                    <size key="itemSize" width="0.0" height="235"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="eA6-cM-HLd" customClass="ThemeCollectionViewCell" customModule="onepageaday" customModuleProvider="target">
-                                        <rect key="frame" x="10" y="10" width="123" height="235"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="123" height="235"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="dPh-o1-aVj">
                                             <rect key="frame" x="0.0" y="0.0" width="123" height="235"/>
@@ -792,40 +792,25 @@ Nullam hendrerit risus et bibendum blandit. Nulla et purus augue. Cras a tempus 
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </collectionView>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="WbG-6N-GHk">
-                                <rect key="frame" x="16" y="60" width="382" height="24"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="새로운 이야기" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="YMd-OE-p2f">
-                                        <rect key="frame" x="0.0" y="0.0" width="382" height="24"/>
-                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="AIG-IH-OI0"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="AIG-IH-OI0" firstAttribute="trailing" secondItem="WbG-6N-GHk" secondAttribute="trailing" constant="16" id="00f-cx-Mqd"/>
+                            <constraint firstItem="FoR-HO-sST" firstAttribute="top" secondItem="AIG-IH-OI0" secondAttribute="top" id="7gw-BQ-zv0"/>
                             <constraint firstItem="FoR-HO-sST" firstAttribute="leading" secondItem="AIG-IH-OI0" secondAttribute="leading" id="IZH-kC-vj6"/>
-                            <constraint firstAttribute="bottom" secondItem="FoR-HO-sST" secondAttribute="bottom" id="PFE-AE-WBn"/>
-                            <constraint firstItem="WbG-6N-GHk" firstAttribute="top" secondItem="AIG-IH-OI0" secondAttribute="top" constant="16" id="gMf-xc-7pc"/>
-                            <constraint firstItem="WbG-6N-GHk" firstAttribute="leading" secondItem="AIG-IH-OI0" secondAttribute="leading" constant="16" id="jNu-mA-Jdm"/>
                             <constraint firstItem="AIG-IH-OI0" firstAttribute="trailing" secondItem="FoR-HO-sST" secondAttribute="trailing" id="ojZ-9E-a24"/>
-                            <constraint firstItem="FoR-HO-sST" firstAttribute="top" secondItem="WbG-6N-GHk" secondAttribute="bottom" constant="16" id="uQb-3i-ESg"/>
+                            <constraint firstItem="AIG-IH-OI0" firstAttribute="bottom" secondItem="FoR-HO-sST" secondAttribute="bottom" id="sAG-F0-asH"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="새로운 이야기" image="person.2" catalog="system" selectedImage="person.2.fill" id="BxO-TJ-X7W"/>
                     <navigationItem key="navigationItem" id="VGf-bX-lns"/>
                     <connections>
                         <outlet property="collectionView" destination="FoR-HO-sST" id="eri-QI-PIL"/>
-                        <outlet property="titleLabel" destination="YMd-OE-p2f" id="u1y-lg-0j1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gS3-ay-9Vs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2374" y="558"/>
+            <point key="canvasLocation" x="-2375.36231884058" y="557.8125"/>
         </scene>
         <!--Theme Index View Controller-->
         <scene sceneID="0MP-cq-EHU">
@@ -902,10 +887,15 @@ Nullam hendrerit risus et bibendum blandit. Nulla et purus augue. Cras a tempus 
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                <color key="value" red="0.4392156862745098" green="0.78823529411764703" blue="0.99215686274509807" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </tabBar>
                     <connections>
-                        <segue destination="xvc-EY-pzc" kind="relationship" relationship="viewControllers" id="lhU-AG-fae"/>
                         <segue destination="hOi-xl-CzU" kind="relationship" relationship="viewControllers" id="2Qc-Ov-O7P"/>
+                        <segue destination="xvc-EY-pzc" kind="relationship" relationship="viewControllers" id="rpw-x4-S0m"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m3y-mQ-XGX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
