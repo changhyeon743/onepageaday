@@ -8,7 +8,7 @@
 import UIKit
 import Kingfisher
 
-class OFV_ImageView: UIImageView {
+class OFV_ImageView: AnimatedImageView {
     public var imageViewData: ImageViewData = ImageViewData(center: CGPoint.zero, angle: 0, scale: 1, imageURL: "")
     private var magnification:CGFloat = 1
     
