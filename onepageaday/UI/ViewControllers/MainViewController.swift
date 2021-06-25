@@ -262,7 +262,7 @@ class MainViewController: UIViewController {
         guard let privateMode = currentQuestion?.privateMode else {return}
         //스티커 메뉴
         self.imageButton.showsMenuAsPrimaryAction = true
-        self.imageButton.menu = UIMenu(title: "스티커",
+        self.imageButton.menu = UIMenu(title: "이미지",
                                        image: nil,
                                        identifier: nil,
                                        options: .displayInline,
