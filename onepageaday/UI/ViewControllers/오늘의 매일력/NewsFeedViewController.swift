@@ -19,18 +19,14 @@ protocol NewsFeedViewControllerDelegate : class {
 //TODO: Skeleton
 class NewsFeedViewController: UIViewController , SkeletonCollectionViewDelegate, SkeletonCollectionViewDataSource,UICollectionViewDelegateFlowLayout,NewsFeedViewControllerDelegate {
     
-    lazy var activityIndicator: UIActivityIndicatorView = { return makeActivityIndicator(center: self.view.center) }()
-    
-    var lastDocument: DocumentSnapshot?
-    
     @IBOutlet weak var collectionView: UICollectionView!
     
     
-    @IBOutlet weak var titleLabel: UILabel!
+    lazy private var activityIndicator: UIActivityIndicatorView = { return makeActivityIndicator(center: self.view.center) }()
     
-    var items: [Question]?
-    
-    var refreshControl = UIRefreshControl()
+    private var lastDocument: DocumentSnapshot?
+    private var items: [Question]?
+    private var refreshControl = UIRefreshControl()
 
     
     override func viewDidLoad() {
@@ -48,6 +44,8 @@ class NewsFeedViewController: UIViewController , SkeletonCollectionViewDelegate,
         
         activityIndicator.startAnimating()
         self.view.addSubview(activityIndicator)
+        
+        
 
         fetchData()
     }
@@ -84,6 +82,8 @@ class NewsFeedViewController: UIViewController , SkeletonCollectionViewDelegate,
         
         if let items = self.items {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ThemeCollectionViewCell
+            cell.hideSkeleton()
+
             let view = OFV_MainView(frame: CGRect(x: 0, y: 0, width: Constant.OFV.cellWidth, height: Constant.OFV.cellHeight),currentQuestion: items[indexPath.row])
             
             if let bg = items[indexPath.row].backGroundColor {
@@ -92,8 +92,8 @@ class NewsFeedViewController: UIViewController , SkeletonCollectionViewDelegate,
             
             cell.id = items[indexPath.row].id
             cell.parentDelegate = self
-            cell.hideSkeleton()
             cell.ofv_mainView = view
+//            cell.backgroundColor = Constant.Design.mainBackGroundColor
             let interaction = UIContextMenuInteraction(delegate: cell)
             cell.addInteraction(interaction)
             cell.isUserInteractionEnabled = true
