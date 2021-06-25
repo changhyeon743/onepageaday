@@ -89,11 +89,9 @@ class ThemeIndexViewController: UIViewController , SkeletonCollectionViewDelegat
             cell.isUserInteractionEnabled = true
             
             cell.addSubview(cell.ofv_mainView ?? UIView())
-            cell.ofv_mainView?.leftAnchor.constraint(equalTo: cell.leftAnchor).isActive = true
-            cell.ofv_mainView?.rightAnchor.constraint(equalTo: cell.rightAnchor).isActive = true
-            cell.ofv_mainView?.topAnchor.constraint(equalTo: cell.topAnchor).isActive = true
-            cell.ofv_mainView?.bottomAnchor.constraint(equalTo: cell.bottomAnchor).isActive = true
-            cell.ofv_mainView?.translatesAutoresizingMaskIntoConstraints = false
+            cell.ofv_mainView?.snp.makeConstraints{
+                $0.edges.equalTo(cell)
+            }
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ThemeCollectionViewCell

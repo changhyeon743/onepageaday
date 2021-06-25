@@ -44,16 +44,15 @@ class OFV_MainView: UIView, PKCanvasViewDelegate {
         
         self.addSubview(indexLabel)
         self.addSubview(questionLabel)
-        NSLayoutConstraint.activate([
-            indexLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -12 / magnification),
-            indexLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 12 / magnification),
-            indexLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 120 / magnification),
-            questionLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -12 / magnification),
-            questionLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 12 / magnification),
-            questionLabel.topAnchor.constraint(equalTo: indexLabel.bottomAnchor, constant: 10 / magnification)
-        ])
-        indexLabel.translatesAutoresizingMaskIntoConstraints = false
-        questionLabel.translatesAutoresizingMaskIntoConstraints = false
+        indexLabel.snp.makeConstraints{
+            $0.left.right.equalToSuperview().inset(12/magnification)
+            $0.top.equalToSuperview().inset(90 / magnification)
+        }
+        questionLabel.snp.makeConstraints{
+            $0.right.left.equalToSuperview().inset(12/magnification)
+            $0.top.equalTo(self.indexLabel.snp.bottom).offset(10/magnification)
+        }
+        
         setQuestionText()
         setUI()
         
@@ -96,11 +95,11 @@ class OFV_MainView: UIView, PKCanvasViewDelegate {
         self.drawingView.isUserInteractionEnabled = false
         self.addSubview(drawingView)
         self.drawingView.transform = CGAffineTransform(scaleX: 1 / magnification, y: 1 / magnification)
-        self.drawingView.widthAnchor.constraint(equalToConstant: Device.base).isActive = true
-        self.drawingView.heightAnchor.constraint(equalToConstant: Device.baseHeight).isActive = true
-        self.drawingView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        self.drawingView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        self.drawingView.translatesAutoresizingMaskIntoConstraints = false
+        self.drawingView.snp.makeConstraints{
+            $0.width.equalTo(Device.base)
+            $0.height.equalTo(Device.baseHeight)
+            $0.centerX.centerY.equalToSuperview()
+        }
         self.drawingView.drawing =  (try? PKDrawing.init(base64Encoded: self.currentQuestion?.drawings ?? "")) ?? PKDrawing()
         
         createViewsWithData()

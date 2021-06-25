@@ -74,8 +74,9 @@ class ShopDetailViewController: UIViewController {
                     let width = image.image.size.width/4
                     let height = image.image.size.height/4
                     print("\(width) / \(height)")
-                    imageView.translatesAutoresizingMaskIntoConstraints = false
-                    imageView.heightAnchor.constraint(equalToConstant: height).isActive=true
+                    imageView.snp.makeConstraints{
+                        $0.height.equalTo(height)
+                    }
                     break
                 case .failure(let error):
                     print(error.localizedDescription)

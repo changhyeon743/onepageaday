@@ -212,18 +212,12 @@ class MainViewController: UIViewController {
         //need to place onn createViewWithData but here.. ( need to fix )
         self.view.addSubview(drawingView)
         self.drawingView.transform = CGAffineTransform(scaleX: Device.ratio, y: Device.ratioHeight)
-        self.drawingView.widthAnchor.constraint(equalToConstant: Device.base).isActive = true
-        self.drawingView.heightAnchor.constraint(equalToConstant: Device.baseHeight).isActive = true
-        self.drawingView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        self.drawingView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
         
-        
-        
-//        self.drawingView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
-//        self.drawingView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
-//        self.drawingView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
-//        self.drawingView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
-        self.drawingView.translatesAutoresizingMaskIntoConstraints = false
+        self.drawingView.snp.makeConstraints{
+            $0.width.equalTo(Device.base)
+            $0.height.equalTo(Device.baseHeight)
+            $0.centerX.centerY.equalToSuperview()
+        }
         
         //버튼 앞으로
         bringButtonsToFront()
