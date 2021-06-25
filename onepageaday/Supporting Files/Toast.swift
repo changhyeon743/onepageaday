@@ -12,10 +12,11 @@ import UIKit
 extension UIViewController {
     func showToast(text: String) {
         
-        let label = UILabel(frame: CGRect(x: self.view.bounds.width/2-65, y: self.view.bounds.height - 25-150, width: 130, height: 30))
-        
+        let label = PaddingLabel(frame: CGRect(x: self.view.bounds.width/2-65, y: self.view.bounds.height - 25-150, width: 130, height: 30))
+
         label.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
         label.text = text
+//        label.sizeToFit()
         label.textAlignment = .center
         label.textColor = .white
         

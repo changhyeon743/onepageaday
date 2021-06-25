@@ -90,6 +90,9 @@ class MainPageViewController: UIPageViewController,UIPageViewControllerDelegate,
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
         if (completed && finished) {
             if let vc = pageViewController.viewControllers?.first as? MainViewController {
+                if vc.currentIndex == API.currentQuestions.count-1 {
+                    self.showToast(text: "마지막 페이지")
+                }
                 book?.currentIndex = vc.currentIndex
             }
             
