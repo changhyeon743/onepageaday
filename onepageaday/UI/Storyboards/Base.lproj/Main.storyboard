@@ -155,6 +155,7 @@
                     <connections>
                         <outlet property="addTextViewButton" destination="GR1-Bs-kZf" id="7he-0u-LzG"/>
                         <outlet property="additionalMenuButton" destination="obd-fe-4ux" id="UAz-JD-EhB"/>
+                        <outlet property="closeButton" destination="44c-Tm-YyD" id="TfS-RT-viE"/>
                         <outlet property="colorWell" destination="ujP-Kz-hqK" id="OIA-Zl-lZc"/>
                         <outlet property="doneButton" destination="N3e-2u-nMb" id="ZLp-Fh-vfk"/>
                         <outlet property="imageButton" destination="Kyd-p1-zBD" id="Tvi-9l-HgF"/>

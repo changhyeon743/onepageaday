@@ -83,6 +83,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak var doneButton: UIButton!
     @IBOutlet weak var startDrawButton: UIButton!
     /// DRAWING 변수
+    @IBOutlet weak var closeButton: UIButton!
     private var drawingView: PKCanvasView!
     private var drawing: PKDrawing!
     private var toolPicker: PKToolPicker!
@@ -231,13 +232,22 @@ class MainViewController: UIViewController {
                 String(format: "%03d", question.index+1)
             questionLabel.text = question.text
             guard let color = UIColor(self.currentQuestion?.backGroundColor ?? defaultColor) else {return}
+            
+            let buttons = [closeButton,additionalMenuButton,modeToggleButton, addTextViewButton, startDrawButton, imageButton,doneButton]
+            
             UIView.animate(withDuration: 0.2) { [self] in
                 if (color.isLight() == true) {
                     indexLabel.textColor = .black
                     questionLabel.textColor = .black
+                    buttons.forEach{
+                        $0?.tintColor = .black
+                    }
                 } else {
                     indexLabel.textColor = .white
                     questionLabel.textColor = .white
+                    buttons.forEach{
+                        $0?.tintColor = .white
+                    }
                 }
             }
             
