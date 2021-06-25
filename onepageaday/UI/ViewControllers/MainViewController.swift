@@ -311,7 +311,7 @@ class MainViewController: UIViewController {
                                        ])
         
         self.additionalMenuButton.showsMenuAsPrimaryAction = true
-        self.additionalMenuButton.menu = UIMenu(title: "추가 메뉴",
+        self.additionalMenuButton.menu = UIMenu(title: "추가 기능",
                                          image: UIImage(systemName: "gear"),
                                          identifier: nil,
                                          options: .displayInline,

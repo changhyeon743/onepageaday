@@ -84,7 +84,11 @@ class NewsFeedViewController: UIViewController , SkeletonCollectionViewDelegate,
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ThemeCollectionViewCell
             cell.hideSkeleton()
 
-            let view = OFV_MainView(frame: CGRect(x: 0, y: 0, width: Constant.OFV.cellWidth, height: Constant.OFV.cellHeight),currentQuestion: items[indexPath.row])
+            let inset:CGFloat = 24
+            print("adfadsffd",( self.view.frame.width ) / ( self.view.frame.width-inset*2 ))
+            let view = OFV_MainView(frame: CGRect(x: 0, y: 0, width: Constant.OFV.cellWidth, height: Constant.OFV.cellHeight),currentQuestion: items[indexPath.row],_magnification:
+                                        ( self.collectionView.frame.width ) / ( self.collectionView.frame.width-inset*2 )
+                                    )
             
             if let bg = items[indexPath.row].backGroundColor {
                 view.backgroundColor = UIColor(bg)
@@ -100,7 +104,7 @@ class NewsFeedViewController: UIViewController , SkeletonCollectionViewDelegate,
             
             cell.addSubview(cell.ofv_mainView ?? UIView())
             cell.ofv_mainView?.snp.makeConstraints{
-                $0.edges.equalTo(cell).inset(24)
+                $0.edges.equalTo(cell).inset(inset)
             }
             return cell
         } else {

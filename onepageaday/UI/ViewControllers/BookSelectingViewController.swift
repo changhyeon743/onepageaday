@@ -69,8 +69,8 @@ class BookSelectingViewController: UIViewController,UIAdaptivePresentationContro
         
         
         settingButton.showsMenuAsPrimaryAction = true
-        settingButton.menu = UIMenu(title: "설정",
-                                     image: UIImage(systemName: "gear"),
+        settingButton.menu = UIMenu(title: "계정",
+                                     image: UIImage(systemName: "person.circle"),
                                      identifier: nil,
                                      options: .displayInline,
                                      children: [UIAction(title: "로그아웃", image: UIImage(systemName: "person.crop.circle.badge.xmark"), handler: { _ in
