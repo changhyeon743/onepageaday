@@ -92,18 +92,16 @@ extension IndexViewController: UICollectionViewDelegate, UICollectionViewDataSou
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! IndexCollectionViewCell
-        let view = OFV_MainView(frame: CGRect(x: 0, y: 0, width: Constant.OFV.cellWidth, height: Constant.OFV.cellHeight),currentQuestion: filteredData[indexPath.row])
+        let view = OFV_MainView(frame: CGRect(x: 0, y: 0, width: Constant.OFV.cellWidth, height: Constant.OFV.cellHeight),currentQuestion: filteredData[indexPath.row],_magnification: 2)
         
         if let bg = filteredData[indexPath.row].backGroundColor {
             view.backgroundColor = UIColor(bg)
         }
         cell.addSubview(view)
 
-        view.leftAnchor.constraint(equalTo: cell.leftAnchor).isActive = true
-        view.rightAnchor.constraint(equalTo: cell.rightAnchor).isActive = true
-        view.topAnchor.constraint(equalTo: cell.topAnchor).isActive = true
-        view.bottomAnchor.constraint(equalTo: cell.bottomAnchor).isActive = true
-        view.translatesAutoresizingMaskIntoConstraints = false
+        view.snp.makeConstraints{
+            $0.edges.equalToSuperview()
+        }
         return cell
     }
     

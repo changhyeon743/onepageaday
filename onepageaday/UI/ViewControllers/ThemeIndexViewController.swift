@@ -73,7 +73,7 @@ class ThemeIndexViewController: UIViewController , SkeletonCollectionViewDelegat
         
         if let items = self.items {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ThemeCollectionViewCell
-            let view = OFV_MainView(frame: CGRect(x: 0, y: 0, width: Constant.OFV.cellWidth, height: Constant.OFV.cellHeight),currentQuestion: items[indexPath.row])
+            let view = OFV_MainView(frame: CGRect(x: 0, y: 0, width: Constant.OFV.cellWidth, height: Constant.OFV.cellHeight),currentQuestion: items[indexPath.row],_magnification: 2)
             
             if let bg = items[indexPath.row].backGroundColor {
                 view.backgroundColor = UIColor(bg)

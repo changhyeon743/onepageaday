@@ -11,9 +11,11 @@ import UIKit
 class OFV_TextView: UILabel {
     
     public var textViewData: TextViewData = TextViewData(center: CGPoint.zero, angle: 0, scale: 1, text: "")
+    private var magnification:CGFloat = 1
     
-    init(frame: CGRect, textViewData: TextViewData) {
+    init(frame: CGRect, textViewData: TextViewData, magnification: CGFloat) {
         super.init(frame: frame)
+        self.magnification = magnification
         
         self.layer.allowsEdgeAntialiasing = true // iOS7 and above.
         self.textViewData = textViewData
@@ -32,9 +34,9 @@ class OFV_TextView: UILabel {
         self.sizeToFit()
         self.layoutIfNeeded()
         
-        self.center = CGPoint(x: textViewData.center.x / Constant.OFV.magnification, y: textViewData.center.y / Constant.OFV.magnification)
+        self.center = CGPoint(x: textViewData.center.x / magnification, y: textViewData.center.y / magnification)
 
-        self.transform = self.transform.scaledBy(x: textViewData.scale / Constant.OFV.magnification, y: textViewData.scale / Constant.OFV.magnification).rotated(by: textViewData.angle)
+        self.transform = self.transform.scaledBy(x: textViewData.scale / magnification, y: textViewData.scale / magnification).rotated(by: textViewData.angle)
         
     }
     

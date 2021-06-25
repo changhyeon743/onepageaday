@@ -10,18 +10,20 @@ import Kingfisher
 
 class OFV_ImageView: UIImageView {
     public var imageViewData: ImageViewData = ImageViewData(center: CGPoint.zero, angle: 0, scale: 1, imageURL: "")
+    private var magnification:CGFloat = 1
     
-    init(frame: CGRect,imageViewData: ImageViewData) {
+    init(frame: CGRect,imageViewData: ImageViewData, magnification: CGFloat) {
         super.init(frame: frame)
+        self.magnification = magnification
         self.layer.allowsEdgeAntialiasing = true // iOS7 and above.
         
         self.imageViewData = imageViewData
         //ADJUSTED!!
         
         //현재 좌표는 iPhone6
-        self.center = CGPoint(x: imageViewData.center.x / Constant.OFV.magnification, y: imageViewData.center.y / Constant.OFV.magnification)
+        self.center = CGPoint(x: imageViewData.center.x / magnification, y: imageViewData.center.y / magnification)
         
-        self.transform = self.transform.scaledBy(x: imageViewData.scale / Constant.OFV.magnification, y: imageViewData.scale / Constant.OFV.magnification).rotated(by: imageViewData.angle)
+        self.transform = self.transform.scaledBy(x: imageViewData.scale / magnification, y: imageViewData.scale / magnification).rotated(by: imageViewData.angle)
         
         if let url = URL(string: API.giphyApi.getStillURL(from: imageViewData.imageURL)) {
             self.kf.indicatorType = .activity

@@ -900,7 +900,7 @@ Nullam hendrerit risus et bibendum blandit. Nulla et purus augue. Cras a tempus 
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m3y-mQ-XGX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3578" y="-72"/>
+            <point key="canvasLocation" x="-3461" y="-72"/>
         </scene>
         <!--News Feed Detail View Controller-->
         <scene sceneID="bov-Lm-Vos">
