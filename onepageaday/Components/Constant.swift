@@ -20,7 +20,8 @@ struct Constant {
     
     struct Design {
         static let textViewHeight : CGFloat = 100
-        static let textViewFont: UIFont = UIFont.systemFont(ofSize: 40)
+        static let textViewFont: UIFont = .cafe(size: 40)
+            //UIFont.systemFont(ofSize: 40)
         static let imageViewWidth : CGFloat = 100
         static let imageViewHeight: CGFloat = 100
         

@@ -36,8 +36,10 @@ class OFV_MainView: UIView, PKCanvasViewDelegate {
         questionLabel = UILabel(frame: CGRect(x: 0, y: 100, width: Constant.OFV.cellWidth, height: 100))
         
         
-        indexLabel.font = UIFont.systemFont(ofSize: 35 / magnification, weight: .bold)
-        questionLabel.font = UIFont.systemFont(ofSize: 20 / magnification, weight: .bold)
+        indexLabel.font = .cafe(size: 35 / magnification)
+            //UIFont.systemFont(ofSize: 35 / magnification, weight: .bold)
+        questionLabel.font = .cafe(size: 20 / magnification)
+            //UIFont.systemFont(ofSize: 20 / magnification, weight: .bold)
         questionLabel.numberOfLines = 0
         indexLabel.textAlignment = .center
         questionLabel.textAlignment = .center

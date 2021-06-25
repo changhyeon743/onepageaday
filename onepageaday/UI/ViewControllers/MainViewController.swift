@@ -241,6 +241,9 @@ class MainViewController: UIViewController {
                 }
             }
             
+            indexLabel.font = .cafe(size: indexLabel.font.pointSize)
+            questionLabel.font = .cafe(size: questionLabel.font.pointSize)
+
         }
     }
     
