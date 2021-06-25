@@ -500,10 +500,10 @@ Nullam hendrerit risus et bibendum blandit. Nulla et purus augue. Cras a tempus 
                                 </userDefinedRuntimeAttributes>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rPK-gd-BkI">
-                                <rect key="frame" x="356" y="59" width="43" height="35"/>
+                                <rect key="frame" x="362" y="59" width="37" height="29.5"/>
                                 <state key="normal" image="books.vertical" catalog="system">
                                     <color key="titleColor" name="AccentColor"/>
-                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="28"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="24"/>
                                 </state>
                                 <connections>
                                     <action selector="enterShop:" destination="hOi-xl-CzU" eventType="touchUpInside" id="h00-gf-RSu"/>
