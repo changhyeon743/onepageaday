@@ -17,8 +17,6 @@ protocol BookSelectingViewControllerDelegate: class {
     func bookDownloaded()
 }
 
-g
-
 
 class BookSelectingViewController: UIViewController,UIAdaptivePresentationControllerDelegate {
     
@@ -195,18 +193,8 @@ extension BookSelectingViewController: BookSelectingViewControllerDelegate {
 extension BookSelectingViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     // MARK: UICollectionViewDataSource
 
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        if (API.books == nil) {
-            return 1
-        }
-        return 2
-    }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if (section == 0) {
-            return API.books?.count ?? 10
-        } else {
-            return AdditionalItem.count
-        }
+        return API.books?.count ?? 10
     }
     
     
@@ -217,47 +205,22 @@ extension BookSelectingViewController: UICollectionViewDelegate, UICollectionVie
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if (API.books != nil) {
-            if (indexPath.section == 0) {
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! BookCell
-                cell.titleLabel.hideSkeleton()
-                cell.detailLabel.hideSkeleton()
-                cell.imageView.hideSkeleton()
-                
-                cell.titleLabel.text = API.books?[indexPath.row].title
-                cell.detailLabel.text = API.books?[indexPath.row].subTitle
-                //cell.backgroundColor = UIColor(hue: CGFloat(arc4random_uniform(360))/360, saturation: 0.5, brightness: 0.8, alpha: 1)
-                if let url = API.books?[indexPath.row].backGroundImage {
-                    cell.imageView.kf.indicatorType = .activity
-                    cell.imageView.kf.setImage(with: URL(string: url))
-                } else {
-                    cell.imageView.image = nil
-                    cell.imageView.backgroundColor = UIColor(Constant.Design.backGroundColors.randomElement() ?? defaultColor)
-                }
-                return cell
-            } else {
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! BookCell
-                cell.titleLabel.hideSkeleton()
-                cell.detailLabel.hideSkeleton()
-                cell.imageView.hideSkeleton()
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! BookCell
+            cell.titleLabel.hideSkeleton()
+            cell.detailLabel.hideSkeleton()
+            cell.imageView.hideSkeleton()
+            
+            cell.titleLabel.text = API.books?[indexPath.row].title
+            cell.detailLabel.text = API.books?[indexPath.row].subTitle
+            //cell.backgroundColor = UIColor(hue: CGFloat(arc4random_uniform(360))/360, saturation: 0.5, brightness: 0.8, alpha: 1)
+            if let url = API.books?[indexPath.row].backGroundImage {
                 cell.imageView.kf.indicatorType = .activity
-
-                switch indexPath.row{
-                case AdditionalItem.openShop.rawValue:
-                    cell.titleLabel.text = "상점"
-                    cell.detailLabel.text = "새로운 매일력을 다운로드 하세요."
-                    cell.imageView.kf.setImage(with: URL(string: "https://product-image.juniqe-production.juniqe.com/media/catalog/product/seo-cache/x800/648/28/648-28-101P/Today-Is-The-Day-Kind-of-Style-Poster.jpg"))
-                    break
-                case AdditionalItem.buyRealBook.rawValue:
-                    cell.titleLabel.text = "매일력 책 구매하기"
-                    cell.detailLabel.text = "리마크프레스 사이트로 연결됩니다"
-                    cell.imageView.kf.setImage(with: URL(string: "https://contents.sixshop.com/thumbnails/uploadedFiles/13311/product/image_1581581880733_1000.jpg"))
-                    break
-                default: break
-                    
-                }
-                
-                return cell
+                cell.imageView.kf.setImage(with: URL(string: url))
+            } else {
+                cell.imageView.image = nil
+                cell.imageView.backgroundColor = UIColor(Constant.Design.backGroundColors.randomElement() ?? defaultColor)
             }
+            return cell
             
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! BookCell
@@ -272,7 +235,6 @@ extension BookSelectingViewController: UICollectionViewDelegate, UICollectionVie
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if indexPath.section == 0 {
             guard let id = API.books?[indexPath.row].id else {return}
             activityIndicator.startAnimating()
             //부드럽게 만드는거 필요함
@@ -295,23 +257,9 @@ extension BookSelectingViewController: UICollectionViewDelegate, UICollectionVie
                 }
                 
             }
-        } else {
-            switch indexPath.row {
-            case AdditionalItem.openShop.rawValue:
-                enterShop(nil)
-                break
-            case AdditionalItem.buyRealBook.rawValue:
-                //open safari
-                if let url = URL(string: "https://www.sixshop.com/remarkpress/product/9") {
-                    UIApplication.shared.open(url)
-                }
-                break
-            default:
-                break
-            }
-        }
         
-    }
+        
+        }
 
     
 }
