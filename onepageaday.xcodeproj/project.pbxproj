@@ -50,6 +50,7 @@
 		78BCC847259D910C00E7028D /* ThemeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BCC846259D910C00E7028D /* ThemeCollectionViewCell.swift */; };
 		78C0E19D258317F300FC3842 /* BookSelectingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C0E19C258317F300FC3842 /* BookSelectingViewController.swift */; };
 		78C481EC2688748800EE7611 /* MainTabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C481EB2688748700EE7611 /* MainTabbarViewController.swift */; };
+		78C481EE2688838900EE7611 /* UnifiedNativeAdView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78C481ED2688838900EE7611 /* UnifiedNativeAdView.xib */; };
 		78DC8179258B0A2600C6C2D3 /* Template.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DC8178258B0A2600C6C2D3 /* Template.swift */; };
 		78DC817E258B12C700C6C2D3 /* FirebaseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DC817D258B12C700C6C2D3 /* FirebaseAPI.swift */; };
 		78E24092268563C500F3DA69 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E24091268563C500F3DA69 /* PaddingLabel.swift */; };
@@ -134,6 +135,7 @@
 		78BCC846259D910C00E7028D /* ThemeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeCollectionViewCell.swift; sourceTree = "<group>"; };
 		78C0E19C258317F300FC3842 /* BookSelectingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSelectingViewController.swift; sourceTree = "<group>"; };
 		78C481EB2688748700EE7611 /* MainTabbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabbarViewController.swift; sourceTree = "<group>"; };
+		78C481ED2688838900EE7611 /* UnifiedNativeAdView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UnifiedNativeAdView.xib; sourceTree = "<group>"; };
 		78DC8178258B0A2600C6C2D3 /* Template.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Template.swift; sourceTree = "<group>"; };
 		78DC817D258B12C700C6C2D3 /* FirebaseAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAPI.swift; sourceTree = "<group>"; };
 		78E24091268563C500F3DA69 /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
@@ -352,6 +354,7 @@
 				78FE24242587A89700E4BE31 /* ShopCell.swift */,
 				7861CB25258FA7B50035D29E /* StickerCell.swift */,
 				78E24091268563C500F3DA69 /* PaddingLabel.swift */,
+				78C481ED2688838900EE7611 /* UnifiedNativeAdView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -508,6 +511,7 @@
 				7840E314257FAAA7009B216B /* LaunchScreen.storyboard in Resources */,
 				7840E311257FAAA7009B216B /* Assets.xcassets in Resources */,
 				7863C9BF2588589500B5773D /* BookCell.xib in Resources */,
+				78C481EE2688838900EE7611 /* UnifiedNativeAdView.xib in Resources */,
 				7835C2BF267DB37100739B92 /* Cafe24SsurroundAir.ttf in Resources */,
 				78FE24202587A70A00E4BE31 /* ShopCell.xib in Resources */,
 				7840E30F257FAA9E009B216B /* Main.storyboard in Resources */,

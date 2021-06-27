@@ -24,6 +24,6 @@ target 'onepageaday' do
   # 통신
   pod 'Alamofire'
   pod 'SwiftyJSON', '~> 4.0'
-
+pod 'Google-Mobile-Ads-SDK'
 
 end

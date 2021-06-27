@@ -42,6 +42,7 @@ class ThemeCollectionViewCell: GeminiCell,UIContextMenuInteractionDelegate {
     override var shadowView: UIView? {
         return customShadowView
     }
+    var nativeAdView: GADNativeAdView?
     
     override func awakeFromNib() {
         customShadowView = .init()
@@ -57,6 +58,9 @@ class ThemeCollectionViewCell: GeminiCell,UIContextMenuInteractionDelegate {
         
         ofv_mainView?.removeFromSuperview()
         ofv_mainView = nil
+        
+        nativeAdView?.removeFromSuperview()
+        nativeAdView = nil
     }
     
     deinit {
@@ -86,6 +90,46 @@ class ThemeCollectionViewCell: GeminiCell,UIContextMenuInteractionDelegate {
             sendSubviewToBack(view)
         }
 
+    }
+    
+    public func configure(nativeAd: GADNativeAd) {
+        nativeAdView = UINib(nibName: "UnifiedNativeAdView", bundle: nil).instantiate(withOwner: self, options: nil).first as? GADNativeAdView
+        self.backgroundColor = nativeAdView!.backgroundColor
+        self.addSubview(nativeAdView!)
+        nativeAdView!.snp.makeConstraints{
+            $0.left.right.bottom.equalToSuperview()
+            $0.top.equalToSuperview().inset(48)
+        }
+        
+        (nativeAdView!.headlineView as? UILabel)?.text = nativeAd.headline
+        nativeAdView!.mediaView?.mediaContent = nativeAd.mediaContent
+
+        let mediaContent = nativeAd.mediaContent
+        if mediaContent.hasVideoContent {
+          mediaContent.videoController.delegate = self
+        }
+
+        (nativeAdView!.bodyView as? UILabel)?.text = nativeAd.body
+        nativeAdView!.bodyView?.isHidden = nativeAd.body == nil
+
+        (nativeAdView!.callToActionView as? UIButton)?.setTitle(nativeAd.callToAction, for: .normal)
+        nativeAdView!.callToActionView?.isHidden = nativeAd.callToAction == nil
+
+        (nativeAdView!.iconView as? UIImageView)?.image = nativeAd.icon?.image
+        nativeAdView!.iconView?.isHidden = nativeAd.icon == nil
+
+        (nativeAdView!.storeView as? UILabel)?.text = nativeAd.store
+        nativeAdView!.storeView?.isHidden = nativeAd.store == nil
+
+        (nativeAdView!.priceView as? UILabel)?.text = nativeAd.price
+        nativeAdView!.priceView?.isHidden = nativeAd.price == nil
+
+        (nativeAdView!.advertiserView as? UILabel)?.text = nativeAd.advertiser
+        nativeAdView!.advertiserView?.isHidden = nativeAd.advertiser == nil
+
+        nativeAdView!.callToActionView?.isUserInteractionEnabled = false
+
+        nativeAdView!.nativeAd = nativeAd
     }
     
     func contextMenuInteraction(_ interaction: UIContextMenuInteraction, configurationForMenuAtLocation location: CGPoint) -> UIContextMenuConfiguration? {
@@ -122,4 +166,8 @@ class ThemeCollectionViewCell: GeminiCell,UIContextMenuInteractionDelegate {
     }
     
    
+}
+
+extension ThemeCollectionViewCell: GADVideoControllerDelegate {
+    
 }

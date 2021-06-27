@@ -231,11 +231,11 @@ class FirebaseAPI {
         }
     }
     
-    func fetchNewestQuestions(after: DocumentSnapshot?, completion:@escaping([Question],DocumentSnapshot?)->Void) {
+    func fetchNewestQuestions(after: DocumentSnapshot?,limit: Int, completion:@escaping([Question],DocumentSnapshot?)->Void) {
         let query = Firestore.firestore().collectionGroup("questions")
             .whereField("privateMode", isEqualTo: false)
             .order(by: "modifiedDate", descending: true)
-            .limit(to: 18)
+            .limit(to: limit)
         let query_complete = (after != nil) ? query.start(afterDocument: after!) : query
         query_complete.getDocuments { (queryShapshot, err) in
             if let err = err {

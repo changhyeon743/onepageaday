@@ -8,6 +8,7 @@
 import UIKit
 import Firebase
 import FirebaseRemoteConfig
+import GoogleMobileAds
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -35,7 +36,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             remoteConfig.fetchAndActivate(completionHandler: nil)
         }
         //서버에서 파베 중지시키면 중지
-        
+        GADMobileAds.sharedInstance().start(completionHandler: nil)
+
         
         //if nonpro
         //Firestore.firestore().disableNetwork(completion: nil)
