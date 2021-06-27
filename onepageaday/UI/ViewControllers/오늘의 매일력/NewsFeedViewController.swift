@@ -35,7 +35,7 @@ class NewsFeedViewController: UIViewController  {
         return false
     }
     
-    let limit = 10
+    let limit = 9
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,7 +71,7 @@ class NewsFeedViewController: UIViewController  {
     
     func loadAd() {
         adLoader = GADAdLoader(
-          adUnitID: "ca-app-pub-3940256099942544/3986624511", rootViewController: self,
+          adUnitID: "ca-app-pub-1246010458851705/9187286118", rootViewController: self,
           adTypes: [.native], options: nil)
         adLoader?.delegate = self
         adLoader?.load(GADRequest())
