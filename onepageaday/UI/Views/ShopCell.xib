@@ -18,7 +18,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Anf-75-I5y">
-                        <rect key="frame" x="24" y="24" width="54" height="54"/>
+                        <rect key="frame" x="18" y="21.5" width="54" height="54"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="Anf-75-I5y" secondAttribute="height" multiplier="1:1" id="2ju-4N-Fmy"/>
                             <constraint firstAttribute="width" constant="54" id="rwy-9z-JWe"/>
@@ -28,10 +28,10 @@
                         </userDefinedRuntimeAttributes>
                     </imageView>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="K7E-VQ-Dlo">
-                        <rect key="frame" x="102" y="18.5" width="515" height="65"/>
+                        <rect key="frame" x="90" y="16" width="527" height="65"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O1S-3e-zA8">
-                                <rect key="frame" x="0.0" y="0.0" width="515" height="30.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="527" height="30.5"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -40,7 +40,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="luw-Ob-y1P">
-                                <rect key="frame" x="0.0" y="34.5" width="515" height="30.5"/>
+                                <rect key="frame" x="0.0" y="34.5" width="527" height="30.5"/>
                                 <string key="text">DetailDetailDetailDetailDetailDetailDetailDetailDetailDetailDetailDetailDetailDetailDetailDetailDetailDetailDetailDetailDetailDetailDetailDetailDetailDetailDetailDetailDetailDetail</string>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -55,7 +55,7 @@
                         </userDefinedRuntimeAttributes>
                     </stackView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y0L-Sj-Jbq">
-                        <rect key="frame" x="629" y="12" width="48" height="78"/>
+                        <rect key="frame" x="629" y="12" width="48" height="73"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="48" id="Adk-0B-aMO"/>
                         </constraints>
@@ -72,15 +72,13 @@
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="y0L-Sj-Jbq" secondAttribute="trailing" constant="12" id="Crr-V0-stu"/>
-                    <constraint firstItem="Anf-75-I5y" firstAttribute="leading" secondItem="Kel-Ry-HrR" secondAttribute="leading" constant="24" id="EJp-po-bND"/>
+                    <constraint firstItem="Anf-75-I5y" firstAttribute="leading" secondItem="Kel-Ry-HrR" secondAttribute="leading" constant="18" id="EJp-po-bND"/>
                     <constraint firstItem="y0L-Sj-Jbq" firstAttribute="top" secondItem="Kel-Ry-HrR" secondAttribute="top" constant="12" id="KxO-i2-315"/>
                     <constraint firstAttribute="bottom" secondItem="y0L-Sj-Jbq" secondAttribute="bottom" constant="12" id="QaW-uD-Y9s"/>
                     <constraint firstItem="Anf-75-I5y" firstAttribute="centerY" secondItem="Kel-Ry-HrR" secondAttribute="centerY" id="fOe-ds-o8t"/>
-                    <constraint firstItem="Anf-75-I5y" firstAttribute="top" secondItem="Kel-Ry-HrR" secondAttribute="top" constant="24" id="gDA-r1-2ho"/>
                     <constraint firstItem="y0L-Sj-Jbq" firstAttribute="leading" secondItem="K7E-VQ-Dlo" secondAttribute="trailing" constant="12" id="hzY-Uv-elZ"/>
                     <constraint firstItem="K7E-VQ-Dlo" firstAttribute="centerY" secondItem="Kel-Ry-HrR" secondAttribute="centerY" id="nIB-YO-ui9"/>
-                    <constraint firstAttribute="bottom" secondItem="Anf-75-I5y" secondAttribute="bottom" constant="24" id="oGE-Qi-PGX"/>
-                    <constraint firstItem="K7E-VQ-Dlo" firstAttribute="leading" secondItem="Anf-75-I5y" secondAttribute="trailing" constant="24" id="qT4-Nb-hqn"/>
+                    <constraint firstItem="K7E-VQ-Dlo" firstAttribute="leading" secondItem="Anf-75-I5y" secondAttribute="trailing" constant="18" id="qT4-Nb-hqn"/>
                 </constraints>
                 <userDefinedRuntimeAttributes>
                     <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>

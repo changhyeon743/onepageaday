@@ -110,7 +110,7 @@ class ShopViewController: UIViewController, SkeletonTableViewDelegate, SkeletonT
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 96
+        return 114
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

@@ -41,6 +41,7 @@ class ShopDetailViewController: UIViewController {
         }
         purchaseButton.addAction(UIAction(handler: { _ in
             let book = Book(title: item.title,
+                            subTitle: item.subTitle,
                             detail: item.detail,
                             author: Auth.auth().currentUser?.uid ?? "",
                             currentIndex: 0,
