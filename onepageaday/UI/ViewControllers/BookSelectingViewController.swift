@@ -28,7 +28,7 @@ class BookSelectingViewController: UIViewController,UIAdaptivePresentationContro
     @IBOutlet weak var collectionView:UICollectionView!
     @IBOutlet weak var settingButton: UIButton!
     var currentPage:Int = 0
-    
+    var nuxView: UIView?
     var isNewUser = false
     
     override func viewWillAppear(_ animated: Bool) {
@@ -89,19 +89,58 @@ class BookSelectingViewController: UIViewController,UIAdaptivePresentationContro
         API.firebase.fetchBooks(with: Auth.auth().currentUser?.uid ?? "", completion: { (books) in
             API.books = books
             
-            API.books?.sort { $0.createDate > $1.createDate }
             self.collectionView.hideSkeleton()
             
             self.collectionView.reloadData()
             self.scrollViewDidEndDecelerating(self.collectionView)
+            API.books?.sort { $0.createDate > $1.createDate }
+            self.updateNUX()
         })
     }
 
+    func updateNUX() {
+        if let cnt = API.books?.count ,cnt >= 1 {
+            nuxView?.removeFromSuperview()
+        } else {
+            nuxView?.removeFromSuperview()
+            nuxView = UIView()
+            self.view.addSubview(nuxView!)
+            nuxView!.snp.makeConstraints{
+                $0.edges.equalToSuperview()
+            }
+            nuxView?.isUserInteractionEnabled = false
+            
+            let _ = UILabel().then {
+                $0.font = .cafe(size: 20)
+                $0.textAlignment = .center
+                $0.text = "현재 아무런 책을 소유하고 있지 않군요.🧐 \n\n사용법이 필요하시다면 우측 상단의 서점에서 매일력 사용설명서를 다운받아보세요!"
+                $0.numberOfLines = 0
+                self.nuxView?.addSubview($0)
+                $0.snp.makeConstraints{
+                    $0.centerY.equalToSuperview()
+                    $0.left.right.equalToSuperview().inset(32)
+                }
+            }
+            
+            let _ = UIImageView().then {
+                $0.image = UIImage(systemName: "line.diagonal.arrow")?.withTintColor(.black, renderingMode: .alwaysOriginal)
+
+                self.nuxView?.addSubview($0)
+                $0.snp.makeConstraints{
+                    $0.top.equalTo(self.shopButton.snp.bottom).offset(-4)
+                    $0.right.equalTo(self.shopButton.snp.left).offset(-4)
+                    $0.width.height.equalTo(32)
+                }
+            }
+            
+        }
+    }
+    
     @IBAction func trashButtonPressed(_ sender: UIButton) {
         //or?
         guard let bookCount = API.books?.count else {return}
         
-        if currentPage < bookCount && bookCount > 1{
+//        if currentPage < bookCount && bookCount > 1{
             let alert = UIAlertController(title: "\(API.books?[currentPage].title ?? "") 을(를) 삭제하시겠습니까?", message:  nil, preferredStyle: .actionSheet)
 
             alert.addAction(UIAlertAction(title: "삭제", style: .destructive, handler: { _ in
@@ -114,8 +153,8 @@ class BookSelectingViewController: UIViewController,UIAdaptivePresentationContro
                     self.collectionView.deleteItems(at:[indexPath])
                 }, completion:{ [weak self] _ in
                     self?.scrollViewDidEndDecelerating(self!.collectionView)
+                    self?.updateNUX()
                 })
-                
                 
                 self.viewDidLayoutSubviews()
             }))
@@ -123,11 +162,11 @@ class BookSelectingViewController: UIViewController,UIAdaptivePresentationContro
             alert.popoverPresentationController?.sourceView = sender as UIView
 
             self.present(alert, animated: true, completion: nil)
-        } else {
-            let alert = UIAlertController(title: "삭제 실패", message: "1개 이상의 책을 소지하고 있어야합니다.", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
-            present(alert, animated: true, completion: nil)
-        }
+//        } else {
+//            let alert = UIAlertController(title: "삭제 실패", message: "1개 이상의 책을 소지하고 있어야합니다.", preferredStyle: .alert)
+//            alert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
+//            present(alert, animated: true, completion: nil)
+//        }
         
     }
     

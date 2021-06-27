@@ -18,13 +18,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="001" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fgc-R8-2KA">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="001" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fgc-R8-2KA">
                                 <rect key="frame" x="15" y="130" width="384" height="42"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="나를 소개해주세요." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ZHl-kh-jhh">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="나를 소개해주세요." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ZHl-kh-jhh">
                                 <rect key="frame" x="15" y="187" width="384" height="24"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -512,8 +512,8 @@ Nullam hendrerit risus et bibendum blandit. Nulla et purus augue. Cras a tempus 
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="znH-0e-Wf4">
-                                <rect key="frame" x="15" y="59" width="33" height="32"/>
-                                <state key="normal" image="person.circle" catalog="system">
+                                <rect key="frame" x="15" y="59" width="35" height="24"/>
+                                <state key="normal" image="line.horizontal.3" catalog="system">
                                     <color key="titleColor" name="AccentColor"/>
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="28"/>
                                 </state>
@@ -951,11 +951,11 @@ Nullam hendrerit risus et bibendum blandit. Nulla et purus augue. Cras a tempus 
         <image name="books.vertical" catalog="system" width="128" height="103"/>
         <image name="checkmark" catalog="system" width="128" height="114"/>
         <image name="cube.box" catalog="system" width="128" height="124"/>
+        <image name="line.horizontal.3" catalog="system" width="128" height="64"/>
         <image name="paintbrush.pointed.fill" catalog="system" width="128" height="119"/>
         <image name="pencil.and.outline" catalog="system" width="128" height="128"/>
         <image name="person.2" catalog="system" width="128" height="81"/>
         <image name="person.2.fill" catalog="system" width="128" height="80"/>
-        <image name="person.circle" catalog="system" width="128" height="121"/>
         <image name="photo" catalog="system" width="128" height="93"/>
         <image name="textformat.abc" catalog="system" width="128" height="61"/>
         <image name="trash.circle" catalog="system" width="128" height="121"/>
