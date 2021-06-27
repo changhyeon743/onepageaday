@@ -91,6 +91,13 @@ class ShopViewController: UIViewController, SkeletonTableViewDelegate, SkeletonT
     @objc func downloadButtonPressed(_ sender:UIButton) {
         let row = sender.tag
         if (shopItems == nil) { return }
+        
+        
+        if (API.books?.count ?? 0 >= 3) {
+//            PurchaseViewController.present(on: self)
+//            return
+        }
+        
         let book = Book(title: shopItems![row].title,
                         subTitle: shopItems![row].subTitle,
                         detail: shopItems![row].detail,
@@ -114,6 +121,7 @@ class ShopViewController: UIViewController, SkeletonTableViewDelegate, SkeletonT
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.cellForRow(at: indexPath)?.isSelected = false
         if let vc = self.storyboard?.instantiateViewController(identifier: "ShopDetailViewController") as? ShopDetailViewController {
             vc.title = shopItems?[indexPath.row].title
             vc.shopItem = shopItems?[indexPath.row]

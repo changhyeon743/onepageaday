@@ -163,8 +163,8 @@ class BookSelectingViewController: UIViewController,UIAdaptivePresentationContro
         let day = Calendar.current.dateComponents([.day],
                                                           from: API.books?[currentPage].createDate ?? Date(), to: API.books?[currentPage].modifiedDate
                                                               ?? Date()).day ?? 0
-        let attributedString = NSMutableAttributedString.init(string: "함께한지 \(day)일 째")
-        attributedString.addAttribute(NSAttributedString.Key.underlineStyle, value: 1, range: NSRange.init(location: attributedString.string.count - "\(day)일 째".count, length: "\(day)일 째".count))
+        let attributedString = NSMutableAttributedString.init(string: "함께한지 \(day+1)일 째")
+        attributedString.addAttribute(NSAttributedString.Key.underlineStyle, value: 1, range: NSRange.init(location: attributedString.string.count - "\(day+1)일 째".count, length: "\(day)일 째".count))
         
         self.detailLabel.attributedText = attributedString
         

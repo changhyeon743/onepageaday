@@ -382,7 +382,7 @@ Nullam hendrerit risus et bibendum blandit. Nulla et purus augue. Cras a tempus 
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Deb-DI-7sC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="744.92753623188412" y="-856.47321428571422"/>
+            <point key="canvasLocation" x="710" y="-856"/>
         </scene>
         <!--Purchase View Controller-->
         <scene sceneID="O2T-PU-r6v">
@@ -425,8 +425,8 @@ Nullam hendrerit risus et bibendum blandit. Nulla et purus augue. Cras a tempus 
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="동기화, 사진 업로드" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jgR-OI-X3U">
-                                        <rect key="frame" x="12" y="50.5" width="131" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="사진 업로드, 나의 책 개수 제한 해제" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jgR-OI-X3U">
+                                        <rect key="frame" x="12" y="50.5" width="216" height="41"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -440,6 +440,7 @@ Nullam hendrerit risus et bibendum blandit. Nulla et purus augue. Cras a tempus 
                                     <constraint firstAttribute="trailing" secondItem="QqV-83-1gE" secondAttribute="trailing" constant="12" id="GOf-em-Hu0"/>
                                     <constraint firstAttribute="trailing" secondItem="fhX-tc-ykv" secondAttribute="trailing" constant="12" id="Ode-Oy-sS1"/>
                                     <constraint firstItem="fhX-tc-ykv" firstAttribute="leading" secondItem="wWv-S3-oeU" secondAttribute="leading" constant="12" id="d3z-Af-fJR"/>
+                                    <constraint firstAttribute="trailing" secondItem="jgR-OI-X3U" secondAttribute="trailing" constant="12" id="ghD-pu-96Y"/>
                                     <constraint firstAttribute="bottom" secondItem="Nqf-gs-WQB" secondAttribute="bottom" constant="12" id="hMb-vQ-8dw"/>
                                     <constraint firstItem="jgR-OI-X3U" firstAttribute="leading" secondItem="wWv-S3-oeU" secondAttribute="leading" constant="12" id="k0R-An-MMd"/>
                                     <constraint firstItem="jgR-OI-X3U" firstAttribute="top" secondItem="fhX-tc-ykv" secondAttribute="bottom" constant="12" id="xlw-hh-PwF"/>
@@ -681,7 +682,7 @@ Nullam hendrerit risus et bibendum blandit. Nulla et purus augue. Cras a tempus 
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZQj-kd-lpc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-96" y="-850"/>
+            <point key="canvasLocation" x="-13" y="-856"/>
         </scene>
         <!--Index View Controller-->
         <scene sceneID="aqh-pp-Nh9">

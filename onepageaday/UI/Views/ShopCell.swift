@@ -16,8 +16,8 @@ class ShopCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        titleLabel.font = .cafe(size: titleLabel.font.pointSize)
-        detailLabel.font = .cafe(size: detailLabel.font.pointSize)
+//        titleLabel.font = .cafe(size: titleLabel.font.pointSize)
+//        detailLabel.font = .cafe(size: detailLabel.font.pointSize)
         
         itemImageView.contentMode = .scaleAspectFill
         // Initialization code
