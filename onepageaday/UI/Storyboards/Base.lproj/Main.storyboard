@@ -592,8 +592,8 @@ Nullam hendrerit risus et bibendum blandit. Nulla et purus augue. Cras a tempus 
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0qW-RN-ieP">
-                                <rect key="frame" x="96.5" y="766" width="221" height="32"/>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="26"/>
+                                <rect key="frame" x="86.5" y="763.5" width="241" height="34.5"/>
+                                <fontDescription key="fontDescription" name="Cafe24Ssurroundair" family="Cafe24 Ssurround air" pointSize="24"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title=" Login with Apple" image="applelogo" catalog="system">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -604,17 +604,20 @@ Nullam hendrerit risus et bibendum blandit. Nulla et purus augue. Cras a tempus 
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="매일력" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6as-0E-fA9">
-                                <rect key="frame" x="147.5" y="172" width="119.5" height="55"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="46"/>
+                                <rect key="frame" x="138.5" y="172" width="137" height="57"/>
+                                <fontDescription key="fontDescription" name="Cafe24Ssurroundair" family="Cafe24 Ssurround air" pointSize="48"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qkr-rw-Whx">
-                                <rect key="frame" x="139.5" y="722" width="135" height="28"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <state key="normal" title="다른 로그인 방법 선택하기">
+                                <rect key="frame" x="37" y="719.5" width="340" height="28"/>
+                                <fontDescription key="fontDescription" name="Cafe24Ssurroundair" family="Cafe24 Ssurround air" pointSize="13"/>
+                                <state key="normal" title="아래 로그인 버튼을 누르면 개인정보 관련 약관에 동의합니다.">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="privacyButtonPressed:" destination="ua4-oE-vss" eventType="touchUpInside" id="6pa-sb-cDT"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="uLP-Ta-yj9"/>

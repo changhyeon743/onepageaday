@@ -36,6 +36,11 @@ class LoginViewController: UIViewController {
         startSignInWithAppleFlow()
     }
     
+    @IBAction func privacyButtonPressed(_ sender: Any) {
+        if let url = URL(string: "https://onepageaday-3a198.web.app") {
+            UIApplication.shared.open(url)
+        }
+    }
     
     deinit {
         print("LoginViewController deinit")
