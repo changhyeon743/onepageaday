@@ -17,15 +17,7 @@ protocol BookSelectingViewControllerDelegate: class {
     func bookDownloaded()
 }
 
-//우측 메뉴 아이템
-enum AdditionalItem: Int {
-    case openShop
-//    case todayBooks
-//    case buyPro
-    case buyRealBook
-    
-    static let count = 2
-}
+g
 
 
 class BookSelectingViewController: UIViewController,UIAdaptivePresentationControllerDelegate {
@@ -34,6 +26,7 @@ class BookSelectingViewController: UIViewController,UIAdaptivePresentationContro
     
     @IBOutlet weak var shopButton: UIButton!
     @IBOutlet weak var trashButton: UIButton!
+    @IBOutlet weak var detailLabel: UILabel!
     @IBOutlet weak var collectionView:UICollectionView!
     @IBOutlet weak var settingButton: UIButton!
     var currentPage:Int = 0
@@ -88,6 +81,8 @@ class BookSelectingViewController: UIViewController,UIAdaptivePresentationContro
                                      ])
         
         [settingButton,shopButton].forEach{$0?.tintColor = Constant.Design.mainTintColor}
+        self.detailLabel.textColor = Constant.Design.mainTintColor
+        self.detailLabel.font = .cafe(size: 20)
     }
     
     func fetchBooks() {
@@ -158,12 +153,22 @@ class BookSelectingViewController: UIViewController,UIAdaptivePresentationContro
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         
         trashButton.isHidden = false
+        detailLabel.isHidden = false
         
         let x = scrollView.contentOffset.x
         let w = scrollView.bounds.size.width
         let currentPage = Int(ceil(x/w))
         // Do whatever with currentPage.
         self.currentPage = currentPage
+        
+
+        let day = Calendar.current.dateComponents([.day],
+                                                          from: API.books?[currentPage].createDate ?? Date(), to: API.books?[currentPage].modifiedDate
+                                                              ?? Date()).day ?? 0
+        let attributedString = NSMutableAttributedString.init(string: "함께한지 \(day)일 째")
+        attributedString.addAttribute(NSAttributedString.Key.underlineStyle, value: 1, range: NSRange.init(location: attributedString.string.count - "\(day)일 째".count, length: "\(day)일 째".count))
+        
+        self.detailLabel.attributedText = attributedString
         
         guard let bookCount = API.books?.count else {return}
         if currentPage >= bookCount {
@@ -174,6 +179,7 @@ class BookSelectingViewController: UIViewController,UIAdaptivePresentationContro
     }
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         trashButton.isHidden = true
+        detailLabel.isHidden = true
     }
     
     

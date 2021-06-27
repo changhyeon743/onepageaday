@@ -527,12 +527,20 @@ Nullam hendrerit risus et bibendum blandit. Nulla et purus augue. Cras a tempus 
                                     <action selector="trashButtonPressed:" destination="hOi-xl-CzU" eventType="touchUpInside" id="cNX-pF-X4j"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="meJ-nx-ji4">
+                                <rect key="frame" x="207" y="62" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="8MW-48-tL4"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="meJ-nx-ji4" firstAttribute="top" secondItem="8MW-48-tL4" secondAttribute="top" constant="18" id="A8v-Bh-npO"/>
                             <constraint firstItem="8MW-48-tL4" firstAttribute="bottom" secondItem="VbY-mT-z1M" secondAttribute="bottom" constant="32" id="BAQ-3N-mhL"/>
                             <constraint firstItem="rPK-gd-BkI" firstAttribute="top" secondItem="8MW-48-tL4" secondAttribute="top" constant="15" id="GmJ-CI-0WM"/>
+                            <constraint firstItem="meJ-nx-ji4" firstAttribute="centerX" secondItem="CUK-hI-sDu" secondAttribute="centerX" id="RhX-1Y-Snt"/>
                             <constraint firstItem="8MW-48-tL4" firstAttribute="bottom" secondItem="eVk-BC-j9z" secondAttribute="bottom" id="Uec-8E-yfE"/>
                             <constraint firstItem="eVk-BC-j9z" firstAttribute="leading" secondItem="8MW-48-tL4" secondAttribute="leading" id="Yjl-oO-xGs"/>
                             <constraint firstItem="8MW-48-tL4" firstAttribute="trailing" secondItem="eVk-BC-j9z" secondAttribute="trailing" id="YnH-Uo-tsc"/>
@@ -547,6 +555,7 @@ Nullam hendrerit risus et bibendum blandit. Nulla et purus augue. Cras a tempus 
                     <navigationItem key="navigationItem" id="t03-43-bYf"/>
                     <connections>
                         <outlet property="collectionView" destination="eVk-BC-j9z" id="6zB-Xj-tl9"/>
+                        <outlet property="detailLabel" destination="meJ-nx-ji4" id="1br-1c-sCu"/>
                         <outlet property="settingButton" destination="znH-0e-Wf4" id="Ena-2Z-l8x"/>
                         <outlet property="shopButton" destination="rPK-gd-BkI" id="bcC-Ld-LDh"/>
                         <outlet property="trashButton" destination="VbY-mT-z1M" id="kR2-NG-NIZ"/>
