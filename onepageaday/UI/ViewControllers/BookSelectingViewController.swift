@@ -57,9 +57,15 @@ class BookSelectingViewController: UIViewController,UIAdaptivePresentationContro
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         
-        self.view.backgroundColor = Constant.Design.mainBackGroundColor
-        self.collectionView.backgroundColor = Constant.Design.mainBackGroundColor
-        
+//        self.view.backgroundColor = Constant.Design.mainBackGroundColor
+//        self.collectionView.backgroundColor = Constant.Design.mainBackGroundColor
+        let _ = UIImageView(image: UIImage(named: "bgimage")).then{
+            self.view.addSubview($0)
+            $0.snp.makeConstraints {
+                $0.edges.equalToSuperview()
+            }
+            self.view.sendSubviewToBack($0)
+        }
         
         settingButton.showsMenuAsPrimaryAction = true
         settingButton.menu = UIMenu(title: "계정",
