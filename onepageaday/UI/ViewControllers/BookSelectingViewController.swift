@@ -68,7 +68,7 @@ class BookSelectingViewController: UIViewController,UIAdaptivePresentationContro
         }
         
         settingButton.showsMenuAsPrimaryAction = true
-        settingButton.menu = UIMenu(title: "계정",
+        settingButton.menu = UIMenu(title: "메뉴",
                                      image: UIImage(systemName: "person.circle"),
                                      identifier: nil,
                                      options: .displayInline,
@@ -82,7 +82,13 @@ class BookSelectingViewController: UIViewController,UIAdaptivePresentationContro
                                         }
 
 
-                                     }),
+                                     }),UIAction(title: "매일력 책 구매하기", image: UIImage(systemName: "book.closed"), handler: { _ in
+                                        
+                                        if let url = URL(string: "http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9791195675852") {
+                                            UIApplication.shared.open(url)
+                                        }
+
+                                     })
                                      
                                      ])
         
