@@ -49,10 +49,12 @@ class NewsFeedViewController: UIViewController , SkeletonCollectionViewDelegate,
         activityIndicator.startAnimating()
         self.view.addSubview(activityIndicator)
         
-        collectionView.gemini.circleRotationAnimation()
-            .rotateDirection(.clockwise)
-            .scaleEffect(.scaleUp)
-            .scale(0.75)
+        collectionView.gemini.cubeAnimation().cubeDegree(90).shadowEffect(.fadeIn).maxShadowAlpha(0.35)
+        
+//        circleRotationAnimation()
+//            .rotateDirection(.clockwise)
+//            .scaleEffect(.scaleUp)
+//            .scale(0.75)
 
         collectionView.reloadData()
 

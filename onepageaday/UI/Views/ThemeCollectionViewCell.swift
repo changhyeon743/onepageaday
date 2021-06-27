@@ -38,6 +38,19 @@ class ThemeCollectionViewCell: GeminiCell,UIContextMenuInteractionDelegate {
     var dateLabel = UILabel().then{
         $0.font = .cafe(size: 14)
     }
+    var customShadowView: UIView!
+    override var shadowView: UIView? {
+        return customShadowView
+    }
+    
+    override func awakeFromNib() {
+        customShadowView = .init()
+        customShadowView.backgroundColor = .black.withAlphaComponent(1)
+        self.addSubview(customShadowView)
+        customShadowView.snp.makeConstraints{
+            $0.edges.equalToSuperview()
+        }
+    }
     
     override func prepareForReuse() {
         super.prepareForReuse()
@@ -68,6 +81,11 @@ class ThemeCollectionViewCell: GeminiCell,UIContextMenuInteractionDelegate {
         self.dateLabel.snp.makeConstraints{
             $0.left.bottom.equalToSuperview().inset(16)
         }
+        
+        if let view = ofv_mainView {
+            sendSubviewToBack(view)
+        }
+
     }
     
     func contextMenuInteraction(_ interaction: UIContextMenuInteraction, configurationForMenuAtLocation location: CGPoint) -> UIContextMenuConfiguration? {

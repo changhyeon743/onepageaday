@@ -285,7 +285,6 @@
 			isa = PBXGroup;
 			children = (
 				78EFE36225963B6B0068407F /* NewsFeedViewController.swift */,
-				78BCC846259D910C00E7028D /* ThemeCollectionViewCell.swift */,
 				782E7B6025C1CBF700C3110B /* NewsFeedDetailViewController.swift */,
 			);
 			name = NewsFeed;
@@ -341,6 +340,7 @@
 		78E908B0258271BA00944B60 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				78BCC846259D910C00E7028D /* ThemeCollectionViewCell.swift */,
 				78576E8D257FDEF7006F0B3F /* EditableTextView.swift */,
 				78E908B42582726D00944B60 /* EditableImageView.swift */,
 				78FE241225879E6700E4BE31 /* BookFlowLayout.swift */,
