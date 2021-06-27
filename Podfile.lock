@@ -309,6 +309,7 @@ PODS:
   - FirebaseStorage (7.11.0):
     - FirebaseCore (~> 7.0)
     - GTMSessionFetcher/Core (~> 1.4)
+  - Gemini (1.4.0)
   - GoogleAppMeasurement/AdIdSupport (7.11.0):
     - GoogleUtilities/AppDelegateSwizzler (~> 7.0)
     - GoogleUtilities/MethodSwizzler (~> 7.0)
@@ -386,6 +387,7 @@ DEPENDENCIES:
   - Firebase/RemoteConfig
   - Firebase/Storage
   - FirebaseFirestoreSwift (~> 7.0-beta)
+  - Gemini
   - Kingfisher (~> 5.0)
   - SkeletonView
   - SnapKit (~> 5.0.0)
@@ -408,6 +410,7 @@ SPEC REPOS:
     - FirebaseInstallations
     - FirebaseRemoteConfig
     - FirebaseStorage
+    - Gemini
     - GoogleAppMeasurement
     - GoogleDataTransport
     - GoogleUtilities
@@ -438,6 +441,7 @@ SPEC CHECKSUMS:
   FirebaseInstallations: a58d4f72ec5861840b84df489f2668d970df558a
   FirebaseRemoteConfig: 0ea30de5fb0231df8c1bdcdf3b6c23bdc5066131
   FirebaseStorage: 8542711850ca181a3931c0ed483006a7b46039e7
+  Gemini: 4ad915cca8805577fe3021e02feeca2b77dcdbfc
   GoogleAppMeasurement: fd19169c3034975cb934e865e5667bfdce59df7f
   GoogleDataTransport: cd9db2180fcecd8da1b561aea31e3e56cf834aa7
   GoogleUtilities: f8a43108b38a68eebe8b3540e1f4f2d28843ce20
@@ -453,6 +457,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
   Then: acfe0be7e98221c6204e12f8161459606d5d822d
 
-PODFILE CHECKSUM: f293b8055092c4be7cf18bc49e7f94bb75ffb9f6
+PODFILE CHECKSUM: af1ef8dba133e750be570ac18a50f4228831c0cc
 
 COCOAPODS: 1.10.1

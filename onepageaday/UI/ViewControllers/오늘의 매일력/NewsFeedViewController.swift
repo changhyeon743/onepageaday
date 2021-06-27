@@ -9,6 +9,7 @@ import UIKit
 import Firebase
 import SkeletonView
 import SnapKit
+import Gemini
 
 protocol NewsFeedViewControllerDelegate : class {
     func save(uiimage: UIImage)
@@ -19,7 +20,7 @@ protocol NewsFeedViewControllerDelegate : class {
 //TODO: Skeleton
 class NewsFeedViewController: UIViewController , SkeletonCollectionViewDelegate, SkeletonCollectionViewDataSource,UICollectionViewDelegateFlowLayout,NewsFeedViewControllerDelegate {
     
-    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var collectionView: GeminiCollectionView!
     
     
     lazy private var activityIndicator: UIActivityIndicatorView = { return makeActivityIndicator(center: self.view.center) }()
@@ -28,6 +29,9 @@ class NewsFeedViewController: UIViewController , SkeletonCollectionViewDelegate,
     private var items: [Question]?
     private var refreshControl = UIRefreshControl()
 
+    override var prefersStatusBarHidden: Bool {
+        return false
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,7 +49,19 @@ class NewsFeedViewController: UIViewController , SkeletonCollectionViewDelegate,
         activityIndicator.startAnimating()
         self.view.addSubview(activityIndicator)
         
+        collectionView.gemini.circleRotationAnimation()
+            .rotateDirection(.clockwise)
+            .scaleEffect(.scaleUp)
+            .scale(0.75)
+
+        collectionView.reloadData()
+
         
+        //cubeAnimation()
+        //rollRotationAnimation()
+        //pitchRotationAnimation()
+        //scaleAnimation().scale(0.75).scaleEffect(.scaleUp)
+        //circleRotationAnimation().radius(400).rotateDirection(.clockwise)
 
         fetchData()
     }
@@ -54,6 +70,10 @@ class NewsFeedViewController: UIViewController , SkeletonCollectionViewDelegate,
         self.items = nil
         
         fetchData()
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        collectionView.animateVisibleCells()
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -79,15 +99,16 @@ class NewsFeedViewController: UIViewController , SkeletonCollectionViewDelegate,
     
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ThemeCollectionViewCell
+        self.collectionView.animateCell(cell)
         
         if let items = self.items {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ThemeCollectionViewCell
             cell.hideSkeleton()
 
 //            let inset:CGFloat = 128
 //            let height = (self.collectionView.frame.width - inset*2) * Constant.OFV.cellHeight / Constant.OFV.cellWidth
             
-            let inset:CGFloat = 64
+            let inset:CGFloat = 0
             let height = self.collectionView.frame.height - inset/2
             let width = (height) * Constant.OFV.cellWidth / Constant.OFV.cellHeight
             
@@ -113,9 +134,10 @@ class NewsFeedViewController: UIViewController , SkeletonCollectionViewDelegate,
                 $0.width.equalTo(width)
                 $0.centerX.equalToSuperview()
             }
+            cell.configure(ofv_mainView: view)
+
             return cell
         } else {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ThemeCollectionViewCell
             cell.showAnimatedGradientSkeleton()
             return cell
         }
@@ -124,6 +146,10 @@ class NewsFeedViewController: UIViewController , SkeletonCollectionViewDelegate,
     
     var isWaitingForFetch: Bool = false
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        
+        if let cell = cell as? GeminiCell {
+            self.collectionView.animateCell(cell)
+        }
         
         guard let cnt = self.items?.count else {return}
         
