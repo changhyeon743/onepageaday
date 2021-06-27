@@ -13,7 +13,8 @@ target 'onepageaday' do
   pod 'Firebase/RemoteConfig'
   pod 'FirebaseFirestoreSwift', '~> 7.0-beta'
 
-  
+  pod "Gemini"
+
   # UI
   pod 'Kingfisher', '~> 5.0'
   pod 'SkeletonView'

@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import Gemini
 
 class ImagePreviewController: UIViewController {
     private let imageView = UIImageView()
@@ -24,7 +25,7 @@ class ImagePreviewController: UIViewController {
 }
 
 //socialCollection
-class ThemeCollectionViewCell: UICollectionViewCell,UIContextMenuInteractionDelegate {
+class ThemeCollectionViewCell: GeminiCell,UIContextMenuInteractionDelegate {
     
     var renderer: UIGraphicsImageRenderer?
     var image: UIImage?
@@ -34,8 +35,9 @@ class ThemeCollectionViewCell: UICollectionViewCell,UIContextMenuInteractionDele
     weak var parentDelegate: NewsFeedViewControllerDelegate?
     
     var ofv_mainView: OFV_MainView?
-    
-    
+    var dateLabel = UILabel().then{
+        $0.font = .cafe(size: 14)
+    }
     
     override func prepareForReuse() {
         super.prepareForReuse()
@@ -47,6 +49,27 @@ class ThemeCollectionViewCell: UICollectionViewCell,UIContextMenuInteractionDele
     deinit {
         print("deinit ThemeCollectionViewCell")
     }
+    
+    public func configure(ofv_mainView: OFV_MainView?) {
+        let date = DateFormatter()
+        date.dateFormat = "yyyy.M.d."
+        
+        self.dateLabel.removeFromSuperview()
+        self.addSubview(dateLabel)
+        
+        guard let color = UIColor(ofv_mainView?.currentQuestion?.backGroundColor ?? defaultColor) else {return}
+        if color.isLight() ?? true {
+            self.dateLabel.textColor = .black
+        } else {
+            self.dateLabel.textColor = .white
+        }
+        self.dateLabel.text = date.string(from: ofv_mainView?.currentQuestion?.modifiedDate ?? Date())
+        
+        self.dateLabel.snp.makeConstraints{
+            $0.left.bottom.equalToSuperview().inset(16)
+        }
+    }
+    
     func contextMenuInteraction(_ interaction: UIContextMenuInteraction, configurationForMenuAtLocation location: CGPoint) -> UIContextMenuConfiguration? {
 
         return UIContextMenuConfiguration(identifier: nil) {

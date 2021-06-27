@@ -279,20 +279,20 @@
                                 <rect key="frame" x="0.0" y="56" width="414" height="752"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="DfQ-v4-hfU">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1994.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1906"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="9Jx-Bd-WqG">
-                                                <rect key="frame" x="32" y="32" width="350" height="202.5"/>
+                                                <rect key="frame" x="32" y="32" width="350" height="114"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eLT-o8-JfC">
-                                                        <rect key="frame" x="0.0" y="0.0" width="114" height="202.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="114" height="114"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="114" id="Ke9-YY-78N"/>
-                                                            <constraint firstAttribute="width" secondItem="eLT-o8-JfC" secondAttribute="height" multiplier="9:16" id="rRm-nY-OQ3"/>
+                                                            <constraint firstAttribute="width" secondItem="eLT-o8-JfC" secondAttribute="height" multiplier="1:1" id="rRm-nY-OQ3"/>
                                                         </constraints>
                                                     </imageView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="coV-ZF-7Ln">
-                                                        <rect key="frame" x="130" y="0.0" width="220" height="202.5"/>
+                                                        <rect key="frame" x="130" y="0.0" width="220" height="114"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Wg4-Xf-50D">
                                                                 <rect key="frame" x="0.0" y="0.0" width="220" height="55"/>
@@ -312,7 +312,7 @@
                                                                 </subviews>
                                                             </stackView>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lUz-kE-FTC">
-                                                                <rect key="frame" x="0.0" y="172.5" width="220" height="30"/>
+                                                                <rect key="frame" x="0.0" y="84" width="220" height="30"/>
                                                                 <color key="backgroundColor" name="AccentColor"/>
                                                                 <state key="normal" title="₩1200">
                                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -323,13 +323,13 @@
                                                 </subviews>
                                             </stackView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="공개/ 비공개" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nHN-lE-4Xa">
-                                                <rect key="frame" x="32" y="266.5" width="350" height="20.5"/>
+                                                <rect key="frame" x="32" y="178" width="350" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KkP-kH-Y4J">
-                                                <rect key="frame" x="32" y="319" width="350" height="1643.5"/>
+                                                <rect key="frame" x="32" y="230.5" width="350" height="1643.5"/>
                                                 <string key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean placerat vel lectus sit amet convallis. In eu ligula luctus, semper turpis sit amet, convallis sapien. Morbi porttitor, turpis ac blandit blandit, nunc justo finibus purus, ac congue dui ante facilisis odio. Sed euismod nisi ac urna tristique fringilla. Vivamus semper nulla id consequat rhoncus. Quisque rhoncus finibus lacus, ac euismod leo egestas eget. Morbi facilisis mi ut accumsan ultricies. Integer non neque nec eros hendrerit tempus. Nunc id ex nec lectus fringilla pulvinar nec eu neque.
 
 Curabitur pharetra dolor nulla, eget lobortis nisi dignissim sit amet. Vestibulum fermentum rutrum augue ut fringilla. Aliquam et nulla volutpat, aliquam augue sit amet, dapibus eros. Aenean ut lectus congue nibh congue luctus in non nisl. Duis blandit urna vel nunc consectetur, vel consequat est viverra. Duis elementum tincidunt tempor. Mauris dictum auctor quam id tristique. Maecenas lobortis metus sed diam suscipit sodales. Mauris maximus turpis sed nisi auctor, eu maximus lorem semper. In rutrum pellentesque sem dapibus elementum. Phasellus enim sem, efficitur sed arcu non, tempor suscipit augue. Nullam porta hendrerit lorem. Cras non dui et leo fringilla rhoncus. Nam tempor luctus arcu, id ornare enim aliquam eu. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nam eget mollis odio, id rutrum lacus.
@@ -527,12 +527,20 @@ Nullam hendrerit risus et bibendum blandit. Nulla et purus augue. Cras a tempus 
                                     <action selector="trashButtonPressed:" destination="hOi-xl-CzU" eventType="touchUpInside" id="cNX-pF-X4j"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="meJ-nx-ji4">
+                                <rect key="frame" x="207" y="62" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="8MW-48-tL4"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="meJ-nx-ji4" firstAttribute="top" secondItem="8MW-48-tL4" secondAttribute="top" constant="18" id="A8v-Bh-npO"/>
                             <constraint firstItem="8MW-48-tL4" firstAttribute="bottom" secondItem="VbY-mT-z1M" secondAttribute="bottom" constant="32" id="BAQ-3N-mhL"/>
                             <constraint firstItem="rPK-gd-BkI" firstAttribute="top" secondItem="8MW-48-tL4" secondAttribute="top" constant="15" id="GmJ-CI-0WM"/>
+                            <constraint firstItem="meJ-nx-ji4" firstAttribute="centerX" secondItem="CUK-hI-sDu" secondAttribute="centerX" id="RhX-1Y-Snt"/>
                             <constraint firstItem="8MW-48-tL4" firstAttribute="bottom" secondItem="eVk-BC-j9z" secondAttribute="bottom" id="Uec-8E-yfE"/>
                             <constraint firstItem="eVk-BC-j9z" firstAttribute="leading" secondItem="8MW-48-tL4" secondAttribute="leading" id="Yjl-oO-xGs"/>
                             <constraint firstItem="8MW-48-tL4" firstAttribute="trailing" secondItem="eVk-BC-j9z" secondAttribute="trailing" id="YnH-Uo-tsc"/>
@@ -547,6 +555,7 @@ Nullam hendrerit risus et bibendum blandit. Nulla et purus augue. Cras a tempus 
                     <navigationItem key="navigationItem" id="t03-43-bYf"/>
                     <connections>
                         <outlet property="collectionView" destination="eVk-BC-j9z" id="6zB-Xj-tl9"/>
+                        <outlet property="detailLabel" destination="meJ-nx-ji4" id="1br-1c-sCu"/>
                         <outlet property="settingButton" destination="znH-0e-Wf4" id="Ena-2Z-l8x"/>
                         <outlet property="shopButton" destination="rPK-gd-BkI" id="bcC-Ld-LDh"/>
                         <outlet property="trashButton" destination="VbY-mT-z1M" id="kR2-NG-NIZ"/>
@@ -762,8 +771,8 @@ Nullam hendrerit risus et bibendum blandit. Nulla et purus augue. Cras a tempus 
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="FoR-HO-sST">
-                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="FoR-HO-sST" customClass="GeminiCollectionView" customModule="Gemini">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="gEC-Hb-6mu">
                                     <size key="itemSize" width="0.0" height="235"/>
@@ -796,8 +805,8 @@ Nullam hendrerit risus et bibendum blandit. Nulla et purus augue. Cras a tempus 
                         <viewLayoutGuide key="safeArea" id="AIG-IH-OI0"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="FoR-HO-sST" firstAttribute="top" secondItem="AIG-IH-OI0" secondAttribute="top" id="7gw-BQ-zv0"/>
                             <constraint firstItem="FoR-HO-sST" firstAttribute="leading" secondItem="AIG-IH-OI0" secondAttribute="leading" id="IZH-kC-vj6"/>
+                            <constraint firstItem="FoR-HO-sST" firstAttribute="top" secondItem="cQC-h2-Hum" secondAttribute="top" id="VvA-JY-E7s"/>
                             <constraint firstItem="AIG-IH-OI0" firstAttribute="trailing" secondItem="FoR-HO-sST" secondAttribute="trailing" id="ojZ-9E-a24"/>
                             <constraint firstItem="AIG-IH-OI0" firstAttribute="bottom" secondItem="FoR-HO-sST" secondAttribute="bottom" id="sAG-F0-asH"/>
                         </constraints>
