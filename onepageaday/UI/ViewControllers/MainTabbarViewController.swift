@@ -11,7 +11,8 @@ class MainTabbarViewController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: UIFont.cafe(size: 10)], for: .normal)
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: UIFont.cafe(size: 10)], for: .selected)
         // Do any additional setup after loading the view.
     }
     

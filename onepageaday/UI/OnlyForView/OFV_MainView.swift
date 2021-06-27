@@ -48,11 +48,11 @@ class OFV_MainView: UIView, PKCanvasViewDelegate {
         self.addSubview(questionLabel)
         indexLabel.snp.makeConstraints{
             $0.left.right.equalToSuperview().inset(12/magnification)
-            $0.top.equalToSuperview().inset(90 / magnification)
+            $0.top.equalToSuperview().inset(75 / magnification)
         }
         questionLabel.snp.makeConstraints{
             $0.right.left.equalToSuperview().inset(12/magnification)
-            $0.top.equalTo(self.indexLabel.snp.bottom).offset(10/magnification)
+            $0.top.equalTo(self.indexLabel.snp.bottom).offset(5/magnification)
         }
         
         setQuestionText()

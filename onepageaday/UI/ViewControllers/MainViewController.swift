@@ -59,17 +59,17 @@ class MainViewController: UIViewController {
                 //편집모드진입
                 showToast(text: "편집 모드")
                 pageControllerDelegate?.stopScroll()
-                modeToggleButton.setImage(UIImage(systemName: "checkmark", withConfiguration: UIImage.SymbolConfiguration(pointSize: 24)), for: .normal)
+//                modeToggleButton.setImage(UIImage(systemName: "checkmark", withConfiguration: UIImage.SymbolConfiguration(pointSize: 24)), for: .normal)
                 
-//                modeToggleButton.setTitle("저장", for: .normal)
+                modeToggleButton.setTitle("저장", for: .normal)
                 additionalMenuButton.fadeOut()
                 
             } else {
                 //편집모드종료
                 showToast(text: "보기 모드")
                
-                modeToggleButton.setImage(UIImage(systemName: "pencil.and.outline", withConfiguration: UIImage.SymbolConfiguration(pointSize: 24)), for: .normal)
-//                modeToggleButton.setTitle("편집", for: .normal)
+//                modeToggleButton.setImage(UIImage(systemName: "pencil.and.outline", withConfiguration: UIImage.SymbolConfiguration(pointSize: 24)), for: .normal)
+                modeToggleButton.setTitle("편집", for: .normal)
 
                 additionalMenuButton.fadeIn()
                 pageControllerDelegate?.startScroll()
@@ -240,12 +240,14 @@ class MainViewController: UIViewController {
                     indexLabel.textColor = .black
                     questionLabel.textColor = .black
                     buttons.forEach{
+                        $0?.setTitleColor(.black, for: .normal)
                         $0?.tintColor = .black
                     }
                 } else {
                     indexLabel.textColor = .white
                     questionLabel.textColor = .white
                     buttons.forEach{
+                        $0?.setTitleColor(.white, for: .normal)
                         $0?.tintColor = .white
                     }
                 }

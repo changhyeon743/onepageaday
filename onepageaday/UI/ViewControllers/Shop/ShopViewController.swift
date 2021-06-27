@@ -31,6 +31,7 @@ class ShopViewController: UIViewController, SkeletonTableViewDelegate, SkeletonT
         tableView.delegate = self
         tableView.dataSource = self
         
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont.cafe(size: 20)]
     }
     
     func fetchShopItems() {

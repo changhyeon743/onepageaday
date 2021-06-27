@@ -26,11 +26,12 @@ struct Constant {
         static let imageViewHeight: CGFloat = 100
         
         static let backGroundColors: [String] = [
-        "F7E950",
-        "81C6C5",
-        "54ABDF",
-        "73BA60",
-        "A59DEE"]
+        "E9E9E9",
+        "FC7D5E",
+        "FEC047",
+        "FEAACE",
+        "57ACFC",
+        "3BCFA2"]
         static let textColors: [String] = ["ffffff","e74c3c","#e67e22","#f1c40f","#2ecc71","#3498db","#9b59b6","000000"]
         
         static var mainBackGroundColor: UIColor {

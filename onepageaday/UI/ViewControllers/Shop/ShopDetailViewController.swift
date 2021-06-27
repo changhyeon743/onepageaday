@@ -25,14 +25,27 @@ class ShopDetailViewController: UIViewController {
         super.viewDidLoad()
         guard let item = shopItem else {return}
         titleLabel.text = item.title
+        [titleLabel,subTitleLabel,detailLabel,privateModeLabel].forEach{
+            if let size = $0?.font.pointSize {
+                $0?.font = .cafe(size: size)
+            }
+        }
         
         subTitleLabel.text =  item.subTitle
-        let privateText = item.privateMode ? "이 책의 답변은 기본적으로 비공개됩니다." : "이 책의 답변은 기본적으로 공개됩니다."
+        let privateText = item.privateMode ? "기본 설정 - 비공개" : "기본 설정 - 공개"
         privateModeLabel.numberOfLines = 0
-        privateModeLabel.text = privateText + " \n\n총 \(item.questions.count) 개의 질문이 포함된 책입니다."
+        privateModeLabel.text = privateText + " \n질문 개수 - \(item.questions.count)개"
         
-//        detailLabel.text = item.detail <- 나중에는 활용되야함.
-        detailLabel.text = "예시 질문 10개: \n(들어올 때마다 랜덤한 질문이 표시됩니다.)\n\n" + item.questions.shuffled().prefix(10).joined(separator: "\n\n")
+        
+        
+        let attributedString = NSMutableAttributedString(string: "책 속으로\n\n" + item.questions.shuffled().map{
+            "· "+$0
+        }.prefix(5).joined(separator: "\n"))
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = 6
+        attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value:paragraphStyle, range:NSMakeRange(0, attributedString.length))
+        detailLabel.attributedText = attributedString
+        
         
         if item.price == 0 {
             purchaseButton.setTitle("다운로드", for: .normal)

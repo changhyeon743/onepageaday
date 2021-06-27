@@ -9,6 +9,11 @@
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Cafe24SsurroundAir.ttf">
+            <string>Cafe24Ssurroundair</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -101,12 +106,11 @@
                                 </connections>
                             </button>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vGo-ej-BAw">
-                                <rect key="frame" x="370" y="64" width="29" height="30"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
+                                <rect key="frame" x="364" y="64" width="35" height="34"/>
+                                <fontDescription key="fontDescription" name="Cafe24Ssurroundair" family="Cafe24 Ssurround air" pointSize="18"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <size key="titleShadowOffset" width="0.0" height="1"/>
-                                <state key="normal" image="pencil.and.outline" catalog="system">
-                                    <color key="titleShadowColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="편집">
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="24" weight="semibold"/>
                                 </state>
                                 <connections>
@@ -279,7 +283,7 @@
                                 <rect key="frame" x="0.0" y="56" width="414" height="752"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="DfQ-v4-hfU">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1906"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1903.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="9Jx-Bd-WqG">
                                                 <rect key="frame" x="32" y="32" width="350" height="114"/>
@@ -323,13 +327,13 @@
                                                 </subviews>
                                             </stackView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="공개/ 비공개" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nHN-lE-4Xa">
-                                                <rect key="frame" x="32" y="178" width="350" height="20.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <rect key="frame" x="32" y="178" width="350" height="18"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KkP-kH-Y4J">
-                                                <rect key="frame" x="32" y="230.5" width="350" height="1643.5"/>
+                                                <rect key="frame" x="32" y="228" width="350" height="1643.5"/>
                                                 <string key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean placerat vel lectus sit amet convallis. In eu ligula luctus, semper turpis sit amet, convallis sapien. Morbi porttitor, turpis ac blandit blandit, nunc justo finibus purus, ac congue dui ante facilisis odio. Sed euismod nisi ac urna tristique fringilla. Vivamus semper nulla id consequat rhoncus. Quisque rhoncus finibus lacus, ac euismod leo egestas eget. Morbi facilisis mi ut accumsan ultricies. Integer non neque nec eros hendrerit tempus. Nunc id ex nec lectus fringilla pulvinar nec eu neque.
 
 Curabitur pharetra dolor nulla, eget lobortis nisi dignissim sit amet. Vestibulum fermentum rutrum augue ut fringilla. Aliquam et nulla volutpat, aliquam augue sit amet, dapibus eros. Aenean ut lectus congue nibh congue luctus in non nisl. Duis blandit urna vel nunc consectetur, vel consequat est viverra. Duis elementum tincidunt tempor. Mauris dictum auctor quam id tristique. Maecenas lobortis metus sed diam suscipit sodales. Mauris maximus turpis sed nisi auctor, eu maximus lorem semper. In rutrum pellentesque sem dapibus elementum. Phasellus enim sem, efficitur sed arcu non, tempor suscipit augue. Nullam porta hendrerit lorem. Cras non dui et leo fringilla rhoncus. Nam tempor luctus arcu, id ornare enim aliquam eu. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nam eget mollis odio, id rutrum lacus.
@@ -888,10 +892,10 @@ Nullam hendrerit risus et bibendum blandit. Nulla et purus augue. Cras a tempus 
             </objects>
             <point key="canvasLocation" x="-1996" y="1231"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Main Tabbar View Controller-->
         <scene sceneID="8Sv-Bm-jyg">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="6oT-Er-n9l" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="6oT-Er-n9l" customClass="MainTabbarViewController" customModule="onepageaday" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="2hf-38-Py5">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -953,7 +957,6 @@ Nullam hendrerit risus et bibendum blandit. Nulla et purus augue. Cras a tempus 
         <image name="cube.box" catalog="system" width="128" height="124"/>
         <image name="line.horizontal.3" catalog="system" width="128" height="64"/>
         <image name="paintbrush.pointed.fill" catalog="system" width="128" height="119"/>
-        <image name="pencil.and.outline" catalog="system" width="128" height="128"/>
         <image name="person.2" catalog="system" width="128" height="81"/>
         <image name="person.2.fill" catalog="system" width="128" height="80"/>
         <image name="photo" catalog="system" width="128" height="93"/>
