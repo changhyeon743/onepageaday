@@ -34,7 +34,7 @@ struct Constant {
         static let textColors: [String] = ["ffffff","e74c3c","#e67e22","#f1c40f","#2ecc71","#3498db","#9b59b6","000000"]
         
         static var mainBackGroundColor: UIColor {
-            return UIColor.init("fbd6bf") ?? UIColor.white
+            return UIColor.init("faefd9") ?? UIColor.white
         }
         
         static var mainTintColor: UIColor {

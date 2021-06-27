@@ -29,6 +29,8 @@ class BookSelectingViewController: UIViewController,UIAdaptivePresentationContro
     @IBOutlet weak var settingButton: UIButton!
     var currentPage:Int = 0
     
+    var isNewUser = false
+    
     override func viewWillAppear(_ animated: Bool) {
         fetchBooks()
     }
@@ -91,6 +93,7 @@ class BookSelectingViewController: UIViewController,UIAdaptivePresentationContro
             self.collectionView.hideSkeleton()
             
             self.collectionView.reloadData()
+            self.scrollViewDidEndDecelerating(self.collectionView)
         })
     }
 
@@ -159,20 +162,26 @@ class BookSelectingViewController: UIViewController,UIAdaptivePresentationContro
         // Do whatever with currentPage.
         self.currentPage = currentPage
         
-
-        let day = Calendar.current.dateComponents([.day],
-                                                          from: API.books?[currentPage].createDate ?? Date(), to: API.books?[currentPage].modifiedDate
-                                                              ?? Date()).day ?? 0
-        let attributedString = NSMutableAttributedString.init(string: "함께한지 \(day+1)일 째")
-        attributedString.addAttribute(NSAttributedString.Key.underlineStyle, value: 1, range: NSRange.init(location: attributedString.string.count - "\(day+1)일 째".count, length: "\(day)일 째".count))
-        
-        self.detailLabel.attributedText = attributedString
-        
-        guard let bookCount = API.books?.count else {return}
-        if currentPage >= bookCount {
+        guard let books = API.books else {
             trashButton.isHidden = true
+            detailLabel.isHidden = true
+            return
+        }
+        
+        if currentPage >= books.count || books.count < 1 {
+            trashButton.isHidden = true
+            detailLabel.isHidden = true
         } else {
             trashButton.isHidden = false
+            detailLabel.isHidden = false
+            
+            let day = Calendar.current.dateComponents([.day],
+                                                              from: books[currentPage].createDate ?? Date(), to: books[currentPage].modifiedDate
+                                                                  ?? Date()).day ?? 0
+            let attributedString = NSMutableAttributedString.init(string: "함께한지 \(day+1)일 째")
+            attributedString.addAttribute(NSAttributedString.Key.underlineStyle, value: 1, range: NSRange.init(location: attributedString.string.count - "\(day+1)일 째".count, length: "\(day)일 째".count))
+            
+            self.detailLabel.attributedText = attributedString
         }
     }
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
