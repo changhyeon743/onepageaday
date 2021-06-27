@@ -45,7 +45,7 @@ class ThemeCollectionViewCell: GeminiCell,UIContextMenuInteractionDelegate {
     
     override func awakeFromNib() {
         customShadowView = .init()
-        customShadowView.backgroundColor = .black.withAlphaComponent(1)
+        customShadowView.backgroundColor = .black
         self.addSubview(customShadowView)
         customShadowView.snp.makeConstraints{
             $0.edges.equalToSuperview()
