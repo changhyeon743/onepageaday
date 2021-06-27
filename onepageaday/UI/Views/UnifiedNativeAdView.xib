@@ -58,11 +58,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="qBY-aa-kK9" customClass="GADMediaView">
-                    <rect key="frame" x="62.5" y="258.5" width="250" height="150"/>
-                    <constraints>
-                        <constraint firstAttribute="height" priority="999" constant="150" id="TLf-tT-hVo"/>
-                        <constraint firstAttribute="width" constant="250" id="ydA-00-Rn3"/>
-                    </constraints>
+                    <rect key="frame" x="15" y="205.5" width="345" height="388"/>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ad" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uPD-l5-Eg7">
                     <rect key="frame" x="0.0" y="0.0" width="15" height="15"/>
@@ -88,9 +84,9 @@
                 <constraint firstItem="oQf-3q-vjm" firstAttribute="leading" secondItem="uqy-OM-gJn" secondAttribute="leading" constant="15" id="Fpd-qi-W1y"/>
                 <constraint firstItem="oQf-3q-vjm" firstAttribute="top" secondItem="Qv1-OM-RWB" secondAttribute="bottom" constant="32.5" id="GYB-n1-o9K"/>
                 <constraint firstItem="27M-he-ATO" firstAttribute="trailing" secondItem="Qv1-OM-RWB" secondAttribute="trailing" constant="15" id="HBM-0I-VyC"/>
-                <constraint firstItem="qBY-aa-kK9" firstAttribute="centerX" secondItem="uqy-OM-gJn" secondAttribute="centerX" id="NOt-79-11x"/>
                 <constraint firstItem="MDq-cl-KxM" firstAttribute="centerX" secondItem="uqy-OM-gJn" secondAttribute="centerX" id="SK8-ty-Poc"/>
                 <constraint firstItem="C3E-bW-bR8" firstAttribute="centerY" secondItem="J4i-10-aHh" secondAttribute="centerY" id="TU0-gc-Xcs"/>
+                <constraint firstItem="qBY-aa-kK9" firstAttribute="leading" secondItem="27M-he-ATO" secondAttribute="leading" constant="15" id="TgQ-bx-xTt"/>
                 <constraint firstItem="uPD-l5-Eg7" firstAttribute="left" secondItem="uqy-OM-gJn" secondAttribute="left" id="UPQ-Vc-Lh2"/>
                 <constraint firstItem="Qv1-OM-RWB" firstAttribute="top" secondItem="MDq-cl-KxM" secondAttribute="bottom" constant="10" id="Uku-Fl-YXj"/>
                 <constraint firstItem="L7H-VF-xJo" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="uqy-OM-gJn" secondAttribute="leading" constant="20" symbolic="YES" id="cEa-b1-E3G"/>
@@ -98,8 +94,10 @@
                 <constraint firstItem="L7H-VF-xJo" firstAttribute="centerY" secondItem="J4i-10-aHh" secondAttribute="centerY" id="h32-Sf-Uir"/>
                 <constraint firstItem="uPD-l5-Eg7" firstAttribute="top" secondItem="uqy-OM-gJn" secondAttribute="top" id="iwv-dK-WaJ"/>
                 <constraint firstAttribute="right" relation="greaterThanOrEqual" secondItem="uPD-l5-Eg7" secondAttribute="right" constant="20" symbolic="YES" id="mdq-NX-Yx4"/>
-                <constraint firstItem="qBY-aa-kK9" firstAttribute="centerY" secondItem="uqy-OM-gJn" secondAttribute="centerY" id="sdD-Nd-0IG"/>
+                <constraint firstItem="qBY-aa-kK9" firstAttribute="top" secondItem="oQf-3q-vjm" secondAttribute="bottom" constant="15" id="rT2-is-Kbs"/>
+                <constraint firstItem="L7H-VF-xJo" firstAttribute="top" secondItem="qBY-aa-kK9" secondAttribute="bottom" constant="15" id="uZB-54-3JN"/>
                 <constraint firstItem="27M-he-ATO" firstAttribute="trailing" secondItem="oQf-3q-vjm" secondAttribute="trailing" constant="15" id="yzc-gR-KgJ"/>
+                <constraint firstItem="27M-he-ATO" firstAttribute="trailing" secondItem="qBY-aa-kK9" secondAttribute="trailing" constant="15" id="zX7-xc-Ir1"/>
                 <constraint firstAttribute="trailing" secondItem="MDq-cl-KxM" secondAttribute="trailing" constant="15" id="zvS-rO-1Wz"/>
             </constraints>
             <connections>

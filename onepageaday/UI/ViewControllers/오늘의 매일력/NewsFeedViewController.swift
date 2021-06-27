@@ -35,6 +35,8 @@ class NewsFeedViewController: UIViewController  {
         return false
     }
     
+    let limit = 10
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -92,7 +94,7 @@ class NewsFeedViewController: UIViewController  {
     
     func fetchData() {
         self.activityIndicator.startAnimating()
-        API.firebase.fetchNewestQuestions(after: nil, limit: 8) { (questions,lastDocument)  in
+        API.firebase.fetchNewestQuestions(after: nil, limit: limit) { (questions,lastDocument)  in
             if self.items?.count ?? 0 > 0 {
                 self.items?.append(contentsOf: questions as [AnyObject])
             } else {
@@ -132,7 +134,7 @@ class NewsFeedViewController: UIViewController  {
     func addData() {
         if let last = lastDocument {
             activityIndicator.startAnimating()
-            API.firebase.fetchNewestQuestions(after: last, limit: 8) { (questions,lastDocument)  in
+            API.firebase.fetchNewestQuestions(after: last, limit: limit) { (questions,lastDocument)  in
                 self.activityIndicator.stopAnimating()
                 self.items?.append(contentsOf: questions as [AnyObject])
                 self.collectionView.reloadData()
