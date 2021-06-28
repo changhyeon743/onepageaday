@@ -48,6 +48,7 @@ class ShopViewController: UIViewController, SkeletonTableViewDelegate, SkeletonT
     }
 
     @IBAction func dismissButtonPressed(_ sender: Any) {
+        self.parentDelegate?.bookDownloaded()
         self.dismiss(animated: true, completion: nil)
     }
     func collectionSkeletonView(_ skeletonView: UITableView, cellIdentifierForRowAt indexPath: IndexPath) -> ReusableCellIdentifier {

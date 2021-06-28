@@ -152,7 +152,7 @@ class BookSelectingViewController: UIViewController,UIAdaptivePresentationContro
         //or?
         guard let bookCount = API.books?.count else {return}
         
-//        if currentPage < bookCount && bookCount > 1{
+        if currentPage < bookCount && bookCount > 0{
             let alert = UIAlertController(title: "\(API.books?[currentPage].title ?? "") 을(를) 삭제하시겠습니까?", message:  nil, preferredStyle: .actionSheet)
 
             alert.addAction(UIAlertAction(title: "삭제", style: .destructive, handler: { _ in
@@ -174,7 +174,8 @@ class BookSelectingViewController: UIViewController,UIAdaptivePresentationContro
             alert.popoverPresentationController?.sourceView = sender as UIView
 
             self.present(alert, animated: true, completion: nil)
-//        } else {
+        }
+        //else {
 //            let alert = UIAlertController(title: "삭제 실패", message: "1개 이상의 책을 소지하고 있어야합니다.", preferredStyle: .alert)
 //            alert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
 //            present(alert, animated: true, completion: nil)
@@ -192,8 +193,8 @@ class BookSelectingViewController: UIViewController,UIAdaptivePresentationContro
 //                let jsons = JSON(JSON(snapshot?.data()))["json"].arrayValue
 //            }
 //        }
-        if let vc = self.storyboard?.instantiateViewController(identifier: "ShopNavigationViewController") {
-            //vc.parentDelegate = self
+        if let vc = self.storyboard?.instantiateViewController(identifier: "ShopNavigationViewController") as? UINavigationController {
+            (vc.viewControllers.first as? ShopViewController)?.parentDelegate = self
             vc.presentationController?.delegate = self
             present(vc, animated: true, completion: nil)
         }
@@ -215,7 +216,6 @@ class BookSelectingViewController: UIViewController,UIAdaptivePresentationContro
         let visiblePoint = CGPoint(x: visibleRect.midX, y: visibleRect.midY)
 
         guard let indexPath = collectionView.indexPathForItem(at: visiblePoint) else { return }
-        
         self.currentPage = indexPath.row
         
         guard let books = API.books else {
@@ -251,7 +251,8 @@ class BookSelectingViewController: UIViewController,UIAdaptivePresentationContro
 extension BookSelectingViewController: BookSelectingViewControllerDelegate {
     //Delegate
     func bookDownloaded() {
-        fetchBooks()
+        viewWillAppear(true)
+//        fetchBooks()
     }
 }
 
