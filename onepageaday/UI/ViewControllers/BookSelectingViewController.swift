@@ -207,11 +207,16 @@ class BookSelectingViewController: UIViewController,UIAdaptivePresentationContro
         trashButton.isHidden = false
         detailLabel.isHidden = false
         
-        let x = scrollView.contentOffset.x
-        let w = scrollView.bounds.size.width
-        let currentPage = Int(ceil(x/w))
-        // Do whatever with currentPage.
-        self.currentPage = currentPage
+        var visibleRect = CGRect()
+
+        visibleRect.origin = collectionView.contentOffset
+        visibleRect.size = collectionView.bounds.size
+
+        let visiblePoint = CGPoint(x: visibleRect.midX, y: visibleRect.midY)
+
+        guard let indexPath = collectionView.indexPathForItem(at: visiblePoint) else { return }
+        
+        self.currentPage = indexPath.row
         
         guard let books = API.books else {
             trashButton.isHidden = true

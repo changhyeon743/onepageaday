@@ -61,7 +61,7 @@ class MainViewController: UIViewController {
                 pageControllerDelegate?.stopScroll()
 //                modeToggleButton.setImage(UIImage(systemName: "checkmark", withConfiguration: UIImage.SymbolConfiguration(pointSize: 24)), for: .normal)
                 
-                modeToggleButton.setTitle("저장", for: .normal)
+                modeToggleButton.setTitle("완료", for: .normal)
                 additionalMenuButton.fadeOut()
                 
             } else {

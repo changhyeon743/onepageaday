@@ -36,12 +36,12 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N3e-2u-nMb">
-                                <rect key="frame" x="372.5" y="64" width="26.5" height="25"/>
+                                <rect key="frame" x="364" y="64" width="35" height="34"/>
+                                <fontDescription key="fontDescription" name="Cafe24Ssurroundair" family="Cafe24 Ssurround air" pointSize="18"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <size key="titleShadowOffset" width="0.0" height="1"/>
-                                <state key="normal" image="checkmark" catalog="system">
+                                <state key="normal" title="저장">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="24"/>
                                 </state>
                                 <connections>
@@ -74,9 +74,9 @@
                                 </constraints>
                             </view>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GR1-Bs-kZf">
-                                <rect key="frame" x="56" y="64" width="42.5" height="23.5"/>
+                                <rect key="frame" x="56" y="64" width="33.5" height="23.5"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" image="textformat.abc" catalog="system">
+                                <state key="normal" image="textformat.alt" catalog="system">
                                     <color key="titleColor" systemColor="labelColor"/>
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="24" weight="regular"/>
                                 </state>
@@ -85,9 +85,9 @@
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bYd-7h-GZ2">
-                                <rect key="frame" x="111.5" y="64" width="31" height="28.5"/>
+                                <rect key="frame" x="102.5" y="64" width="29.5" height="28"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" image="paintbrush.pointed.fill" catalog="system">
+                                <state key="normal" image="scribble" catalog="system">
                                     <color key="titleColor" systemColor="labelColor"/>
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="24" weight="regular"/>
                                 </state>
@@ -96,7 +96,7 @@
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kyd-p1-zBD">
-                                <rect key="frame" x="155.5" y="64" width="34" height="26"/>
+                                <rect key="frame" x="145" y="64" width="34" height="26"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="photo" catalog="system">
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="24" weight="regular"/>
@@ -771,7 +771,7 @@ Nullam hendrerit risus et bibendum blandit. Nulla et purus augue. Cras a tempus 
             </objects>
             <point key="canvasLocation" x="-200" y="526"/>
         </scene>
-        <!--새로운 이야기-->
+        <!--스토리-->
         <scene sceneID="WRJ-4B-C7T">
             <objects>
                 <viewController storyboardIdentifier="NewsFeedViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="xvc-EY-pzc" customClass="NewsFeedViewController" customModule="onepageaday" customModuleProvider="target" sceneMemberID="viewController">
@@ -819,7 +819,7 @@ Nullam hendrerit risus et bibendum blandit. Nulla et purus augue. Cras a tempus 
                             <constraint firstItem="AIG-IH-OI0" firstAttribute="bottom" secondItem="FoR-HO-sST" secondAttribute="bottom" id="sAG-F0-asH"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="새로운 이야기" image="person.2" catalog="system" selectedImage="person.2.fill" id="BxO-TJ-X7W"/>
+                    <tabBarItem key="tabBarItem" title="스토리" image="person.2" catalog="system" selectedImage="person.2.fill" id="BxO-TJ-X7W"/>
                     <navigationItem key="navigationItem" id="VGf-bX-lns"/>
                     <connections>
                         <outlet property="collectionView" destination="FoR-HO-sST" id="eri-QI-PIL"/>
@@ -867,7 +867,7 @@ Nullam hendrerit risus et bibendum blandit. Nulla et purus augue. Cras a tempus 
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </collectionView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="새로운 이야기" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="dJ5-Y0-6kn">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="스토리" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="dJ5-Y0-6kn">
                                 <rect key="frame" x="24" y="68" width="366" height="24"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                 <nil key="textColor"/>
@@ -956,14 +956,13 @@ Nullam hendrerit risus et bibendum blandit. Nulla et purus augue. Cras a tempus 
         <image name="book" catalog="system" width="128" height="102"/>
         <image name="book.fill" catalog="system" width="128" height="102"/>
         <image name="books.vertical" catalog="system" width="128" height="103"/>
-        <image name="checkmark" catalog="system" width="128" height="114"/>
         <image name="cube.box" catalog="system" width="128" height="124"/>
         <image name="line.horizontal.3" catalog="system" width="128" height="64"/>
-        <image name="paintbrush.pointed.fill" catalog="system" width="128" height="119"/>
         <image name="person.2" catalog="system" width="128" height="81"/>
         <image name="person.2.fill" catalog="system" width="128" height="80"/>
         <image name="photo" catalog="system" width="128" height="93"/>
-        <image name="textformat.abc" catalog="system" width="128" height="61"/>
+        <image name="scribble" catalog="system" width="128" height="118"/>
+        <image name="textformat.alt" catalog="system" width="128" height="78"/>
         <image name="trash.circle" catalog="system" width="128" height="121"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
         <image name="xmark.rectangle" catalog="system" width="128" height="93"/>
