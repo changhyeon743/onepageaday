@@ -184,7 +184,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="QJV-jT-pY9" customClass="CollectionView">
-                                <rect key="frame" x="0.0" y="77" width="414" height="765"/>
+                                <rect key="frame" x="0.0" y="107" width="414" height="735"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="lFl-a4-dxh">
                                     <size key="itemSize" width="128" height="128"/>
@@ -245,10 +245,14 @@
                                     <constraint firstAttribute="height" constant="7" id="cQJ-78-VA8"/>
                                 </constraints>
                             </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PoweredBy_200px-White_HorizText" translatesAutoresizingMaskIntoConstraints="NO" id="On8-O9-Rky">
+                                <rect key="frame" x="4" y="81" width="406" height="22"/>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="hVh-2F-IbN"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="QJV-jT-pY9" firstAttribute="top" secondItem="On8-O9-Rky" secondAttribute="bottom" constant="4" id="0fc-JE-JOJ"/>
                             <constraint firstItem="fRr-fg-9M6" firstAttribute="centerX" secondItem="2I5-yU-OaW" secondAttribute="centerX" id="6gJ-bK-EDa"/>
                             <constraint firstItem="Cih-Up-w5C" firstAttribute="trailing" secondItem="hVh-2F-IbN" secondAttribute="trailing" constant="-4" id="8kG-aP-gZ8"/>
                             <constraint firstAttribute="bottom" secondItem="QJV-jT-pY9" secondAttribute="bottom" id="AE6-ey-Ioi"/>
@@ -256,8 +260,10 @@
                             <constraint firstItem="fRr-fg-9M6" firstAttribute="top" secondItem="hVh-2F-IbN" secondAttribute="top" constant="9" id="QX2-5a-yNj"/>
                             <constraint firstItem="Cih-Up-w5C" firstAttribute="top" secondItem="hVh-2F-IbN" secondAttribute="top" constant="26" id="SoR-5X-kdr"/>
                             <constraint firstItem="hVh-2F-IbN" firstAttribute="trailing" secondItem="QJV-jT-pY9" secondAttribute="trailing" id="TW5-k2-n4O"/>
+                            <constraint firstItem="On8-O9-Rky" firstAttribute="top" secondItem="Cih-Up-w5C" secondAttribute="bottom" constant="4" id="ie6-7t-pKg"/>
                             <constraint firstItem="QJV-jT-pY9" firstAttribute="leading" secondItem="hVh-2F-IbN" secondAttribute="leading" id="lVb-V1-sQ8"/>
-                            <constraint firstItem="QJV-jT-pY9" firstAttribute="top" secondItem="Cih-Up-w5C" secondAttribute="bottom" id="oiR-s7-sWd"/>
+                            <constraint firstItem="hVh-2F-IbN" firstAttribute="trailing" secondItem="On8-O9-Rky" secondAttribute="trailing" constant="4" id="uER-c1-Ouh"/>
+                            <constraint firstItem="On8-O9-Rky" firstAttribute="leading" secondItem="hVh-2F-IbN" secondAttribute="leading" constant="4" id="zaB-2r-3bS"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="tGM-2B-mwD"/>
@@ -591,11 +597,14 @@ Nullam hendrerit risus et bibendum blandit. Nulla et purus augue. Cras a tempus 
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Qlc-Ui-f3n">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0qW-RN-ieP">
-                                <rect key="frame" x="86.5" y="763.5" width="241" height="34.5"/>
-                                <fontDescription key="fontDescription" name="Cafe24Ssurroundair" family="Cafe24 Ssurround air" pointSize="24"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0qW-RN-ieP" customClass="ASA">
+                                <rect key="frame" x="120" y="754" width="174" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="5Je-vG-l8h"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title=" Login with Apple" image="applelogo" catalog="system">
+                                <state key="normal" title="Sign in with Apple" image="applelogo" catalog="system">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="26"/>
                                 </state>
@@ -610,7 +619,7 @@ Nullam hendrerit risus et bibendum blandit. Nulla et purus augue. Cras a tempus 
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qkr-rw-Whx">
-                                <rect key="frame" x="37" y="719.5" width="340" height="28"/>
+                                <rect key="frame" x="37" y="710" width="340" height="28"/>
                                 <fontDescription key="fontDescription" name="Cafe24Ssurroundair" family="Cafe24 Ssurround air" pointSize="13"/>
                                 <state key="normal" title="아래 로그인 버튼을 누르면 개인정보 관련 약관에 동의합니다.">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -951,6 +960,7 @@ Nullam hendrerit risus et bibendum blandit. Nulla et purus augue. Cras a tempus 
         </scene>
     </scenes>
     <resources>
+        <image name="PoweredBy_200px-White_HorizText" width="200" height="22"/>
         <image name="applelogo" catalog="system" width="103" height="128"/>
         <image name="arrow.backward" catalog="system" width="128" height="98"/>
         <image name="book" catalog="system" width="128" height="102"/>

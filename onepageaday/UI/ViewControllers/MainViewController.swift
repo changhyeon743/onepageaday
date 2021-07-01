@@ -295,10 +295,7 @@ class MainViewController: UIViewController {
                                             
                                        }),
                                         UIAction(title: "카메라", image: UIImage(systemName: "camera"), handler: { [weak self] _ in
-                                            if AVCaptureDevice.authorizationStatus(for: .video) ==  .authorized {
-                                                //already authorized
-                                                self?.callCameraPicker()
-                                            } else {
+                                            
                                                 AVCaptureDevice.requestAccess(for: .video, completionHandler: { (granted: Bool) in
                                                     if granted {
                                                         self?.callCameraPicker()
@@ -306,7 +303,6 @@ class MainViewController: UIViewController {
                                                         //access denied
                                                     }
                                                 })
-                                            }
                                         
                                         }),
                                        
