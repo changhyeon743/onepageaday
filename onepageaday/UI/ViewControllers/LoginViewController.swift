@@ -23,8 +23,8 @@ class LoginViewController: UIViewController {
         imageView.kf.indicatorType = .activity
         imageView.kf.setImage(with: URL(string: "https://media.giphy.com/media/GZd8nPH3TcNSU/giphy.gif"),options: [.memoryCacheExpiration(.expired)])
         
-        signInWithApple.contentEdgeInsets = UIEdgeInsets(top: 10, left: 16, bottom: 10, right: 16)
-
+        signInWithApple.contentEdgeInsets = UIEdgeInsets(top: 4, left: 16+32, bottom:4, right: 4+32)
+        signInWithApple.imageEdgeInsets = .init(top: 4, left: -12, bottom: 4, right: 4)
         signInWithApple.clipsToBounds = true
         signInWithApple.layer.cornerRadius = 5.0
         signInWithApple.backgroundColor = .white

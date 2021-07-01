@@ -598,7 +598,7 @@ Nullam hendrerit risus et bibendum blandit. Nulla et purus augue. Cras a tempus 
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0qW-RN-ieP" customClass="ASA">
-                                <rect key="frame" x="120" y="754" width="174" height="44"/>
+                                <rect key="frame" x="122.5" y="754" width="169" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="5Je-vG-l8h"/>
                                 </constraints>
@@ -606,7 +606,7 @@ Nullam hendrerit risus et bibendum blandit. Nulla et purus augue. Cras a tempus 
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Sign in with Apple" image="applelogo" catalog="system">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="26"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="20"/>
                                 </state>
                                 <connections>
                                     <action selector="signInWithApple:" destination="ua4-oE-vss" eventType="touchUpInside" id="XaA-pk-h7k"/>
